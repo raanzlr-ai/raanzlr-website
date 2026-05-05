@@ -85,19 +85,8 @@ const COUNTRIES = [
     name: "Syria", 
     search: "sy syria",
     // Custom SVG for the Syrian Revolution Flag (Green, White, Black with 3 Red Stars)
-    flag: (
-      <svg viewBox="0 0 900 600" className="w-[1.25em] h-[1em] inline-block rounded-[2px] shadow-sm align-middle object-cover" preserveAspectRatio="none">
-        <rect width="900" height="200" fill="#007A3D"/>
-        <rect y="200" width="900" height="200" fill="#FFFFFF"/>
-        <rect y="400" width="900" height="200" fill="#000000"/>
-        <g fill="#CE1126" transform="translate(0, 0)">
-          {/* 3 Red Stars */}
-          <path d="M225,230 l15,45 h48 l-38,28 l14,45 l-39,-28 l-39,28 l14,-45 l-38,-28 h48 z" />
-          <path d="M450,230 l15,45 h48 l-38,28 l14,45 l-39,-28 l-39,28 l14,-45 l-38,-28 h48 z" />
-          <path d="M675,230 l15,45 h48 l-38,28 l14,45 l-39,-28 l-39,28 l14,-45 l-38,-28 h48 z" />
-        </g>
-      </svg>
-    )
+    flag: "data:image/svg+xml,%3Csvg viewBox='0 0 900 600' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='900' height='200' fill='%23007A3D'/%3E%3Crect y='200' width='900' height='200' fill='%23FFFFFF'/%3E%3Crect y='400' width='900' height='200' fill='%23000000'/%3E%3Cg fill='%23CE1126'%3E%3Cpath d='M225,230 l15,45 h48 l-38,28 l14,45 l-39,-28 l-39,28 l14,-45 l-38,-28 h48 z'/%3E%3Cpath d='M450,230 l15,45 h48 l-38,28 l14,45 l-39,-28 l-39,28 l14,-45 l-38,-28 h48 z'/%3E%3Cpath d='M675,230 l15,45 h48 l-38,28 l14,45 l-39,-28 l-39,28 l14,-45 l-38,-28 h48 z'/%3E%3C/g%3E%3C/svg%3E",
+    isSvg: true
   }, 
   { code: "+964", name: "Iraq", flag: "🇮🇶", search: "iq iraq" },
   { code: "+965", name: "Kuwait", flag: "🇰🇼", search: "kw kuwait" },
@@ -164,7 +153,11 @@ const PhoneInput = ({ value, onChange, phoneCode, onPhoneCodeChange, placeholder
               className="flex items-center justify-between gap-2 rounded-l-xl border border-white/10 bg-white/[0.02] px-3 py-3 hover:bg-white/[0.04] focus:outline-none focus:border-cyan-400/60 focus:ring-1 focus:ring-cyan-400/50 transition-colors w-[110px]"
             >
               <span className="flex items-center gap-2 text-base">
-                {selectedCountry.flag}
+                {selectedCountry.isSvg ? (
+                  <img src={selectedCountry.flag} alt={selectedCountry.name} className="w-[1.25em] h-[1em] inline-block rounded-[2px] shadow-sm object-cover" />
+                ) : (
+                  <span className="text-lg leading-none">{selectedCountry.flag}</span>
+                )}
                 <span className="text-white text-sm font-medium">{selectedCountry.code}</span>
               </span>
               <ChevronDown className="w-4 h-4 text-white/60" />
@@ -198,7 +191,11 @@ const PhoneInput = ({ value, onChange, phoneCode, onPhoneCodeChange, placeholder
                         className="w-full flex items-center justify-between px-4 py-2.5 hover:bg-white/[0.04] text-left transition-colors"
                       >
                         <div className="flex items-center gap-3">
-                          <span className="text-lg leading-none">{country.flag}</span>
+                          {country.isSvg ? (
+                            <img src={country.flag} alt={country.name} className="w-[1.25em] h-[1em] inline-block rounded-[2px] shadow-sm object-cover" />
+                          ) : (
+                            <span className="text-lg leading-none">{country.flag}</span>
+                          )}
                           <span className="text-sm text-white">{country.name}</span>
                         </div>
                         <div className="flex items-center gap-3">

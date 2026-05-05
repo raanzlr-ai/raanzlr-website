@@ -68,18 +68,18 @@ const HeroLogoStage = () => {
         <div className="absolute inset-28 rounded-full border border-white/10" />
       </div>
 
-      {/* orbiting particles */}
+      {/* orbiting particles - reduced from 4 to 2 for better performance */}
       <div className="absolute inset-0 pointer-events-none">
-        {[0, 1, 2, 3].map((i) => (
+        {[0, 1].map((i) => (
           <div
             key={i}
             className="absolute left-1/2 top-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1/2"
-            style={{ animation: `slow-spin ${10 + i * 4}s linear infinite`, transformOrigin: "center" }}
+            style={{ animation: `slow-spin ${10 + i * 6}s linear infinite`, transformOrigin: "center" }}
           >
             <div
               className="absolute h-2 w-2 rounded-full bg-cyan-300"
               style={{
-                transform: `translate(${120 + i * 50}px, 0)`,
+                transform: `translate(${140 + i * 70}px, 0)`,
                 boxShadow: "0 0 12px 4px rgba(0,240,255,0.6)",
               }}
             />
@@ -87,15 +87,15 @@ const HeroLogoStage = () => {
         ))}
       </div>
 
-      {/* Scanning beam (horizontal sweep) */}
+      {/* Scanning beam (horizontal sweep) - optimized duration */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
           initial={{ y: "-110%" }}
           animate={{ y: "120%" }}
-          transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+          transition={{ duration: 5, repeat: Infinity, ease: "linear" }} // Increased from 4 to 5 seconds
           className="absolute inset-x-0 h-32"
           style={{
-            background: "linear-gradient(180deg, transparent, rgba(0,240,255,0.18), transparent)",
+            background: "linear-gradient(180deg, transparent, rgba(0,240,255,0.15), transparent)", // Reduced opacity from 0.18
             filter: "blur(6px)",
           }}
         />
@@ -106,6 +106,7 @@ const HeroLogoStage = () => {
         <motion.img
           src="/Raanzlr.png"
           alt="Raanzlr"
+          loading="eager"
           className="h-[50%] w-[50%] object-contain floaty drop-shadow-[0_0_60px_rgba(0,240,255,0.55)]"
           initial={{ opacity: 0, scale: 0.85 }}
           animate={{ opacity: 1, scale: 1 }}
