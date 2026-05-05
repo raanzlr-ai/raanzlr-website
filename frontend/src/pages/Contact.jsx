@@ -9,6 +9,7 @@ import PulseDivider from "../components/PulseDivider";
 import { Reveal } from "../components/Reveal";
 import Heartbeat from "../components/Heartbeat";
 import SEO from "../components/SEO";
+import PhoneInput from "../components/PhoneInputWithSearch";
 
 const N8N_CONTACT_WEBHOOK = process.env.REACT_APP_N8N_CONTACT_WEBHOOK;
 const N8N_SERVICE_WEBHOOK = process.env.REACT_APP_N8N_SERVICE_WEBHOOK;
@@ -261,25 +262,13 @@ const Contact = () => {
                   </div>
                   <div>
                     <label className={labelCls}>{t.contact.general.phone}</label>
-                    <div className="flex gap-2">
-                      <select
-                        className={`${fieldCls} w-28 shrink-0`}
-                        value={general.phone_code}
-                        onChange={(e) => setGeneral({ ...general, phone_code: e.target.value })}
-                      >
-                        {t.contact.phoneCodes.map((c) => (
-                          <option key={c.code} value={c.code} className="bg-[#0a0a0a]">{c.label}</option>
-                        ))}
-                      </select>
-                      <input
-                        data-testid="general-phone"
-                        type="tel"
-                        className={fieldCls}
-                        placeholder={t.contact.general.phonePlaceholder}
-                        value={general.phone}
-                        onChange={(e) => setGeneral({ ...general, phone: e.target.value })}
-                      />
-                    </div>
+                    <PhoneInput
+                      value={general.phone}
+                      onChange={(val) => setGeneral({ ...general, phone: val })}
+                      phoneCode={general.phone_code}
+                      onPhoneCodeChange={(code) => setGeneral({ ...general, phone_code: code })}
+                      placeholder={t.contact.general.phonePlaceholder}
+                    />
                   </div>
                   <div>
                     <label className={labelCls}>{t.contact.general.subject}</label>
@@ -333,25 +322,13 @@ const Contact = () => {
                   </div>
                   <div>
                     <label className={labelCls}>{t.contact.service.phone}</label>
-                    <div className="flex gap-2">
-                      <select
-                        className={`${fieldCls} w-28 shrink-0`}
-                        value={svc.phone_code}
-                        onChange={(e) => setSvc({ ...svc, phone_code: e.target.value })}
-                      >
-                        {t.contact.phoneCodes.map((c) => (
-                          <option key={c.code} value={c.code} className="bg-[#0a0a0a]">{c.label}</option>
-                        ))}
-                      </select>
-                      <input
-                        data-testid="svc-phone"
-                        type="tel"
-                        className={fieldCls}
-                        placeholder={t.contact.service.phonePlaceholder}
-                        value={svc.phone}
-                        onChange={(e) => setSvc({ ...svc, phone: e.target.value })}
-                      />
-                    </div>
+                    <PhoneInput
+                      value={svc.phone}
+                      onChange={(val) => setSvc({ ...svc, phone: val })}
+                      phoneCode={svc.phone_code}
+                      onPhoneCodeChange={(code) => setSvc({ ...svc, phone_code: code })}
+                      placeholder={t.contact.service.phonePlaceholder}
+                    />
                   </div>
                   <div>
                     <label className={labelCls}>{t.contact.service.role}</label>

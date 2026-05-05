@@ -189,7 +189,7 @@ export const translations = {
       headquartersLabel: "headquarters",
       general: {
         name: "Full Name",
-        email: "Work Email",
+        email: "Email",
         phone: "Phone Number",
         phonePlaceholder: "e.g. 5551234567",
         subject: "Subject",
@@ -200,7 +200,7 @@ export const translations = {
         desc: "Provide some context so we can prepare a meaningful response. Expect to hear back within 24 hours.",
         service: "Interested Service",
         fullName: "Full Name",
-        email: "Work Email",
+        email: "Email",
         phone: "Phone Number",
         phonePlaceholder: "e.g. 5551234567",
         role: "Your Role / Job Title",
@@ -249,7 +249,7 @@ export const translations = {
       quickLinks: "Quick Links",
       location: "Headquarters",
       rights: "All rights reserved.",
-      engineered: "engineered · for · ambitious · teams",
+      engineered: "engineered · for · ambitious · companies",
     },
     seo: {
       home: {
@@ -473,7 +473,7 @@ export const translations = {
         desc: "شاركنا بعض السياق حول مشروعك لنتمكن من الرد بشكل دقيق ومفيد. سنتواصل معك خلال 24 ساعة.",
         service: "الخدمة المطلوبة",
         fullName: "الاسم الكامل",
-        email: "البريد الإلكتروني للعمل",
+        email: "البريد الإلكتروني",
         phone: "رقم الجوال",
         phonePlaceholder: "مثال: 5551234567",
         role: "المسمى الوظيفي / دورك",
@@ -522,7 +522,7 @@ export const translations = {
       quickLinks: "روابط سريعة",
       location: "المقر الرئيسي",
       rights: "جميع الحقوق محفوظة.",
-      engineered: "مهندسة · للفرق · الطموحة",
+      engineered: "engineered · for · ambitious · companies",
     },
     seo: {
       home: {
