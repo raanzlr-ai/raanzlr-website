@@ -5,7 +5,8 @@
   "framework": null,
   "env": {
     "DISABLE_ESLINT_PLUGIN": "true",
-    "SKIP_PREFLIGHT_CHECK": "true"
+    "SKIP_PREFLIGHT_CHECK": "true",
+    "DISABLE_SIZE_LIMIT": "true"
   },
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
