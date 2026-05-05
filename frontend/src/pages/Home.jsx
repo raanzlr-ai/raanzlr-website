@@ -232,7 +232,7 @@ const Home = () => {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <Reveal>
             <div className="max-w-3xl">
-              <div className="text-xs font-mono-accent uppercase tracking-[0.22em] text-cyan-300/90">// why raanzlr</div>
+              <div className="text-xs font-mono-accent uppercase tracking-[0.22em] text-cyan-300/90">{t.home.whyLabel}</div>
               <h2 className="mt-4 font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-chrome">{t.home.whyTitle}</h2>
               <p className="mt-4 text-white/60">{t.home.whySub}</p>
             </div>
@@ -272,7 +272,7 @@ const Home = () => {
           <Reveal>
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
               <div className="max-w-2xl">
-                <div className="text-xs font-mono-accent uppercase tracking-[0.22em] text-cyan-300/90">// services</div>
+                <div className="text-xs font-mono-accent uppercase tracking-[0.22em] text-cyan-300/90">{t.home.servicesLabel}</div>
                 <h2 className="mt-4 font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-chrome">{t.home.servicesPreview}</h2>
                 <p className="mt-4 text-white/60">{t.home.servicesPreviewSub}</p>
               </div>
@@ -281,7 +281,7 @@ const Home = () => {
                 data-testid="home-services-link"
                 className="inline-flex items-center gap-2 text-sm font-mono-accent uppercase tracking-[0.22em] text-cyan-300 hover:text-white transition-colors"
               >
-                view all
+                {t.cta.viewAll}
                 <ArrowRight className="h-4 w-4 rtl:rotate-180" />
               </Link>
             </div>
@@ -310,7 +310,7 @@ const Home = () => {
                     <h3 className="mt-6 font-display text-2xl font-semibold text-white">{s.title}</h3>
                     <p className="mt-2 text-sm text-white/60 leading-relaxed">{s.desc}</p>
                     <div className="mt-7 flex items-center gap-2 text-xs font-mono-accent text-cyan-300/80 uppercase tracking-[0.2em]">
-                      explore <ArrowRight className="h-3.5 w-3.5 rtl:rotate-180 group-hover:translate-x-1 transition-transform" />
+                      {t.cta.explore} <ArrowRight className="h-3.5 w-3.5 rtl:rotate-180 group-hover:translate-x-1 transition-transform" />
                     </div>
                   </Link>
                 </StaggerItem>

@@ -39,8 +39,8 @@ const Navbar = () => {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="flex h-[72px] items-center justify-between">
           <Link to="/" data-testid="nav-logo-link" className="flex items-center gap-2 group">
-            <img src="/Raanzlr.png" alt="Raanzlr" className="h-7 w-auto object-contain drop-shadow-[0_0_12px_rgba(0,240,255,0.55)]" />
-            <span className="font-display text-xl font-bold text-chrome">Raanzlr</span>
+            <img src="/logo raanzlr.png" alt="Raanzlr Logo" className="h-7 w-auto object-contain drop-shadow-[0_0_10px_rgba(0,240,255,0.55)]" />
+            <img src="/Raanzlr.png" alt="Raanzlr" className="h-6 w-auto object-contain drop-shadow-[0_0_10px_rgba(0,240,255,0.45)]" />
           </Link>
 
           <nav className="hidden md:flex items-center gap-1">

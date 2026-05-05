@@ -20,8 +20,8 @@ const Footer = () => {
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8 py-16 sm:py-20 grid grid-cols-1 md:grid-cols-12 gap-10 sm:gap-12">
         <div className="md:col-span-5">
           <div className="flex items-center gap-2">
-            <img src="/Raanzlr.png" alt="Raanzlr" className="h-8 w-auto object-contain drop-shadow-[0_0_12px_rgba(0,240,255,0.55)]" />
-            <span className="font-display text-2xl font-bold text-chrome">Raanzlr</span>
+            <img src="/logo raanzlr.png" alt="Raanzlr Logo" className="h-8 w-auto object-contain drop-shadow-[0_0_10px_rgba(0,240,255,0.55)]" />
+            <img src="/Raanzlr.png" alt="Raanzlr" className="h-7 w-auto object-contain drop-shadow-[0_0_10px_rgba(0,240,255,0.45)]" />
           </div>
           <p className="mt-5 max-w-sm text-white/60 text-sm leading-relaxed">
             {t.footer.tagline}
@@ -60,7 +60,7 @@ const Footer = () => {
       <div className="relative border-t border-white/5">
         <div className="mx-auto max-w-7xl px-6 lg:px-8 py-5 sm:py-6 flex flex-col md:flex-row items-center justify-between gap-3 text-[11px] sm:text-xs text-white/40">
           <span>© {new Date().getFullYear()} Raanzlr. {t.footer.rights}</span>
-          <span className="font-mono-accent uppercase tracking-[0.2em]">engineered · for · ambitious · teams</span>
+          <span className="font-mono-accent uppercase tracking-[0.2em]">{t.footer.engineered}</span>
         </div>
       </div>
     </footer>

@@ -83,12 +83,12 @@ const Contact = () => {
 
   useEffect(() => { if (preselect) setTab("service"); }, [preselect]);
 
-  const [general, setGeneral] = useState({ name: "", email: "", whatsapp: "", subject: "", message: "" });
+  const [general, setGeneral] = useState({ name: "", email: "", phone_code: "+1", phone: "", subject: "", message: "" });
   const [generalLoading, setGeneralLoading] = useState(false);
 
   const [svc, setSvc] = useState({
     service: preselect || "ai-chatbots",
-    full_name: "", email: "", whatsapp: "", role: "",
+    full_name: "", email: "", phone_code: "+1", phone: "", role: "",
     company_type: "", company_size: "", budget_range: "", best_time: "", challenge: "",
   });
   const [svcLoading, setSvcLoading] = useState(false);
@@ -101,9 +101,9 @@ const Contact = () => {
     e.preventDefault();
     setGeneralLoading(true);
     try {
-      await axios.post(N8N_CONTACT_WEBHOOK, general);
+      await axios.post(N8N_CONTACT_WEBHOOK, { ...general, phone: `${general.phone_code}${general.phone}` });
       toast.success(t.contact.success);
-      setGeneral({ name: "", email: "", whatsapp: "", subject: "", message: "" });
+      setGeneral({ name: "", email: "", phone_code: "+1", phone: "", subject: "", message: "" });
     } catch (err) {
       toast.error(t.contact.error);
     } finally {
@@ -115,10 +115,10 @@ const Contact = () => {
     e.preventDefault();
     setSvcLoading(true);
     try {
-      await axios.post(N8N_SERVICE_WEBHOOK, svc);
+      await axios.post(N8N_SERVICE_WEBHOOK, { ...svc, phone: `${svc.phone_code}${svc.phone}` });
       toast.success(t.contact.success);
       setSvc({
-        service: "ai-chatbots", full_name: "", email: "", whatsapp: "", role: "",
+        service: "ai-chatbots", full_name: "", email: "", phone_code: "+1", phone: "", role: "",
         company_type: "", company_size: "", budget_range: "", best_time: "", challenge: "",
       });
     } catch (err) {
@@ -199,7 +199,7 @@ const Contact = () => {
               <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-6">
                 <div className="flex items-center gap-3">
                   <Mail className="h-4 w-4 text-cyan-300" />
-                  <span className="text-xs font-mono-accent uppercase tracking-[0.2em] text-white/60">email us</span>
+                  <span className="text-xs font-mono-accent uppercase tracking-[0.2em] text-white/60">{t.contact.emailUs}</span>
                 </div>
                 <a href="mailto:contact@raanzlr.com" data-testid="contact-email" className="mt-3 block font-display text-lg sm:text-xl text-white hover:text-cyan-200 break-all">contact@raanzlr.com</a>
               </div>
@@ -208,7 +208,7 @@ const Contact = () => {
               <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-6">
                 <div className="flex items-center gap-3">
                   <MapPin className="h-4 w-4 text-cyan-300" />
-                  <span className="text-xs font-mono-accent uppercase tracking-[0.2em] text-white/60">headquarters</span>
+                  <span className="text-xs font-mono-accent uppercase tracking-[0.2em] text-white/60">{t.contact.headquartersLabel}</span>
                 </div>
                 <div className="mt-3 text-white/80 leading-relaxed text-sm" dir="ltr">
                   9 Branch Brook Dr #10030<br/>Belleville, NJ 07109
@@ -260,8 +260,26 @@ const Contact = () => {
                     <input data-testid="general-email" type="email" required className={fieldCls} value={general.email} onChange={(e)=>setGeneral({...general, email:e.target.value})} />
                   </div>
                   <div>
-                    <label className={labelCls}>{t.contact.general.whatsapp}</label>
-                    <input data-testid="general-whatsapp" className={fieldCls} value={general.whatsapp} onChange={(e)=>setGeneral({...general, whatsapp:e.target.value})} />
+                    <label className={labelCls}>{t.contact.general.phone}</label>
+                    <div className="flex gap-2">
+                      <select
+                        className={`${fieldCls} w-28 shrink-0`}
+                        value={general.phone_code}
+                        onChange={(e) => setGeneral({ ...general, phone_code: e.target.value })}
+                      >
+                        {t.contact.phoneCodes.map((c) => (
+                          <option key={c.code} value={c.code} className="bg-[#0a0a0a]">{c.label}</option>
+                        ))}
+                      </select>
+                      <input
+                        data-testid="general-phone"
+                        type="tel"
+                        className={fieldCls}
+                        placeholder={t.contact.general.phonePlaceholder}
+                        value={general.phone}
+                        onChange={(e) => setGeneral({ ...general, phone: e.target.value })}
+                      />
+                    </div>
                   </div>
                   <div>
                     <label className={labelCls}>{t.contact.general.subject}</label>
@@ -314,8 +332,26 @@ const Contact = () => {
                     <input data-testid="svc-email" type="email" required className={fieldCls} value={svc.email} onChange={(e)=>setSvc({...svc, email:e.target.value})} />
                   </div>
                   <div>
-                    <label className={labelCls}>{t.contact.service.whatsapp}</label>
-                    <input data-testid="svc-whatsapp" className={fieldCls} value={svc.whatsapp} onChange={(e)=>setSvc({...svc, whatsapp:e.target.value})} />
+                    <label className={labelCls}>{t.contact.service.phone}</label>
+                    <div className="flex gap-2">
+                      <select
+                        className={`${fieldCls} w-28 shrink-0`}
+                        value={svc.phone_code}
+                        onChange={(e) => setSvc({ ...svc, phone_code: e.target.value })}
+                      >
+                        {t.contact.phoneCodes.map((c) => (
+                          <option key={c.code} value={c.code} className="bg-[#0a0a0a]">{c.label}</option>
+                        ))}
+                      </select>
+                      <input
+                        data-testid="svc-phone"
+                        type="tel"
+                        className={fieldCls}
+                        placeholder={t.contact.service.phonePlaceholder}
+                        value={svc.phone}
+                        onChange={(e) => setSvc({ ...svc, phone: e.target.value })}
+                      />
+                    </div>
                   </div>
                   <div>
                     <label className={labelCls}>{t.contact.service.role}</label>

@@ -148,9 +148,9 @@ const About = () => {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <Reveal>
             <div className="max-w-2xl">
-              <div className="text-xs font-mono-accent uppercase tracking-[0.22em] text-cyan-300/90">// principles</div>
+              <div className="text-xs font-mono-accent uppercase tracking-[0.22em] text-cyan-300/90">{t.about.principlesLabel}</div>
               <h2 className="mt-4 font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-chrome">
-                How we think, how we build.
+                {t.about.principlesTitle}
               </h2>
             </div>
           </Reveal>
@@ -186,7 +186,7 @@ const About = () => {
               <div className="absolute inset-0 bg-grid opacity-30" />
               <div className="relative grid md:grid-cols-2 gap-8 md:gap-10 items-center">
                 <div>
-                  <div className="text-xs font-mono-accent uppercase tracking-[0.22em] text-cyan-300/90">// {t.about.hq}</div>
+                  <div className="text-xs font-mono-accent uppercase tracking-[0.22em] text-cyan-300/90">{t.about.hqLabel}</div>
                   <h3 className="mt-4 font-display text-2xl sm:text-3xl md:text-4xl font-bold text-chrome">{t.about.hqTitle}</h3>
                   <p className="mt-4 text-white/65 max-w-md text-sm sm:text-base">{t.about.hqDesc}</p>
                   <div className="mt-6 flex items-start gap-3 text-white/80">
