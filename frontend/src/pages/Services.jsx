@@ -80,8 +80,11 @@ const HeroAutoPreview = () => {
               key={s.key}
               src={s.image}
               alt=""
+              width="1200"
+              height="675"
               aria-hidden="true"
               draggable={false}
+              loading={i === 0 ? "eager" : "lazy"}
               className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-out pointer-events-none"
               style={{ opacity: i === activeIdx && imagesReady ? 0.22 : 0 }}
             />

@@ -106,6 +106,8 @@ const HeroLogoStage = () => {
         <motion.img
           src="/Raanzlr.png"
           alt="Raanzlr"
+          width="320"
+          height="320"
           loading="eager"
           className="h-[50%] w-[50%] object-contain floaty drop-shadow-[0_0_60px_rgba(0,240,255,0.55)]"
           initial={{ opacity: 0, scale: 0.85 }}
