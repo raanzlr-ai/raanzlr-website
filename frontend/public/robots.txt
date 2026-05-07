@@ -1,5 +1,15 @@
 User-agent: *
 Allow: /
-Disallow:
 
+# Disallow admin or private paths (if any in future)
+# Disallow: /admin/
+# Disallow: /private/
+
+# Crawl-delay (optional, use only if needed)
+# Crawl-delay: 1
+
+# Sitemaps
 Sitemap: https://raanzlr.com/sitemap.xml
+Sitemap: https://raanzlr.com/sitemap-pages.xml
+Sitemap: https://raanzlr.com/sitemap-services.xml
+Sitemap: https://raanzlr.com/sitemap-images.xml
