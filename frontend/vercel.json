@@ -10,13 +10,13 @@
   },
   "rewrites": [
     {
-      "source": "/((?!sitemap.*\\.xml|robots\\.txt).*)",
+      "source": "/((?!sitemap.*\\.xml|sitemap.*\\.xsl|robots\\.txt).*)",
       "destination": "/index.html"
     }
   ],
   "headers": [
     {
-      "source": "/sitemap.xml",
+      "source": "/sitemap*.xml",
       "headers": [
         {
           "key": "Content-Type",
@@ -25,6 +25,19 @@
         {
           "key": "Cache-Control",
           "value": "public, max-age=3600, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/sitemap-style.xsl",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/xslt+xml; charset=utf-8"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, must-revalidate"
         }
       ]
     },
