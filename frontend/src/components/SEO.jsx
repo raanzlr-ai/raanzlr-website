@@ -9,7 +9,8 @@ const SEO = ({ pageKey = "home", path = "/", image = LOGO }) => {
   const { lang, t } = useLang();
   const meta = t.seo[pageKey];
   const url = `${SITE_URL}${path}`;
-  const altLang = lang === "en" ? "ar" : "en";
+
+  // Schema.org structured data
   const orgLd = {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -58,16 +59,30 @@ const SEO = ({ pageKey = "home", path = "/", image = LOGO }) => {
 
   return (
     <Helmet>
+      {/* Language & Direction */}
       <html lang={lang === "ar" ? "ar" : "en"} dir={lang === "ar" ? "rtl" : "ltr"} />
+      
+      {/* Primary Meta Tags */}
       <title>{meta.title}</title>
       <meta name="description" content={meta.description} />
       <meta name="keywords" content={meta.keywords} />
       <meta name="author" content="Raanzlr" />
       <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+      
+      {/* Canonical URL */}
       <link rel="canonical" href={url} />
-      <link rel="alternate" hrefLang={lang} href={url} />
-      <link rel="alternate" hrefLang={altLang} href={url} />
-      <link rel="alternate" hrefLang="x-default" href={SITE_URL} />
+      
+      {/* 
+        NOTE: hreflang tags removed intentionally.
+        Reason: Language switching is client-side only (localStorage).
+        No actual language-specific URLs exist (e.g., /en/, /ar/).
+        Adding hreflang without proper URL structure sends conflicting signals to Google.
+        
+        Future: When implementing proper i18n URLs, add:
+        <link rel="alternate" hrefLang="en" href={`${SITE_URL}/en${path}`} />
+        <link rel="alternate" hrefLang="ar" href={`${SITE_URL}/ar${path}`} />
+        <link rel="alternate" hrefLang="x-default" href={`${SITE_URL}/en${path}`} />
+      */}
 
       {/* Open Graph */}
       <meta property="og:type" content="website" />
@@ -77,9 +92,8 @@ const SEO = ({ pageKey = "home", path = "/", image = LOGO }) => {
       <meta property="og:url" content={url} />
       <meta property="og:image" content={image} />
       <meta property="og:locale" content={lang === "ar" ? "ar_AE" : "en_US"} />
-      <meta property="og:locale:alternate" content={lang === "ar" ? "en_US" : "ar_AE"} />
 
-      {/* Twitter */}
+      {/* Twitter Card */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={meta.title} />
       <meta name="twitter:description" content={meta.description} />
@@ -88,7 +102,7 @@ const SEO = ({ pageKey = "home", path = "/", image = LOGO }) => {
       {/* Theme */}
       <meta name="theme-color" content="#050505" />
 
-      {/* JSON-LD */}
+      {/* JSON-LD Structured Data */}
       <script type="application/ld+json">{JSON.stringify(orgLd)}</script>
       <script type="application/ld+json">{JSON.stringify(websiteLd)}</script>
       {serviceLd && <script type="application/ld+json">{JSON.stringify(serviceLd)}</script>}
