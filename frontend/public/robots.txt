@@ -10,7 +10,3 @@ Allow: /
 
 # Sitemaps
 Sitemap: https://www.raanzlr.com/sitemap.xml
-Sitemap: https://www.raanzlr.com/sitemap-pages.xml
-Sitemap: https://www.raanzlr.com/sitemap-services.xml
-Sitemap: https://www.raanzlr.com/sitemap-images.xml
-Sitemap: https://www.raanzlr.com/sitemap-updated.xml
