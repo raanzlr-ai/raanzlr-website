@@ -24,3 +24,4 @@ yarn-error.log*
 
 # Cache
 .cache/
+.env*.local

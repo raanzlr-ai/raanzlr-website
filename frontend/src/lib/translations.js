@@ -251,6 +251,7 @@ export const translations = {
       rights: "All rights reserved.",
       engineered: "engineered · for · ambitious · companies",
     },
+    isAr: false,
     seo: {
       home: {
         title: "Raanzlr — AI Solutions, Automation & Software Engineering Studio",
@@ -524,6 +525,7 @@ export const translations = {
       rights: "جميع الحقوق محفوظة.",
       engineered: "engineered · for · ambitious · companies",
     },
+    isAr: true,
     seo: {
       home: {
         title: "Raanzlr — حلول الذكاء الاصطناعي، الأتمتة، وهندسة البرمجيات",

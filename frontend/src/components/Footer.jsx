@@ -5,7 +5,7 @@ import { useLang } from "../contexts/LanguageContext";
 import PulseDivider from "./PulseDivider";
 
 const Footer = () => {
-  const { t } = useLang();
+  const { t, isAr } = useLang();
   return (
     <footer data-testid="site-footer" className="relative mt-24 sm:mt-32 overflow-hidden border-t border-white/5 bg-[#030303]">
       <PulseDivider />
@@ -37,6 +37,9 @@ const Footer = () => {
             <li><Link data-testid="footer-link-services" to="/services" className="hover:text-cyan-200 transition-colors">{t.nav.services}</Link></li>
             <li><Link data-testid="footer-link-about" to="/about" className="hover:text-cyan-200 transition-colors">{t.nav.about}</Link></li>
             <li><Link data-testid="footer-link-contact" to="/contact" className="hover:text-cyan-200 transition-colors">{t.nav.contact}</Link></li>
+            <li><Link data-testid="footer-link-faq" to="/faq" className="hover:text-cyan-200 transition-colors">{t.isAr ? "الأسئلة الشائعة" : "FAQ"}</Link></li>
+            <li><Link data-testid="footer-link-privacy" to="/privacy-policy" className="hover:text-cyan-200 transition-colors">{t.isAr ? "سياسة الخصوصية" : "Privacy Policy"}</Link></li>
+            <li><Link data-testid="footer-link-terms" to="/terms-of-service" className="hover:text-cyan-200 transition-colors">{t.isAr ? "شروط الخدمة" : "Terms of Service"}</Link></li>
           </ul>
         </div>
 

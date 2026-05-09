@@ -179,3 +179,24 @@ input:focus, textarea:focus, select:focus, button:focus-visible { outline: none;
   to { transform: rotate(360deg); }
 }
 .slow-spin { animation: slow-spin 40s linear infinite; }
+
+/* Accessibility: Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  /* Disable specific animations */
+  .floaty,
+  .slow-spin,
+  .sweep,
+  .pulse-line,
+  .shimmer-layer::before {
+    animation: none !important;
+  }
+}
