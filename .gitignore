@@ -61,10 +61,35 @@ dist/
 .agents/
 .kilo/
 *.sh
+*.bat
 
-# Documentation files (exclude these specific ones)
-STATUS_REPORT.md
+# Documentation files (exclude all unnecessary docs)
+*_REPORT.md
+*_SUMMARY.md
+*_PLAN.md
+*_STEPS*.md
+*README*.md
+STATUS_*.md
+TASK.TXT
+START_HERE.md
+QUICK_START.md
+EXECUTE_NOW.bat
 RUN_IMAGE_GENERATION.md
 APPEND_MARKETS.txt
 artifacts/SEO.MD
 replit.md
+
+# n8n and automation files
+*n8n*.json
+*n8n*.mjs
+test-*.mjs
+generate-*.mjs
+image-generator-package.json
+
+# IDE and local settings
+.vscode/
+.zencoder/
+.pnpm-store/
+
+# Temporary market data
+artifacts/raanzlr/src/data/markets_additions.txt
