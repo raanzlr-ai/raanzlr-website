@@ -72,7 +72,8 @@ scripts/
 *.bat
 
 # Backend and database (using Supabase instead)
-lib/
+# Anchored to repo root so app source under artifacts/**/src/lib stays tracked.
+/lib/
 artifacts/api-server/
 
 # Documentation files (exclude all unnecessary docs)

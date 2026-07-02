@@ -144,18 +144,18 @@ export default function FAQ() {
             {isAr ? "الأسئلة الشائعة" : "Frequently Asked Questions"}
           </motion.h1>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.25 }}
-            className="mt-5 max-w-2xl text-base md:text-lg text-white/65">
+            className="mt-5 max-w-2xl text-base md:text-lg text-foreground/65">
             {isAr ? "إجابات سريعة وواضحة على الأسئلة الأكثر شيوعاً." : "Quick, clear answers to the most common questions about our services, pricing, process, and support."}
           </motion.p>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }} className="mt-8 max-w-xl">
             <div className="relative">
-              <Search className="absolute left-4 rtl:left-auto rtl:right-4 top-1/2 -translate-y-1/2 h-5 w-5 text-white/40" />
+              <Search className="absolute left-4 rtl:left-auto rtl:right-4 top-1/2 -translate-y-1/2 h-5 w-5 text-foreground/40" />
               <input
                 type="text"
                 placeholder={isAr ? "ابحث في الأسئلة..." : "Search questions..."}
                 value={searchQuery}
                 onChange={e => setSearchQuery(e.target.value)}
-                className="w-full rounded-full border border-white/15 bg-white/[0.02] px-12 py-4 text-white placeholder:text-white/40 focus:border-cyan-400/50 focus:outline-none transition-colors"
+                className="w-full rounded-full border border-foreground/15 bg-foreground/[0.02] px-12 py-4 text-foreground placeholder:text-foreground/40 focus:border-cyan-400/50 focus:outline-none transition-colors"
               />
             </div>
           </motion.div>
@@ -169,8 +169,8 @@ export default function FAQ() {
           {Object.keys(grouped).length === 0 ? (
             <Reveal>
               <div className="text-center py-16">
-                <HelpCircle className="h-16 w-16 text-white/20 mx-auto mb-4" />
-                <p className="text-white/60">{isAr ? "لم يتم العثور على نتائج." : "No results found."}</p>
+                <HelpCircle className="h-16 w-16 text-foreground/20 mx-auto mb-4" />
+                <p className="text-foreground/60">{isAr ? "لم يتم العثور على نتائج." : "No results found."}</p>
               </div>
             </Reveal>
           ) : (
@@ -180,12 +180,12 @@ export default function FAQ() {
                   <h2 className="text-xs font-mono-accent uppercase tracking-[0.22em] text-cyan-300/90 mb-6">{cat.title}</h2>
                   <div className="space-y-4">
                     {cat.questions.map(item => (
-                      <details key={item.id} className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] hover:border-cyan-400/30 transition-colors">
+                      <details key={item.id} className="group relative overflow-hidden rounded-2xl border border-foreground/10 bg-foreground/[0.02] hover:border-cyan-400/30 transition-colors">
                         <summary className="relative px-6 py-5 cursor-pointer list-none flex items-center justify-between gap-4">
-                          <span className="font-display text-base sm:text-lg font-semibold text-white">{item.q}</span>
+                          <span className="font-display text-base sm:text-lg font-semibold text-foreground">{item.q}</span>
                           <ChevronDown className="h-5 w-5 text-cyan-300 shrink-0 transition-transform duration-200 group-open:rotate-180" />
                         </summary>
-                        <div className="px-6 pb-5 text-white/70 leading-relaxed text-sm">{item.a}</div>
+                        <div className="px-6 pb-5 text-foreground/70 leading-relaxed text-sm">{item.a}</div>
                       </details>
                     ))}
                   </div>
@@ -198,7 +198,7 @@ export default function FAQ() {
             <div className="mt-16 text-center">
               <div className="inline-flex flex-col items-center gap-6 rounded-2xl border border-cyan-400/20 bg-gradient-to-b from-cyan-500/[0.06] to-transparent p-8 sm:p-10">
                 <h3 className="font-display text-2xl sm:text-3xl font-bold text-chrome">{isAr ? "لم تجد إجابتك؟" : "Didn't Find Your Answer?"}</h3>
-                <p className="text-white/60 max-w-md">{isAr ? "إذا كان لديك سؤال لم يتم تغطيته هنا، لا تتردد في التواصل معنا." : "If you have a question that's not covered here, don't hesitate to reach out."}</p>
+                <p className="text-foreground/60 max-w-md">{isAr ? "إذا كان لديك سؤال لم يتم تغطيته هنا، لا تتردد في التواصل معنا." : "If you have a question that's not covered here, don't hesitate to reach out."}</p>
                 <MagneticButton to="/contact">{isAr ? "تواصل معنا" : "Contact Us"}</MagneticButton>
               </div>
             </div>

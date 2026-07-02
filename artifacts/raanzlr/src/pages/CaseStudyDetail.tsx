@@ -58,7 +58,7 @@ export default function CaseStudyDetail() {
           >
             <Link
               to="/case-studies"
-              className="inline-flex items-center gap-2 text-xs font-mono-accent uppercase tracking-[0.18em] text-white/50 hover:text-cyan-300 transition-colors mb-6"
+              className="inline-flex items-center gap-2 text-xs font-mono-accent uppercase tracking-[0.18em] text-foreground/50 hover:text-cyan-300 transition-colors mb-6"
             >
               <ArrowLeft className="h-3.5 w-3.5 rtl:rotate-180" />
               {isAr ? "العودة إلى دراسات الحالة" : "Back to Case Studies"}
@@ -74,7 +74,7 @@ export default function CaseStudyDetail() {
             <span className="text-[10px] font-mono-accent uppercase tracking-[0.18em] px-2.5 py-1 rounded-full border border-cyan-400/40 text-cyan-300 bg-cyan-400/10">
               {isAr ? study.tag.ar : study.tag.en}
             </span>
-            <span className="text-[10px] font-mono-accent uppercase tracking-[0.18em] px-2.5 py-1 rounded-full border border-white/15 text-white/50">
+            <span className="text-[10px] font-mono-accent uppercase tracking-[0.18em] px-2.5 py-1 rounded-full border border-foreground/15 text-foreground/50">
               {isAr ? study.industry.ar : study.industry.en}
             </span>
           </motion.div>
@@ -91,13 +91,13 @@ export default function CaseStudyDetail() {
       </section>
 
       {/* Metrics bar */}
-      <div className="relative bg-white/[0.02] border-y border-white/8">
+      <div className="relative bg-foreground/[0.02] border-y border-foreground/8">
         <div className="mx-auto max-w-5xl px-6 lg:px-8 py-8">
           <div className="grid grid-cols-3 gap-6">
             {study.metrics.map((m, i) => (
               <div key={i} className="text-center">
                 <div className="font-display text-3xl sm:text-4xl font-bold text-electric">{m.value}</div>
-                <div className="mt-2 text-[10px] font-mono-accent uppercase tracking-[0.18em] text-white/45">
+                <div className="mt-2 text-[10px] font-mono-accent uppercase tracking-[0.18em] text-foreground/45">
                   {isAr ? m.label.ar : m.label.en}
                 </div>
               </div>
@@ -118,7 +118,7 @@ export default function CaseStudyDetail() {
                   <p className="text-xs font-mono-accent uppercase tracking-[0.22em] text-cyan-300 mb-4">
                     {isAr ? "// التحدي" : "// The Challenge"}
                   </p>
-                  <p className="text-white/70 leading-[1.85] text-base sm:text-lg">
+                  <p className="text-foreground/70 leading-[1.85] text-base sm:text-lg">
                     {isAr ? study.challenge.ar : study.challenge.en}
                   </p>
                 </div>
@@ -129,7 +129,7 @@ export default function CaseStudyDetail() {
                   <p className="text-xs font-mono-accent uppercase tracking-[0.22em] text-cyan-300 mb-4">
                     {isAr ? "// الحل" : "// The Solution"}
                   </p>
-                  <p className="text-white/70 leading-[1.85] text-base sm:text-lg">
+                  <p className="text-foreground/70 leading-[1.85] text-base sm:text-lg">
                     {isAr ? study.solution.ar : study.solution.en}
                   </p>
                 </div>
@@ -138,14 +138,14 @@ export default function CaseStudyDetail() {
 
             <div className="lg:col-span-2 space-y-5">
               <Reveal delay={0.15}>
-                <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-6">
-                  <p className="text-xs font-mono-accent uppercase tracking-[0.22em] text-white/40 mb-4">
+                <div className="rounded-2xl border border-foreground/10 bg-foreground/[0.02] p-6">
+                  <p className="text-xs font-mono-accent uppercase tracking-[0.22em] text-foreground/40 mb-4">
                     {isAr ? "// نتائج القياس" : "// Measured Outcomes"}
                   </p>
                   <div className="space-y-4">
                     {study.metrics.map((m, i) => (
-                      <div key={i} className="flex items-center justify-between py-3 border-b border-white/8 last:border-0">
-                        <span className="text-sm text-white/60">
+                      <div key={i} className="flex items-center justify-between py-3 border-b border-foreground/8 last:border-0">
+                        <span className="text-sm text-foreground/60">
                           {isAr ? m.label.ar : m.label.en}
                         </span>
                         <span className="font-display text-xl font-bold text-electric">{m.value}</span>
@@ -156,11 +156,11 @@ export default function CaseStudyDetail() {
               </Reveal>
 
               <Reveal delay={0.2}>
-                <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-6">
-                  <p className="text-xs font-mono-accent uppercase tracking-[0.22em] text-white/40 mb-3">
+                <div className="rounded-2xl border border-foreground/10 bg-foreground/[0.02] p-6">
+                  <p className="text-xs font-mono-accent uppercase tracking-[0.22em] text-foreground/40 mb-3">
                     {isAr ? "// القطاع" : "// Industry"}
                   </p>
-                  <span className="text-sm text-white font-semibold">
+                  <span className="text-sm text-foreground font-semibold">
                     {isAr ? study.industry.ar : study.industry.en}
                   </span>
                 </div>
@@ -168,7 +168,7 @@ export default function CaseStudyDetail() {
 
               <Reveal delay={0.25}>
                 <div className="rounded-2xl border border-cyan-400/20 bg-cyan-400/[0.04] p-6">
-                  <p className="text-sm text-white/70 mb-4">
+                  <p className="text-sm text-foreground/70 mb-4">
                     {isAr
                       ? "هل مشروعك يواجه تحديات مماثلة؟"
                       : "Facing similar challenges in your business?"}
@@ -189,7 +189,7 @@ export default function CaseStudyDetail() {
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <Reveal>
               <div className="flex items-center justify-between mb-8">
-                <p className="text-xs font-mono-accent uppercase tracking-[0.22em] text-white/40">
+                <p className="text-xs font-mono-accent uppercase tracking-[0.22em] text-foreground/40">
                   {isAr ? "// دراسات أخرى" : "// More Case Studies"}
                 </p>
                 <Link
@@ -207,7 +207,7 @@ export default function CaseStudyDetail() {
                 <StaggerItem key={c.slug}>
                   <Link
                     to={`/case-studies/${c.slug}`}
-                    className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.02] hover:border-cyan-400/25 transition-all h-full flex flex-col block"
+                    className="group relative overflow-hidden rounded-3xl border border-foreground/10 bg-foreground/[0.02] hover:border-cyan-400/25 transition-all h-full flex flex-col block"
                   >
                     <div className="relative h-44 overflow-hidden">
                       <img
@@ -223,14 +223,14 @@ export default function CaseStudyDetail() {
                       </div>
                     </div>
                     <div className="p-6 flex flex-col flex-1">
-                      <h3 className="font-display text-lg font-bold text-white leading-snug">
+                      <h3 className="font-display text-lg font-bold text-foreground leading-snug">
                         {isAr ? c.title.ar : c.title.en}
                       </h3>
-                      <div className="mt-6 grid grid-cols-3 gap-3 pt-4 border-t border-white/8">
+                      <div className="mt-6 grid grid-cols-3 gap-3 pt-4 border-t border-foreground/8">
                         {c.metrics.map((m, j) => (
                           <div key={j} className="text-center">
                             <div className="font-display text-xl font-bold text-electric">{m.value}</div>
-                            <div className="mt-1 text-[9px] font-mono-accent uppercase tracking-[0.12em] text-white/40">
+                            <div className="mt-1 text-[9px] font-mono-accent uppercase tracking-[0.12em] text-foreground/40">
                               {isAr ? m.label.ar : m.label.en}
                             </div>
                           </div>

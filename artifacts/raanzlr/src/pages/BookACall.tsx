@@ -34,8 +34,8 @@ export default function BookACall() {
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", company: "", topic: "", message: "" });
 
-  const fieldCls = "w-full rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3 text-sm text-white placeholder:text-white/30 focus:border-cyan-400/60 focus:ring-1 focus:ring-cyan-400/50 transition-colors focus:outline-none";
-  const labelCls = "block text-xs font-mono-accent uppercase tracking-[0.18em] text-white/60 mb-2";
+  const fieldCls = "w-full rounded-xl border border-foreground/10 bg-foreground/[0.02] px-4 py-3 text-sm text-foreground placeholder:text-foreground/30 focus:border-cyan-400/60 focus:ring-1 focus:ring-cyan-400/50 transition-colors focus:outline-none";
+  const labelCls = "block text-xs font-mono-accent uppercase tracking-[0.18em] text-foreground/60 mb-2";
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -79,7 +79,7 @@ export default function BookACall() {
             {isAr ? "لنتحدث عن فرصتك." : "Let's talk about your opportunity."}
           </motion.h1>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.25 }}
-            className="mt-5 max-w-xl mx-auto text-base md:text-lg text-white/65">
+            className="mt-5 max-w-xl mx-auto text-base md:text-lg text-foreground/65">
             {isAr
               ? "احجز مكالمة مجانية لمدة 30 دقيقة مع أحد مهندسينا الكبار. لا توجد عروض مبيعات — فقط محادثة صادقة حول ما يمكننا بناؤه معاً."
               : "Book a free 30-minute call with one of our senior engineers. No sales pitch — just an honest conversation about what we could build together."}
@@ -106,22 +106,22 @@ export default function BookACall() {
                     <div className="h-8 w-8 rounded-lg border border-cyan-400/30 bg-cyan-400/5 flex items-center justify-center shrink-0">
                       <CheckCircle2 className="h-4 w-4 text-cyan-300" />
                     </div>
-                    <span className="text-white/70 leading-relaxed">{b}</span>
+                    <span className="text-foreground/70 leading-relaxed">{b}</span>
                   </li>
                 ))}
               </ul>
 
-              <div className="mt-10 rounded-2xl border border-white/10 bg-white/[0.02] p-6">
+              <div className="mt-10 rounded-2xl border border-foreground/10 bg-foreground/[0.02] p-6">
                 <div className="flex items-center gap-3 mb-4">
                   <Clock className="h-5 w-5 text-cyan-300" />
-                  <span className="font-display font-semibold text-white">{isAr ? "30 دقيقة. مجاناً. بدون التزام." : "30 minutes. Free. No commitment."}</span>
+                  <span className="font-display font-semibold text-foreground">{isAr ? "30 دقيقة. مجاناً. بدون التزام." : "30 minutes. Free. No commitment."}</span>
                 </div>
-                <p className="text-sm text-white/55 leading-relaxed">
+                <p className="text-sm text-foreground/55 leading-relaxed">
                   {isAr
                     ? "نحن نقدر وقتك. إذا لم تكن الجلسة مفيدة، لا نتوقع شيئاً — هذا وعدنا لك."
                     : "We respect your time. If the session isn't useful, we expect nothing — that's our commitment to you."}
                 </p>
-                <div className="mt-4 flex items-center gap-2 text-sm text-white/45">
+                <div className="mt-4 flex items-center gap-2 text-sm text-foreground/45">
                   <Mail className="h-4 w-4 text-cyan-400" />
                   <span>info@raanzlr.com</span>
                 </div>
@@ -137,7 +137,7 @@ export default function BookACall() {
                   <CheckCircle2 className="h-8 w-8 text-cyan-300" />
                 </div>
                 <h3 className="font-display text-2xl font-bold text-chrome">{isAr ? "تم تلقي طلبك!" : "Request Received!"}</h3>
-                <p className="mt-4 text-white/60 leading-relaxed">
+                <p className="mt-4 text-foreground/60 leading-relaxed">
                   {isAr
                     ? "سنتواصل معك خلال 24 ساعة عمل بخيارات مواعيد متاحة. في انتظار محادثتنا!"
                     : "We'll reach out within 24 business hours with available appointment options. Looking forward to our conversation!"}
@@ -147,8 +147,8 @@ export default function BookACall() {
                 </div>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-5 rounded-3xl border border-white/10 bg-white/[0.02] p-8">
-                <h3 className="font-display text-xl font-bold text-white mb-6">{isAr ? "طلب مكالمة استراتيجية" : "Request a Strategy Call"}</h3>
+              <form onSubmit={handleSubmit} className="space-y-5 rounded-3xl border border-foreground/10 bg-foreground/[0.02] p-8">
+                <h3 className="font-display text-xl font-bold text-foreground mb-6">{isAr ? "طلب مكالمة استراتيجية" : "Request a Strategy Call"}</h3>
                 <div className="grid sm:grid-cols-2 gap-5">
                   <div>
                     <label className={labelCls}>{isAr ? "الاسم الكامل" : "Full Name"}</label>
@@ -178,7 +178,7 @@ export default function BookACall() {
                   className="w-full rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 px-8 py-3.5 text-sm font-bold text-[#050505] shadow-[0_0_20px_rgba(0,240,255,0.3)] hover:shadow-[0_0_30px_rgba(0,240,255,0.5)] transition-shadow disabled:opacity-60">
                   {loading ? (isAr ? "جارٍ الإرسال..." : "Submitting...") : (isAr ? "احجز مكالمتي المجانية" : "Book My Free Call")}
                 </button>
-                <p className="text-xs text-center text-white/35">{isAr ? "لن نشارك معلوماتك مع أي طرف ثالث." : "We never share your information with third parties."}</p>
+                <p className="text-xs text-center text-foreground/35">{isAr ? "لن نشارك معلوماتك مع أي طرف ثالث." : "We never share your information with third parties."}</p>
               </form>
             )}
           </Reveal>

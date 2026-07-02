@@ -88,7 +88,7 @@ export default function Industries() {
             {isAr ? "نهندس حلولاً لكل قطاع." : "Engineering solutions for every industry."}
           </motion.h1>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.25 }}
-            className="mt-5 max-w-2xl text-base md:text-lg text-white/65">
+            className="mt-5 max-w-2xl text-base md:text-lg text-foreground/65">
             {isAr
               ? "خبرتنا العميقة في قطاعات الأعمال الرئيسية تمكّننا من تقديم حلول ذكاء اصطناعي وأتمتة مصممة خصيصاً لتحديات صناعتك."
               : "Our deep expertise across key business verticals enables us to deliver AI and automation solutions precisely engineered for your industry's unique challenges."}
@@ -106,7 +106,7 @@ export default function Industries() {
               const content = isAr ? ind.ar : ind.en;
               return (
                 <StaggerItem key={ind.key}>
-                  <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] hover:border-cyan-400/30 transition-colors h-full flex flex-col">
+                  <div className="group relative overflow-hidden rounded-2xl border border-foreground/10 bg-foreground/[0.02] hover:border-cyan-400/30 transition-colors h-full flex flex-col">
                     <div className="relative h-36 overflow-hidden">
                       <img src={ind.image} alt={content.title} loading="lazy" className="w-full h-full object-cover opacity-40 group-hover:opacity-60 transition-opacity duration-500" />
                       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#050505]" />
@@ -117,8 +117,8 @@ export default function Industries() {
                       </div>
                     </div>
                     <div className="p-5 flex flex-col flex-1">
-                      <h3 className="font-display text-lg font-semibold text-white">{content.title}</h3>
-                      <p className="mt-2 text-sm text-white/55 leading-relaxed flex-1">{content.desc}</p>
+                      <h3 className="font-display text-lg font-semibold text-foreground">{content.title}</h3>
+                      <p className="mt-2 text-sm text-foreground/55 leading-relaxed flex-1">{content.desc}</p>
                       <div className="mt-4 flex flex-wrap gap-1.5">
                         {content.tags.map((tag) => (
                           <span key={tag} className="text-[10px] font-mono-accent uppercase tracking-[0.15em] px-2 py-1 rounded-full border border-cyan-400/20 text-cyan-300/70 bg-cyan-400/5">
@@ -141,7 +141,7 @@ export default function Industries() {
             <h2 className="font-display text-2xl sm:text-3xl font-bold text-chrome">
               {isAr ? "لم تجد قطاعك هنا؟" : "Don't see your industry here?"}
             </h2>
-            <p className="mt-4 text-white/60 max-w-lg mx-auto">
+            <p className="mt-4 text-foreground/60 max-w-lg mx-auto">
               {isAr
                 ? "نعمل مع شركات في طيف واسع من القطاعات. تواصل معنا لنناقش كيف يمكننا تطبيق تخصصنا في حل تحديات قطاعك."
                 : "We work with companies across a wide spectrum of verticals. Reach out to discuss how we can apply our expertise to your industry's unique challenges."}

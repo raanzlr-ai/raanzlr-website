@@ -55,7 +55,7 @@ export default function Services() {
             {t.services.title}
           </motion.h1>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.25 }}
-            className="mt-5 max-w-2xl text-base md:text-lg text-white/65">
+            className="mt-5 max-w-2xl text-base md:text-lg text-foreground/65">
             {t.services.sub}
           </motion.p>
         </div>
@@ -72,7 +72,7 @@ export default function Services() {
               return (
                 <StaggerItem key={s.key}>
                   <Link to={`/services/${s.key}`}
-                    className="group relative block w-full text-left rtl:text-right h-full rounded-2xl border border-white/10 bg-white/[0.02] p-7 hover:border-cyan-400/50 transition-colors overflow-hidden">
+                    className="group relative block w-full text-left rtl:text-right h-full rounded-2xl border border-foreground/10 bg-foreground/[0.02] p-7 hover:border-cyan-400/50 transition-colors overflow-hidden">
                     <div className="shimmer-layer absolute inset-0 pointer-events-none" />
                     <div className="flex items-center justify-between">
                       <div className="h-12 w-12 rounded-xl border border-cyan-400/30 bg-cyan-400/5 flex items-center justify-center">
@@ -82,9 +82,9 @@ export default function Services() {
                         {isHigh ? t.services.highDemand : t.services.standard}
                       </span>
                     </div>
-                    <h3 className="mt-6 font-display text-xl sm:text-2xl font-semibold text-white">{s.title}</h3>
-                    <p className="mt-2 text-sm text-white/60 leading-relaxed">{s.desc}</p>
-                    <span className="mt-6 inline-flex items-center gap-2 text-xs font-mono-accent uppercase tracking-[0.18em] text-cyan-300 group-hover:text-white transition-colors">
+                    <h3 className="mt-6 font-display text-xl sm:text-2xl font-semibold text-foreground">{s.title}</h3>
+                    <p className="mt-2 text-sm text-foreground/60 leading-relaxed">{s.desc}</p>
+                    <span className="mt-6 inline-flex items-center gap-2 text-xs font-mono-accent uppercase tracking-[0.18em] text-cyan-300 group-hover:text-foreground transition-colors">
                       {t.cta.viewDetails} <ArrowUpRight className="h-4 w-4 rtl:-scale-x-100" />
                     </span>
                   </Link>
@@ -103,7 +103,7 @@ export default function Services() {
               <div className="relative">
                 <Heartbeat className="w-32 sm:w-40 h-7 sm:h-8 mx-auto mb-6" />
                 <h3 className="font-display text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight text-chrome">{t.services.customEngagementTitle}</h3>
-                <p className="mt-4 text-white/60 max-w-xl mx-auto text-sm sm:text-base">{t.services.customEngagementDesc}</p>
+                <p className="mt-4 text-foreground/60 max-w-xl mx-auto text-sm sm:text-base">{t.services.customEngagementDesc}</p>
                 <div className="mt-8 flex justify-center gap-3 sm:gap-4 flex-wrap">
                   <MagneticButton to="/contact">{t.cta.requestAService}</MagneticButton>
                 </div>

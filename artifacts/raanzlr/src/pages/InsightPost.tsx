@@ -42,7 +42,7 @@ export default function InsightPost() {
   }, [slug]);
 
   if (post === undefined) return (
-    <div className="min-h-screen flex items-center justify-center text-white/40 text-sm">Loading...</div>
+    <div className="min-h-screen flex items-center justify-center text-foreground/40 text-sm">Loading...</div>
   );
   if (post === null) return <Navigate to="/insights" replace />;
 
@@ -97,7 +97,7 @@ export default function InsightPost() {
           >
             <Link
               to="/insights"
-              className="inline-flex items-center gap-2 text-xs font-mono-accent uppercase tracking-[0.18em] text-white/50 hover:text-cyan-300 transition-colors mb-6"
+              className="inline-flex items-center gap-2 text-xs font-mono-accent uppercase tracking-[0.18em] text-foreground/50 hover:text-cyan-300 transition-colors mb-6"
             >
               <ArrowLeft className="h-3.5 w-3.5 rtl:rotate-180" />
               {isAr ? "العودة إلى المدونة" : "Back to Insights"}
@@ -113,11 +113,11 @@ export default function InsightPost() {
             <span className="text-[10px] font-mono-accent uppercase tracking-[0.18em] px-2.5 py-1 rounded-full border border-cyan-400/40 text-cyan-300 bg-cyan-400/10">
               {isAr ? post.tag.ar : post.tag.en}
             </span>
-            <span className="flex items-center gap-1.5 text-xs text-white/40 font-mono-accent">
+            <span className="flex items-center gap-1.5 text-xs text-foreground/40 font-mono-accent">
               <Clock className="h-3.5 w-3.5" />
               {post.readTime} {isAr ? "دقائق قراءة" : "min read"}
             </span>
-            <span className="flex items-center gap-1.5 text-xs text-white/40 font-mono-accent">
+            <span className="flex items-center gap-1.5 text-xs text-foreground/40 font-mono-accent">
               <CalendarDays className="h-3.5 w-3.5" />
               {fmt(post.date)}
             </span>
@@ -136,7 +136,7 @@ export default function InsightPost() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.28 }}
-            className="mt-4 text-lg text-white/65 leading-relaxed max-w-3xl"
+            className="mt-4 text-lg text-foreground/65 leading-relaxed max-w-3xl"
           >
             {isAr ? post.excerpt.ar : post.excerpt.en}
           </motion.p>
@@ -160,7 +160,7 @@ export default function InsightPost() {
                       </span>
                     </div>
                     <div className="flex-1 pt-1">
-                      <h2 className="font-display text-2xl sm:text-3xl font-bold text-white leading-snug bg-gradient-to-r from-white via-white/95 to-white/85 bg-clip-text text-transparent">
+                      <h2 className="font-display text-2xl sm:text-3xl font-bold text-foreground leading-snug bg-gradient-to-r from-foreground via-foreground/95 to-foreground/85 bg-clip-text text-transparent">
                         {isAr ? section.heading.ar : section.heading.en}
                       </h2>
                     </div>
@@ -185,7 +185,7 @@ export default function InsightPost() {
                     
                     {/* Content with improved typography */}
                     <div className="prose prose-invert prose-lg max-w-none">
-                      <p className={`text-white/75 leading-[1.9] text-base sm:text-lg tracking-wide ${
+                      <p className={`text-foreground/75 leading-[1.9] text-base sm:text-lg tracking-wide ${
                         isAr ? 'text-justify' : '[text-align:justify]'
                       } ${
                         !isAr ? 'first-letter:text-5xl first-letter:font-bold first-letter:text-cyan-300 first-letter:float-left first-letter:me-3 first-letter:mt-1 first-letter:leading-none' : ''
@@ -210,12 +210,12 @@ export default function InsightPost() {
               <p className="text-xs font-mono-accent uppercase tracking-[0.22em] text-cyan-300 mb-3">
                 {isAr ? "// هل تريد تطبيق هذا؟" : "// Want to apply this?"}
               </p>
-              <h3 className="font-display text-xl sm:text-2xl font-bold text-white mb-3">
+              <h3 className="font-display text-xl sm:text-2xl font-bold text-foreground mb-3">
                 {isAr
                   ? "دعنا نناقش كيف ينطبق هذا على عملك."
                   : "Let's discuss how this applies to your business."}
               </h3>
-              <p className="text-white/55 mb-6 text-sm">
+              <p className="text-foreground/55 mb-6 text-sm">
                 {isAr
                   ? "يراجع مهندس أول كل استفسار ويرد خلال يوم عمل واحد."
                   : "A senior engineer reviews every inquiry and responds within one business day."}
@@ -234,7 +234,7 @@ export default function InsightPost() {
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <Reveal>
               <div className="flex items-center justify-between mb-8">
-                <p className="text-xs font-mono-accent uppercase tracking-[0.22em] text-white/40">
+                <p className="text-xs font-mono-accent uppercase tracking-[0.22em] text-foreground/40">
                   {isAr ? "// مقالات أخرى" : "// More Articles"}
                 </p>
                 <Link
@@ -252,7 +252,7 @@ export default function InsightPost() {
                 <Reveal key={p.slug} delay={i * 0.08}>
                   <Link
                     to={`/insights/${p.slug}`}
-                    className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] hover:border-cyan-400/25 transition-colors h-full flex flex-col block"
+                    className="group relative overflow-hidden rounded-2xl border border-foreground/10 bg-foreground/[0.02] hover:border-cyan-400/25 transition-colors h-full flex flex-col block"
                   >
                     <div className="relative h-40 overflow-hidden">
                       <img
@@ -266,10 +266,10 @@ export default function InsightPost() {
                       </span>
                     </div>
                     <div className="p-5 flex flex-col flex-1">
-                      <h3 className="font-display text-base font-bold text-white leading-snug flex-1">
+                      <h3 className="font-display text-base font-bold text-foreground leading-snug flex-1">
                         {isAr ? p.title.ar : p.title.en}
                       </h3>
-                      <div className="mt-4 flex items-center justify-between text-[10px] text-white/35 font-mono-accent">
+                      <div className="mt-4 flex items-center justify-between text-[10px] text-foreground/35 font-mono-accent">
                         <span className="flex items-center gap-1">
                           <Clock className="h-3 w-3" /> {p.readTime}{" "}
                           {isAr ? "دقائق" : "min"}

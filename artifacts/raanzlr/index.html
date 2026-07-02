@@ -3,7 +3,27 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-    <meta name="theme-color" content="#0a0a0a" />
+    <meta name="theme-color" content="#dfe5ec" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)" />
+
+    <!-- No-flash theme bootstrap: applies the resolved theme class to <html>
+         before first paint. Default follows the user's device preference. -->
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem("raanzlr-theme");
+          var theme = stored || "system";
+          var isDark =
+            theme === "dark" ||
+            (theme === "system" &&
+              window.matchMedia("(prefers-color-scheme: dark)").matches);
+          var el = document.documentElement;
+          el.classList.remove("light", "dark");
+          el.classList.add(isDark ? "dark" : "light");
+          el.style.colorScheme = isDark ? "dark" : "light";
+        } catch (e) {}
+      })();
+    </script>
 
     <!-- Primary SEO -->
     <title>Raanzlr — AI Automation, Web Apps & Software Engineering</title>

@@ -43,10 +43,10 @@ export default function PrivacyPolicy() {
             className="font-display text-4xl sm:text-5xl font-bold tracking-tight text-chrome">
             {isAr ? "سياسة الخصوصية" : "Privacy Policy"}
           </motion.h1>
-          <p className="mt-4 text-sm text-white/40 font-mono-accent">
+          <p className="mt-4 text-sm text-foreground/40 font-mono-accent">
             {isAr ? "آخر تحديث:" : "Last updated:"} {lastUpdated}
           </p>
-          <p className="mt-6 text-base text-white/65 leading-relaxed max-w-2xl">
+          <p className="mt-6 text-base text-foreground/65 leading-relaxed max-w-2xl">
             {isAr
               ? "في Raanzlr، نولي خصوصيتك أهمية قصوى. تشرح هذه السياسة كيفية جمعنا لبياناتك واستخدامها وحمايتها."
               : "At Raanzlr, your privacy is paramount. This policy explains how we collect, use, and protect your data."}
@@ -62,16 +62,16 @@ export default function PrivacyPolicy() {
             const Icon = s.icon;
             return (
               <Reveal key={i} delay={i * 0.1}>
-                <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-7 sm:p-8">
+                <div className="rounded-2xl border border-foreground/10 bg-foreground/[0.02] p-7 sm:p-8">
                   <div className="flex items-center gap-4 mb-5">
                     <div className="h-11 w-11 rounded-xl border border-cyan-400/30 bg-cyan-400/5 flex items-center justify-center shrink-0">
                       <Icon className="h-5 w-5 text-cyan-300" />
                     </div>
-                    <h2 className="font-display text-xl font-bold text-white">{s.title}</h2>
+                    <h2 className="font-display text-xl font-bold text-foreground">{s.title}</h2>
                   </div>
                   <div className="space-y-2">
                     {s.content.map((line, j) => (
-                      <p key={j} className={`leading-relaxed ${line.startsWith("•") ? "text-sm text-white/60 rtl:pr-4 pl-4 rtl:pl-0" : "text-white/70"}`}>
+                      <p key={j} className={`leading-relaxed ${line.startsWith("•") ? "text-sm text-foreground/60 rtl:pr-4 pl-4 rtl:pl-0" : "text-foreground/70"}`}>
                         {line}
                       </p>
                     ))}

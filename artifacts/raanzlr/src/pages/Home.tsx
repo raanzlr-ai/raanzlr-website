@@ -43,7 +43,7 @@ const HeroLogoStage = () => {
       onMouseMove={handleMove}
       onMouseLeave={handleLeave}
       style={{ rotateX: rx, rotateY: ry, transformPerspective: 1200 }}
-      className="relative aspect-square w-full max-w-[560px] mx-auto rounded-[36px] border border-white/10 bg-gradient-to-b from-white/[0.04] to-transparent overflow-hidden"
+      className="relative aspect-square w-full max-w-[560px] mx-auto rounded-[36px] border border-foreground/10 bg-gradient-to-b from-foreground/[0.04] to-transparent overflow-hidden"
     >
       <div className="absolute inset-0 opacity-60 pointer-events-none">
         <div className="absolute inset-0 slow-spin" style={{ background: "conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(0,240,255,0.55) 45deg, transparent 90deg, transparent 180deg, rgba(37,99,235,0.45) 225deg, transparent 270deg)", filter: "blur(40px)" }} />
@@ -51,7 +51,7 @@ const HeroLogoStage = () => {
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute inset-6 rounded-full border border-cyan-400/20" />
         <div className="absolute inset-16 rounded-full border border-blue-400/15" />
-        <div className="absolute inset-28 rounded-full border border-white/10" />
+        <div className="absolute inset-28 rounded-full border border-foreground/10" />
       </div>
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
@@ -78,7 +78,7 @@ const HeroLogoStage = () => {
       {[["top-3 left-3", "border-t border-l"], ["top-3 right-3", "border-t border-r"], ["bottom-3 left-3", "border-b border-l"], ["bottom-3 right-3", "border-b border-r"]].map(([pos, b], i) => (
         <span key={i} className={`absolute ${pos} h-5 w-5 ${b} border-cyan-400/40`} />
       ))}
-      <div className="absolute inset-x-0 bottom-4 text-center text-[10px] font-mono-accent tracking-[0.32em] text-white/40 uppercase">signal · 01 · global</div>
+      <div className="absolute inset-x-0 bottom-4 text-center text-[10px] font-mono-accent tracking-[0.32em] text-foreground/40 uppercase">signal · 01 · global</div>
     </motion.div>
   );
 };
@@ -86,18 +86,18 @@ const HeroLogoStage = () => {
 function HomeFAQItem({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false);
   return (
-    <div className={`rounded-xl border transition-colors overflow-hidden ${open ? "border-cyan-400/30 bg-cyan-400/[0.03]" : "border-white/8 bg-white/[0.02] hover:border-white/15"}`}>
+    <div className={`rounded-xl border transition-colors overflow-hidden ${open ? "border-cyan-400/30 bg-cyan-400/[0.03]" : "border-foreground/8 bg-foreground/[0.02] hover:border-foreground/15"}`}>
       <button
         type="button"
         onClick={() => setOpen(!open)}
         className="w-full flex items-center justify-between gap-4 p-5 text-left rtl:text-right"
       >
-        <span className="text-sm font-medium text-white">{q}</span>
-        <ChevronDown className={`h-4 w-4 text-white/40 shrink-0 transition-transform duration-200 ${open ? "rotate-180 text-cyan-300" : ""}`} />
+        <span className="text-sm font-medium text-foreground">{q}</span>
+        <ChevronDown className={`h-4 w-4 text-foreground/40 shrink-0 transition-transform duration-200 ${open ? "rotate-180 text-cyan-300" : ""}`} />
       </button>
       {open && (
         <div className="px-5 pb-5">
-          <p className="text-sm text-white/60 leading-relaxed">{a}</p>
+          <p className="text-sm text-foreground/60 leading-relaxed">{a}</p>
         </div>
       )}
     </div>
@@ -136,7 +136,7 @@ export default function Home() {
                 <span className="text-chrome">{isAr ? " " : ""}{t.home.heroTitleEnd}</span>
               </motion.h1>
               <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.25 }}
-                className="mt-7 max-w-xl text-base md:text-lg leading-relaxed text-white/65">
+                className="mt-7 max-w-xl text-base md:text-lg leading-relaxed text-foreground/65">
                 {t.home.heroSub}
               </motion.p>
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }}
@@ -148,7 +148,7 @@ export default function Home() {
                   {t.cta.learnMore}
                 </MagneticButton>
               </motion.div>
-              <div className="mt-14 hidden sm:flex flex-wrap items-center gap-3 text-white/40 font-mono-accent text-[10px] uppercase tracking-[0.28em]">
+              <div className="mt-14 hidden sm:flex flex-wrap items-center gap-3 text-foreground/40 font-mono-accent text-[10px] uppercase tracking-[0.28em]">
                 {t.home.heroChips.map((c, i) => (
                   <React.Fragment key={i}>
                     <span>{c}</span>
@@ -163,7 +163,7 @@ export default function Home() {
           </div>
         </div>
         <div className="absolute bottom-6 inset-x-0 hidden md:flex justify-center">
-          <div className="h-10 w-6 rounded-full border border-white/15 flex items-start justify-center p-1">
+          <div className="h-10 w-6 rounded-full border border-foreground/15 flex items-start justify-center p-1">
             <div className="h-2 w-1 rounded-full bg-cyan-300 animate-bounce" />
           </div>
         </div>
@@ -178,7 +178,7 @@ export default function Home() {
             <div className="max-w-3xl">
               <div className="text-xs font-mono-accent uppercase tracking-[0.22em] text-cyan-300/90">{t.home.whyLabel}</div>
               <h2 className="mt-4 font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-chrome">{t.home.whyTitle}</h2>
-              <p className="mt-4 text-white/60">{t.home.whySub}</p>
+              <p className="mt-4 text-foreground/60">{t.home.whySub}</p>
             </div>
           </Reveal>
           <Stagger className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -186,16 +186,16 @@ export default function Home() {
               const Icon = featureIcons[i];
               return (
                 <StaggerItem key={i}>
-                  <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] p-6 h-full hover:border-cyan-400/40 transition-colors">
+                  <div className="group relative overflow-hidden rounded-2xl border border-foreground/10 bg-foreground/[0.02] p-6 h-full hover:border-cyan-400/40 transition-colors">
                     <div className="shimmer-layer absolute inset-0 pointer-events-none" />
                     <div className="flex items-center justify-between">
                       <div className="h-11 w-11 rounded-xl border border-cyan-400/30 bg-cyan-400/5 flex items-center justify-center">
                         <Icon className="h-5 w-5 text-cyan-300" />
                       </div>
-                      <span className="text-[10px] font-mono-accent text-white/30 uppercase tracking-[0.2em]">0{i + 1}</span>
+                      <span className="text-[10px] font-mono-accent text-foreground/30 uppercase tracking-[0.2em]">0{i + 1}</span>
                     </div>
-                    <h3 className="mt-5 font-display text-xl font-semibold text-white">{f.title}</h3>
-                    <p className="mt-2 text-sm text-white/60 leading-relaxed">{f.desc}</p>
+                    <h3 className="mt-5 font-display text-xl font-semibold text-foreground">{f.title}</h3>
+                    <p className="mt-2 text-sm text-foreground/60 leading-relaxed">{f.desc}</p>
                   </div>
                 </StaggerItem>
               );
@@ -213,9 +213,9 @@ export default function Home() {
               <div className="max-w-2xl">
                 <div className="text-xs font-mono-accent uppercase tracking-[0.22em] text-cyan-300/90">{t.home.servicesLabel}</div>
                 <h2 className="mt-4 font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-chrome">{t.home.servicesPreview}</h2>
-                <p className="mt-4 text-white/60">{t.home.servicesPreviewSub}</p>
+                <p className="mt-4 text-foreground/60">{t.home.servicesPreviewSub}</p>
               </div>
-              <Link to="/services" className="inline-flex items-center gap-2 text-sm font-mono-accent uppercase tracking-[0.22em] text-cyan-300 hover:text-white transition-colors">
+              <Link to="/services" className="inline-flex items-center gap-2 text-sm font-mono-accent uppercase tracking-[0.22em] text-cyan-300 hover:text-foreground transition-colors">
                 {t.cta.viewAll} <ArrowRight className="h-4 w-4 rtl:rotate-180" />
               </Link>
             </div>
@@ -225,14 +225,14 @@ export default function Home() {
               const Icon = serviceIcons[s.key] || Bot;
               return (
                 <StaggerItem key={s.key}>
-                  <Link to={`/services?open=${s.key}`} className="group relative block rounded-2xl border border-white/10 bg-white/[0.02] p-6 hover:border-cyan-400/40 transition-colors overflow-hidden">
+                  <Link to={`/services?open=${s.key}`} className="group relative block rounded-2xl border border-foreground/10 bg-foreground/[0.02] p-6 hover:border-cyan-400/40 transition-colors overflow-hidden">
                     <div className="shimmer-layer absolute inset-0 pointer-events-none" />
                     <div className="h-11 w-11 rounded-xl border border-cyan-400/30 bg-cyan-400/5 flex items-center justify-center">
                       <Icon className="h-5 w-5 text-cyan-300" />
                     </div>
-                    <h3 className="mt-4 font-display text-lg font-semibold text-white">{s.title}</h3>
-                    <p className="mt-2 text-sm text-white/55 leading-relaxed">{s.desc}</p>
-                    <span className="mt-4 inline-flex items-center gap-1.5 text-[10px] font-mono-accent uppercase tracking-[0.18em] text-cyan-300 group-hover:text-white transition-colors">
+                    <h3 className="mt-4 font-display text-lg font-semibold text-foreground">{s.title}</h3>
+                    <p className="mt-2 text-sm text-foreground/55 leading-relaxed">{s.desc}</p>
+                    <span className="mt-4 inline-flex items-center gap-1.5 text-[10px] font-mono-accent uppercase tracking-[0.18em] text-cyan-300 group-hover:text-foreground transition-colors">
                       {t.cta.viewDetails} <ArrowRight className="h-3.5 w-3.5 rtl:rotate-180" />
                     </span>
                   </Link>
@@ -275,7 +275,7 @@ export default function Home() {
           </div>
           <Reveal delay={0.2}>
             <div className="mt-10 text-center">
-              <Link to={isAr ? "/ar/faq" : "/faq"} className="inline-flex items-center gap-2 text-sm font-mono-accent uppercase tracking-[0.18em] text-cyan-300 hover:text-white transition-colors">
+              <Link to={isAr ? "/ar/faq" : "/faq"} className="inline-flex items-center gap-2 text-sm font-mono-accent uppercase tracking-[0.18em] text-cyan-300 hover:text-foreground transition-colors">
                 {isAr ? "عرض جميع الأسئلة" : "View all questions"} <ArrowRight className="h-4 w-4 rtl:rotate-180" />
               </Link>
             </div>
@@ -294,7 +294,7 @@ export default function Home() {
                 <h3 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-chrome">
                   {t.services.customEngagementTitle}
                 </h3>
-                <p className="mt-4 text-white/60 max-w-xl mx-auto">{t.services.customEngagementDesc}</p>
+                <p className="mt-4 text-foreground/60 max-w-xl mx-auto">{t.services.customEngagementDesc}</p>
                 <div className="mt-8 flex justify-center gap-4 flex-wrap">
                   <MagneticButton to="/contact">{t.cta.getStarted}</MagneticButton>
                   <MagneticButton to="/contact" variant="ghost">{t.cta.contactUs}</MagneticButton>

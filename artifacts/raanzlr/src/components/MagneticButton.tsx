@@ -40,7 +40,7 @@ export default function MagneticButton({
   const isGhost = variant === "ghost";
 
   const baseClass = isGhost
-    ? `inline-flex items-center gap-2 rounded-full border border-white/20 bg-transparent px-5 py-2.5 text-sm font-semibold text-white hover:border-white/40 transition-colors ${className}`
+    ? `inline-flex items-center gap-2 rounded-full border border-foreground/20 bg-transparent px-5 py-2.5 text-sm font-semibold text-foreground hover:border-foreground/40 transition-colors ${className}`
     : `inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 px-5 py-2.5 text-sm font-bold text-[#050505] shadow-[0_0_24px_rgba(0,240,255,0.35)] hover:shadow-[0_0_36px_rgba(0,240,255,0.55)] transition-shadow ${className}`;
 
   const MotionSpan = motion.span as any;

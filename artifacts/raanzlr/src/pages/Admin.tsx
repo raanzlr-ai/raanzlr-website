@@ -42,12 +42,12 @@ function LoginScreen({ onLogin }: { onLogin: () => void }) {
   };
 
   return (
-    <div className="min-h-screen bg-[#050505] flex items-center justify-center px-4">
+    <div className="min-h-screen bg-background flex items-center justify-center px-4">
       <div className="w-full max-w-sm">
         <img src="/Raanzlr.png" alt="Raanzlr" className="h-8 w-auto mx-auto mb-8 opacity-80" />
-        <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-8">
-          <h1 className="text-xl font-bold text-white mb-1">Admin Access</h1>
-          <p className="text-sm text-white/40 mb-6">Raanzlr back office</p>
+        <div className="rounded-2xl border border-foreground/10 bg-foreground/[0.03] p-8">
+          <h1 className="text-xl font-bold text-foreground mb-1">Admin Access</h1>
+          <p className="text-sm text-foreground/40 mb-6">Raanzlr back office</p>
           <form onSubmit={submit} className="space-y-4">
             <div className="relative">
               <input
@@ -55,9 +55,9 @@ function LoginScreen({ onLogin }: { onLogin: () => void }) {
                 value={pwd}
                 onChange={e => setPwd(e.target.value)}
                 placeholder="Admin password"
-                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/30 focus:outline-none focus:border-cyan-400/50 pr-11"
+                className="w-full bg-foreground/5 border border-foreground/10 rounded-xl px-4 py-3 text-sm text-foreground placeholder-white/30 focus:outline-none focus:border-cyan-400/50 pr-11"
               />
-              <button type="button" onClick={() => setShow(!show)} className="absolute right-3 top-3 text-white/30 hover:text-white/60">
+              <button type="button" onClick={() => setShow(!show)} className="absolute right-3 top-3 text-foreground/30 hover:text-foreground/60">
                 {show ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
               </button>
             </div>
@@ -99,18 +99,18 @@ function ContactsTab() {
     <div>
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h2 className="text-lg font-bold text-white">Contact Submissions</h2>
-          <p className="text-xs text-white/40 mt-0.5">{contacts.length} total submissions</p>
+          <h2 className="text-lg font-bold text-foreground">Contact Submissions</h2>
+          <p className="text-xs text-foreground/40 mt-0.5">{contacts.length} total submissions</p>
         </div>
-        <button onClick={load} className="flex items-center gap-2 text-xs text-white/50 hover:text-white border border-white/10 rounded-lg px-3 py-2 transition-colors">
+        <button onClick={load} className="flex items-center gap-2 text-xs text-foreground/50 hover:text-foreground border border-foreground/10 rounded-lg px-3 py-2 transition-colors">
           <RefreshCw className="h-3.5 w-3.5" /> Refresh
         </button>
       </div>
 
       {loading ? (
-        <div className="text-center py-16 text-white/30 text-sm">Loading…</div>
+        <div className="text-center py-16 text-foreground/30 text-sm">Loading…</div>
       ) : contacts.length === 0 ? (
-        <div className="text-center py-16 text-white/30 text-sm">No submissions yet.</div>
+        <div className="text-center py-16 text-foreground/30 text-sm">No submissions yet.</div>
       ) : (
         <div className="space-y-3">
           {/* Filter bar */}
@@ -127,11 +127,11 @@ function ContactsTab() {
                   className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
                     filterType === f.key
                       ? "bg-cyan-400/15 text-cyan-300 border border-cyan-400/30"
-                      : "text-white/40 hover:text-white border border-white/8 hover:border-white/20"
+                      : "text-foreground/40 hover:text-foreground border border-foreground/8 hover:border-foreground/20"
                   }`}
                 >
                   {f.label}
-                  <span className={`rounded-full px-1.5 py-0.5 text-[10px] leading-none ${filterType === f.key ? "bg-cyan-400/20 text-cyan-300" : "bg-white/8 text-white/30"}`}>
+                  <span className={`rounded-full px-1.5 py-0.5 text-[10px] leading-none ${filterType === f.key ? "bg-cyan-400/20 text-cyan-300" : "bg-foreground/8 text-foreground/30"}`}>
                     {f.count}
                   </span>
                 </button>
@@ -144,7 +144,7 @@ function ContactsTab() {
             <div
               key={c.id}
               onClick={() => setSelected(selected?.id === c.id ? null : c)}
-              className="rounded-xl border border-white/8 bg-white/[0.02] hover:border-cyan-400/20 transition-all cursor-pointer"
+              className="rounded-xl border border-foreground/8 bg-foreground/[0.02] hover:border-cyan-400/20 transition-all cursor-pointer"
             >
               <div className="flex items-start gap-4 p-4">
                 <div className="h-9 w-9 rounded-full bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center shrink-0">
@@ -152,18 +152,18 @@ function ContactsTab() {
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 flex-wrap">
-                    <span className="font-medium text-white text-sm">{c.name}</span>
+                    <span className="font-medium text-foreground text-sm">{c.name}</span>
                     <span className={`text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full ${c.type === "service" ? "bg-blue-500/10 text-blue-300 border border-blue-500/20" : "bg-cyan-400/10 text-cyan-300 border border-cyan-400/20"}`}>
                       {c.type === "service" ? "Project Brief" : "General"}
                     </span>
                   </div>
-                  <p className="text-xs text-white/50 mt-0.5">{c.email}{c.phone ? ` · ${c.phone}` : ""}</p>
-                  {c.subject && <p className="text-xs text-white/40 mt-1 truncate">{c.subject}</p>}
-                  {c.message && <p className="text-xs text-white/35 mt-1 line-clamp-2">{c.message}</p>}
-                  {c.challenge && <p className="text-xs text-white/35 mt-1 line-clamp-2">{c.challenge}</p>}
+                  <p className="text-xs text-foreground/50 mt-0.5">{c.email}{c.phone ? ` · ${c.phone}` : ""}</p>
+                  {c.subject && <p className="text-xs text-foreground/40 mt-1 truncate">{c.subject}</p>}
+                  {c.message && <p className="text-xs text-foreground/35 mt-1 line-clamp-2">{c.message}</p>}
+                  {c.challenge && <p className="text-xs text-foreground/35 mt-1 line-clamp-2">{c.challenge}</p>}
                 </div>
                 <div className="shrink-0 text-right">
-                  <div className="flex items-center gap-1 text-[10px] text-white/30">
+                  <div className="flex items-center gap-1 text-[10px] text-foreground/30">
                     <Clock className="h-3 w-3" />
                     {fmt(c.created_at)}
                   </div>
@@ -174,7 +174,7 @@ function ContactsTab() {
               </div>
 
               {selected?.id === c.id && (
-                <div className="border-t border-white/8 p-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div className="border-t border-foreground/8 p-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {[
                     ["Service", c.service],
                     ["Role", c.role],
@@ -184,20 +184,20 @@ function ContactsTab() {
                     ["Best Time", c.best_time],
                   ].filter(([, v]) => v).map(([label, value]) => (
                     <div key={label as string}>
-                      <p className="text-[10px] uppercase tracking-wider text-white/30 mb-0.5">{label}</p>
-                      <p className="text-sm text-white/70">{value}</p>
+                      <p className="text-[10px] uppercase tracking-wider text-foreground/30 mb-0.5">{label}</p>
+                      <p className="text-sm text-foreground/70">{value}</p>
                     </div>
                   ))}
                   {c.message && (
                     <div className="col-span-full">
-                      <p className="text-[10px] uppercase tracking-wider text-white/30 mb-0.5">Message</p>
-                      <p className="text-sm text-white/70 leading-relaxed">{c.message}</p>
+                      <p className="text-[10px] uppercase tracking-wider text-foreground/30 mb-0.5">Message</p>
+                      <p className="text-sm text-foreground/70 leading-relaxed">{c.message}</p>
                     </div>
                   )}
                   {c.challenge && (
                     <div className="col-span-full">
-                      <p className="text-[10px] uppercase tracking-wider text-white/30 mb-0.5">Challenge</p>
-                      <p className="text-sm text-white/70 leading-relaxed">{c.challenge}</p>
+                      <p className="text-[10px] uppercase tracking-wider text-foreground/30 mb-0.5">Challenge</p>
+                      <p className="text-sm text-foreground/70 leading-relaxed">{c.challenge}</p>
                     </div>
                   )}
                   <div className="col-span-full pt-2 flex gap-3">
@@ -327,8 +327,8 @@ function recordToForm(p: PostRecord): PostForm {
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
 
-const inputCls = "w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/25 focus:outline-none focus:border-cyan-400/50 focus:ring-1 focus:ring-cyan-400/20";
-const labelCls = "text-[10px] uppercase tracking-wider text-white/30 mb-1.5 block";
+const inputCls = "w-full bg-foreground/5 border border-foreground/10 rounded-xl px-4 py-3 text-sm text-foreground placeholder-white/25 focus:outline-none focus:border-cyan-400/50 focus:ring-1 focus:ring-cyan-400/20";
+const labelCls = "text-[10px] uppercase tracking-wider text-foreground/30 mb-1.5 block";
 
 function FieldLabel({ children }: { children: React.ReactNode }) {
   return <label className={labelCls}>{children}</label>;
@@ -346,7 +346,7 @@ function SectionEditor({
 }) {
   const num = String(index + 1).padStart(2, "0");
   return (
-    <div className="rounded-xl border border-white/8 bg-white/[0.02] p-5 relative">
+    <div className="rounded-xl border border-foreground/8 bg-foreground/[0.02] p-5 relative">
       <div className="flex items-center justify-between mb-4">
         <span className="text-[10px] font-mono tracking-widest text-cyan-400/60">SECTION {num}</span>
         {total > 1 && (
@@ -421,7 +421,7 @@ function SectionEditor({
           <img
             src={section.image}
             alt=""
-            className="mt-2 h-20 w-auto rounded-lg object-cover border border-white/10"
+            className="mt-2 h-20 w-auto rounded-lg object-cover border border-foreground/10"
             onError={e => { (e.target as HTMLImageElement).style.display = "none"; }}
           />
         )}
@@ -544,14 +544,14 @@ function PostFormView({
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-lg font-bold text-white">{editingSlug ? "Edit Post" : "Create New Post"}</h2>
-          <p className="text-xs text-white/40 mt-0.5">{editingSlug ? `Editing: ${editingSlug}` : "Fill in all required fields below"}</p>
+          <h2 className="text-lg font-bold text-foreground">{editingSlug ? "Edit Post" : "Create New Post"}</h2>
+          <p className="text-xs text-foreground/40 mt-0.5">{editingSlug ? `Editing: ${editingSlug}` : "Fill in all required fields below"}</p>
         </div>
         <div className="flex gap-3">
           <button
             type="button"
             onClick={onCancel}
-            className="rounded-full border border-white/15 px-5 py-2 text-sm text-white/60 hover:text-white hover:border-white/30 transition-all"
+            className="rounded-full border border-foreground/15 px-5 py-2 text-sm text-foreground/60 hover:text-foreground hover:border-foreground/30 transition-all"
           >
             Cancel
           </button>
@@ -574,8 +574,8 @@ function PostFormView({
       )}
 
       {/* ── Basic Info ── */}
-      <div className="rounded-xl border border-white/8 bg-white/[0.02] p-5">
-        <h3 className="text-sm font-semibold text-white mb-4">Basic Info</h3>
+      <div className="rounded-xl border border-foreground/8 bg-foreground/[0.02] p-5">
+        <h3 className="text-sm font-semibold text-foreground mb-4">Basic Info</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <FieldLabel>Slug</FieldLabel>
@@ -586,7 +586,7 @@ function PostFormView({
               placeholder="auto-generated-from-title"
               className={inputCls}
             />
-            <p className="text-[10px] text-white/30 mt-1">Auto-generated from title if empty</p>
+            <p className="text-[10px] text-foreground/30 mt-1">Auto-generated from title if empty</p>
           </div>
           <div>
             <FieldLabel>Author</FieldLabel>
@@ -612,20 +612,20 @@ function PostFormView({
               <label className="flex items-center gap-2.5 cursor-pointer group">
                 <div
                   onClick={() => set("published", !form.published)}
-                  className={`relative w-10 h-5 rounded-full transition-colors cursor-pointer ${form.published ? "bg-cyan-400/80" : "bg-white/15"}`}
+                  className={`relative w-10 h-5 rounded-full transition-colors cursor-pointer ${form.published ? "bg-cyan-400/80" : "bg-foreground/15"}`}
                 >
                   <span className={`absolute top-0.5 left-0.5 h-4 w-4 rounded-full bg-white shadow transition-transform ${form.published ? "translate-x-5" : "translate-x-0"}`} />
                 </div>
-                <span className="text-sm text-white/70 group-hover:text-white transition-colors">Published</span>
+                <span className="text-sm text-foreground/70 group-hover:text-foreground transition-colors">Published</span>
               </label>
               <label className="flex items-center gap-2.5 cursor-pointer group">
                 <div
                   onClick={() => set("featured", !form.featured)}
-                  className={`relative w-10 h-5 rounded-full transition-colors cursor-pointer ${form.featured ? "bg-amber-400/80" : "bg-white/15"}`}
+                  className={`relative w-10 h-5 rounded-full transition-colors cursor-pointer ${form.featured ? "bg-amber-400/80" : "bg-foreground/15"}`}
                 >
                   <span className={`absolute top-0.5 left-0.5 h-4 w-4 rounded-full bg-white shadow transition-transform ${form.featured ? "translate-x-5" : "translate-x-0"}`} />
                 </div>
-                <span className="text-sm text-white/70 group-hover:text-white transition-colors">Featured</span>
+                <span className="text-sm text-foreground/70 group-hover:text-foreground transition-colors">Featured</span>
               </label>
             </div>
           </div>
@@ -633,23 +633,23 @@ function PostFormView({
       </div>
 
       {/* ── Cover Image ── */}
-      <div className="rounded-xl border border-white/8 bg-white/[0.02] p-5">
-        <h3 className="text-sm font-semibold text-white mb-1">Cover Image</h3>
-        <p className="text-[10px] text-white/30 mb-4">Upload a file or paste an image URL</p>
+      <div className="rounded-xl border border-foreground/8 bg-foreground/[0.02] p-5">
+        <h3 className="text-sm font-semibold text-foreground mb-1">Cover Image</h3>
+        <p className="text-[10px] text-foreground/30 mb-4">Upload a file or paste an image URL</p>
         
         {/* Upload tab */}
         <div className="flex gap-2 mb-4">
           <button
             type="button"
             onClick={() => setImageMode("upload")}
-            className={`flex-1 py-2 rounded-lg text-xs font-medium transition-colors ${imageMode === "upload" ? "bg-cyan-400/15 text-cyan-300 border border-cyan-400/30" : "text-white/40 border border-white/10 hover:text-white"}`}
+            className={`flex-1 py-2 rounded-lg text-xs font-medium transition-colors ${imageMode === "upload" ? "bg-cyan-400/15 text-cyan-300 border border-cyan-400/30" : "text-foreground/40 border border-foreground/10 hover:text-foreground"}`}
           >
             📁 Upload File
           </button>
           <button
             type="button"
             onClick={() => setImageMode("url")}
-            className={`flex-1 py-2 rounded-lg text-xs font-medium transition-colors ${imageMode === "url" ? "bg-cyan-400/15 text-cyan-300 border border-cyan-400/30" : "text-white/40 border border-white/10 hover:text-white"}`}
+            className={`flex-1 py-2 rounded-lg text-xs font-medium transition-colors ${imageMode === "url" ? "bg-cyan-400/15 text-cyan-300 border border-cyan-400/30" : "text-foreground/40 border border-foreground/10 hover:text-foreground"}`}
           >
             🔗 Image URL
           </button>
@@ -694,7 +694,7 @@ function PostFormView({
                   setImageUploading(false);
                 }
               }}
-              className="w-full rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-white/60 file:mr-4 file:py-1.5 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-cyan-400/15 file:text-cyan-300 hover:file:bg-cyan-400/25 cursor-pointer"
+              className="w-full rounded-xl border border-foreground/10 bg-foreground/[0.04] px-4 py-3 text-sm text-foreground/60 file:mr-4 file:py-1.5 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-cyan-400/15 file:text-cyan-300 hover:file:bg-cyan-400/25 cursor-pointer"
             />
             {imageUploading && (
               <p className="text-xs text-cyan-300 mt-2 flex items-center gap-2">
@@ -720,17 +720,17 @@ function PostFormView({
           <img
             src={form.image}
             alt="Cover preview"
-            className="mt-3 h-36 w-full rounded-xl object-cover border border-white/10"
+            className="mt-3 h-36 w-full rounded-xl object-cover border border-foreground/10"
             onError={e => { (e.target as HTMLImageElement).style.display = "none"; }}
           />
         )}
       </div>
 
       {/* ── English Content ── */}
-      <div className="rounded-xl border border-white/8 bg-white/[0.02] p-5">
+      <div className="rounded-xl border border-foreground/8 bg-foreground/[0.02] p-5">
         <div className="flex items-center gap-2 mb-4">
           <Globe className="h-3.5 w-3.5 text-cyan-400" />
-          <h3 className="text-sm font-semibold text-white">English Content</h3>
+          <h3 className="text-sm font-semibold text-foreground">English Content</h3>
         </div>
         <div className="space-y-4">
           <div>
@@ -772,7 +772,7 @@ function PostFormView({
       <div className="rounded-xl border border-cyan-400/10 bg-cyan-400/[0.02] p-5">
         <div className="flex items-center gap-2 mb-4">
           <span className="text-sm">🔤</span>
-          <h3 className="text-sm font-semibold text-white">Arabic Content</h3>
+          <h3 className="text-sm font-semibold text-foreground">Arabic Content</h3>
           <span className="text-[10px] text-cyan-400/60 border border-cyan-400/20 rounded-full px-2 py-0.5 ml-auto">RTL</span>
         </div>
         <div className="space-y-4">
@@ -815,20 +815,20 @@ function PostFormView({
       </div>
 
       {/* ── SEO Settings (collapsible) ── */}
-      <div className="rounded-xl border border-white/8 bg-white/[0.02] overflow-hidden">
+      <div className="rounded-xl border border-foreground/8 bg-foreground/[0.02] overflow-hidden">
         <button
           type="button"
           onClick={() => setSeoOpen(o => !o)}
-          className="w-full flex items-center justify-between p-5 text-left hover:bg-white/[0.02] transition-colors"
+          className="w-full flex items-center justify-between p-5 text-left hover:bg-foreground/[0.02] transition-colors"
         >
           <div className="flex items-center gap-2">
-            <h3 className="text-sm font-semibold text-white">SEO Settings</h3>
-            <span className="text-[10px] text-white/30 border border-white/10 rounded-full px-2 py-0.5">Optional</span>
+            <h3 className="text-sm font-semibold text-foreground">SEO Settings</h3>
+            <span className="text-[10px] text-foreground/30 border border-foreground/10 rounded-full px-2 py-0.5">Optional</span>
           </div>
-          {seoOpen ? <ChevronUp className="h-4 w-4 text-white/40" /> : <ChevronDown className="h-4 w-4 text-white/40" />}
+          {seoOpen ? <ChevronUp className="h-4 w-4 text-foreground/40" /> : <ChevronDown className="h-4 w-4 text-foreground/40" />}
         </button>
         {seoOpen && (
-          <div className="border-t border-white/8 p-5 space-y-4">
+          <div className="border-t border-foreground/8 p-5 space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <FieldLabel>SEO Title (EN)</FieldLabel>
@@ -866,7 +866,7 @@ function PostFormView({
       {/* ── Sections ── */}
       <div>
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-sm font-semibold text-white">Content Sections</h3>
+          <h3 className="text-sm font-semibold text-foreground">Content Sections</h3>
           <button
             type="button"
             onClick={addSection}
@@ -890,7 +890,7 @@ function PostFormView({
       </div>
 
       {/* ── Form Actions (bottom) ── */}
-      <div className="border-t border-white/8 pt-6 flex items-center justify-between">
+      <div className="border-t border-foreground/8 pt-6 flex items-center justify-between">
         {msg && (
           <div className={`flex items-center gap-2 text-sm ${msg.type === "ok" ? "text-emerald-300" : "text-red-300"}`}>
             {msg.type === "ok" ? <CheckCircle className="h-4 w-4" /> : <AlertCircle className="h-4 w-4" />}
@@ -901,7 +901,7 @@ function PostFormView({
           <button
             type="button"
             onClick={onCancel}
-            className="rounded-full border border-white/15 px-5 py-2 text-sm text-white/60 hover:text-white hover:border-white/30 transition-all"
+            className="rounded-full border border-foreground/15 px-5 py-2 text-sm text-foreground/60 hover:text-foreground hover:border-foreground/30 transition-all"
           >
             Cancel
           </button>
@@ -947,43 +947,43 @@ function PostCard({
   };
 
   return (
-    <div className="rounded-xl border border-white/8 bg-white/[0.02] p-4 flex gap-4 hover:border-white/15 transition-all">
+    <div className="rounded-xl border border-foreground/8 bg-foreground/[0.02] p-4 flex gap-4 hover:border-foreground/15 transition-all">
       {/* Thumbnail */}
       {post.image ? (
         <img
           src={post.image}
           alt=""
-          className="h-16 w-24 rounded-lg object-cover border border-white/10 shrink-0"
+          className="h-16 w-24 rounded-lg object-cover border border-foreground/10 shrink-0"
           onError={e => { (e.target as HTMLImageElement).style.display = "none"; }}
         />
       ) : (
-        <div className="h-16 w-24 rounded-lg bg-white/5 border border-white/8 flex items-center justify-center shrink-0">
-          <FileText className="h-5 w-5 text-white/20" />
+        <div className="h-16 w-24 rounded-lg bg-foreground/5 border border-foreground/8 flex items-center justify-center shrink-0">
+          <FileText className="h-5 w-5 text-foreground/20" />
         </div>
       )}
 
       {/* Info */}
       <div className="flex-1 min-w-0">
         <div className="flex items-start gap-2 flex-wrap">
-          <span className="font-medium text-white text-sm leading-tight truncate max-w-xs">{titleEn || "Untitled"}</span>
+          <span className="font-medium text-foreground text-sm leading-tight truncate max-w-xs">{titleEn || "Untitled"}</span>
           {isFeatured && (
             <span className="flex items-center gap-0.5 text-[10px] text-amber-300 bg-amber-400/10 border border-amber-400/20 rounded-full px-2 py-0.5 shrink-0">
               <Star className="h-2.5 w-2.5" /> Featured
             </span>
           )}
-          <span className={`text-[10px] rounded-full px-2 py-0.5 border shrink-0 ${isPublished ? "text-emerald-300 bg-emerald-400/10 border-emerald-400/20" : "text-white/40 bg-white/5 border-white/10"}`}>
+          <span className={`text-[10px] rounded-full px-2 py-0.5 border shrink-0 ${isPublished ? "text-emerald-300 bg-emerald-400/10 border-emerald-400/20" : "text-foreground/40 bg-foreground/5 border-foreground/10"}`}>
             {isPublished ? "Published" : "Draft"}
           </span>
         </div>
-        {titleAr && <p className="text-xs text-white/40 mt-0.5 truncate" dir="rtl">{titleAr}</p>}
+        {titleAr && <p className="text-xs text-foreground/40 mt-0.5 truncate" dir="rtl">{titleAr}</p>}
         <div className="flex items-center gap-3 mt-1.5 flex-wrap">
           {tagEn && (
             <span className="text-[10px] text-cyan-300 bg-cyan-400/10 border border-cyan-400/15 rounded-full px-2 py-0.5">{tagEn}</span>
           )}
-          {date && <span className="text-[10px] text-white/30">{date}</span>}
-          {post.author && <span className="text-[10px] text-white/30">{post.author}</span>}
+          {date && <span className="text-[10px] text-foreground/30">{date}</span>}
+          {post.author && <span className="text-[10px] text-foreground/30">{post.author}</span>}
           {(post.readTime ?? post.read_time) && (
-            <span className="text-[10px] text-white/30">{post.readTime ?? post.read_time} min read</span>
+            <span className="text-[10px] text-foreground/30">{post.readTime ?? post.read_time} min read</span>
           )}
         </div>
       </div>
@@ -993,7 +993,7 @@ function PostCard({
         <button
           type="button"
           onClick={onEdit}
-          className="flex items-center gap-1.5 text-xs text-white/50 hover:text-white border border-white/10 hover:border-white/25 rounded-lg px-3 py-1.5 transition-all"
+          className="flex items-center gap-1.5 text-xs text-foreground/50 hover:text-foreground border border-foreground/10 hover:border-foreground/25 rounded-lg px-3 py-1.5 transition-all"
         >
           <Pencil className="h-3 w-3" /> Edit
         </button>
@@ -1020,7 +1020,7 @@ function PostCard({
           className={`text-xs px-3 py-1.5 rounded-lg border transition-colors ${
             isPublished
               ? "text-emerald-300 border-emerald-400/20 hover:bg-red-400/10 hover:text-red-300 hover:border-red-400/20"
-              : "text-white/40 border-white/10 hover:bg-emerald-400/10 hover:text-emerald-300 hover:border-emerald-400/20"
+              : "text-foreground/40 border-foreground/10 hover:bg-emerald-400/10 hover:text-emerald-300 hover:border-emerald-400/20"
           }`}
           title={isPublished ? "Click to Unpublish" : "Click to Publish"}
         >
@@ -1029,7 +1029,7 @@ function PostCard({
         <button
           type="button"
           onClick={handleDelete}
-          className={`flex items-center gap-1.5 text-xs rounded-lg px-3 py-1.5 transition-all border ${confirmDelete ? "text-white bg-red-500/20 border-red-500/40 hover:bg-red-500/30" : "text-red-400 hover:text-red-300 border-white/10 hover:border-red-400/20"}`}
+          className={`flex items-center gap-1.5 text-xs rounded-lg px-3 py-1.5 transition-all border ${confirmDelete ? "text-foreground bg-red-500/20 border-red-500/40 hover:bg-red-500/30" : "text-red-400 hover:text-red-300 border-foreground/10 hover:border-red-400/20"}`}
         >
           <Trash2 className="h-3 w-3" />
           {confirmDelete ? "Confirm?" : "Delete"}
@@ -1136,13 +1136,13 @@ function BlogTab({ onPostCountChange }: { onPostCountChange?: (n: number) => voi
     <div>
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h2 className="text-lg font-bold text-white">Blog Posts</h2>
-          <p className="text-xs text-white/40 mt-0.5">{posts.length} post{posts.length !== 1 ? "s" : ""} total</p>
+          <h2 className="text-lg font-bold text-foreground">Blog Posts</h2>
+          <p className="text-xs text-foreground/40 mt-0.5">{posts.length} post{posts.length !== 1 ? "s" : ""} total</p>
         </div>
         <div className="flex gap-3">
           <button
             onClick={loadPosts}
-            className="flex items-center gap-2 text-xs text-white/50 hover:text-white border border-white/10 rounded-lg px-3 py-2 transition-colors"
+            className="flex items-center gap-2 text-xs text-foreground/50 hover:text-foreground border border-foreground/10 rounded-lg px-3 py-2 transition-colors"
           >
             <RefreshCw className="h-3.5 w-3.5" /> Refresh
           </button>
@@ -1163,11 +1163,11 @@ function BlogTab({ onPostCountChange }: { onPostCountChange?: (n: number) => voi
       )}
 
       {loading ? (
-        <div className="text-center py-16 text-white/30 text-sm">Loading posts…</div>
+        <div className="text-center py-16 text-foreground/30 text-sm">Loading posts…</div>
       ) : posts.length === 0 ? (
         <div className="text-center py-16">
-          <FileText className="h-10 w-10 text-white/15 mx-auto mb-3" />
-          <p className="text-white/40 text-sm">No posts yet.</p>
+          <FileText className="h-10 w-10 text-foreground/15 mx-auto mb-3" />
+          <p className="text-foreground/40 text-sm">No posts yet.</p>
           <button
             onClick={handleCreate}
             className="mt-4 text-xs text-cyan-400 hover:text-cyan-300 border border-cyan-400/20 hover:border-cyan-400/40 rounded-lg px-4 py-2 transition-all"
@@ -1242,47 +1242,47 @@ function SubscribersTab() {
     <div>
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h2 className="text-lg font-bold text-white">Subscribers</h2>
-          <p className="text-xs text-white/40 mt-0.5">{subscribers.length} total subscribers</p>
+          <h2 className="text-lg font-bold text-foreground">Subscribers</h2>
+          <p className="text-xs text-foreground/40 mt-0.5">{subscribers.length} total subscribers</p>
         </div>
-        <button onClick={load} className="flex items-center gap-2 text-xs text-white/50 hover:text-white border border-white/10 rounded-lg px-3 py-2 transition-colors">
+        <button onClick={load} className="flex items-center gap-2 text-xs text-foreground/50 hover:text-foreground border border-foreground/10 rounded-lg px-3 py-2 transition-colors">
           <RefreshCw className="h-3.5 w-3.5" /> Refresh
         </button>
       </div>
 
       {loading ? (
-        <div className="text-center py-16 text-white/30 text-sm">Loading…</div>
+        <div className="text-center py-16 text-foreground/30 text-sm">Loading…</div>
       ) : subscribers.length === 0 ? (
-        <div className="text-center py-16 text-white/30 text-sm">No subscribers yet.</div>
+        <div className="text-center py-16 text-foreground/30 text-sm">No subscribers yet.</div>
       ) : (
-        <div className="overflow-x-auto rounded-xl border border-white/8">
+        <div className="overflow-x-auto rounded-xl border border-foreground/8">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-white/8 bg-white/[0.02]">
-                <th className="text-left px-4 py-3 text-[10px] uppercase tracking-wider text-white/30 font-medium">Name</th>
-                <th className="text-left px-4 py-3 text-[10px] uppercase tracking-wider text-white/30 font-medium">Email</th>
-                <th className="text-left px-4 py-3 text-[10px] uppercase tracking-wider text-white/30 font-medium">Country</th>
-                <th className="text-left px-4 py-3 text-[10px] uppercase tracking-wider text-white/30 font-medium">Status</th>
-                <th className="text-left px-4 py-3 text-[10px] uppercase tracking-wider text-white/30 font-medium">Date</th>
+              <tr className="border-b border-foreground/8 bg-foreground/[0.02]">
+                <th className="text-left px-4 py-3 text-[10px] uppercase tracking-wider text-foreground/30 font-medium">Name</th>
+                <th className="text-left px-4 py-3 text-[10px] uppercase tracking-wider text-foreground/30 font-medium">Email</th>
+                <th className="text-left px-4 py-3 text-[10px] uppercase tracking-wider text-foreground/30 font-medium">Country</th>
+                <th className="text-left px-4 py-3 text-[10px] uppercase tracking-wider text-foreground/30 font-medium">Status</th>
+                <th className="text-left px-4 py-3 text-[10px] uppercase tracking-wider text-foreground/30 font-medium">Date</th>
                 <th className="px-4 py-3" />
               </tr>
             </thead>
             <tbody>
               {subscribers.map((s, i) => (
-                <tr key={s.email + i} className="border-b border-white/5 hover:bg-white/[0.02] transition-colors">
-                  <td className="px-4 py-3 text-white/80">{s.name || "—"}</td>
-                  <td className="px-4 py-3 text-white/60">{s.email}</td>
-                  <td className="px-4 py-3 text-white/50">{s.country || "—"}</td>
+                <tr key={s.email + i} className="border-b border-foreground/5 hover:bg-foreground/[0.02] transition-colors">
+                  <td className="px-4 py-3 text-foreground/80">{s.name || "—"}</td>
+                  <td className="px-4 py-3 text-foreground/60">{s.email}</td>
+                  <td className="px-4 py-3 text-foreground/50">{s.country || "—"}</td>
                   <td className="px-4 py-3">
-                    <span className={`text-[10px] rounded-full px-2 py-0.5 border ${s.status === "active" || !s.status ? "text-emerald-300 bg-emerald-400/10 border-emerald-400/20" : "text-white/40 bg-white/5 border-white/10"}`}>
+                    <span className={`text-[10px] rounded-full px-2 py-0.5 border ${s.status === "active" || !s.status ? "text-emerald-300 bg-emerald-400/10 border-emerald-400/20" : "text-foreground/40 bg-foreground/5 border-foreground/10"}`}>
                       {s.status || "active"}
                     </span>
                   </td>
-                  <td className="px-4 py-3 text-[11px] text-white/30">{fmt(s.created_at)}</td>
+                  <td className="px-4 py-3 text-[11px] text-foreground/30">{fmt(s.created_at)}</td>
                   <td className="px-4 py-3 text-right">
                     <button
                       onClick={() => handleRemove(s.email)}
-                      className="text-xs text-red-400 hover:text-red-300 border border-white/10 hover:border-red-400/20 rounded-lg px-3 py-1.5 transition-all"
+                      className="text-xs text-red-400 hover:text-red-300 border border-foreground/10 hover:border-red-400/20 rounded-lg px-3 py-1.5 transition-all"
                     >
                       Remove
                     </button>
@@ -1312,18 +1312,18 @@ export default function Admin() {
   }
 
   return (
-    <div className="min-h-screen bg-[#050505] text-white">
+    <div className="min-h-screen bg-background text-foreground">
       <SEO title="Admin — Raanzlr" path="/admin" noIndex />
       {/* Top bar */}
-      <div className="border-b border-white/8 bg-[#050505] sticky top-0 z-40">
+      <div className="border-b border-foreground/8 bg-background sticky top-0 z-40">
         <div className="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
           <div className="flex items-center gap-4">
             <img src="/Raanzlr.png" alt="Raanzlr" className="h-6 w-auto opacity-70" />
-            <span className="text-xs text-white/30 border-l border-white/10 pl-4">Admin</span>
+            <span className="text-xs text-foreground/30 border-l border-foreground/10 pl-4">Admin</span>
           </div>
           <button
             onClick={() => { sessionStorage.removeItem("raanzlr_admin"); setAuthed(false); }}
-            className="flex items-center gap-1.5 text-xs text-white/30 hover:text-white transition-colors"
+            className="flex items-center gap-1.5 text-xs text-foreground/30 hover:text-foreground transition-colors"
           >
             <LogOut className="h-3.5 w-3.5" /> Sign out
           </button>
@@ -1332,26 +1332,26 @@ export default function Admin() {
 
       <div className="max-w-5xl mx-auto px-6 py-8">
         {/* Tabs */}
-        <div className="flex gap-1 mb-8 bg-white/5 rounded-xl p-1 w-fit">
+        <div className="flex gap-1 mb-8 bg-foreground/5 rounded-xl p-1 w-fit">
           <button
             onClick={() => setTab("contacts")}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm transition-all ${tab === "contacts" ? "bg-white/10 text-white font-medium" : "text-white/40 hover:text-white/70"}`}
+            className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm transition-all ${tab === "contacts" ? "bg-foreground/10 text-foreground font-medium" : "text-foreground/40 hover:text-foreground/70"}`}
           >
             <Mail className="h-3.5 w-3.5" /> Contact Forms
           </button>
           <button
             onClick={() => setTab("subscribers")}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm transition-all ${tab === "subscribers" ? "bg-white/10 text-white font-medium" : "text-white/40 hover:text-white/70"}`}
+            className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm transition-all ${tab === "subscribers" ? "bg-foreground/10 text-foreground font-medium" : "text-foreground/40 hover:text-foreground/70"}`}
           >
             <Users className="h-3.5 w-3.5" /> Subscribers
           </button>
           <button
             onClick={() => setTab("blog")}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm transition-all ${tab === "blog" ? "bg-white/10 text-white font-medium" : "text-white/40 hover:text-white/70"}`}
+            className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm transition-all ${tab === "blog" ? "bg-foreground/10 text-foreground font-medium" : "text-foreground/40 hover:text-foreground/70"}`}
           >
             <FileText className="h-3.5 w-3.5" /> Blog Posts
             {postCount !== null && (
-              <span className="text-[10px] bg-white/10 text-white/60 rounded-full px-1.5 py-0.5 leading-none">
+              <span className="text-[10px] bg-foreground/10 text-foreground/60 rounded-full px-1.5 py-0.5 leading-none">
                 {postCount}
               </span>
             )}

@@ -45,10 +45,10 @@ export default function TermsOfService() {
             className="font-display text-4xl sm:text-5xl font-bold tracking-tight text-chrome">
             {isAr ? "شروط الخدمة" : "Terms of Service"}
           </motion.h1>
-          <p className="mt-4 text-sm text-white/40 font-mono-accent">
+          <p className="mt-4 text-sm text-foreground/40 font-mono-accent">
             {isAr ? "آخر تحديث:" : "Last updated:"} {lastUpdated}
           </p>
-          <p className="mt-6 text-base text-white/65 leading-relaxed max-w-2xl">
+          <p className="mt-6 text-base text-foreground/65 leading-relaxed max-w-2xl">
             {isAr
               ? "يرجى قراءة شروط الخدمة هذه بعناية قبل استخدام خدمات Raanzlr. تحكم هذه الشروط علاقتنا بك."
               : "Please read these Terms of Service carefully before using Raanzlr's services. These terms govern our relationship with you."}
@@ -64,16 +64,16 @@ export default function TermsOfService() {
             const Icon = s.icon;
             return (
               <Reveal key={i} delay={i * 0.1}>
-                <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-7 sm:p-8">
+                <div className="rounded-2xl border border-foreground/10 bg-foreground/[0.02] p-7 sm:p-8">
                   <div className="flex items-center gap-4 mb-5">
                     <div className="h-11 w-11 rounded-xl border border-cyan-400/30 bg-cyan-400/5 flex items-center justify-center shrink-0">
                       <Icon className="h-5 w-5 text-cyan-300" />
                     </div>
-                    <h2 className="font-display text-xl font-bold text-white">{s.title}</h2>
+                    <h2 className="font-display text-xl font-bold text-foreground">{s.title}</h2>
                   </div>
                   <div className="space-y-3">
                     {s.content.map((para, j) => (
-                      <p key={j} className="text-white/65 leading-relaxed text-sm">{para}</p>
+                      <p key={j} className="text-foreground/65 leading-relaxed text-sm">{para}</p>
                     ))}
                   </div>
                 </div>

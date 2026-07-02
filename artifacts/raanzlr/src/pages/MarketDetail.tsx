@@ -62,7 +62,7 @@ export default function MarketDetail() {
           >
             <Link
               to="/markets"
-              className="inline-flex items-center gap-2 text-xs font-mono-accent uppercase tracking-[0.18em] text-white/50 hover:text-cyan-300 transition-colors mb-6"
+              className="inline-flex items-center gap-2 text-xs font-mono-accent uppercase tracking-[0.18em] text-foreground/50 hover:text-cyan-300 transition-colors mb-6"
             >
               <ArrowLeft className="h-3.5 w-3.5 rtl:rotate-180" />
               {isAr ? "العودة إلى الأسواق" : "Back to Markets"}
@@ -106,7 +106,7 @@ export default function MarketDetail() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.35 }}
-            className="mt-6 flex items-center gap-2 text-white/50"
+            className="mt-6 flex items-center gap-2 text-foreground/50"
           >
             <MapPin className="h-4 w-4 text-cyan-400" />
             <span className="text-sm">{content.cities}</span>
@@ -116,7 +116,7 @@ export default function MarketDetail() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.45 }}
-            className="mt-6 max-w-3xl text-base md:text-lg text-white/65 leading-relaxed"
+            className="mt-6 max-w-3xl text-base md:text-lg text-foreground/65 leading-relaxed"
           >
             {content.heroDescription}
           </motion.p>
@@ -159,7 +159,7 @@ export default function MarketDetail() {
                 <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-chrome mb-6">
                   {content.whyTitle}
                 </h2>
-                <div className="space-y-4 text-white/70 leading-relaxed">
+                <div className="space-y-4 text-foreground/70 leading-relaxed">
                   {content.whyParagraphs.map((para, i) => (
                     <p key={i}>{para}</p>
                   ))}
@@ -177,7 +177,7 @@ export default function MarketDetail() {
                       {content.keyAdvantages.map((adv, i) => (
                         <li key={i} className="flex items-start gap-3">
                           <CheckCircle2 className="h-5 w-5 text-cyan-400 shrink-0 mt-0.5" />
-                          <span className="text-sm text-white/80">{adv}</span>
+                          <span className="text-sm text-foreground/80">{adv}</span>
                         </li>
                       ))}
                     </ul>
@@ -190,7 +190,7 @@ export default function MarketDetail() {
       </section>
 
       {/* Services for This Market */}
-      <section className="relative py-20 sm:py-24 bg-white/[0.01]">
+      <section className="relative py-20 sm:py-24 bg-foreground/[0.01]">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <Reveal>
             <div className="text-xs font-mono-accent uppercase tracking-[0.22em] text-cyan-300/90 mb-4">
@@ -204,15 +204,15 @@ export default function MarketDetail() {
           <Stagger className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {content.services.map((service, i) => (
               <StaggerItem key={i}>
-                <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] hover:border-cyan-400/30 transition-colors p-6 h-full">
+                <div className="group relative overflow-hidden rounded-2xl border border-foreground/10 bg-foreground/[0.02] hover:border-cyan-400/30 transition-colors p-6 h-full">
                   <div className="shimmer-layer absolute inset-0 pointer-events-none" />
                   <div className="h-10 w-10 rounded-xl border border-cyan-400/30 bg-cyan-400/5 flex items-center justify-center mb-4">
                     <Zap className="h-5 w-5 text-cyan-300" />
                   </div>
-                  <h3 className="font-display text-lg font-semibold text-white mb-2">
+                  <h3 className="font-display text-lg font-semibold text-foreground mb-2">
                     {service.title}
                   </h3>
-                  <p className="text-sm text-white/60 leading-relaxed">
+                  <p className="text-sm text-foreground/60 leading-relaxed">
                     {service.description}
                   </p>
                 </div>
@@ -224,7 +224,7 @@ export default function MarketDetail() {
             <div className="mt-10 text-center">
               <Link
                 to="/services"
-                className="inline-flex items-center gap-2 text-sm font-mono-accent uppercase tracking-[0.18em] text-cyan-300 hover:text-white transition-colors"
+                className="inline-flex items-center gap-2 text-sm font-mono-accent uppercase tracking-[0.18em] text-cyan-300 hover:text-foreground transition-colors"
               >
                 {isAr ? "عرض جميع الخدمات" : "View All Services"}
                 <ArrowRight className="h-4 w-4 rtl:rotate-180" />
@@ -249,10 +249,10 @@ export default function MarketDetail() {
           <Stagger className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
             {content.industries.map((industry, i) => (
               <StaggerItem key={i}>
-                <div className="group relative overflow-hidden rounded-xl border border-white/10 bg-white/[0.02] hover:border-cyan-400/25 transition-colors p-5 text-center">
+                <div className="group relative overflow-hidden rounded-xl border border-foreground/10 bg-foreground/[0.02] hover:border-cyan-400/25 transition-colors p-5 text-center">
                   <div className="shimmer-layer absolute inset-0 pointer-events-none" />
                   <Building2 className="h-6 w-6 text-cyan-400/70 mx-auto mb-3" />
-                  <div className="text-sm font-medium text-white/90">{industry}</div>
+                  <div className="text-sm font-medium text-foreground/90">{industry}</div>
                 </div>
               </StaggerItem>
             ))}
@@ -262,7 +262,7 @@ export default function MarketDetail() {
             <div className="mt-10 text-center">
               <Link
                 to="/industries"
-                className="inline-flex items-center gap-2 text-sm font-mono-accent uppercase tracking-[0.18em] text-cyan-300 hover:text-white transition-colors"
+                className="inline-flex items-center gap-2 text-sm font-mono-accent uppercase tracking-[0.18em] text-cyan-300 hover:text-foreground transition-colors"
               >
                 {isAr ? "عرض جميع القطاعات" : "Explore All Industries"}
                 <ArrowRight className="h-4 w-4 rtl:rotate-180" />
@@ -273,7 +273,7 @@ export default function MarketDetail() {
       </section>
 
       {/* Use Cases */}
-      <section className="relative py-20 sm:py-24 bg-white/[0.01]">
+      <section className="relative py-20 sm:py-24 bg-foreground/[0.01]">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <Reveal>
             <div className="text-xs font-mono-accent uppercase tracking-[0.22em] text-cyan-300/90 mb-4">
@@ -282,13 +282,13 @@ export default function MarketDetail() {
             <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-chrome mb-6">
               {content.useCasesTitle}
             </h2>
-            <p className="text-white/60 max-w-3xl mb-12">{content.useCasesIntro}</p>
+            <p className="text-foreground/60 max-w-3xl mb-12">{content.useCasesIntro}</p>
           </Reveal>
 
           <Stagger className="grid md:grid-cols-2 gap-6">
             {content.useCases.map((useCase, i) => (
               <StaggerItem key={i}>
-                <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] p-6 h-full">
+                <div className="relative overflow-hidden rounded-2xl border border-foreground/10 bg-foreground/[0.02] p-6 h-full">
                   <div className="shimmer-layer absolute inset-0 pointer-events-none" />
                   <div className="flex items-start gap-4">
                     <div className="h-10 w-10 rounded-xl border border-cyan-400/30 bg-cyan-400/5 flex items-center justify-center shrink-0">
@@ -297,10 +297,10 @@ export default function MarketDetail() {
                       </span>
                     </div>
                     <div className="flex-1">
-                      <h3 className="font-display text-lg font-semibold text-white mb-2">
+                      <h3 className="font-display text-lg font-semibold text-foreground mb-2">
                         {useCase.title}
                       </h3>
-                      <p className="text-sm text-white/60 leading-relaxed">
+                      <p className="text-sm text-foreground/60 leading-relaxed">
                         {useCase.description}
                       </p>
                     </div>
@@ -322,14 +322,14 @@ export default function MarketDetail() {
                 <div className="text-xs font-mono-accent uppercase tracking-[0.22em] text-cyan-300 mb-4">
                   {isAr ? "// لماذا Raanzlr" : "// Why Raanzlr"}
                 </div>
-                <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6">
+                <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-6">
                   {content.whyRaanzlrTitle}
                 </h2>
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
                   {content.whyRaanzlr.map((reason, i) => (
                     <div key={i} className="flex items-start gap-3">
                       <CheckCircle2 className="h-5 w-5 text-cyan-400 shrink-0 mt-0.5" />
-                      <span className="text-sm text-white/80">{reason}</span>
+                      <span className="text-sm text-foreground/80">{reason}</span>
                     </div>
                   ))}
                 </div>
@@ -340,7 +340,7 @@ export default function MarketDetail() {
       </section>
 
       {/* FAQ Section */}
-      <section className="relative py-20 sm:py-24 bg-white/[0.01]">
+      <section className="relative py-20 sm:py-24 bg-foreground/[0.01]">
         <div className="mx-auto max-w-4xl px-6 lg:px-8">
           <Reveal>
             <div className="text-xs font-mono-accent uppercase tracking-[0.22em] text-cyan-300/90 mb-4">
@@ -354,14 +354,14 @@ export default function MarketDetail() {
           <Stagger className="space-y-4">
             {content.faqs.map((faq, i) => (
               <StaggerItem key={i}>
-                <details className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] hover:border-cyan-400/30 transition-colors">
+                <details className="group relative overflow-hidden rounded-2xl border border-foreground/10 bg-foreground/[0.02] hover:border-cyan-400/30 transition-colors">
                   <summary className="relative px-6 py-5 cursor-pointer list-none flex items-start justify-between gap-4">
-                    <span className="font-display text-base sm:text-lg font-semibold text-white pr-4">
+                    <span className="font-display text-base sm:text-lg font-semibold text-foreground pr-4">
                       {faq.q}
                     </span>
                     <ChevronDown className="h-5 w-5 text-cyan-300 shrink-0 transition-transform duration-200 group-open:rotate-180" />
                   </summary>
-                  <div className="px-6 pb-5 text-white/70 leading-relaxed text-sm">
+                  <div className="px-6 pb-5 text-foreground/70 leading-relaxed text-sm">
                     {faq.a}
                   </div>
                 </details>
@@ -382,7 +382,7 @@ export default function MarketDetail() {
                 <h3 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-chrome">
                   {content.ctaTitle}
                 </h3>
-                <p className="mt-4 text-white/60 max-w-xl mx-auto">
+                <p className="mt-4 text-foreground/60 max-w-xl mx-auto">
                   {content.ctaDescription}
                 </p>
                 <div className="mt-8 flex justify-center gap-4 flex-wrap">

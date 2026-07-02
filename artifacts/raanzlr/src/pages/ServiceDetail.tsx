@@ -82,7 +82,7 @@ export default function ServiceDetail() {
           >
             <Link
               to="/services"
-              className="inline-flex items-center gap-2 text-xs font-mono-accent uppercase tracking-[0.18em] text-white/50 hover:text-cyan-300 transition-colors mb-8"
+              className="inline-flex items-center gap-2 text-xs font-mono-accent uppercase tracking-[0.18em] text-foreground/50 hover:text-cyan-300 transition-colors mb-8"
             >
               <ArrowLeft className="h-3.5 w-3.5 rtl:rotate-180" />
               {isAr ? "العودة إلى الخدمات" : "Back to Services"}
@@ -108,7 +108,7 @@ export default function ServiceDetail() {
               className={`inline-flex items-center gap-1.5 text-[10px] font-mono-accent uppercase tracking-[0.2em] px-2.5 py-1 rounded-full border ${
                 service.tier === "high"
                   ? "border-cyan-400/40 text-cyan-300 bg-cyan-400/10"
-                  : "border-white/15 text-white/50"
+                  : "border-foreground/15 text-foreground/50"
               }`}
             >
               {service.tier === "high"
@@ -134,7 +134,7 @@ export default function ServiceDetail() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="mt-5 max-w-2xl text-base md:text-lg text-white/65 leading-relaxed"
+            className="mt-5 max-w-2xl text-base md:text-lg text-foreground/65 leading-relaxed"
           >
             {service.desc}
           </motion.p>
@@ -167,7 +167,7 @@ export default function ServiceDetail() {
                 <p className="text-xs font-mono-accent uppercase tracking-[0.22em] text-cyan-300 mb-5">
                   {isAr ? "// نظرة عامة" : "// Overview"}
                 </p>
-                <p className="text-white/70 text-base sm:text-lg leading-[1.85]">
+                <p className="text-foreground/70 text-base sm:text-lg leading-[1.85]">
                   {service.long}
                 </p>
               </Reveal>
@@ -176,15 +176,15 @@ export default function ServiceDetail() {
             {/* Helps list */}
             <div className="lg:col-span-2">
               <Reveal delay={0.1}>
-                <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-6 sm:p-8">
-                  <p className="text-xs font-mono-accent uppercase tracking-[0.22em] text-white/40 mb-6">
+                <div className="rounded-2xl border border-foreground/10 bg-foreground/[0.02] p-6 sm:p-8">
+                  <p className="text-xs font-mono-accent uppercase tracking-[0.22em] text-foreground/40 mb-6">
                     {isAr ? "// كيف يساعدك هذا" : "// How This Helps You"}
                   </p>
                   <ul className="space-y-4">
                     {service.helps.map((h: string, i: number) => (
                       <li key={i} className="flex items-start gap-3">
                         <CheckCircle2 className="h-4 w-4 text-cyan-400 shrink-0 mt-0.5" />
-                        <span className="text-sm text-white/70 leading-relaxed">{h}</span>
+                        <span className="text-sm text-foreground/70 leading-relaxed">{h}</span>
                       </li>
                     ))}
                   </ul>
@@ -203,12 +203,12 @@ export default function ServiceDetail() {
               <p className="text-xs font-mono-accent uppercase tracking-[0.22em] text-cyan-300 mb-4">
                 {isAr ? "// ابدأ مشروعك" : "// Start Your Project"}
               </p>
-              <h2 className="font-display text-2xl sm:text-3xl font-bold text-white mb-4">
+              <h2 className="font-display text-2xl sm:text-3xl font-bold text-foreground mb-4">
                 {isAr
                   ? `هل تحتاج إلى ${service.title}?`
                   : `Ready to build ${service.title}?`}
               </h2>
-              <p className="text-white/55 mb-8 max-w-md mx-auto">
+              <p className="text-foreground/55 mb-8 max-w-md mx-auto">
                 {isAr
                   ? "أخبرنا عن مشروعك وسيتواصل معك مهندس أول خلال يوم عمل واحد."
                   : "Tell us about your project and a senior engineer will be in touch within one business day."}
@@ -234,7 +234,7 @@ export default function ServiceDetail() {
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <Reveal>
               <div className="flex items-center justify-between mb-8">
-                <p className="text-xs font-mono-accent uppercase tracking-[0.22em] text-white/40">
+                <p className="text-xs font-mono-accent uppercase tracking-[0.22em] text-foreground/40">
                   {isAr ? "// خدمات أخرى" : "// Other Services"}
                 </p>
                 <Link
@@ -253,15 +253,15 @@ export default function ServiceDetail() {
                   <StaggerItem key={s.key}>
                     <Link
                       to={`/services/${s.key}`}
-                      className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] hover:border-cyan-400/25 transition-colors p-6 flex flex-col h-full block"
+                      className="group relative overflow-hidden rounded-2xl border border-foreground/10 bg-foreground/[0.02] hover:border-cyan-400/25 transition-colors p-6 flex flex-col h-full block"
                     >
-                      <div className="inline-flex items-center justify-center h-10 w-10 rounded-xl border border-white/15 bg-white/[0.04] mb-4 group-hover:border-cyan-400/30 group-hover:bg-cyan-400/8 transition-colors">
-                        <OtherIcon className="h-5 w-5 text-white/60 group-hover:text-cyan-300 transition-colors" />
+                      <div className="inline-flex items-center justify-center h-10 w-10 rounded-xl border border-foreground/15 bg-foreground/[0.04] mb-4 group-hover:border-cyan-400/30 group-hover:bg-cyan-400/8 transition-colors">
+                        <OtherIcon className="h-5 w-5 text-foreground/60 group-hover:text-cyan-300 transition-colors" />
                       </div>
-                      <h3 className="font-display text-base font-semibold text-white mb-2 leading-snug">
+                      <h3 className="font-display text-base font-semibold text-foreground mb-2 leading-snug">
                         {s.title}
                       </h3>
-                      <p className="text-sm text-white/50 leading-relaxed flex-1">{s.desc}</p>
+                      <p className="text-sm text-foreground/50 leading-relaxed flex-1">{s.desc}</p>
                       <div className="mt-4 flex items-center gap-1.5 text-xs text-cyan-400 font-mono-accent">
                         {isAr ? "تعرف أكثر" : "Learn more"}
                         <ArrowRight className="h-3.5 w-3.5 rtl:rotate-180" />

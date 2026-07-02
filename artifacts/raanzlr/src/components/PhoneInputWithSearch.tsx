@@ -83,24 +83,24 @@ export default function PhoneInput({ value, onChange, phoneCode, onPhoneCodeChan
         <button
           type="button"
           onClick={() => setIsOpen(!isOpen)}
-          className="flex items-center gap-2 rounded-l-xl border border-white/10 bg-white/[0.02] px-3 py-3 hover:bg-white/[0.04] focus:outline-none focus:border-cyan-400/60 transition-colors w-[110px]"
+          className="flex items-center gap-2 rounded-l-xl border border-foreground/10 bg-foreground/[0.02] px-3 py-3 hover:bg-foreground/[0.04] focus:outline-none focus:border-cyan-400/60 transition-colors w-[110px]"
         >
           {selected.flag === "SYRIA_FLAG" ? (
             <SyriaFlag className="w-6 h-[18px]" />
           ) : (
             <span className="text-lg leading-none">{selected.flag}</span>
           )}
-          <span className="text-white text-sm font-medium">{selected.code}</span>
-          <ChevronDown className="w-3.5 h-3.5 text-white/50 ml-auto" />
+          <span className="text-foreground text-sm font-medium">{selected.code}</span>
+          <ChevronDown className="w-3.5 h-3.5 text-foreground/50 ml-auto" />
         </button>
         {isOpen && (
-          <div className="absolute top-full left-0 mt-1 w-72 bg-[#0d0d0d] border border-white/10 rounded-xl shadow-2xl z-50 overflow-hidden">
-            <div className="p-2 border-b border-white/10">
+          <div className="absolute top-full left-0 mt-1 w-72 bg-card border border-foreground/10 rounded-xl shadow-2xl z-50 overflow-hidden">
+            <div className="p-2 border-b border-foreground/10">
               <div className="relative">
-                <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-white/40" />
+                <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-foreground/40" />
                 <input
                   type="text"
-                  className="w-full pl-9 pr-3 py-2 bg-white/[0.03] border border-white/10 rounded-lg text-sm text-white placeholder:text-white/30 focus:outline-none focus:ring-1 focus:ring-cyan-400/50"
+                  className="w-full pl-9 pr-3 py-2 bg-foreground/[0.03] border border-foreground/10 rounded-lg text-sm text-foreground placeholder:text-foreground/30 focus:outline-none focus:ring-1 focus:ring-cyan-400/50"
                   placeholder="Search..."
                   value={search}
                   onChange={e => setSearch(e.target.value)}
@@ -113,7 +113,7 @@ export default function PhoneInput({ value, onChange, phoneCode, onPhoneCodeChan
                 <button
                   key={`${c.code}-${i}`}
                   onClick={() => select(c)}
-                  className="w-full flex items-center justify-between px-4 py-2.5 hover:bg-white/[0.05] text-left transition-colors"
+                  className="w-full flex items-center justify-between px-4 py-2.5 hover:bg-foreground/[0.05] text-left transition-colors"
                 >
                   <div className="flex items-center gap-3">
                     {c.flag === "SYRIA_FLAG" ? (
@@ -121,10 +121,10 @@ export default function PhoneInput({ value, onChange, phoneCode, onPhoneCodeChan
                     ) : (
                       <span className="text-lg">{c.flag}</span>
                     )}
-                    <span className="text-sm text-white">{c.name}</span>
+                    <span className="text-sm text-foreground">{c.name}</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <span className="text-sm text-white/50">{c.code}</span>
+                    <span className="text-sm text-foreground/50">{c.code}</span>
                     {selected.name === c.name && <Check className="w-4 h-4 text-cyan-400" />}
                   </div>
                 </button>
@@ -135,7 +135,7 @@ export default function PhoneInput({ value, onChange, phoneCode, onPhoneCodeChan
       </div>
       <input
         type="tel"
-        className="flex-1 rounded-r-xl border border-l-0 border-white/10 bg-white/[0.02] px-4 py-3 text-sm text-white placeholder:text-white/30 focus:border-cyan-400/60 focus:ring-1 focus:ring-cyan-400/50 transition-colors focus:outline-none"
+        className="flex-1 rounded-r-xl border border-l-0 border-foreground/10 bg-foreground/[0.02] px-4 py-3 text-sm text-foreground placeholder:text-foreground/30 focus:border-cyan-400/60 focus:ring-1 focus:ring-cyan-400/50 transition-colors focus:outline-none"
         placeholder={placeholder}
         value={value}
         onChange={e => onChange(e.target.value)}

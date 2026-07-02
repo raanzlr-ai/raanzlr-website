@@ -97,7 +97,7 @@ export default function Markets() {
             {isAr ? "نبني للأسواق الأكثر طموحاً في العالم." : "We build for the world's most ambitious markets."}
           </motion.h1>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.25 }}
-            className="mt-5 max-w-2xl text-base md:text-lg text-white/65">
+            className="mt-5 max-w-2xl text-base md:text-lg text-foreground/65">
             {isAr
               ? "من دول الخليج العربي إلى تركيا وأوروبا، نقدم هندسة برمجية ومنتجات ذكاء اصطناعي مصممة للبيئة التنافسية في كل سوق."
               : "From the Gulf states to Turkey and Europe, we deliver software engineering and AI products tailored to the competitive realities of each market."}
@@ -119,7 +119,7 @@ export default function Markets() {
                 <StaggerItem key={m.code}>
                   <Link 
                     to={`/markets/${m.slug}`}
-                    className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] hover:border-cyan-400/30 transition-colors p-6 h-full flex flex-col block"
+                    className="group relative overflow-hidden rounded-2xl border border-foreground/10 bg-foreground/[0.02] hover:border-cyan-400/30 transition-colors p-6 h-full flex flex-col block"
                   >
                     <div className="shimmer-layer absolute inset-0 pointer-events-none" />
                     <div className="flex items-center justify-between mb-4">
@@ -128,15 +128,15 @@ export default function Markets() {
                       ) : (
                         <span className="text-4xl">{m.flag}</span>
                       )}
-                      <span className="text-[10px] font-mono-accent uppercase tracking-[0.18em] px-2 py-1 rounded-full border border-white/10 text-white/40">{content.region}</span>
+                      <span className="text-[10px] font-mono-accent uppercase tracking-[0.18em] px-2 py-1 rounded-full border border-foreground/10 text-foreground/40">{content.region}</span>
                     </div>
-                    <h3 className="font-display text-xl font-bold text-white">{content.name}</h3>
+                    <h3 className="font-display text-xl font-bold text-foreground">{content.name}</h3>
                     <div className="flex items-center gap-1.5 mt-1 mb-3">
                       <MapPin className="h-3 w-3 text-cyan-400" />
-                      <span className="text-xs text-white/45">{content.sub}</span>
+                      <span className="text-xs text-foreground/45">{content.sub}</span>
                     </div>
-                    <p className="text-sm text-white/55 leading-relaxed flex-1">{content.desc}</p>
-                    <ul className="mt-5 space-y-2 pt-4 border-t border-white/8">
+                    <p className="text-sm text-foreground/55 leading-relaxed flex-1">{content.desc}</p>
+                    <ul className="mt-5 space-y-2 pt-4 border-t border-foreground/8">
                       {content.highlights.map((h, i) => (
                         <li key={i} className="flex items-center gap-2 text-xs text-cyan-300/80">
                           <span className="h-1 w-1 rounded-full bg-cyan-400 shrink-0" />
@@ -158,7 +158,7 @@ export default function Markets() {
             <h2 className="font-display text-2xl sm:text-3xl font-bold text-chrome">
               {isAr ? "مقرنا في الولايات المتحدة. عملياتنا عالمية." : "Headquartered in the U.S. Operating globally."}
             </h2>
-            <p className="mt-4 text-white/60 max-w-lg mx-auto">
+            <p className="mt-4 text-foreground/60 max-w-lg mx-auto">
               {isAr
                 ? "فريقنا الموزع يضمن أوقات استجابة سريعة وفهماً ثقافياً عميقاً في كل سوق نخدمه."
                 : "Our distributed team ensures fast response times and deep cultural understanding across every market we serve."}

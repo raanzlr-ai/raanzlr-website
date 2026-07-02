@@ -1,6 +1,6 @@
 import React, { Suspense, lazy } from "react";
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
-import { Toaster } from "sonner";
+import { Toaster } from "./components/ui/sonner";
 import { LanguageProvider } from "./contexts/LanguageContext";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -24,7 +24,7 @@ const TermsOfService = lazy(() => import("./pages/TermsOfService"));
 const Admin = lazy(() => import("./pages/Admin"));
 
 const PageLoader = () => (
-  <div className="min-h-screen flex items-center justify-center bg-[#050505]">
+  <div className="min-h-screen flex items-center justify-center bg-background">
     <div className="h-8 w-8 rounded-full border-2 border-cyan-400/30 border-t-cyan-400 animate-spin" />
   </div>
 );
@@ -34,7 +34,7 @@ function AppContent() {
   const isAdmin = location.pathname === "/admin" || location.pathname.endsWith("/admin");
 
   return (
-    <div className="min-h-screen bg-[#050505] text-white overflow-x-hidden">
+    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <CustomCursor />
       {!isAdmin && <Navbar />}
       <main>
@@ -83,7 +83,7 @@ function AppContent() {
         </Suspense>
       </main>
       {!isAdmin && <Footer />}
-      <Toaster position="bottom-right" theme="dark" />
+      <Toaster position="bottom-right" />
     </div>
   );
 }
