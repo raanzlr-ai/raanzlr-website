@@ -119,11 +119,29 @@ export default function HeroHeadline({ isAr }: { isAr: boolean }) {
       transition={{ duration: 0.7, delay: 0.1 }}
       className="mt-6"
     >
-      {/* Reserved height keeps the subtitle below from jumping as phrases wrap. */}
-      <div className="flex items-start min-h-[8.5rem] sm:min-h-[8.5rem] md:min-h-[10.5rem] lg:min-h-[13rem]">
+      {/*
+        Every phrase is rendered invisibly into the same grid cell, so the
+        container is permanently as tall as the tallest phrase wraps at the
+        current viewport width. The animated headline overlays that space —
+        the hero section never grows or shrinks while typing.
+      */}
+      <div className="grid max-w-2xl">
+        {phrases.map((p, i) => (
+          <span
+            key={i}
+            aria-hidden
+            className="invisible col-start-1 row-start-1 font-display font-bold leading-[1.1] tracking-tighter text-4xl sm:text-5xl md:text-6xl lg:text-7xl"
+          >
+            {p.lead}
+            {SEP}
+            {p.accent}
+            {/* caret width so mid-typing wraps never exceed the reserved space */}
+            <span className="mx-1 inline-block w-[3px] sm:w-[4px]" />
+          </span>
+        ))}
         <h1
           aria-label={full}
-          className="max-w-2xl font-display font-bold leading-[1.1] tracking-tighter text-4xl sm:text-5xl md:text-6xl lg:text-7xl"
+          className="col-start-1 row-start-1 font-display font-bold leading-[1.1] tracking-tighter text-4xl sm:text-5xl md:text-6xl lg:text-7xl"
         >
           <span aria-hidden className="text-chrome">
             {leadShown}
