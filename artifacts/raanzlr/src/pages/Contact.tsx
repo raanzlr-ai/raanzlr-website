@@ -9,6 +9,7 @@ import { Reveal } from "../components/Reveal";
 import Heartbeat from "../components/Heartbeat";
 import SEO from "../components/SEO";
 import PhoneInput from "../components/PhoneInputWithSearch";
+import Turnstile from "../components/Turnstile";
 
 const SUPABASE_ANON_KEY = ((import.meta.env.VITE_SUPABASE_ANON_KEY as string) || "").trim().replace(/^\uFEFF/, "");
 const N8N_CONTACT = import.meta.env.VITE_N8N_CONTACT_WEBHOOK;
@@ -42,22 +43,23 @@ function SelectField({ label, value, onChange, children }: { label: string; valu
   );
 }
 
-async function submitToSupabase(table: string, payload: Record<string, unknown>) {
-  const url = `https://dnpaagicskxzukeczifj.supabase.co/rest/v1/${table}`;
+// Submits through the submit-form edge function, which verifies the
+// Turnstile CAPTCHA token server-side before inserting into the database.
+async function submitContact(token: string, payload: Record<string, unknown>) {
+  const url = "https://dnpaagicskxzukeczifj.supabase.co/functions/v1/submit-form";
   const res = await fetch(url, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       "apikey": SUPABASE_ANON_KEY,
       "Authorization": `Bearer ${SUPABASE_ANON_KEY}`,
-      "Prefer": "return=minimal",
     },
-    body: JSON.stringify(payload),
+    body: JSON.stringify({ kind: "contact", token, data: payload }),
   });
   if (!res.ok) {
     const errText = await res.text();
-    console.error("[Contact Form] Supabase insert failed:", res.status, errText);
-    throw new Error(`Supabase error ${res.status}: ${errText}`);
+    console.error("[Contact Form] Submit failed:", res.status, errText);
+    throw new Error(`Submit error ${res.status}: ${errText}`);
   }
 }
 
@@ -75,14 +77,16 @@ export default function Contact() {
   const [svc, setSvc] = useState({ service: preselect || SERVICES_LIST[0], full_name: "", email: "", phone_code: "+1", phone: "", role: "", company_type: "", company_size: "", budget_range: "", best_time: "", challenge: "" });
   const [svcLoading, setSvcLoading] = useState(false);
 
-  const [generalRobot, setGeneralRobot] = useState(false);
-  const [svcRobot, setSvcRobot] = useState(false);
+  const [generalToken, setGeneralToken] = useState<string | null>(null);
+  const [svcToken, setSvcToken] = useState<string | null>(null);
   const [generalRobotError, setGeneralRobotError] = useState(false);
   const [svcRobotError, setSvcRobotError] = useState(false);
+  const [generalCaptchaReset, setGeneralCaptchaReset] = useState(0);
+  const [svcCaptchaReset, setSvcCaptchaReset] = useState(0);
 
   const submitGeneral = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!generalRobot) {
+    if (!generalToken) {
       setGeneralRobotError(true);
       setTimeout(() => setGeneralRobotError(false), 3000);
       return;
@@ -98,14 +102,18 @@ export default function Contact() {
         message: general.message,
         best_time: general.best_time || null,
       };
-      await submitToSupabase("contacts", payload);
+      await submitContact(generalToken, payload);
       if (N8N_CONTACT) fetch(N8N_CONTACT, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) }).catch(() => {});
       toast.success(t.contact.success);
       setGeneral({ name: "", email: "", phone_code: "+1", phone: "", subject: "", message: "", best_time: "" });
-      setGeneralRobot(false);
+      setGeneralToken(null);
+      setGeneralCaptchaReset(n => n + 1);
     } catch (err) {
       console.error("[Contact Form] General submit error:", err);
       toast.error(t.contact.error);
+      // Tokens are single-use; reset the widget so a retry can succeed
+      setGeneralToken(null);
+      setGeneralCaptchaReset(n => n + 1);
     } finally {
       setGeneralLoading(false);
     }
@@ -113,7 +121,7 @@ export default function Contact() {
 
   const submitService = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!svcRobot) {
+    if (!svcToken) {
       setSvcRobotError(true);
       setTimeout(() => setSvcRobotError(false), 3000);
       return;
@@ -133,14 +141,18 @@ export default function Contact() {
         best_time: svc.best_time || null,
         challenge: svc.challenge,
       };
-      await submitToSupabase("contacts", payload);
+      await submitContact(svcToken, payload);
       if (N8N_SERVICE) fetch(N8N_SERVICE, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) }).catch(() => {});
       toast.success(t.contact.success);
       setSvc({ service: SERVICES_LIST[0], full_name: "", email: "", phone_code: "+1", phone: "", role: "", company_type: "", company_size: "", budget_range: "", best_time: "", challenge: "" });
-      setSvcRobot(false);
+      setSvcToken(null);
+      setSvcCaptchaReset(n => n + 1);
     } catch (err) {
       console.error("[Contact Form] Service submit error:", err);
       toast.error(t.contact.error);
+      // Tokens are single-use; reset the widget so a retry can succeed
+      setSvcToken(null);
+      setSvcCaptchaReset(n => n + 1);
     } finally {
       setSvcLoading(false);
     }
@@ -268,24 +280,9 @@ export default function Contact() {
                     <input type="datetime-local" className={fieldCls + " [color-scheme:dark]"} value={general.best_time} onChange={e => setGeneral(s => ({ ...s, best_time: e.target.value }))} />
                   </div>
                   <div>
-                    <label className="inline-flex items-center gap-3 cursor-pointer select-none group">
-                      <span className={`h-5 w-5 rounded-md border-2 flex items-center justify-center transition-all ${generalRobot ? "border-cyan-400 bg-cyan-400/20" : "border-foreground/20 bg-foreground/[0.03]"} group-hover:border-cyan-400/60`}>
-                        {generalRobot && (
-                          <svg className="h-3 w-3 text-cyan-400" viewBox="0 0 12 12" fill="none">
-                            <path d="M2 6l3 3 5-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                          </svg>
-                        )}
-                        <input
-                          type="checkbox"
-                          className="sr-only"
-                          checked={generalRobot}
-                          onChange={e => { setGeneralRobot(e.target.checked); if (e.target.checked) setGeneralRobotError(false); }}
-                        />
-                      </span>
-                      <span className="text-sm text-foreground/70">{isAr ? "أنا لست روبوتاً" : "I am not a robot"}</span>
-                    </label>
+                    <Turnstile isAr={isAr} resetSignal={generalCaptchaReset} onToken={token => { setGeneralToken(token); if (token) setGeneralRobotError(false); }} />
                     {generalRobotError && (
-                      <p className="text-xs text-red-400 mt-1.5">{isAr ? "يرجى التأكيد أنك لست روبوتاً" : "Please confirm you are not a robot."}</p>
+                      <p className="text-xs text-red-400 mt-1.5">{isAr ? "يرجى إكمال التحقق أولاً" : "Please complete the verification first."}</p>
                     )}
                   </div>
                   <button type="submit" disabled={generalLoading}
@@ -343,24 +340,9 @@ export default function Contact() {
                     <textarea required rows={4} className={fieldCls} value={svc.challenge} onChange={e => setSvc(s => ({ ...s, challenge: e.target.value }))} />
                   </div>
                   <div>
-                    <label className="inline-flex items-center gap-3 cursor-pointer select-none group">
-                      <span className={`h-5 w-5 rounded-md border-2 flex items-center justify-center transition-all ${svcRobot ? "border-cyan-400 bg-cyan-400/20" : "border-foreground/20 bg-foreground/[0.03]"} group-hover:border-cyan-400/60`}>
-                        {svcRobot && (
-                          <svg className="h-3 w-3 text-cyan-400" viewBox="0 0 12 12" fill="none">
-                            <path d="M2 6l3 3 5-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                          </svg>
-                        )}
-                        <input
-                          type="checkbox"
-                          className="sr-only"
-                          checked={svcRobot}
-                          onChange={e => { setSvcRobot(e.target.checked); if (e.target.checked) setSvcRobotError(false); }}
-                        />
-                      </span>
-                      <span className="text-sm text-foreground/70">{isAr ? "أنا لست روبوتاً" : "I am not a robot"}</span>
-                    </label>
+                    <Turnstile isAr={isAr} resetSignal={svcCaptchaReset} onToken={token => { setSvcToken(token); if (token) setSvcRobotError(false); }} />
                     {svcRobotError && (
-                      <p className="text-xs text-red-400 mt-1.5">{isAr ? "يرجى التأكيد أنك لست روبوتاً" : "Please confirm you are not a robot."}</p>
+                      <p className="text-xs text-red-400 mt-1.5">{isAr ? "يرجى إكمال التحقق أولاً" : "Please complete the verification first."}</p>
                     )}
                   </div>
                   <button type="submit" disabled={svcLoading}

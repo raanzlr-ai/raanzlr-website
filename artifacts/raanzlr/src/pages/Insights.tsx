@@ -8,6 +8,7 @@ import PulseDivider from "../components/PulseDivider";
 import SEO from "../components/SEO";
 import { POSTS } from "../data/posts";
 import { Post, fromStaticPost, fetchAllPosts } from "../lib/posts";
+import Turnstile from "../components/Turnstile";
 
 const SUPABASE_URL = "https://dnpaagicskxzukeczifj.supabase.co";
 const SUPABASE_ANON_KEY = (
@@ -32,8 +33,9 @@ function SubscribeModal({ open, onClose, isAr }: SubscribeModalProps) {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [isRobot, setIsRobot] = useState(false);
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
   const [robotError, setRobotError] = useState(false);
+  const [captchaReset, setCaptchaReset] = useState(0);
 
   // Reset state each time modal opens
   useEffect(() => {
@@ -45,8 +47,9 @@ function SubscribeModal({ open, onClose, isAr }: SubscribeModalProps) {
       setLoading(false);
       setSuccess(false);
       setError(null);
-      setIsRobot(false);
+      setCaptchaToken(null);
       setRobotError(false);
+      setCaptchaReset(n => n + 1);
     }
   }, [open]);
 
@@ -55,7 +58,7 @@ function SubscribeModal({ open, onClose, isAr }: SubscribeModalProps) {
     setLoading(true);
     setError(null);
 
-    if (!isRobot) {
+    if (!captchaToken) {
       setRobotError(true);
       setLoading(false);
       setTimeout(() => setRobotError(false), 3000);
@@ -63,20 +66,24 @@ function SubscribeModal({ open, onClose, isAr }: SubscribeModalProps) {
     }
 
     try {
-      const res = await fetch(`${SUPABASE_URL}/rest/v1/subscribers`, {
+      // The submit-form edge function verifies the CAPTCHA token
+      // server-side before inserting the subscriber.
+      const res = await fetch(`${SUPABASE_URL}/functions/v1/submit-form`, {
         method: "POST",
         headers: {
           apikey: SUPABASE_ANON_KEY,
           Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
           "Content-Type": "application/json",
-          Prefer: "return=minimal",
         },
-        body: JSON.stringify({ email, name, country: country || null, lang }),
+        body: JSON.stringify({
+          kind: "subscribe",
+          token: captchaToken,
+          data: { email, name, country: country || null, lang },
+        }),
       });
 
       if (res.status === 201 || res.status === 200) {
         setSuccess(true);
-        setIsRobot(false);
         // TODO: Email notification sending is handled by n8n workflow
         // Set up Supabase webhook → n8n → email service (SendGrid/Resend) for automatic notifications
         setTimeout(() => {
@@ -87,14 +94,21 @@ function SubscribeModal({ open, onClose, isAr }: SubscribeModalProps) {
       } else {
         const body = await res.json().catch(() => ({}));
         // Supabase unique violation code
-        if (body?.code === "23505" || body?.message?.includes("unique")) {
+        if (body?.code === "23505" || body?.message?.includes("unique") || body?.error === "already_subscribed") {
           setError(isAr ? "أنت مشترك بالفعل!" : "You're already subscribed!");
         } else {
           setError(isAr ? "حدث خطأ. حاول مرة أخرى." : "Something went wrong. Please try again.");
         }
       }
+      if (!(res.status === 200 || res.status === 201)) {
+        // Tokens are single-use; reset the widget so a retry can succeed
+        setCaptchaToken(null);
+        setCaptchaReset(n => n + 1);
+      }
     } catch {
       setError(isAr ? "حدث خطأ في الاتصال." : "Connection error. Please try again.");
+      setCaptchaToken(null);
+      setCaptchaReset(n => n + 1);
     } finally {
       setLoading(false);
     }
@@ -236,27 +250,10 @@ function SubscribeModal({ open, onClose, isAr }: SubscribeModalProps) {
 
                 {/* Robot check */}
                 <div>
-                  <label className="inline-flex items-center gap-3 cursor-pointer select-none group">
-                    <span className={`h-5 w-5 rounded-md border-2 flex items-center justify-center transition-all flex-shrink-0 ${isRobot ? "border-cyan-400 bg-cyan-400/20" : "border-foreground/20 bg-foreground/[0.03]"} group-hover:border-cyan-400/60`}>
-                      {isRobot && (
-                        <svg className="h-3 w-3 text-cyan-400" viewBox="0 0 12 12" fill="none">
-                          <path d="M2 6l3 3 5-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
-                      )}
-                      <input
-                        type="checkbox"
-                        className="sr-only"
-                        checked={isRobot}
-                        onChange={e => { setIsRobot(e.target.checked); if (e.target.checked) setRobotError(false); }}
-                      />
-                    </span>
-                    <span className="text-sm text-foreground/70">
-                      {isAr ? "أنا لست روبوتاً" : "I am not a robot"}
-                    </span>
-                  </label>
+                  <Turnstile isAr={isAr} resetSignal={captchaReset} onToken={token => { setCaptchaToken(token); if (token) setRobotError(false); }} />
                   {robotError && (
                     <p className="text-xs text-red-400 mt-1.5">
-                      {isAr ? "يرجى التأكيد أنك لست روبوتاً" : "Please confirm you are not a robot."}
+                      {isAr ? "يرجى إكمال التحقق أولاً" : "Please complete the verification first."}
                     </p>
                   )}
                 </div>
@@ -340,13 +337,13 @@ export default function Insights() {
           </motion.div>
           <motion.h1 initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }}
             className="mt-6 max-w-3xl font-display text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.04] tracking-tighter text-chrome">
-            {isAr ? "رؤى عملية في الذكاء الاصطناعي والهندسة." : "Practical AI and engineering notes."}
+            {isAr ? "المدونة والرؤى" : "Blog & Insights"}
           </motion.h1>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.25 }}
             className="mt-5 max-w-2xl text-base md:text-lg text-foreground/65">
             {isAr
-              ? "نكتب عن ما نراه في المشاريع الحقيقية: أتمتة، وكلاء ذكاء اصطناعي، معالجة اللغة العربية، وربط الأنظمة بطريقة يفهمها قادة الأعمال والفرق التقنية."
-              : "We write from real project work: automation, AI agents, Arabic language systems, integrations, and product engineering explained for both leaders and technical teams."}
+              ? "نشارك في هذه المدونة مقالات ورؤى حول الذكاء الاصطناعي، وأتمتة الأعمال، وتطوير البرمجيات، وتكامل الأنظمة. هدفنا تبسيط المفاهيم التقنية، واستعراض أفضل الممارسات، ومناقشة الأفكار التي تساعد الشركات على الاستفادة من التقنيات الحديثة في أعمالها."
+              : "We share articles and insights on artificial intelligence, business automation, software development, and systems integration. Our goal is to simplify technical concepts, review best practices, and discuss ideas that help companies leverage modern technologies in their operations."}
           </motion.p>
         </div>
       </section>
