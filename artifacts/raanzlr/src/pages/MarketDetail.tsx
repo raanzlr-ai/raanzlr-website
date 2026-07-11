@@ -79,13 +79,18 @@ export default function MarketDetail() {
             {content.region}
           </motion.div>
 
-          <div className="mt-6 flex items-center gap-4">
+          <div className="mt-6 flex items-center gap-5">
             <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
+              initial={{ opacity: 0, scale: 0.85, y: 8 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="relative shrink-0 self-center"
             >
-              <FlagImage code={market.code} alt={`${content.name} flag`} className="w-20 h-auto rounded-sm shadow-sm" />
+              <div className="absolute -inset-3 rounded-2xl bg-cyan-400/15 blur-xl" aria-hidden />
+              <div className="relative h-14 w-[5.25rem] sm:h-[4.5rem] sm:w-[6.75rem] rounded-xl overflow-hidden border border-foreground/15 ring-1 ring-cyan-400/30 shadow-[0_10px_35px_rgba(0,240,255,0.18)]">
+                <FlagImage code={market.code} alt={`${content.name} flag`} className="h-full w-full object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/25 via-transparent to-white/10 pointer-events-none" aria-hidden />
+              </div>
             </motion.div>
             <motion.h1
               initial={{ opacity: 0, y: 24 }}

@@ -275,14 +275,17 @@ export default function Home() {
           </Reveal>
             <div className="space-y-3">
             {(isAr ? [
+              { q: "ما الخدمات التي تقدمها Raanzlr؟", a: "نطوّر حلولاً برمجية مخصصة تعتمد على الذكاء الاصطناعي، تشمل وكلاء الذكاء الاصطناعي، روبوتات المحادثة، أتمتة العمليات، تطوير تطبيقات الويب والجوال، ربط الأنظمة المختلفة، بالإضافة إلى بناء حلول ذكاء اصطناعي مخصصة تعتمد على بيانات شركتك وآليات عملها." },
               { q: "هل تدعم حلولكم اللغة العربية؟", a: "نعم، جميع حلولنا تدعم اللغة العربية بالكامل، بما في ذلك الكتابة من اليمين إلى اليسار، مع إمكانية تطوير حلول متعددة اللغات حسب احتياجات مشروعك." },
+              { q: "كم يستغرق تنفيذ مشروع نموذجي؟", a: "يعتمد ذلك على نوع المشروع، لكن بصورة عامة: روبوتات المحادثة أو الأتمتة البسيطة من أسبوعين إلى أربعة أسابيع، منصات الويب المتوسطة من شهر إلى شهرين، تطبيقات الجوال أو حلول الذكاء الاصطناعي المتقدمة قد تحتاج إلى فترة أطول بحسب حجم المشروع والتكاملات المطلوبة." },
+              { q: "هل تقدمون استشارة أولية مجانية؟", a: "نعم. نوفر جلسة تعريفية أولية لفهم احتياجاتك، مناقشة التحديات التي تواجهها، واقتراح أفضل نقطة للبدء دون أي التزام." },
               { q: "كيف يتم احتساب تكلفة المشروع؟", a: "نعتمد تسعيراً يناسب طبيعة كل مشروع. بعد فهم متطلباتك نقدم عرضاً واضحاً يشمل نطاق العمل، الجدول الزمني، والتكلفة، مع إمكانية التقسيط على مراحل، إضافة إلى خطط دعم وصيانة عند الحاجة." },
             ] : [
               { q: "What services does Raanzlr offer?", a: "We build AI agents & chatbots, workflow automation, web & mobile apps, systems integration, and custom AI solutions for businesses." },
               { q: "Do you fully support Arabic?", a: "Yes — we build every solution with full Arabic support and RTL layout from day one, not as an afterthought." },
               { q: "How long does a typical project take?", a: "Simple chatbot: 2-4 weeks. Website: 4-8 weeks. Custom AI solutions: 6-12 weeks. We provide detailed timelines at project start." },
               { q: "Do you offer a free consultation?", a: "Yes. We offer a free 30-45 minute discovery call to understand your needs and discuss possible solutions — no commitment needed." },
-              { q: "What pricing models do you offer?", a: "We offer project-based pricing, milestone payments, and monthly maintenance contracts. All costs are outlined transparently upfront." },
+              { q: "How do you price your projects?", a: "We price based on project scope, complexity, and timeline. After understanding your requirements you get a transparent quote covering scope, schedule, and cost, with milestone payments and optional support plans." },
             ]).map((item, i) => (
               <HomeFAQItem key={i} q={item.q} a={item.a} />
             ))}

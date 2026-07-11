@@ -11,11 +11,10 @@ declare global {
   }
 }
 
-// Cloudflare's public test sitekey (always passes) is used until a real key
-// is provided via VITE_TURNSTILE_SITE_KEY. The matching test secret is the
-// fallback on the submit-form edge function.
+// Production sitekey for the raanzlr-website Turnstile widget (sitekeys are
+// public by design). Overridable via VITE_TURNSTILE_SITE_KEY.
 export const TURNSTILE_SITE_KEY = (
-  (import.meta.env.VITE_TURNSTILE_SITE_KEY as string) || "1x00000000000000000000AA"
+  (import.meta.env.VITE_TURNSTILE_SITE_KEY as string) || "0x4AAAAAADzw3bhaftpxV87G"
 ).trim();
 
 function loadTurnstileScript(): Promise<void> {

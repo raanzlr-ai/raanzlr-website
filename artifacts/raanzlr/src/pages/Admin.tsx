@@ -59,6 +59,7 @@ interface Contact {
 }
 
 function LoginScreen({ onLogin }: { onLogin: () => void }) {
+  const [email, setEmail] = useState("");
   const [pwd, setPwd] = useState("");
   const [show, setShow] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -107,7 +108,7 @@ function LoginScreen({ onLogin }: { onLogin: () => void }) {
       const res = await fetch(`${SUPABASE_URL}/auth/v1/token?grant_type=password`, {
         method: "POST",
         headers: { "Content-Type": "application/json", "apikey": SUPABASE_ANON_KEY },
-        body: JSON.stringify({ email: ADMIN_EMAIL, password: pwd }),
+        body: JSON.stringify({ email: email.trim() || ADMIN_EMAIL, password: pwd }),
       });
       const data = await res.json().catch(() => ({}));
       if (res.ok && data.access_token) token = data.access_token;
@@ -167,6 +168,15 @@ function LoginScreen({ onLogin }: { onLogin: () => void }) {
             </div>
           ) : (
             <form onSubmit={submit} className="space-y-4">
+              <input
+                type="email"
+                required
+                autoComplete="username"
+                value={email}
+                onChange={e => setEmail(e.target.value)}
+                placeholder="Admin email"
+                className="w-full bg-foreground/5 border border-foreground/10 rounded-xl px-4 py-3 text-sm text-foreground placeholder-white/30 focus:outline-none focus:border-cyan-400/50"
+              />
               <div className="relative">
                 <input
                   type={show ? "text" : "password"}
