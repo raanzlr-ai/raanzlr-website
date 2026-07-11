@@ -2,15 +2,16 @@ import React, { useState, useEffect, useCallback } from "react";
 import { Mail, FileText, Eye, EyeOff, RefreshCw, LogOut, Clock, User, Phone, Plus, Pencil, Trash2, ChevronDown, ChevronUp, X, Star, Globe, CheckCircle, AlertCircle, Users } from "lucide-react";
 import SEO from "../components/SEO";
 
-const ADMIN_PASSWORD = "raanzlr-admin-2025";
+const ADMIN_EMAIL = "mohammed_okla@raanzlr.com";
+const ADMIN_TOKEN_KEY = "raanzlr_admin_token";
 
 const SUPABASE_URL = (import.meta.env.VITE_SUPABASE_URL || "https://dnpaagicskxzukeczifj.supabase.co").trim().replace(/^\uFEFF/, "");
 const SUPABASE_ANON_KEY = (import.meta.env.VITE_SUPABASE_ANON_KEY || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRucGFhZ2ljc2t4enVrZWN6aWZqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE4OTYyNzksImV4cCI6MjA5NzQ3MjI3OX0.fI0GuwGnTQU7k7HOCwTBP2q0xIjR0s9bmDl0b9SfWN0").trim().replace(/^\uFEFF/, "");
 
-// Helper function to get the appropriate API key for admin operations
-// In production, this should use the anon key and rely on RLS policies
-// For now, we'll use anon key (admin operations need proper RLS setup)
-const getAdminKey = () => SUPABASE_ANON_KEY;
+// Admin operations authenticate with the Supabase Auth session token obtained
+// at login; RLS policies grant access only to the admin account. Sessions
+// last 1 hour \u2014 after that requests fail and the admin must sign in again.
+const getAdminKey = () => sessionStorage.getItem(ADMIN_TOKEN_KEY) || SUPABASE_ANON_KEY;
 
 const LOCKOUT_KEY = "raanzlr_admin_lockout";
 const MAX_ATTEMPTS = 5;
@@ -94,13 +95,29 @@ function LoginScreen({ onLogin }: { onLogin: () => void }) {
 
   const isLocked = countdown !== null;
 
-  const submit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (isLocked) return;
+  const [busy, setBusy] = useState(false);
 
-    if (pwd === ADMIN_PASSWORD) {
+  const submit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (isLocked || busy) return;
+
+    setBusy(true);
+    let token: string | null = null;
+    try {
+      const res = await fetch(`${SUPABASE_URL}/auth/v1/token?grant_type=password`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "apikey": SUPABASE_ANON_KEY },
+        body: JSON.stringify({ email: ADMIN_EMAIL, password: pwd }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (res.ok && data.access_token) token = data.access_token;
+    } catch {}
+    setBusy(false);
+
+    if (token) {
       clearLockoutState();
       sessionStorage.setItem("raanzlr_admin", "1");
+      sessionStorage.setItem(ADMIN_TOKEN_KEY, token);
       onLogin();
     } else {
       const s = getLockoutState();
@@ -166,8 +183,8 @@ function LoginScreen({ onLogin }: { onLogin: () => void }) {
               {attemptsLeft <= 2 && attemptsLeft > 0 && !error && (
                 <p className="text-xs text-amber-400/80">{attemptsLeft} attempt{attemptsLeft === 1 ? "" : "s"} remaining before 1-hour lockout.</p>
               )}
-              <button type="submit" className="w-full rounded-xl bg-gradient-to-r from-cyan-400 to-blue-500 py-3 text-sm font-bold text-[#050505] hover:opacity-90 transition-opacity">
-                Sign In
+              <button type="submit" disabled={busy} className="w-full rounded-xl bg-gradient-to-r from-cyan-400 to-blue-500 py-3 text-sm font-bold text-[#050505] hover:opacity-90 transition-opacity disabled:opacity-60">
+                {busy ? "Signing in…" : "Sign In"}
               </button>
             </form>
           )}
@@ -190,7 +207,7 @@ function ContactsTab() {
     const adminKey = getAdminKey();
     fetch(`${SUPABASE_URL}/rest/v1/contacts?order=created_at.desc`, {
       headers: {
-        "apikey": adminKey,
+        "apikey": SUPABASE_ANON_KEY,
         "Authorization": `Bearer ${adminKey}`,
         "Accept": "application/json",
       }
@@ -572,7 +589,7 @@ function SectionEditor({
                     {
                       method: 'POST',
                       headers: {
-                        'apikey': adminKey,
+                        'apikey': SUPABASE_ANON_KEY,
                         'Authorization': `Bearer ${adminKey}`,
                         'Content-Type': file.type,
                         'x-upsert': 'true',
@@ -711,7 +728,7 @@ function PostFormView({
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",
-            "apikey": adminKey,
+            "apikey": SUPABASE_ANON_KEY,
             "Authorization": `Bearer ${adminKey}`,
             "Accept": "application/json",
             "Prefer": "return=representation",
@@ -723,7 +740,7 @@ function PostFormView({
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "apikey": adminKey,
+            "apikey": SUPABASE_ANON_KEY,
             "Authorization": `Bearer ${adminKey}`,
             "Accept": "application/json",
             "Prefer": "return=representation",
@@ -878,7 +895,7 @@ function PostFormView({
                     {
                       method: 'POST',
                       headers: {
-                        'apikey': adminKey,
+                        'apikey': SUPABASE_ANON_KEY,
                         'Authorization': `Bearer ${adminKey}`,
                         'Content-Type': file.type,
                         'x-upsert': 'true',
@@ -1262,7 +1279,7 @@ function PostCard({
                 method: "PATCH",
                 headers: {
                   "Content-Type": "application/json",
-                  "apikey": adminKey,
+                  "apikey": SUPABASE_ANON_KEY,
                   "Authorization": `Bearer ${adminKey}`,
                   "Accept": "application/json",
                   "Prefer": "return=minimal",
@@ -1312,7 +1329,7 @@ function BlogTab({ onPostCountChange }: { onPostCountChange?: (n: number) => voi
     try {
       const r = await fetch(`${SUPABASE_URL}/rest/v1/posts?order=created_at.desc`, {
         headers: {
-          "apikey": adminKey,
+          "apikey": SUPABASE_ANON_KEY,
           "Authorization": `Bearer ${adminKey}`,
           "Accept": "application/json",
         }
@@ -1337,7 +1354,7 @@ function BlogTab({ onPostCountChange }: { onPostCountChange?: (n: number) => voi
       const res = await fetch(`${SUPABASE_URL}/rest/v1/posts?slug=eq.${encodeURIComponent(slug)}`, {
         method: "DELETE",
         headers: {
-          "apikey": adminKey,
+          "apikey": SUPABASE_ANON_KEY,
           "Authorization": `Bearer ${adminKey}`,
           "Accept": "application/json",
         }
@@ -1477,7 +1494,7 @@ function SubscribersTab() {
     const adminKey = getAdminKey();
     fetch(`${SUPABASE_URL}/rest/v1/subscribers?order=created_at.desc`, {
       headers: {
-        "apikey": adminKey,
+        "apikey": SUPABASE_ANON_KEY,
         "Authorization": `Bearer ${adminKey}`,
         "Accept": "application/json",
       }
@@ -1499,7 +1516,7 @@ function SubscribersTab() {
       await fetch(`${SUPABASE_URL}/rest/v1/subscribers?email=eq.${encodeURIComponent(email)}`, {
         method: "DELETE",
         headers: {
-          "apikey": adminKey,
+          "apikey": SUPABASE_ANON_KEY,
           "Authorization": `Bearer ${adminKey}`,
           "Accept": "application/json",
         }
@@ -1568,7 +1585,7 @@ function SubscribersTab() {
 }
 
 export default function Admin() {
-  const [authed, setAuthed] = useState(() => sessionStorage.getItem("raanzlr_admin") === "1");
+  const [authed, setAuthed] = useState(() => sessionStorage.getItem("raanzlr_admin") === "1" && !!sessionStorage.getItem(ADMIN_TOKEN_KEY));
   const [tab, setTab] = useState<"contacts" | "subscribers" | "blog">("contacts");
   const [postCount, setPostCount] = useState<number | null>(null);
 
@@ -1592,7 +1609,7 @@ export default function Admin() {
             <span className="text-xs text-foreground/30 border-l border-foreground/10 pl-4">Admin</span>
           </div>
           <button
-            onClick={() => { sessionStorage.removeItem("raanzlr_admin"); setAuthed(false); }}
+            onClick={() => { sessionStorage.removeItem("raanzlr_admin"); sessionStorage.removeItem(ADMIN_TOKEN_KEY); setAuthed(false); }}
             className="flex items-center gap-1.5 text-xs text-foreground/30 hover:text-foreground transition-colors"
           >
             <LogOut className="h-3.5 w-3.5" /> Sign out
