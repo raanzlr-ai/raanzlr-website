@@ -6,6 +6,20 @@
     <meta name="theme-color" content="#dfe5ec" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)" />
 
+    <!-- Preview deployments (*.vercel.app) must never be indexed; production raanzlr.com is unaffected. -->
+    <script>
+      (function () {
+        try {
+          if (/\.vercel\.app$/i.test(location.hostname)) {
+            var m = document.createElement('meta');
+            m.name = 'robots';
+            m.content = 'noindex, nofollow';
+            document.head.appendChild(m);
+          }
+        } catch (e) {}
+      })();
+    </script>
+
     <!-- No-flash theme bootstrap: applies the resolved theme class to <html>
          before first paint. Default follows the user's device preference. -->
     <script>
@@ -25,9 +39,12 @@
       })();
     </script>
 
+    <!-- SEO:START — per-page meta below is the English/home default; the build-time
+         prerender (scripts/prerender.mjs) rewrites this block per route + locale, and
+         react-helmet-async adopts these data-rh tags on hydration. -->
     <!-- Primary SEO -->
     <title>Raanzlr — AI Automation, Web Apps & Software Engineering</title>
-    <meta data-rh="true" name="description" content="Raanzlr builds practical AI agents, workflow automation, web platforms, and mobile apps for teams in the GCC, MENA, Türkiye, Europe, and the U.S." />
+    <meta data-rh="true" name="description" content="Raanzlr builds practical AI agents, workflow automation, web platforms, and mobile apps for teams across the GCC, MENA, Türkiye, Europe, and the U.S. — bilingual Arabic and English, engineered to ship." />
     <meta data-rh="true" name="keywords" content="AI automation agency, Arabic AI chatbot, workflow automation, custom AI development, web application development, mobile app development, software engineering GCC, AI agency MENA" />
     <meta data-rh="true" name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="author" content="Raanzlr" />
@@ -42,34 +59,36 @@
     <meta data-rh="true" property="og:type" content="website" />
     <meta data-rh="true" property="og:site_name" content="Raanzlr" />
     <meta data-rh="true" property="og:title" content="Raanzlr — AI Automation, Web Apps & Software Engineering" />
-    <meta data-rh="true" property="og:description" content="Practical AI agents, automation systems, web platforms, and mobile apps for ambitious teams across MENA, Türkiye, Europe, and the U.S." />
+    <meta data-rh="true" property="og:description" content="Raanzlr builds practical AI agents, workflow automation, web platforms, and mobile apps for teams across the GCC, MENA, Türkiye, Europe, and the U.S. — bilingual Arabic and English, engineered to ship." />
     <meta data-rh="true" property="og:url" content="https://raanzlr.com/en/" />
-    <!-- TODO: Create /public/opengraph.jpg at 1200x630px for social sharing previews -->
-    <meta data-rh="true" property="og:image" content="https://raanzlr.com/Raanzlr.png" />
-    <meta data-rh="true" property="og:image:width" content="1200" />
-    <meta data-rh="true" property="og:image:height" content="630" />
+    <meta data-rh="true" property="og:image" content="https://raanzlr.com/logo-raanzlr.png" />
+    <meta data-rh="true" property="og:image:width" content="919" />
+    <meta data-rh="true" property="og:image:height" content="527" />
+    <meta data-rh="true" property="og:image:alt" content="Raanzlr — AI Automation, Web Apps & Software Engineering" />
     <meta data-rh="true" property="og:locale" content="en_US" />
-    <meta data-rh="true" property="og:locale:alternate" content="ar_AE" />
+    <meta data-rh="true" property="og:locale:alternate" content="ar_SA" />
 
     <!-- Twitter Card -->
     <meta data-rh="true" name="twitter:card" content="summary_large_image" />
     <meta data-rh="true" name="twitter:site" content="@raanzlr" />
     <meta data-rh="true" name="twitter:creator" content="@raanzlr" />
     <meta data-rh="true" name="twitter:title" content="Raanzlr — AI Automation, Web Apps & Software Engineering" />
-    <meta data-rh="true" name="twitter:description" content="Practical AI agents, automation systems, web platforms, and mobile apps for ambitious teams across MENA, Türkiye, Europe, and the U.S." />
-    <meta data-rh="true" name="twitter:image" content="https://raanzlr.com/Raanzlr.png" />
+    <meta data-rh="true" name="twitter:description" content="Raanzlr builds practical AI agents, workflow automation, web platforms, and mobile apps for teams across the GCC, MENA, Türkiye, Europe, and the U.S. — bilingual Arabic and English, engineered to ship." />
+    <meta data-rh="true" name="twitter:image" content="https://raanzlr.com/logo-raanzlr.png" />
     <meta data-rh="true" name="twitter:image:alt" content="Raanzlr — AI Automation & Software Engineering" />
+    <!-- SEO:END -->
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/logo%20raanzlr.png" sizes="32x32" />
-    <link rel="icon" type="image/png" href="/logo%20raanzlr.png" sizes="16x16" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/logo%20raanzlr.png" />
+    <!-- Favicon — the Raanzlr logo mark -->
+    <link rel="icon" type="image/png" href="/logo-raanzlr.png" />
+    <link rel="shortcut icon" type="image/png" href="/logo-raanzlr.png" />
+    <link rel="apple-touch-icon" href="/logo-raanzlr.png" />
 
-    <!-- Google Fonts — all font families in one request -->
+    <!-- Google Fonts — loaded non-render-blocking (preload + async media swap) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Tajawal:wght@400;500;700&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Tajawal:wght@400;500;700&display=swap" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Tajawal:wght@400;500;700&display=swap" /></noscript>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-16NWLEMG96"></script>
@@ -77,7 +96,8 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-16NWLEMG96');
+      // SPA: suppress the automatic page_view; App.tsx fires page_view on each route change.
+      gtag('config', 'G-16NWLEMG96', { send_page_view: false });
     </script>
 
     <!-- JSON-LD: Organization structured data -->
@@ -88,10 +108,13 @@
       "@id": "https://raanzlr.com/#organization",
       "name": "Raanzlr",
       "url": "https://raanzlr.com",
-      "logo": "https://raanzlr.com/Raanzlr.png",
+      "logo": "https://raanzlr.com/logo-raanzlr.png",
+      "image": "https://raanzlr.com/opengraph.png",
       "description": "Raanzlr builds AI agents, workflow automation, web platforms, mobile apps, and custom software for teams in the GCC, MENA, Türkiye, Europe, and the United States.",
-      "email": "contact@raanzlr.com",
+      "email": "info@raanzlr.com",
       "foundingDate": "2023",
+      "knowsLanguage": ["ar", "en", "tr"],
+      "areaServed": ["SA", "AE", "QA", "KW", "BH", "OM", "SY", "TR", "EU", "US"],
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "9 Branch Brook Dr #10030",
@@ -103,8 +126,8 @@
       "contactPoint": {
         "@type": "ContactPoint",
         "contactType": "customer service",
-        "email": "contact@raanzlr.com",
-        "availableLanguage": ["English", "Arabic"]
+        "email": "info@raanzlr.com",
+        "availableLanguage": ["Arabic", "English", "Turkish"]
       },
       "sameAs": [
         "https://www.linkedin.com/company/raanzlr",
@@ -144,6 +167,96 @@
   </head>
   <body>
     <div id="root"></div>
+    <!-- WebMCP: Expose site tools to AI agents (https://webmachinelearning.github.io/webmcp/) -->
+    <script>
+      (function() {
+        if (typeof navigator === 'undefined' || !navigator.modelContext) return;
+        var ac = new AbortController();
+        var signal = ac.signal;
+
+        navigator.modelContext.registerTool({
+          name: 'navigate',
+          description: 'Navigate to a page on the Raanzlr website — الانتقال إلى صفحة في موقع راانزلر',
+          inputSchema: {
+            type: 'object',
+            properties: {
+              page: {
+                type: 'string',
+                enum: ['home', 'services', 'about', 'contact', 'industries', 'markets', 'case-studies', 'insights', 'faq'],
+                description: 'Which page to navigate to'
+              },
+              lang: {
+                type: 'string',
+                enum: ['en', 'ar'],
+                description: 'Language preference (default: en)'
+              }
+            },
+            required: ['page']
+          },
+          execute: function(args) {
+            var lang = args.lang || 'en';
+            var page = args.page === 'home' ? '' : '/' + args.page;
+            window.location.href = '/' + lang + page;
+            return { success: true, url: '/' + lang + page };
+          },
+          signal: signal
+        });
+
+        navigator.modelContext.registerTool({
+          name: 'get_site_info',
+          description: 'Get information about Raanzlr — the AI automation and software engineering company — معلومات عن راانزلر، شركة أتمتة الذكاء الاصطناعي وهندسة البرمجيات',
+          inputSchema: {
+            type: 'object',
+            properties: {}
+          },
+          execute: function() {
+            return {
+              name: 'Raanzlr',
+              description: 'AI automation agency building AI agents, workflow automation, web platforms, and mobile apps for teams in the GCC, MENA, Türkiye, Europe, and the U.S.',
+              website: 'https://raanzlr.com',
+              email: 'contact@raanzlr.com',
+              services: ['AI Chatbots', 'Workflow Automation', 'Web Development', 'Mobile Apps', 'Custom AI', 'CRM Integration', 'UI/UX Design', 'Consulting'],
+              markets: ['Saudi Arabia', 'UAE', 'Qatar', 'Kuwait', 'Bahrain', 'Oman', 'Syria', 'Turkey', 'Europe'],
+              languages: ['English', 'Arabic']
+            };
+          },
+          signal: signal
+        });
+
+        navigator.modelContext.registerTool({
+          name: 'get_services',
+          description: 'Get the list of services offered by Raanzlr — قائمة الخدمات التي تقدمها راانزلر',
+          inputSchema: {
+            type: 'object',
+            properties: {
+              lang: {
+                type: 'string',
+                enum: ['en', 'ar'],
+                description: 'Language for service URLs'
+              }
+            }
+          },
+          execute: function(args) {
+            var lang = args.lang || 'en';
+            var base = 'https://raanzlr.com/' + lang + '/services';
+            return {
+              services_url: base,
+              services: [
+                { name: 'AI Chatbots', url: base + '/ai-chatbots' },
+                { name: 'Workflow Automation', url: base + '/workflow-automation' },
+                { name: 'Web Development', url: base + '/web-development' },
+                { name: 'Mobile Apps', url: base + '/mobile-apps' },
+                { name: 'Custom AI Solutions', url: base + '/custom-ai' },
+                { name: 'CRM Integration', url: base + '/crm-integration' },
+                { name: 'UI/UX Design', url: base + '/ui-ux' },
+                { name: 'Consulting', url: base + '/consulting' }
+              ]
+            };
+          },
+          signal: signal
+        });
+      })();
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

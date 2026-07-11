@@ -22,7 +22,7 @@ export default function CaseStudyDetail() {
     <div className="relative">
       <SEO
         title={`${study.title.en} — Raanzlr`}
-        titleAr={`${study.title.ar} — Raanzlr`}
+        titleAr={`${study.title.ar} | Raanzlr`}
         description={study.desc.en}
         descriptionAr={study.desc.ar}
         keywords={`${study.industry?.en || ''} case study, AI automation case study GCC, ${study.tag?.en || ''}`}
@@ -43,9 +43,9 @@ export default function CaseStudyDetail() {
           <img
             src={study.image}
             alt={isAr ? study.title.ar : study.title.en}
-            className="w-full h-full object-cover opacity-20"
+            className="w-full h-full object-cover opacity-35 dark:opacity-20"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/85 to-[#050505]/50" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background/75 via-background/60 to-background/30 dark:from-background dark:via-background/85 dark:to-background/50" />
         </div>
         <div className="absolute inset-0 bg-grid opacity-40" />
         <div className="noise absolute inset-0" />
@@ -170,7 +170,7 @@ export default function CaseStudyDetail() {
                 <div className="rounded-2xl border border-cyan-400/20 bg-cyan-400/[0.04] p-6">
                   <p className="text-sm text-foreground/70 mb-4">
                     {isAr
-                      ? "هل مشروعك يواجه تحديات مماثلة؟"
+                      ? "هل يواجه مشروعك تحديات مشابهة؟"
                       : "Facing similar challenges in your business?"}
                   </p>
                   <MagneticButton to="/contact">
@@ -213,9 +213,9 @@ export default function CaseStudyDetail() {
                       <img
                         src={c.image}
                         alt={isAr ? c.title.ar : c.title.en}
-                        className="w-full h-full object-cover opacity-40 group-hover:opacity-55 group-hover:scale-105 transition-all duration-700"
+                        className="w-full h-full object-cover opacity-55 group-hover:opacity-70 dark:opacity-40 dark:group-hover:opacity-55 group-hover:scale-105 transition-all duration-700"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#050505]" />
+                      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background" />
                       <div className="absolute top-4 left-4 rtl:left-auto rtl:right-4 flex gap-2">
                         <span className="text-[10px] font-mono-accent uppercase tracking-[0.18em] px-2.5 py-1 rounded-full border border-cyan-400/40 text-cyan-300 bg-cyan-400/10">
                           {isAr ? c.tag.ar : c.tag.en}

@@ -4,8 +4,40 @@ import SEO from "../components/SEO";
 
 const ADMIN_PASSWORD = "raanzlr-admin-2025";
 
-const SUPABASE_URL = "https://dnpaagicskxzukeczifj.supabase.co";
-const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRucGFhZ2ljc2t4enVrZWN6aWZqIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4MTg5NjI3OSwiZXhwIjoyMDk3NDcyMjc5fQ.idUWbOdKw_rRMSAuuK9mUcjmfvWrQmz6rZ3LyxKMXAc";
+const SUPABASE_URL = (import.meta.env.VITE_SUPABASE_URL || "https://dnpaagicskxzukeczifj.supabase.co").trim().replace(/^\uFEFF/, "");
+const SUPABASE_ANON_KEY = (import.meta.env.VITE_SUPABASE_ANON_KEY || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRucGFhZ2ljc2t4enVrZWN6aWZqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE4OTYyNzksImV4cCI6MjA5NzQ3MjI3OX0.fI0GuwGnTQU7k7HOCwTBP2q0xIjR0s9bmDl0b9SfWN0").trim().replace(/^\uFEFF/, "");
+
+// Helper function to get the appropriate API key for admin operations
+// In production, this should use the anon key and rely on RLS policies
+// For now, we'll use anon key (admin operations need proper RLS setup)
+const getAdminKey = () => SUPABASE_ANON_KEY;
+
+const LOCKOUT_KEY = "raanzlr_admin_lockout";
+const MAX_ATTEMPTS = 5;
+const LOCKOUT_MS = 60 * 60 * 1000; // 1 hour
+
+function getLockoutState(): { attempts: number; lockedUntil: number } {
+  try {
+    const raw = localStorage.getItem(LOCKOUT_KEY);
+    if (raw) return JSON.parse(raw);
+  } catch {}
+  return { attempts: 0, lockedUntil: 0 };
+}
+
+function saveLockoutState(state: { attempts: number; lockedUntil: number }) {
+  localStorage.setItem(LOCKOUT_KEY, JSON.stringify(state));
+}
+
+function clearLockoutState() {
+  localStorage.removeItem(LOCKOUT_KEY);
+}
+
+function formatCountdown(ms: number): string {
+  const totalSec = Math.ceil(ms / 1000);
+  const mins = Math.floor(totalSec / 60);
+  const secs = totalSec % 60;
+  return `${mins}:${secs.toString().padStart(2, "0")}`;
+}
 
 interface Contact {
   id: number;
@@ -28,16 +60,77 @@ interface Contact {
 function LoginScreen({ onLogin }: { onLogin: () => void }) {
   const [pwd, setPwd] = useState("");
   const [show, setShow] = useState(false);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [attemptsLeft, setAttemptsLeft] = useState(() => {
+    const s = getLockoutState();
+    if (Date.now() < s.lockedUntil) return 0;
+    return MAX_ATTEMPTS - s.attempts;
+  });
+  const [countdown, setCountdown] = useState<string | null>(() => {
+    const s = getLockoutState();
+    const remaining = s.lockedUntil - Date.now();
+    if (remaining > 0) return formatCountdown(remaining);
+    return null;
+  });
+
+  // Countdown ticker
+  useEffect(() => {
+    const s = getLockoutState();
+    if (Date.now() >= s.lockedUntil) return;
+    const interval = setInterval(() => {
+      const remaining = getLockoutState().lockedUntil - Date.now();
+      if (remaining <= 0) {
+        clearInterval(interval);
+        setCountdown(null);
+        setAttemptsLeft(MAX_ATTEMPTS);
+        saveLockoutState({ attempts: 0, lockedUntil: 0 });
+        setError(null);
+      } else {
+        setCountdown(formatCountdown(remaining));
+      }
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const isLocked = countdown !== null;
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (isLocked) return;
+
     if (pwd === ADMIN_PASSWORD) {
+      clearLockoutState();
       sessionStorage.setItem("raanzlr_admin", "1");
       onLogin();
     } else {
-      setError(true);
-      setTimeout(() => setError(false), 2000);
+      const s = getLockoutState();
+      const newAttempts = s.attempts + 1;
+      if (newAttempts >= MAX_ATTEMPTS) {
+        const lockedUntil = Date.now() + LOCKOUT_MS;
+        saveLockoutState({ attempts: newAttempts, lockedUntil });
+        setAttemptsLeft(0);
+        setCountdown(formatCountdown(LOCKOUT_MS));
+        setError(null);
+        // Start countdown ticker
+        const interval = setInterval(() => {
+          const remaining = getLockoutState().lockedUntil - Date.now();
+          if (remaining <= 0) {
+            clearInterval(interval);
+            setCountdown(null);
+            setAttemptsLeft(MAX_ATTEMPTS);
+            saveLockoutState({ attempts: 0, lockedUntil: 0 });
+          } else {
+            setCountdown(formatCountdown(remaining));
+          }
+        }, 1000);
+      } else {
+        saveLockoutState({ attempts: newAttempts, lockedUntil: 0 });
+        const left = MAX_ATTEMPTS - newAttempts;
+        setAttemptsLeft(left);
+        setError(`Incorrect password. ${left} attempt${left === 1 ? "" : "s"} remaining.`);
+        setTimeout(() => setError(prev => prev?.includes("attempt") ? null : prev), 3000);
+      }
+      setPwd("");
     }
   };
 
@@ -48,24 +141,36 @@ function LoginScreen({ onLogin }: { onLogin: () => void }) {
         <div className="rounded-2xl border border-foreground/10 bg-foreground/[0.03] p-8">
           <h1 className="text-xl font-bold text-foreground mb-1">Admin Access</h1>
           <p className="text-sm text-foreground/40 mb-6">Raanzlr back office</p>
-          <form onSubmit={submit} className="space-y-4">
-            <div className="relative">
-              <input
-                type={show ? "text" : "password"}
-                value={pwd}
-                onChange={e => setPwd(e.target.value)}
-                placeholder="Admin password"
-                className="w-full bg-foreground/5 border border-foreground/10 rounded-xl px-4 py-3 text-sm text-foreground placeholder-white/30 focus:outline-none focus:border-cyan-400/50 pr-11"
-              />
-              <button type="button" onClick={() => setShow(!show)} className="absolute right-3 top-3 text-foreground/30 hover:text-foreground/60">
-                {show ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
-              </button>
+
+          {isLocked ? (
+            <div className="rounded-xl border border-red-500/30 bg-red-500/10 px-5 py-6 text-center">
+              <div className="text-3xl font-bold text-red-400 font-mono mb-2">{countdown}</div>
+              <p className="text-sm text-red-300/80">Too many failed attempts.</p>
+              <p className="text-xs text-foreground/40 mt-1">Try again after the timer expires.</p>
             </div>
-            {error && <p className="text-xs text-red-400">Incorrect password. Please try again.</p>}
-            <button type="submit" className="w-full rounded-xl bg-gradient-to-r from-cyan-400 to-blue-500 py-3 text-sm font-bold text-[#050505] hover:opacity-90 transition-opacity">
-              Sign In
-            </button>
-          </form>
+          ) : (
+            <form onSubmit={submit} className="space-y-4">
+              <div className="relative">
+                <input
+                  type={show ? "text" : "password"}
+                  value={pwd}
+                  onChange={e => setPwd(e.target.value)}
+                  placeholder="Admin password"
+                  className="w-full bg-foreground/5 border border-foreground/10 rounded-xl px-4 py-3 text-sm text-foreground placeholder-white/30 focus:outline-none focus:border-cyan-400/50 pr-11"
+                />
+                <button type="button" onClick={() => setShow(!show)} className="absolute right-3 top-3 text-foreground/30 hover:text-foreground/60">
+                  {show ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                </button>
+              </div>
+              {error && <p className="text-xs text-red-400">{error}</p>}
+              {attemptsLeft <= 2 && attemptsLeft > 0 && !error && (
+                <p className="text-xs text-amber-400/80">{attemptsLeft} attempt{attemptsLeft === 1 ? "" : "s"} remaining before 1-hour lockout.</p>
+              )}
+              <button type="submit" className="w-full rounded-xl bg-gradient-to-r from-cyan-400 to-blue-500 py-3 text-sm font-bold text-[#050505] hover:opacity-90 transition-opacity">
+                Sign In
+              </button>
+            </form>
+          )}
         </div>
       </div>
     </div>
@@ -77,18 +182,26 @@ function ContactsTab() {
   const [loading, setLoading] = useState(true);
   const [selected, setSelected] = useState<Contact | null>(null);
   const [filterType, setFilterType] = useState<"all" | "general" | "service">("all");
+  const [error, setError] = useState<string | null>(null);
 
   const load = () => {
     setLoading(true);
+    setError(null);
+    const adminKey = getAdminKey();
     fetch(`${SUPABASE_URL}/rest/v1/contacts?order=created_at.desc`, {
       headers: {
-        "apikey": SUPABASE_KEY,
-        "Authorization": `Bearer ${SUPABASE_KEY}`,
+        "apikey": adminKey,
+        "Authorization": `Bearer ${adminKey}`,
+        "Accept": "application/json",
       }
     })
-      .then(r => r.json())
-      .then(d => { setContacts(Array.isArray(d) ? d : []); setLoading(false); })
-      .catch(() => setLoading(false));
+      .then(async r => {
+        const d = await r.json();
+        if (!r.ok) throw new Error(d?.message || d?.hint || `HTTP ${r.status}`);
+        setContacts(Array.isArray(d) ? d : []);
+        setLoading(false);
+      })
+      .catch(err => { setError(err.message ?? "Failed to load contacts."); setLoading(false); });
   };
 
   useEffect(() => { load(); }, []);
@@ -97,6 +210,12 @@ function ContactsTab() {
 
   return (
     <div>
+      {error && (
+        <div className="mb-4 rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-300">
+          {error}
+        </div>
+      )}
+
       <div className="flex items-center justify-between mb-6">
         <div>
           <h2 className="text-lg font-bold text-foreground">Contact Submissions</h2>
@@ -345,6 +464,10 @@ function SectionEditor({
   onDelete: () => void;
 }) {
   const num = String(index + 1).padStart(2, "0");
+  const [sectionImageMode, setSectionImageMode] = useState<"upload" | "url">("url");
+  const [sectionImageUploading, setSectionImageUploading] = useState(false);
+  const [sectionMsg, setSectionMsg] = useState<{ type: "ok" | "err"; text: string } | null>(null);
+
   return (
     <div className="rounded-xl border border-foreground/8 bg-foreground/[0.02] p-5 relative">
       <div className="flex items-center justify-between mb-4">
@@ -409,14 +532,93 @@ function SectionEditor({
       </div>
 
       <div>
-        <FieldLabel>Section Image URL (optional)</FieldLabel>
-        <input
-          type="url"
-          value={section.image ?? ""}
-          onChange={e => onChange({ ...section, image: e.target.value })}
-          placeholder="https://..."
-          className={inputCls}
-        />
+        <FieldLabel>Section Image (optional)</FieldLabel>
+        <p className="text-[10px] text-foreground/30 mb-3">Upload a file or paste an image URL</p>
+        
+        {/* Upload/URL toggle */}
+        <div className="flex gap-2 mb-3">
+          <button
+            type="button"
+            onClick={() => setSectionImageMode("upload")}
+            className={`flex-1 py-1.5 rounded-lg text-xs font-medium transition-colors ${sectionImageMode === "upload" ? "bg-cyan-400/15 text-cyan-300 border border-cyan-400/30" : "text-foreground/40 border border-foreground/10 hover:text-foreground"}`}
+          >
+            📁 Upload
+          </button>
+          <button
+            type="button"
+            onClick={() => setSectionImageMode("url")}
+            className={`flex-1 py-1.5 rounded-lg text-xs font-medium transition-colors ${sectionImageMode === "url" ? "bg-cyan-400/15 text-cyan-300 border border-cyan-400/30" : "text-foreground/40 border border-foreground/10 hover:text-foreground"}`}
+          >
+            🔗 URL
+          </button>
+        </div>
+
+        {sectionImageMode === "upload" ? (
+          <div>
+            <input
+              type="file"
+              accept="image/jpeg,image/png,image/webp,image/gif"
+              onChange={async (e) => {
+                const file = e.target.files?.[0];
+                if (!file) return;
+                setSectionImageUploading(true);
+                setSectionMsg(null);
+                const adminKey = getAdminKey();
+                try {
+                  const ext = file.name.split('.').pop() || 'png';
+                  const fileName = `section-${Date.now()}.${ext}`;
+                  const uploadRes = await fetch(
+                    `${SUPABASE_URL}/storage/v1/object/blog-images/sections/${fileName}`,
+                    {
+                      method: 'POST',
+                      headers: {
+                        'apikey': adminKey,
+                        'Authorization': `Bearer ${adminKey}`,
+                        'Content-Type': file.type,
+                        'x-upsert': 'true',
+                      },
+                      body: file,
+                    }
+                  );
+                  if (uploadRes.ok) {
+                    const publicUrl = `${SUPABASE_URL}/storage/v1/object/public/blog-images/sections/${fileName}`;
+                    onChange({ ...section, image: publicUrl });
+                    setSectionMsg({ type: "ok", text: "Section image uploaded!" });
+                    setTimeout(() => setSectionMsg(null), 3000);
+                  } else {
+                    const errText = await uploadRes.text();
+                    setSectionMsg({ type: "err", text: `Upload failed: ${errText.substring(0, 80)}` });
+                  }
+                } catch (err) {
+                  setSectionMsg({ type: "err", text: "Upload error. Try again." });
+                } finally {
+                  setSectionImageUploading(false);
+                }
+              }}
+              className="w-full rounded-xl border border-foreground/10 bg-foreground/[0.04] px-3 py-2 text-xs text-foreground/60 file:mr-3 file:py-1 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-cyan-400/15 file:text-cyan-300 hover:file:bg-cyan-400/25 cursor-pointer"
+            />
+            {sectionImageUploading && (
+              <p className="text-xs text-cyan-300 mt-2 flex items-center gap-2">
+                <span className="inline-block h-3 w-3 rounded-full border border-cyan-400/30 border-t-cyan-400 animate-spin" />
+                Uploading...
+              </p>
+            )}
+            {sectionMsg && (
+              <p className={`text-xs mt-2 ${sectionMsg.type === "ok" ? "text-emerald-300" : "text-red-300"}`}>
+                {sectionMsg.text}
+              </p>
+            )}
+          </div>
+        ) : (
+          <input
+            type="url"
+            value={section.image ?? ""}
+            onChange={e => onChange({ ...section, image: e.target.value })}
+            placeholder="https://..."
+            className={inputCls}
+          />
+        )}
+        
         {section.image && section.image.startsWith("http") && (
           <img
             src={section.image}
@@ -503,13 +705,15 @@ function PostFormView({
 
     try {
       let res: Response;
+      const adminKey = getAdminKey();
       if (editingSlug) {
         res = await fetch(`${SUPABASE_URL}/rest/v1/posts?slug=eq.${encodeURIComponent(editingSlug)}`, {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",
-            "apikey": SUPABASE_KEY,
-            "Authorization": `Bearer ${SUPABASE_KEY}`,
+            "apikey": adminKey,
+            "Authorization": `Bearer ${adminKey}`,
+            "Accept": "application/json",
             "Prefer": "return=representation",
           },
           body: JSON.stringify(payload),
@@ -519,8 +723,9 @@ function PostFormView({
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "apikey": SUPABASE_KEY,
-            "Authorization": `Bearer ${SUPABASE_KEY}`,
+            "apikey": adminKey,
+            "Authorization": `Bearer ${adminKey}`,
+            "Accept": "application/json",
             "Prefer": "return=representation",
           },
           body: JSON.stringify(payload),
@@ -664,6 +869,7 @@ function PostFormView({
                 const file = e.target.files?.[0];
                 if (!file) return;
                 setImageUploading(true);
+                const adminKey = getAdminKey();
                 try {
                   const ext = file.name.split('.').pop() || 'png';
                   const fileName = `admin-${Date.now()}.${ext}`;
@@ -672,8 +878,8 @@ function PostFormView({
                     {
                       method: 'POST',
                       headers: {
-                        'apikey': SUPABASE_KEY,
-                        'Authorization': `Bearer ${SUPABASE_KEY}`,
+                        'apikey': adminKey,
+                        'Authorization': `Bearer ${adminKey}`,
                         'Content-Type': file.type,
                         'x-upsert': 'true',
                       },
@@ -924,12 +1130,15 @@ function PostCard({
   post,
   onEdit,
   onDelete,
+  onRefresh,
 }: {
   post: PostRecord;
   onEdit: () => void;
   onDelete: () => void;
+  onRefresh: () => void;
 }) {
   const [confirmDelete, setConfirmDelete] = useState(false);
+  const [sending, setSending] = useState(false);
   const titleEn = post.title_en ?? resolveField(post.title as any, "en");
   const titleAr = post.title_ar ?? resolveField(post.title as any, "ar");
   const tagEn = post.tag_en ?? resolveField(post.tag as any, "en");
@@ -997,23 +1206,71 @@ function PostCard({
         >
           <Pencil className="h-3 w-3" /> Edit
         </button>
+        {isPublished && (
+          <button
+            type="button"
+            disabled={sending}
+            onClick={async () => {
+              if (!post.slug) { alert("This post has no slug, so it can't be emailed."); return; }
+              if (!window.confirm(`Email "${titleEn || "this post"}" to all active newsletter subscribers?`)) return;
+              let token = localStorage.getItem("raanzlr_newsletter_token") || "";
+              if (!token) {
+                token = window.prompt("Enter the newsletter admin token (the NEWSLETTER_ADMIN_TOKEN secret set in Supabase):") || "";
+                if (!token) return;
+                localStorage.setItem("raanzlr_newsletter_token", token);
+              }
+              setSending(true);
+              try {
+                const res = await fetch(`${SUPABASE_URL}/functions/v1/send-newsletter`, {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                    "apikey": SUPABASE_ANON_KEY,
+                    "Authorization": `Bearer ${SUPABASE_ANON_KEY}`,
+                    "x-admin-token": token,
+                  },
+                  body: JSON.stringify({ slug: post.slug }),
+                });
+                const data = await res.json().catch(() => ({} as any));
+                if (res.ok) {
+                  alert(`Newsletter sent.\nRecipients: ${data.total ?? 0}\nDelivered: ${data.sent ?? 0}\nFailed: ${data.failed ?? 0}${data.message ? "\n" + data.message : ""}`);
+                } else if (res.status === 401) {
+                  localStorage.removeItem("raanzlr_newsletter_token");
+                  alert("Unauthorized — wrong newsletter token. It has been cleared; click Send again to re-enter it.");
+                } else {
+                  alert(`Could not send: ${data.error || res.status}`);
+                }
+              } catch {
+                alert("Network error while sending the newsletter.");
+              } finally {
+                setSending(false);
+              }
+            }}
+            className="flex items-center gap-1.5 text-xs text-cyan-300 hover:text-cyan-200 border border-cyan-400/20 hover:border-cyan-400/40 rounded-lg px-3 py-1.5 transition-all disabled:opacity-50"
+            title="Email this post to newsletter subscribers"
+          >
+            <Mail className="h-3 w-3" /> {sending ? "Sending…" : "Send"}
+          </button>
+        )}
         <button
           onClick={async (e) => {
             e.stopPropagation();
             const newPublished = !isPublished;
+            const adminKey = getAdminKey();
             try {
               const res = await fetch(`${SUPABASE_URL}/rest/v1/posts?slug=eq.${encodeURIComponent(post.slug)}`, {
                 method: "PATCH",
                 headers: {
                   "Content-Type": "application/json",
-                  "apikey": SUPABASE_KEY,
-                  "Authorization": `Bearer ${SUPABASE_KEY}`,
+                  "apikey": adminKey,
+                  "Authorization": `Bearer ${adminKey}`,
+                  "Accept": "application/json",
                   "Prefer": "return=minimal",
                 },
                 body: JSON.stringify({ published: newPublished }),
               });
               if (res.ok) {
-                onDelete(); // reuse reload trigger — this refreshes the list
+                onRefresh(); // refresh the list so the new status shows (does NOT delete)
               }
             } catch {}
           }}
@@ -1050,19 +1307,23 @@ function BlogTab({ onPostCountChange }: { onPostCountChange?: (n: number) => voi
 
   const loadPosts = useCallback(async () => {
     setLoading(true);
+    setMsg(null);
+    const adminKey = getAdminKey();
     try {
       const r = await fetch(`${SUPABASE_URL}/rest/v1/posts?order=created_at.desc`, {
         headers: {
-          "apikey": SUPABASE_KEY,
-          "Authorization": `Bearer ${SUPABASE_KEY}`,
+          "apikey": adminKey,
+          "Authorization": `Bearer ${adminKey}`,
+          "Accept": "application/json",
         }
       });
       const data = await r.json();
+      if (!r.ok) throw new Error(data?.message || data?.hint || `HTTP ${r.status}`);
       const postList = Array.isArray(data) ? data : [];
       setPosts(postList);
       onPostCountChange?.(postList.length);
-    } catch {
-      setLoading(false);
+    } catch (err: any) {
+      setMsg({ type: "err", text: err.message ?? "Failed to load posts." });
     } finally {
       setLoading(false);
     }
@@ -1071,12 +1332,14 @@ function BlogTab({ onPostCountChange }: { onPostCountChange?: (n: number) => voi
   useEffect(() => { loadPosts(); }, [loadPosts]);
 
   const handleDelete = async (slug: string) => {
+    const adminKey = getAdminKey();
     try {
       const res = await fetch(`${SUPABASE_URL}/rest/v1/posts?slug=eq.${encodeURIComponent(slug)}`, {
         method: "DELETE",
         headers: {
-          "apikey": SUPABASE_KEY,
-          "Authorization": `Bearer ${SUPABASE_KEY}`,
+          "apikey": adminKey,
+          "Authorization": `Bearer ${adminKey}`,
+          "Accept": "application/json",
         }
       });
       if (!res.ok) throw new Error(`Server error ${res.status}`);
@@ -1183,6 +1446,7 @@ function BlogTab({ onPostCountChange }: { onPostCountChange?: (n: number) => voi
               post={p}
               onEdit={() => handleEdit(p)}
               onDelete={() => handleDelete(p.slug)}
+              onRefresh={loadPosts}
             />
           ))}
         </div>
@@ -1205,29 +1469,39 @@ interface Subscriber {
 function SubscribersTab() {
   const [subscribers, setSubscribers] = useState<Subscriber[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   const load = useCallback(() => {
     setLoading(true);
+    setError(null);
+    const adminKey = getAdminKey();
     fetch(`${SUPABASE_URL}/rest/v1/subscribers?order=created_at.desc`, {
       headers: {
-        "apikey": SUPABASE_KEY,
-        "Authorization": `Bearer ${SUPABASE_KEY}`,
+        "apikey": adminKey,
+        "Authorization": `Bearer ${adminKey}`,
+        "Accept": "application/json",
       }
     })
-      .then(r => r.json())
-      .then(d => { setSubscribers(Array.isArray(d) ? d : []); setLoading(false); })
-      .catch(() => setLoading(false));
+      .then(async r => {
+        const d = await r.json();
+        if (!r.ok) throw new Error(d?.message || d?.hint || `HTTP ${r.status}`);
+        setSubscribers(Array.isArray(d) ? d : []);
+        setLoading(false);
+      })
+      .catch(err => { setError(err.message ?? "Failed to load subscribers."); setLoading(false); });
   }, []);
 
   useEffect(() => { load(); }, [load]);
 
   const handleRemove = async (email: string) => {
+    const adminKey = getAdminKey();
     try {
       await fetch(`${SUPABASE_URL}/rest/v1/subscribers?email=eq.${encodeURIComponent(email)}`, {
         method: "DELETE",
         headers: {
-          "apikey": SUPABASE_KEY,
-          "Authorization": `Bearer ${SUPABASE_KEY}`,
+          "apikey": adminKey,
+          "Authorization": `Bearer ${adminKey}`,
+          "Accept": "application/json",
         }
       });
       setSubscribers(prev => prev.filter(s => s.email !== email));
@@ -1240,18 +1514,14 @@ function SubscribersTab() {
 
   return (
     <div>
-      <div className="flex items-center justify-between mb-6">
-        <div>
-          <h2 className="text-lg font-bold text-foreground">Subscribers</h2>
-          <p className="text-xs text-foreground/40 mt-0.5">{subscribers.length} total subscribers</p>
+      {error && (
+        <div className="mb-4 rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-300">
+          {error}
         </div>
-        <button onClick={load} className="flex items-center gap-2 text-xs text-foreground/50 hover:text-foreground border border-foreground/10 rounded-lg px-3 py-2 transition-colors">
-          <RefreshCw className="h-3.5 w-3.5" /> Refresh
-        </button>
-      </div>
+      )}
 
       {loading ? (
-        <div className="text-center py-16 text-foreground/30 text-sm">Loading…</div>
+        <div className="text-center py-16 text-foreground/30 text-sm">Loading...</div>
       ) : subscribers.length === 0 ? (
         <div className="text-center py-16 text-foreground/30 text-sm">No subscribers yet.</div>
       ) : (

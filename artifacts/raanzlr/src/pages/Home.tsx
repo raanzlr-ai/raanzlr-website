@@ -4,6 +4,7 @@ import { Bot, Workflow, Globe2, Smartphone, Sparkles, PlugZap, PenTool, ShieldCh
 import { Link } from "react-router-dom";
 import { useLang } from "../contexts/LanguageContext";
 import ParticlesHero from "../components/ParticlesHero";
+import HeroHeadline from "../components/HeroHeadline";
 import MagneticButton from "../components/MagneticButton";
 import { Reveal, Stagger, StaggerItem } from "../components/Reveal";
 import PulseDivider from "../components/PulseDivider";
@@ -65,7 +66,7 @@ const HeroLogoStage = () => {
       <div className="absolute inset-0 flex items-center justify-center">
         <motion.img
           src="/Raanzlr.png"
-          alt="Raanzlr"
+          alt="Raanzlr — AI automation, web apps and software engineering"
           className="h-[50%] w-[50%] object-contain floaty drop-shadow-[0_0_60px_rgba(0,240,255,0.55)]"
           initial={{ opacity: 0, scale: 0.85 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -108,19 +109,25 @@ export default function Home() {
   const { t, isAr } = useLang();
 
   return (
-    <div data-testid="home-page" className="relative">
+    <div data-testid="home-page" className="relative isolation-isolate">
       <SEO pageKey="home" path="/" />
 
       {/* HERO */}
-      <section className="relative min-h-[100vh] flex items-center overflow-hidden">
-        <div className="absolute inset-0 bg-grid" />
-        <div className="absolute inset-0 bg-radial-fade" />
-        <div className="absolute inset-0"><ParticlesHero /></div>
-        <div className="absolute -top-40 -right-40 h-[520px] w-[520px] rounded-full bg-cyan-500/10 blur-[120px]" />
-        <div className="absolute -bottom-40 -left-40 h-[520px] w-[520px] rounded-full bg-blue-600/10 blur-[120px]" />
-        <div className="noise absolute inset-0" />
+      <section className="relative min-h-[100vh] flex items-center overflow-hidden bg-background">
+        {/* Background layers - lowest */}
+        <div className="absolute inset-0 bg-grid z-0" />
+        <div className="absolute inset-0 bg-radial-fade z-0" />
+        <div className="absolute -top-40 -right-40 h-[520px] w-[520px] rounded-full bg-cyan-500/10 blur-[120px] z-0" />
+        <div className="absolute -bottom-40 -left-40 h-[520px] w-[520px] rounded-full bg-blue-600/10 blur-[120px] z-0" />
+        
+        {/* Particles - above background */}
+        <div className="absolute inset-0 z-[5]">
+          <ParticlesHero id="hero-particles" count={60} themeColors={["#00F0FF", "#2563EB", "#ffffff"]} />
+        </div>
+        
+        <div className="noise absolute inset-0 z-[8]" />
 
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-8 w-full py-32 md:py-36">
+        <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 w-full py-32 md:py-36">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-6 items-center">
             <div className="lg:col-span-6">
               <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}
@@ -128,13 +135,7 @@ export default function Home() {
                 <span className="inline-block h-1.5 w-1.5 rounded-full bg-cyan-400 animate-pulse" />
                 {t.home.eyebrow}
               </motion.div>
-              <motion.h1 initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }}
-                className="mt-6 font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.04] tracking-tighter">
-                <span className="text-chrome">{t.home.heroTitle}</span>{" "}
-                <span className="text-electric glow-text">{t.home.heroTitleAccent}</span>
-                {!isAr && <br />}
-                <span className="text-chrome">{isAr ? " " : ""}{t.home.heroTitleEnd}</span>
-              </motion.h1>
+              <HeroHeadline isAr={isAr} />
               <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.25 }}
                 className="mt-7 max-w-xl text-base md:text-lg leading-relaxed text-foreground/65">
                 {t.home.heroSub}
@@ -142,13 +143,13 @@ export default function Home() {
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }}
                 className="mt-10 flex flex-wrap items-center gap-3 sm:gap-4">
                 <MagneticButton to="/contact" testId="hero-cta-getstarted">
-                  {t.cta.getStarted} <ArrowRight className="h-4 w-4 rtl:rotate-180" />
+                  {isAr ? "احصل على استشارة مجانية" : t.cta.getStarted} <ArrowRight className="h-4 w-4 rtl:rotate-180" />
                 </MagneticButton>
                 <MagneticButton to="/services" variant="ghost" testId="hero-cta-services">
                   {t.cta.learnMore}
                 </MagneticButton>
               </motion.div>
-              <div className="mt-14 hidden sm:flex flex-wrap items-center gap-3 text-foreground/40 font-mono-accent text-[10px] uppercase tracking-[0.28em]">
+              <div className="mt-14 hidden sm:flex flex-wrap items-center gap-3 text-foreground/50 font-mono-accent text-xs uppercase tracking-[0.28em]">
                 {t.home.heroChips.map((c, i) => (
                   <React.Fragment key={i}>
                     <span>{c}</span>
@@ -172,8 +173,13 @@ export default function Home() {
       <PulseDivider />
 
       {/* WHY */}
-      <section className="relative py-20 sm:py-28">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      <section className="relative py-16 sm:py-20 overflow-hidden">
+        {/* Particles Background */}
+        <div className="absolute inset-0 z-0">
+          <ParticlesHero id="why-particles" count={40} themeColors={["#00F0FF", "#2563EB", "#ffffff"]} />
+        </div>
+        
+        <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
           <Reveal>
             <div className="max-w-3xl">
               <div className="text-xs font-mono-accent uppercase tracking-[0.22em] text-cyan-300/90">{t.home.whyLabel}</div>
@@ -205,9 +211,15 @@ export default function Home() {
       </section>
 
       {/* SERVICES PREVIEW */}
-      <section className="relative py-20 sm:py-28">
-        <div className="absolute inset-0 bg-radial-fade opacity-60" />
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
+      <section className="relative py-16 sm:py-20 overflow-hidden">
+        <div className="absolute inset-0 bg-radial-fade opacity-60 z-0" />
+        
+        {/* Particles Background */}
+        <div className="absolute inset-0 z-[5]">
+          <ParticlesHero id="services-particles" count={45} themeColors={["#00F0FF", "#2563EB", "#ffffff"]} />
+        </div>
+        
+        <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
           <Reveal>
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
               <div className="max-w-2xl">
@@ -225,7 +237,7 @@ export default function Home() {
               const Icon = serviceIcons[s.key] || Bot;
               return (
                 <StaggerItem key={s.key}>
-                  <Link to={`/services?open=${s.key}`} className="group relative block rounded-2xl border border-foreground/10 bg-foreground/[0.02] p-6 hover:border-cyan-400/40 transition-colors overflow-hidden">
+                  <Link to={`/services/${s.key}`} className="group relative block rounded-2xl border border-foreground/10 bg-foreground/[0.02] p-6 hover:border-cyan-400/40 transition-colors overflow-hidden">
                     <div className="shimmer-layer absolute inset-0 pointer-events-none" />
                     <div className="h-11 w-11 rounded-xl border border-cyan-400/30 bg-cyan-400/5 flex items-center justify-center">
                       <Icon className="h-5 w-5 text-cyan-300" />
@@ -244,25 +256,27 @@ export default function Home() {
       </section>
 
       {/* FAQ PREVIEW */}
-      <section className="relative py-20 sm:py-28">
-        <div className="mx-auto max-w-5xl px-6 lg:px-8">
+      <section className="relative py-16 sm:py-20 overflow-hidden">
+        {/* Particles Background */}
+        <div className="absolute inset-0 z-0">
+          <ParticlesHero id="faq-particles" count={35} themeColors={["#00F0FF", "#2563EB", "#ffffff"]} />
+        </div>
+        
+        <div className="relative z-10 mx-auto max-w-5xl px-6 lg:px-8">
           <Reveal>
             <div className="text-center mb-12">
               <div className="text-xs font-mono-accent uppercase tracking-[0.22em] text-cyan-300/90 mb-4">
                 {isAr ? "// الأسئلة الشائعة" : "// FAQ"}
               </div>
               <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-chrome">
-                {isAr ? "أسئلة يطرحها الناس دائماً" : "Questions people always ask"}
+                {isAr ? "الأسئلة الأكثر شيوعاً" : "Questions people always ask"}
               </h2>
             </div>
           </Reveal>
-          <div className="space-y-3">
+            <div className="space-y-3">
             {(isAr ? [
-              { q: "ما هي الخدمات التي تقدمها Raanzlr؟", a: "نقدم وكلاء ذكاء اصطناعي وروبوتات محادثة، أتمتة سير العمل، تطوير مواقع وتطبيقات الهاتف المحمول، تكامل الأنظمة، وحلول ذكاء اصطناعي مخصصة للشركات." },
-              { q: "هل تدعمون اللغة العربية بشكل كامل؟", a: "نعم، نبني جميع حلولنا مع دعم كامل للغة العربية وتخطيط RTL من اليوم الأول — وليس كإضافة لاحقة." },
-              { q: "كم يستغرق إنجاز مشروع نموذجي؟", a: "روبوت محادثة بسيط: 2-4 أسابيع. موقع ويب: 4-8 أسابيع. حلول ذكاء اصطناعي مخصصة: 6-12 أسبوعاً." },
-              { q: "هل تقدمون استشارة مجانية؟", a: "نعم، نقدم استشارة أولية مجانية (30-45 دقيقة) لفهم احتياجاتك ومناقشة الحلول الممكنة دون أي التزام." },
-              { q: "ما نماذج التسعير المتاحة؟", a: "نقدم تسعيراً بناءً على المشروع، ودفعات على مراحل، وعقود صيانة شهرية. نوضح جميع التكاليف بشفافية كاملة قبل البدء." },
+              { q: "هل تدعم حلولكم اللغة العربية؟", a: "نعم، جميع حلولنا تدعم اللغة العربية بالكامل، بما في ذلك الكتابة من اليمين إلى اليسار، مع إمكانية تطوير حلول متعددة اللغات حسب احتياجات مشروعك." },
+              { q: "كيف يتم احتساب تكلفة المشروع؟", a: "نعتمد تسعيراً يناسب طبيعة كل مشروع. بعد فهم متطلباتك نقدم عرضاً واضحاً يشمل نطاق العمل، الجدول الزمني، والتكلفة، مع إمكانية التقسيط على مراحل، إضافة إلى خطط دعم وصيانة عند الحاجة." },
             ] : [
               { q: "What services does Raanzlr offer?", a: "We build AI agents & chatbots, workflow automation, web & mobile apps, systems integration, and custom AI solutions for businesses." },
               { q: "Do you fully support Arabic?", a: "Yes — we build every solution with full Arabic support and RTL layout from day one, not as an afterthought." },
@@ -284,8 +298,13 @@ export default function Home() {
       </section>
 
       {/* CTA BAND */}
-      <section className="py-20 sm:py-24">
-        <div className="mx-auto max-w-5xl px-6 lg:px-8">
+      <section className="py-16 sm:py-20 relative overflow-hidden">
+        {/* Particles Background */}
+        <div className="absolute inset-0 z-0">
+          <ParticlesHero id="cta-particles" count={40} themeColors={["#00F0FF", "#2563EB", "#ffffff"]} />
+        </div>
+        
+        <div className="relative z-10 mx-auto max-w-5xl px-6 lg:px-8">
           <Reveal>
             <div className="relative overflow-hidden rounded-3xl border border-cyan-400/20 bg-gradient-to-b from-cyan-500/[0.06] to-transparent p-8 sm:p-12 text-center">
               <div className="absolute inset-0 bg-grid opacity-30" />

@@ -1,0 +1,27 @@
+# Vercel installs dependencies and builds remotely, so local deps/output/session data
+# must NOT be uploaded. Without this file the upload ballooned to ~422 MB.
+
+# Dependencies & build output (Vercel regenerates these)
+node_modules
+**/node_modules
+dist
+**/dist
+.pnpm-store
+
+# VCS & Vercel internals
+.git
+.vercel
+
+# Local tooling / AI session data (very large — never upload)
+.claude
+.kilo
+.kiro
+.zencoder
+.local
+daily-visuals
+
+# Misc
+*.log
+.DS_Store
+attached_assets
+mockup-sandbox

@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/sitemap-style.xsl"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 
   <!-- ==================== HOME ==================== -->
   <url>
     <loc>https://raanzlr.com/ar/</loc>
-    <lastmod>2026-06-17</lastmod>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://raanzlr.com/en/"/>
@@ -17,7 +18,7 @@
   <!-- ==================== SERVICES ==================== -->
   <url>
     <loc>https://raanzlr.com/ar/services</loc>
-    <lastmod>2026-06-17</lastmod>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://raanzlr.com/en/services"/>
@@ -28,7 +29,7 @@
   <!-- Service detail pages -->
   <url>
     <loc>https://raanzlr.com/ar/services/ai-chatbots</loc>
-    <lastmod>2026-06-17</lastmod>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://raanzlr.com/en/services/ai-chatbots"/>
@@ -37,7 +38,7 @@
   </url>
   <url>
     <loc>https://raanzlr.com/ar/services/workflow-automation</loc>
-    <lastmod>2026-06-17</lastmod>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://raanzlr.com/en/services/workflow-automation"/>
@@ -46,7 +47,7 @@
   </url>
   <url>
     <loc>https://raanzlr.com/ar/services/web-development</loc>
-    <lastmod>2026-06-17</lastmod>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://raanzlr.com/en/services/web-development"/>
@@ -55,7 +56,7 @@
   </url>
   <url>
     <loc>https://raanzlr.com/ar/services/mobile-apps</loc>
-    <lastmod>2026-06-17</lastmod>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://raanzlr.com/en/services/mobile-apps"/>
@@ -64,7 +65,7 @@
   </url>
   <url>
     <loc>https://raanzlr.com/ar/services/custom-ai</loc>
-    <lastmod>2026-06-17</lastmod>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://raanzlr.com/en/services/custom-ai"/>
@@ -73,7 +74,7 @@
   </url>
   <url>
     <loc>https://raanzlr.com/ar/services/crm-integration</loc>
-    <lastmod>2026-06-17</lastmod>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://raanzlr.com/en/services/crm-integration"/>
@@ -82,7 +83,7 @@
   </url>
   <url>
     <loc>https://raanzlr.com/ar/services/ui-ux</loc>
-    <lastmod>2026-06-17</lastmod>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://raanzlr.com/en/services/ui-ux"/>
@@ -91,7 +92,7 @@
   </url>
   <url>
     <loc>https://raanzlr.com/ar/services/consulting</loc>
-    <lastmod>2026-06-17</lastmod>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://raanzlr.com/en/services/consulting"/>
@@ -102,7 +103,7 @@
   <!-- ==================== ABOUT ==================== -->
   <url>
     <loc>https://raanzlr.com/ar/about</loc>
-    <lastmod>2026-06-17</lastmod>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://raanzlr.com/en/about"/>
@@ -113,7 +114,7 @@
   <!-- ==================== CONTACT ==================== -->
   <url>
     <loc>https://raanzlr.com/ar/contact</loc>
-    <lastmod>2026-06-17</lastmod>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://raanzlr.com/en/contact"/>
@@ -124,7 +125,7 @@
   <!-- ==================== INDUSTRIES ==================== -->
   <url>
     <loc>https://raanzlr.com/ar/industries</loc>
-    <lastmod>2026-06-17</lastmod>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://raanzlr.com/en/industries"/>
@@ -132,10 +133,84 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://raanzlr.com/en/industries"/>
   </url>
 
+  <!-- Industry Detail Pages -->
+  <url>
+    <loc>https://raanzlr.com/ar/industries/finance</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://raanzlr.com/en/industries/finance"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://raanzlr.com/ar/industries/finance"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://raanzlr.com/en/industries/finance"/>
+  </url>
+  <url>
+    <loc>https://raanzlr.com/ar/industries/retail</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://raanzlr.com/en/industries/retail"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://raanzlr.com/ar/industries/retail"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://raanzlr.com/en/industries/retail"/>
+  </url>
+  <url>
+    <loc>https://raanzlr.com/ar/industries/healthcare</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://raanzlr.com/en/industries/healthcare"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://raanzlr.com/ar/industries/healthcare"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://raanzlr.com/en/industries/healthcare"/>
+  </url>
+  <url>
+    <loc>https://raanzlr.com/ar/industries/education</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://raanzlr.com/en/industries/education"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://raanzlr.com/ar/industries/education"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://raanzlr.com/en/industries/education"/>
+  </url>
+  <url>
+    <loc>https://raanzlr.com/ar/industries/logistics</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://raanzlr.com/en/industries/logistics"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://raanzlr.com/ar/industries/logistics"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://raanzlr.com/en/industries/logistics"/>
+  </url>
+  <url>
+    <loc>https://raanzlr.com/ar/industries/hospitality</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://raanzlr.com/en/industries/hospitality"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://raanzlr.com/ar/industries/hospitality"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://raanzlr.com/en/industries/hospitality"/>
+  </url>
+  <url>
+    <loc>https://raanzlr.com/ar/industries/legal</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://raanzlr.com/en/industries/legal"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://raanzlr.com/ar/industries/legal"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://raanzlr.com/en/industries/legal"/>
+  </url>
+  <url>
+    <loc>https://raanzlr.com/ar/industries/manufacturing</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://raanzlr.com/en/industries/manufacturing"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://raanzlr.com/ar/industries/manufacturing"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://raanzlr.com/en/industries/manufacturing"/>
+  </url>
+
   <!-- ==================== MARKETS ==================== -->
   <url>
     <loc>https://raanzlr.com/ar/markets</loc>
-    <lastmod>2026-06-17</lastmod>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://raanzlr.com/en/markets"/>
@@ -146,7 +221,7 @@
   <!-- Market detail pages -->
   <url>
     <loc>https://raanzlr.com/ar/markets/saudi-arabia</loc>
-    <lastmod>2026-06-17</lastmod>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://raanzlr.com/en/markets/saudi-arabia"/>
@@ -155,7 +230,7 @@
   </url>
   <url>
     <loc>https://raanzlr.com/ar/markets/uae</loc>
-    <lastmod>2026-06-17</lastmod>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://raanzlr.com/en/markets/uae"/>
@@ -164,7 +239,7 @@
   </url>
   <url>
     <loc>https://raanzlr.com/ar/markets/qatar</loc>
-    <lastmod>2026-06-17</lastmod>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://raanzlr.com/en/markets/qatar"/>
@@ -173,7 +248,7 @@
   </url>
   <url>
     <loc>https://raanzlr.com/ar/markets/kuwait</loc>
-    <lastmod>2026-06-17</lastmod>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://raanzlr.com/en/markets/kuwait"/>
@@ -182,7 +257,7 @@
   </url>
   <url>
     <loc>https://raanzlr.com/ar/markets/bahrain</loc>
-    <lastmod>2026-06-17</lastmod>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://raanzlr.com/en/markets/bahrain"/>
@@ -191,7 +266,7 @@
   </url>
   <url>
     <loc>https://raanzlr.com/ar/markets/oman</loc>
-    <lastmod>2026-06-17</lastmod>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://raanzlr.com/en/markets/oman"/>
@@ -200,7 +275,7 @@
   </url>
   <url>
     <loc>https://raanzlr.com/ar/markets/syria</loc>
-    <lastmod>2026-06-17</lastmod>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://raanzlr.com/en/markets/syria"/>
@@ -209,7 +284,7 @@
   </url>
   <url>
     <loc>https://raanzlr.com/ar/markets/turkey</loc>
-    <lastmod>2026-06-17</lastmod>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://raanzlr.com/en/markets/turkey"/>
@@ -218,7 +293,7 @@
   </url>
   <url>
     <loc>https://raanzlr.com/ar/markets/europe</loc>
-    <lastmod>2026-06-17</lastmod>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://raanzlr.com/en/markets/europe"/>
@@ -229,7 +304,7 @@
   <!-- ==================== CASE STUDIES ==================== -->
   <url>
     <loc>https://raanzlr.com/ar/case-studies</loc>
-    <lastmod>2026-06-17</lastmod>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://raanzlr.com/en/case-studies"/>
@@ -238,7 +313,7 @@
   </url>
   <url>
     <loc>https://raanzlr.com/ar/case-studies/gcc-real-estate-lead-automation</loc>
-    <lastmod>2026-06-17</lastmod>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://raanzlr.com/en/case-studies/gcc-real-estate-lead-automation"/>
@@ -247,7 +322,7 @@
   </url>
   <url>
     <loc>https://raanzlr.com/ar/case-studies/uae-retail-whatsapp-ai-agent</loc>
-    <lastmod>2026-06-17</lastmod>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://raanzlr.com/en/case-studies/uae-retail-whatsapp-ai-agent"/>
@@ -256,7 +331,7 @@
   </url>
   <url>
     <loc>https://raanzlr.com/ar/case-studies/saudi-fintech-saas-dashboard</loc>
-    <lastmod>2026-06-17</lastmod>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://raanzlr.com/en/case-studies/saudi-fintech-saas-dashboard"/>
@@ -265,7 +340,7 @@
   </url>
   <url>
     <loc>https://raanzlr.com/ar/case-studies/kuwait-legal-rag-system</loc>
-    <lastmod>2026-06-17</lastmod>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://raanzlr.com/en/case-studies/kuwait-legal-rag-system"/>
@@ -274,7 +349,7 @@
   </url>
   <url>
     <loc>https://raanzlr.com/ar/case-studies/turkish-manufacturing-crm-erp-bridge</loc>
-    <lastmod>2026-06-17</lastmod>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://raanzlr.com/en/case-studies/turkish-manufacturing-crm-erp-bridge"/>
@@ -283,7 +358,7 @@
   </url>
   <url>
     <loc>https://raanzlr.com/ar/case-studies/qatar-healthcare-patient-app</loc>
-    <lastmod>2026-06-17</lastmod>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://raanzlr.com/en/case-studies/qatar-healthcare-patient-app"/>
@@ -294,7 +369,7 @@
   <!-- ==================== INSIGHTS / BLOG ==================== -->
   <url>
     <loc>https://raanzlr.com/ar/insights</loc>
-    <lastmod>2026-06-17</lastmod>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://raanzlr.com/en/insights"/>
@@ -359,7 +434,7 @@
   <!-- ==================== FAQ ==================== -->
   <url>
     <loc>https://raanzlr.com/ar/faq</loc>
-    <lastmod>2026-06-17</lastmod>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://raanzlr.com/en/faq"/>
@@ -370,7 +445,7 @@
   <!-- ==================== LEGAL ==================== -->
   <url>
     <loc>https://raanzlr.com/ar/privacy-policy</loc>
-    <lastmod>2026-06-17</lastmod>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://raanzlr.com/en/privacy-policy"/>
@@ -379,7 +454,7 @@
   </url>
   <url>
     <loc>https://raanzlr.com/ar/terms-of-service</loc>
-    <lastmod>2026-06-17</lastmod>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://raanzlr.com/en/terms-of-service"/>

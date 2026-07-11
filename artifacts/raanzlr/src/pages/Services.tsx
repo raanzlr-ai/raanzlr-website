@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Link, useSearchParams } from "react-router-dom";
+import React from "react";
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { Bot, Workflow, Globe2, Smartphone, Sparkles, PlugZap, PenTool, ShieldCheck, ArrowUpRight } from "lucide-react";
 import { useLang } from "../contexts/LanguageContext";
 import { Reveal, Stagger, StaggerItem } from "../components/Reveal";
 import PulseDivider from "../components/PulseDivider";
 import MagneticButton from "../components/MagneticButton";
 import Heartbeat from "../components/Heartbeat";
-import ServiceModal from "../components/ServiceModal";
 import SEO from "../components/SEO";
 
 const icons: Record<string, React.ElementType> = {
@@ -23,18 +22,6 @@ const icons: Record<string, React.ElementType> = {
 
 export default function Services() {
   const { t } = useLang();
-  const [openSvc, setOpenSvc] = useState<any>(null);
-  const [params, setParams] = useSearchParams();
-
-  useEffect(() => {
-    const key = params.get("open");
-    if (!key) return;
-    const found = t.services.items.find((x) => x.key === key);
-    if (found) setOpenSvc(found);
-    const next = new URLSearchParams(params);
-    next.delete("open");
-    setParams(next, { replace: true });
-  }, []);
 
   return (
     <div className="relative">
@@ -72,21 +59,28 @@ export default function Services() {
               return (
                 <StaggerItem key={s.key}>
                   <Link to={`/services/${s.key}`}
-                    className="group relative block w-full text-left rtl:text-right h-full rounded-2xl border border-foreground/10 bg-foreground/[0.02] p-7 hover:border-cyan-400/50 transition-colors overflow-hidden">
-                    <div className="shimmer-layer absolute inset-0 pointer-events-none" />
-                    <div className="flex items-center justify-between">
-                      <div className="h-12 w-12 rounded-xl border border-cyan-400/30 bg-cyan-400/5 flex items-center justify-center">
-                        <Icon className="h-5 w-5 text-cyan-300" />
-                      </div>
-                      <span className={`text-[10px] font-mono-accent uppercase tracking-[0.18em] px-2.5 py-1 rounded-full border ${isHigh ? "border-cyan-400/50 text-cyan-300 bg-cyan-400/10" : "border-blue-400/50 text-blue-300 bg-blue-400/10"}`}>
+                    className="group relative flex flex-col w-full text-left rtl:text-right h-full rounded-2xl border border-foreground/10 bg-foreground/[0.02] hover:border-cyan-400/50 transition-colors overflow-hidden">
+                    <div className="shimmer-layer absolute inset-0 pointer-events-none z-10" />
+                    <div className="relative h-40 overflow-hidden">
+                      <img src={s.image} alt={s.title} loading="lazy"
+                        className="w-full h-full object-cover opacity-55 group-hover:opacity-70 dark:opacity-40 dark:group-hover:opacity-60 transition-opacity duration-500" />
+                      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background" />
+                      <span className={`absolute top-3 right-3 rtl:right-auto rtl:left-3 text-[10px] font-mono-accent uppercase tracking-[0.18em] px-2.5 py-1 rounded-full border ${isHigh ? "border-cyan-400/50 text-cyan-300 bg-cyan-400/10" : "border-blue-400/50 text-blue-300 bg-blue-400/10"}`}>
                         {isHigh ? t.services.highDemand : t.services.standard}
                       </span>
+                      <div className="absolute bottom-3 left-4 rtl:left-auto rtl:right-4">
+                        <div className="h-12 w-12 rounded-xl border border-cyan-400/30 bg-cyan-400/5 backdrop-blur-sm flex items-center justify-center">
+                          <Icon className="h-5 w-5 text-cyan-300" />
+                        </div>
+                      </div>
                     </div>
-                    <h3 className="mt-6 font-display text-xl sm:text-2xl font-semibold text-foreground">{s.title}</h3>
-                    <p className="mt-2 text-sm text-foreground/60 leading-relaxed">{s.desc}</p>
-                    <span className="mt-6 inline-flex items-center gap-2 text-xs font-mono-accent uppercase tracking-[0.18em] text-cyan-300 group-hover:text-foreground transition-colors">
-                      {t.cta.viewDetails} <ArrowUpRight className="h-4 w-4 rtl:-scale-x-100" />
-                    </span>
+                    <div className="relative p-7 flex flex-col flex-1">
+                      <h3 className="font-display text-xl sm:text-2xl font-semibold text-foreground">{s.title}</h3>
+                      <p className="mt-2 text-sm text-foreground/60 leading-relaxed flex-1">{s.desc}</p>
+                      <span className="mt-6 inline-flex items-center gap-2 text-xs font-mono-accent uppercase tracking-[0.18em] text-cyan-300 group-hover:text-foreground transition-colors">
+                        {t.cta.viewDetails} <ArrowUpRight className="h-4 w-4 rtl:-scale-x-100" />
+                      </span>
+                    </div>
                   </Link>
                 </StaggerItem>
               );
@@ -112,8 +106,6 @@ export default function Services() {
           </Reveal>
         </div>
       </section>
-
-      <ServiceModal service={openSvc} onClose={() => setOpenSvc(null)} />
     </div>
   );
 }

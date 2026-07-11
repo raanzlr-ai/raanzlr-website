@@ -3,7 +3,27 @@ Allow: /
 Disallow: /admin
 Disallow: /admin/
 
-Sitemap: https://raanzlr.com/sitemap-index.xml
+# Content Signals — allow classic search + AI answer-engine use, disallow AI training.
+# ai-input=yes lets ChatGPT / Perplexity / Google AI Overviews cite Raanzlr in answers (GEO).
+Content-Signal: ai-train=no, search=yes, ai-input=yes
+
+# AI / answer engines — explicitly allowed so they can crawl and cite Raanzlr
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# Sitemaps
 Sitemap: https://raanzlr.com/sitemap.xml
 Sitemap: https://raanzlr.com/sitemap-en.xml
 Sitemap: https://raanzlr.com/sitemap-ar.xml

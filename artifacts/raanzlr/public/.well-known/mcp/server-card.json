@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "0.1.0",
+  "serverInfo": {
+    "name": "Raanzlr",
+    "version": "2.0.0",
+    "description": "Raanzlr builds AI agents, workflow automation, web platforms, and mobile apps for teams in the GCC, MENA, Türkiye, Europe, and the U.S.",
+    "homepage": "https://raanzlr.com",
+    "contact": "contact@raanzlr.com"
+  },
+  "endpoint": "https://raanzlr.com/mcp",
+  "capabilities": {
+    "tools": false,
+    "resources": false,
+    "prompts": false
+  }
+}

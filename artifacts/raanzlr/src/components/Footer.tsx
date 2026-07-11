@@ -4,12 +4,13 @@ import { motion } from "framer-motion";
 import { Mail, MapPin } from "lucide-react";
 import { useLang } from "../contexts/LanguageContext";
 import Heartbeat from "./Heartbeat";
+import ParticlesHero from "./ParticlesHero";
 
 const LINKS = {
   company: [
     { href: "/", en: "Home", ar: "الرئيسية" },
     { href: "/services", en: "Services", ar: "الخدمات" },
-    { href: "/about", en: "About Us", ar: "عنا" },
+    { href: "/about", en: "About Us", ar: "من نحن" },
     { href: "/case-studies", en: "Case Studies", ar: "دراسات الحالة" },
     { href: "/insights", en: "Insights", ar: "المدونة" },
   ],
@@ -29,15 +30,25 @@ export default function Footer() {
   const { t, isAr, localizedPath } = useLang();
 
   return (
-    <footer className="relative border-t border-foreground/8 mt-8">
-      <div className="absolute inset-0 bg-grid opacity-30 pointer-events-none" />
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-8 py-16">
+    <footer className="relative border-t border-foreground/8 mt-8 overflow-hidden">
+      <div className="absolute inset-0 bg-grid opacity-30 pointer-events-none z-0" />
+      
+      {/* Subtle Particles Background for Footer */}
+      <div className="absolute inset-0 z-[5]">
+        <ParticlesHero
+          id="footer-particles"
+          count={25}
+          themeColors={["#475569", "#64748b", "#334155"]}
+        />
+      </div>
+      
+      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
           {/* Brand */}
           <div className="lg:col-span-2">
             <Link to={localizedPath("/")} className="flex items-center gap-2.5 mb-4 w-fit">
               <img src="/Raanzlr.png" alt="Raanzlr" className="h-8 w-auto" />
-              <img src="/logo raanzlr.png" alt="Raanzlr Logo" className="h-10 w-10" />
+              <img src="/logo-raanzlr.png" alt="Raanzlr logo" width="70" height="40" className="h-10 w-auto" />
             </Link>
             <p className="text-sm text-foreground/55 leading-relaxed max-w-xs">{t.footer.tagline}</p>
             <div className="mt-5">

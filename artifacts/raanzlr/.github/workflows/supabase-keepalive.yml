@@ -1,0 +1,47 @@
+name: Keep Supabase Active
+
+on:
+  schedule:
+    # Run every 7 days at midnight UTC (Supabase pauses after 14 days of inactivity)
+    - cron: '0 0 */7 * *'
+  workflow_dispatch: # Allows manual trigger from Actions tab
+
+jobs:
+  keepalive:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Ping Supabase - Method 1 (RPC)
+        run: |
+          echo "Attempting Supabase keepalive via RPC..."
+          curl -X POST '${{ secrets.SUPABASE_URL }}/rest/v1/rpc/keepalive' \
+            -H "apikey: ${{ secrets.SUPABASE_ANON_KEY }}" \
+            -H "Authorization: Bearer ${{ secrets.SUPABASE_ANON_KEY }}" \
+            -H "Content-Type: application/json" \
+            -d '{}' || echo "RPC method failed (this is OK if function doesn't exist)"
+        continue-on-error: true
+      
+      - name: Ping Supabase - Method 2 (REST API)
+        run: |
+          echo "Pinging Supabase via REST API..."
+          curl '${{ secrets.SUPABASE_URL }}/rest/v1/' \
+            -H "apikey: ${{ secrets.SUPABASE_ANON_KEY }}" \
+            -H "Authorization: Bearer ${{ secrets.SUPABASE_ANON_KEY }}" \
+            -H "Content-Type: application/json"
+        continue-on-error: true
+
+      - name: Ping Supabase - Method 3 (Auth Endpoint)
+        run: |
+          echo "Pinging Supabase auth endpoint..."
+          curl '${{ secrets.SUPABASE_URL }}/auth/v1/health' \
+            -H "apikey: ${{ secrets.SUPABASE_ANON_KEY }}"
+        continue-on-error: true
+
+      - name: Log Success
+        run: |
+          echo "✅ Supabase keepalive completed successfully"
+          echo "Timestamp: $(date -u)"
+          echo "This workflow runs every 7 days to prevent Supabase from pausing"

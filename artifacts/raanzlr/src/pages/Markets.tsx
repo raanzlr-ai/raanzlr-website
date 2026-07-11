@@ -1,14 +1,14 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Globe2, TrendingUp, Users, MapPin } from "lucide-react";
+import { Globe2, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useLang } from "../contexts/LanguageContext";
 import { Reveal, Stagger, StaggerItem } from "../components/Reveal";
 import PulseDivider from "../components/PulseDivider";
-import MagneticButton from "../components/MagneticButton";
 import Heartbeat from "../components/Heartbeat";
+
 import SEO from "../components/SEO";
-import SyriaFlag from "../components/SyriaFlag";
+import FlagImage from "../components/FlagImage";
 
 const MARKETS = [
   {
@@ -16,68 +16,68 @@ const MARKETS = [
     code: "SA",
     slug: "saudi-arabia",
     en: { name: "Saudi Arabia", region: "GCC", sub: "Riyadh & KSA", desc: "Saudi Vision 2030 is driving unprecedented demand for AI and automation. We help Saudi enterprises, government entities, and startups embed intelligent technology into their core operations.", highlights: ["Arabic-first AI systems", "Vision 2030 alignment", "Riyadh-timezone delivery"] },
-    ar: { name: "المملكة العربية السعودية", region: "الخليج", sub: "الرياض والمملكة", desc: "رؤية السعودية 2030 تدفع طلباً غير مسبوق على الذكاء الاصطناعي والأتمتة. نساعد المؤسسات السعودية على دمج التكنولوجيا الذكية في عملياتهم الأساسية.", highlights: ["أنظمة ذكاء اصطناعي عربية أولاً", "توافق مع رؤية 2030", "تسليم بالمنطقة الزمنية للرياض"] },
+    ar: { name: "المملكة العربية السعودية", region: "الخليج", sub: "الرياض والمملكة", desc: "رؤية السعودية 2030 ترفع الطلب على الذكاء الاصطناعي والأتمتة. نساعد المؤسسات السعودية على إدخال التقنية الذكية في عملياتها الأساسية بطريقة عملية قابلة للتوسع.", highlights: ["أنظمة ذكية مصممة للعربية", "توافق مع رؤية 2030", "تسليم بتوقيت الرياض"] },
   },
   {
     flag: "🇦🇪",
     code: "AE",
     slug: "uae",
     en: { name: "UAE", region: "GCC", sub: "Dubai & Abu Dhabi", desc: "The UAE's AI national strategy and thriving startup ecosystem make it a powerhouse for tech adoption. We partner with Dubai and Abu Dhabi enterprises pushing for operational excellence.", highlights: ["UAE AI Strategy alignment", "Fintech & PropTech expertise", "Multi-emirate delivery"] },
-    ar: { name: "الإمارات العربية المتحدة", region: "الخليج", sub: "دبي وأبوظبي", desc: "الاستراتيجية الوطنية للذكاء الاصطناعي في الإمارات ونظامها البيئي المزدهر للشركات الناشئة يجعلها قوة للتبني التكنولوجي.", highlights: ["توافق استراتيجية UAE AI", "خبرة FinTech وPropTech", "تسليم متعدد الإمارات"] },
+    ar: { name: "الإمارات العربية المتحدة", region: "الخليج", sub: "دبي وأبوظبي", desc: "الاستراتيجية الوطنية للذكاء الاصطناعي في الإمارات، مع بيئة الشركات الناشئة النشطة، تجعل السوق من الأسرع في تبنّي التقنية.", highlights: ["توافق مع استراتيجية الإمارات للذكاء الاصطناعي", "خبرة في التقنية المالية والعقارية", "تسليم عبر عدة إمارات"] },
   },
   {
     flag: "🇶🇦",
     code: "QA",
     slug: "qatar",
     en: { name: "Qatar", region: "GCC", sub: "Doha", desc: "Qatar's National Vision 2030 and robust investment climate are accelerating enterprise technology. We serve Qatari corporates, government, and hospitality sectors.", highlights: ["NV2030 tech alignment", "Hospitality & Events AI", "Arabic-first products"] },
-    ar: { name: "قطر", region: "الخليج", sub: "الدوحة", desc: "الرؤية الوطنية القطرية 2030 ومناخ الاستثمار القوي يسرّعان التكنولوجيا المؤسسية. نخدم الشركات القطرية والقطاع الحكومي وقطاع الضيافة.", highlights: ["توافق تقني مع الرؤية 2030", "ذكاء اصطناعي للضيافة والفعاليات", "منتجات عربية أولاً"] },
+    ar: { name: "قطر", region: "الخليج", sub: "الدوحة", desc: "الرؤية الوطنية القطرية 2030 ومناخ الاستثمار القوي يدفعان تحديث الأنظمة المؤسسية. نخدم الشركات القطرية والقطاع الحكومي وقطاع الضيافة.", highlights: ["توافق تقني مع الرؤية 2030", "حلول ذكية للضيافة والفعاليات", "منتجات مصممة للعربية"] },
   },
   {
     flag: "🇰🇼",
     code: "KW",
     slug: "kuwait",
     en: { name: "Kuwait", region: "GCC", sub: "Kuwait City", desc: "Kuwait's financial services and logistics sectors present opportunities for AI transformation. We help Kuwaiti businesses automate complex workflows and launch multilingual digital products.", highlights: ["Financial services AI", "Arabic/English bilingual systems", "Same-timezone support"] },
-    ar: { name: "الكويت", region: "الخليج", sub: "الكويت العاصمة", desc: "قطاعات الخدمات المالية واللوجستية في الكويت تقدم فرصاً للتحول بالذكاء الاصطناعي. نساعد الشركات الكويتية على أتمتة سير العمل المعقدة.", highlights: ["ذكاء اصطناعي للخدمات المالية", "أنظمة عربية-إنجليزية ثنائية", "دعم بنفس المنطقة الزمنية"] },
+    ar: { name: "الكويت", region: "الخليج", sub: "الكويت العاصمة", desc: "تفتح قطاعات الخدمات المالية واللوجستية في الكويت مجالاً واسعاً للأتمتة الذكية. نساعد الشركات الكويتية على تبسيط سير العمل المعقد.", highlights: ["حلول ذكية للخدمات المالية", "أنظمة عربية وإنجليزية", "دعم ضمن نفس المنطقة الزمنية"] },
   },
   {
     flag: "🇧🇭",
     code: "BH",
     slug: "bahrain",
-    en: { name: "Bahrain", region: "GCC", sub: "Manama", desc: "Bahrain's progressive regulatory environment and fintech leadership make it an ideal market for AI innovation. We support Bahrain's digital transformation agenda.", highlights: ["Fintech innovation hub", "Regulatory-compliant AI", "Gulf connectivity"] },
-    ar: { name: "البحرين", region: "الخليج", sub: "المنامة", desc: "البيئة التنظيمية التقدمية في البحرين وريادتها في التقنية المالية تجعلها سوقاً مثالية لابتكار الذكاء الاصطناعي.", highlights: ["مركز ابتكار FinTech", "ذكاء اصطناعي متوافق تنظيمياً", "اتصالية الخليج"] },
+    en: { name: "Bahrain", region: "GCC", sub: "Manama", desc: "Bahrain's financial-services and fintech ecosystem creates practical opportunities for better-connected operations. We help teams build AI and software systems around their real workflows.", highlights: ["Fintech innovation hub", "Privacy- and governance-conscious design", "Gulf connectivity"] },
+    ar: { name: "البحرين", region: "الخليج", sub: "المنامة", desc: "يوفر قطاع الخدمات المالية والتقنية المالية في البحرين فرصاً عملية لبناء عمليات أكثر ترابطاً. نساعد الفرق على تطوير أنظمة ذكاء اصطناعي وبرمجيات تنطلق من واقع عملها.", highlights: ["مركز ابتكار في التقنية المالية", "تصميم يراعي الخصوصية والحوكمة", "ترابط خليجي"] },
   },
   {
     flag: "🇴🇲",
     code: "OM",
     slug: "oman",
     en: { name: "Oman", region: "GCC", sub: "Muscat", desc: "Oman's Vision 2040 industrial diversification opens opportunities for technology-driven transformation. We help Omani enterprises modernize operations with AI.", highlights: ["Vision 2040 alignment", "Industrial AI solutions", "Arabic-first delivery"] },
-    ar: { name: "عُمان", region: "الخليج", sub: "مسقط", desc: "التنويع الصناعي في رؤية عُمان 2040 يفتح فرصاً للتحول التكنولوجي. نساعد المؤسسات العُمانية على تحديث العمليات بالذكاء الاصطناعي.", highlights: ["توافق مع رؤية 2040", "حلول AI صناعية", "تسليم بالعربية أولاً"] },
+    ar: { name: "عُمان", region: "الخليج", sub: "مسقط", desc: "يفتح التنويع الصناعي في رؤية عُمان 2040 فرصاً حقيقية للتحديث التقني. نساعد المؤسسات العُمانية على تطوير عملياتها بأنظمة ذكية.", highlights: ["توافق مع رؤية 2040", "حلول صناعية ذكية", "تسليم مصمم للعربية"] },
   },
   {
     flag: "SYRIA_FLAG",
     code: "SY",
     slug: "syria",
-    en: { name: "Syria", region: "Levant", sub: "Damascus, Aleppo", desc: "Syria's resilient entrepreneurial spirit and emerging tech community present unique opportunities. We support Syrian businesses and diaspora entrepreneurs building digital solutions.", highlights: ["Arabic-native systems", "Diaspora collaboration", "Levantine market expertise"] },
-    ar: { name: "سوريا", region: "بلاد الشام", sub: "دمشق، حلب", desc: "الروح الريادية الصامدة في سوريا ومجتمعها التقني الناشئ يقدمان فرصاً فريدة. ندعم الشركات السورية ورواد الأعمال في الشتات الذين يبنون حلولاً رقمية.", highlights: ["أنظمة عربية أصيلة", "تعاون المغتربين", "خبرة السوق الشامي"] },
+    en: { name: "Syria", region: "Levant", sub: "Damascus, Aleppo", desc: "We support Syrian organisations, distributed teams, and diaspora-led initiatives with carefully scoped software and operational systems that strengthen coordination and continuity.", highlights: ["Arabic-native systems", "Distributed-team coordination", "Careful data-access design"] },
+    ar: { name: "سوريا", region: "بلاد الشام", sub: "دمشق وحلب", desc: "ندعم المؤسسات والفرق الموزعة والمبادرات التي يقودها سوريون في المهجر بأنظمة برمجية وتشغيلية محددة النطاق، تعزز التنسيق واستمرارية العمل.", highlights: ["أنظمة تبدأ من العربية", "تنسيق الفرق الموزعة", "تصميم حذر لصلاحيات الوصول إلى البيانات"] },
   },
   {
     flag: "🇹🇷",
     code: "TR",
     slug: "turkey",
-    en: { name: "Turkey (Türkiye)", region: "Europe/Asia", sub: "Istanbul & Ankara", desc: "Turkey's dynamic startup ecosystem and growing enterprise sector make it a strategic market. We deliver Turkish-language AI solutions and digital transformation for Türkiye's ambitious companies.", highlights: ["Turkish-language AI systems", "Istanbul-based partnerships", "EU market bridge"] },
-    ar: { name: "تركيا", region: "أوروبا/آسيا", sub: "إسطنبول وأنقرة", desc: "النظام البيئي الديناميكي للشركات الناشئة في تركيا يجعلها سوقاً استراتيجية. نقدم حلول ذكاء اصطناعي باللغة التركية للشركات الطموحة.", highlights: ["أنظمة ذكاء اصطناعي باللغة التركية", "شراكات إسطنبول", "جسر السوق الأوروبية"] },
+    en: { name: "Türkiye", region: "Europe & Asia", sub: "Istanbul & Ankara", desc: "Türkiye's active startup, manufacturing, logistics, and services sectors create a strong case for connected operations. We build multilingual AI and software systems around the way teams work.", highlights: ["Turkish-language AI systems", "Multilingual operations", "Cross-border workflow design"] },
+    ar: { name: "تركيا", region: "أوروبا وآسيا", sub: "إسطنبول وأنقرة", desc: "تجعل قطاعات الشركات الناشئة والتصنيع واللوجستيات والخدمات النشطة في تركيا العمليات المترابطة حاجة عملية. نبني أنظمة ذكاء اصطناعي وبرمجيات متعددة اللغات تنطلق من طريقة عمل الفرق.", highlights: ["أنظمة ذكاء اصطناعي باللغة التركية", "عمليات متعددة اللغات", "تصميم لسير العمل العابر للحدود"] },
   },
   {
     flag: "🇪🇺",
     code: "EU",
     slug: "europe",
-    en: { name: "Europe", region: "EMEA", sub: "Germany, Netherlands & beyond", desc: "European enterprises seeking AI and automation capabilities for MENA expansion or local transformation benefit from our cross-cultural engineering expertise and GDPR-conscious design.", highlights: ["GDPR-compliant AI", "MENA expansion support", "Cross-border delivery"] },
-    ar: { name: "أوروبا", region: "أوروبا والشرق الأوسط", sub: "ألمانيا وهولندا وما بعدها", desc: "الشركات الأوروبية الساعية لقدرات الذكاء الاصطناعي والأتمتة تستفيد من خبرتنا الهندسية متعددة الثقافات والتصميم المتوافق مع GDPR.", highlights: ["ذكاء اصطناعي متوافق مع GDPR", "دعم التوسع في الشرق الأوسط", "تسليم عبر الحدود"] },
+    en: { name: "Europe", region: "Europe", sub: "Germany, Netherlands & beyond", desc: "European organisations operating across markets can benefit from multilingual systems and cross-cultural engineering. We build privacy-conscious AI and software around local and shared operational needs.", highlights: ["Privacy-conscious design", "Multi-market operations", "Cross-border delivery"] },
+    ar: { name: "أوروبا", region: "أوروبا", sub: "ألمانيا وهولندا وما بعدها", desc: "تستفيد المؤسسات العاملة عبر الأسواق الأوروبية من الأنظمة متعددة اللغات والهندسة التي تراعي اختلاف السياقات. نبني حلول ذكاء اصطناعي وبرمجيات تراعي الخصوصية والاحتياجات المحلية والمشتركة.", highlights: ["تصميم يراعي الخصوصية", "عمليات متعددة الأسواق", "تنفيذ عابر للحدود"] },
   },
 ];
 
 export default function Markets() {
-  const { isAr } = useLang();
+  const { isAr, localizedPath } = useLang();
 
   return (
     <div className="relative">
@@ -99,7 +99,7 @@ export default function Markets() {
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.25 }}
             className="mt-5 max-w-2xl text-base md:text-lg text-foreground/65">
             {isAr
-              ? "من دول الخليج العربي إلى تركيا وأوروبا، نقدم هندسة برمجية ومنتجات ذكاء اصطناعي مصممة للبيئة التنافسية في كل سوق."
+              ? "نقدم في الخليج وتركيا وأوروبا هندسة برمجية ومنتجات ذكاء اصطناعي تراعي واقع المنافسة في كل سوق."
               : "From the Gulf states to Turkey and Europe, we deliver software engineering and AI products tailored to the competitive realities of each market."}
           </motion.p>
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1, delay: 0.5 }} className="mt-8">
@@ -118,16 +118,12 @@ export default function Markets() {
               return (
                 <StaggerItem key={m.code}>
                   <Link 
-                    to={`/markets/${m.slug}`}
+                     to={localizedPath(`/markets/${m.slug}`)}
                     className="group relative overflow-hidden rounded-2xl border border-foreground/10 bg-foreground/[0.02] hover:border-cyan-400/30 transition-colors p-6 h-full flex flex-col block"
                   >
                     <div className="shimmer-layer absolute inset-0 pointer-events-none" />
                     <div className="flex items-center justify-between mb-4">
-                      {m.flag === "SYRIA_FLAG" ? (
-                        <SyriaFlag className="w-14 h-10" />
-                      ) : (
-                        <span className="text-4xl">{m.flag}</span>
-                      )}
+                      <FlagImage code={m.code} alt={`${content.name} flag`} className="w-14 h-10 object-cover rounded-sm" />
                       <span className="text-[10px] font-mono-accent uppercase tracking-[0.18em] px-2 py-1 rounded-full border border-foreground/10 text-foreground/40">{content.region}</span>
                     </div>
                     <h3 className="font-display text-xl font-bold text-foreground">{content.name}</h3>
@@ -163,9 +159,31 @@ export default function Markets() {
                 ? "فريقنا الموزع يضمن أوقات استجابة سريعة وفهماً ثقافياً عميقاً في كل سوق نخدمه."
                 : "Our distributed team ensures fast response times and deep cultural understanding across every market we serve."}
             </p>
-            <div className="mt-8 flex justify-center gap-4 flex-wrap">
-              <MagneticButton to="/contact">{isAr ? "تواصل معنا" : "Contact Us"}</MagneticButton>
-              <MagneticButton to="/contact" variant="ghost">{isAr ? "تواصل معنا" : "Contact Us"}</MagneticButton>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-16 sm:py-20">
+        <div className="mx-auto max-w-4xl px-6 lg:px-8">
+          <Reveal>
+            <div className="relative overflow-hidden rounded-3xl border border-cyan-400/20 bg-gradient-to-b from-cyan-500/[0.06] to-transparent p-8 sm:p-12 text-center">
+              <div className="absolute inset-0 bg-grid opacity-30" />
+              <div className="relative">
+                <h3 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-chrome">
+                  {isAr ? "هل أنت مستعد للبدء؟" : "Ready to get started?"}
+                </h3>
+                <p className="mt-4 text-foreground/60 max-w-lg mx-auto">
+                  {isAr
+                    ? "دعنا نناقش كيف يمكننا مساعدتك في بناء حلول ذكية لسوقك."
+                    : "Let's discuss how we can help you build intelligent solutions for your market."}
+                </p>
+                <div className="mt-8">
+                  <Link to={localizedPath("/contact")} className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 px-6 py-3 text-sm font-bold text-[#050505] hover:opacity-90 transition-opacity">
+                    {isAr ? "تواصل معنا" : "Contact Us"}
+                  </Link>
+                </div>
+              </div>
             </div>
           </Reveal>
         </div>

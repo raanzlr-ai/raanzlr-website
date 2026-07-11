@@ -1,4 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Tajawal:wght@400;500;700&display=swap");
+/* Google Fonts are loaded non-render-blocking from index.html (preconnect + preload +
+   media="print" onload swap). The old render-blocking @import here was removed so it no
+   longer blocks first paint (SEO: "Eliminate render-blocking resources"). */
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -245,3 +247,53 @@
   border-radius: 4px;
 }
 .light :focus-visible { outline-color: hsl(var(--brand-ink) / 0.8); }
+
+/* ── HERO ROTATING HEADLINE — animated accent ──────────
+   The emphasized part of each rotating hero phrase. A living
+   gradient sweeps across the text (clipped to the glyphs) so
+   the highlighted phrase always feels alive. `.glow-text`
+   layers the theme-aware halo on top.                       */
+@keyframes hero-accent-sweep {
+  0%, 100% { background-position: 0% 50%; }
+  50%      { background-position: 100% 50%; }
+}
+.hero-accent {
+  background-image: linear-gradient(
+    100deg,
+    hsl(186 100% 50%) 0%,
+    hsl(217 91% 62%) 34%,
+    hsl(280 90% 70%) 54%,
+    hsl(186 100% 50%) 100%
+  );
+  background-size: 220% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: hero-accent-sweep 6s ease-in-out infinite;
+}
+/* Deeper, higher-contrast stops so the accent reads on the light surface. */
+.light .hero-accent {
+  background-image: linear-gradient(
+    100deg,
+    hsl(192 92% 30%) 0%,
+    hsl(217 80% 46%) 40%,
+    hsl(263 68% 52%) 60%,
+    hsl(192 92% 30%) 100%
+  );
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-accent { animation: none; }
+}
+
+/* Blinking caret for the typewriter headline. */
+@keyframes caret-blink {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0; }
+}
+.type-caret {
+  animation: caret-blink 1.05s steps(1, end) infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .type-caret { animation: none; }
+}

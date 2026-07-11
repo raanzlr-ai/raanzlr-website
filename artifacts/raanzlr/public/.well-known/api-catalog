@@ -1,0 +1,13 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://raanzlr.com",
+      "https://www.iana.org/assignments/link-relations/service-doc": [
+        { "href": "https://raanzlr.com/en/services" }
+      ],
+      "https://www.iana.org/assignments/link-relations/describedby": [
+        { "href": "https://raanzlr.com/.well-known/agent-skills/index.json", "type": "application/json" }
+      ]
+    }
+  ]
+}

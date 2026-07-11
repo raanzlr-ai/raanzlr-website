@@ -8,7 +8,137 @@ import PulseDivider from "../components/PulseDivider";
 import MagneticButton from "../components/MagneticButton";
 import SEO from "../components/SEO";
 import { POSTS } from "../data/posts";
-import { Post, fromStaticPost, fetchPost, fetchAllPosts } from "../lib/posts";
+import { Post, PostChartSpec, fromStaticPost, fetchPost, fetchAllPosts } from "../lib/posts";
+import { ResponsiveContainer, BarChart, Bar, LineChart, Line, AreaChart, Area, PieChart, Pie, Cell, XAxis, YAxis, Tooltip, CartesianGrid } from "recharts";
+
+// Turns Markdown [text](url) links and bare URLs inside body text into clickable, safe anchors.
+function renderRich(text: string): React.ReactNode[] {
+  const linkRe = /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)|(https?:\/\/[^\s]+)/g;
+  const out: React.ReactNode[] = [];
+  let last = 0;
+  let m: RegExpExecArray | null;
+  let k = 0;
+  const anchor = (href: string, label: string) => (
+    <a
+      key={`l${k++}`}
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-cyan-300 underline decoration-cyan-400/40 underline-offset-2 hover:text-cyan-200 break-words"
+    >
+      {label}
+    </a>
+  );
+  while ((m = linkRe.exec(text)) !== null) {
+    if (m.index > last) out.push(text.slice(last, m.index));
+    if (m[1] && m[2]) {
+      out.push(anchor(m[2], m[1]));
+    } else if (m[3]) {
+      let href = m[3];
+      let trail = "";
+      const tr = href.match(/[).,;،]+$/);
+      if (tr) { trail = tr[0]; href = href.slice(0, -trail.length); }
+      out.push(anchor(href, href.replace(/^https?:\/\//, "").replace(/\/$/, "")));
+      if (trail) out.push(trail);
+    }
+    last = linkRe.lastIndex;
+  }
+  if (last < text.length) out.push(text.slice(last));
+  return out;
+}
+
+// Renders a section body: splits into paragraphs on line breaks, keeps a drop-cap on the first
+// prose paragraph, and renders each line with clickable links (used by articles + References).
+function ArticleBody({ text, dropCap }: { text: string; dropCap: boolean }) {
+  const blocks = text.split(/\n+/).map((l) => l.trim()).filter(Boolean);
+  return (
+    <>
+      {blocks.map((block, i) => (
+        <p
+          key={i}
+          className={`text-foreground/75 leading-[1.9] text-base sm:text-lg tracking-wide [text-align:justify] ${i > 0 ? "mt-5" : ""} ${
+            dropCap && i === 0
+              ? "first-letter:text-5xl first-letter:font-bold first-letter:text-cyan-300 first-letter:float-left first-letter:me-3 first-letter:mt-1 first-letter:leading-none"
+              : ""
+          }`}
+        >
+          {renderRich(block)}
+        </p>
+      ))}
+    </>
+  );
+}
+
+const CHART_COLORS = ["#00e5ff", "#3b82f6", "#8b5cf6", "#22d3ee", "#0ea5e9", "#a855f7", "#06b6d4"];
+const chartLoc = (v: PostChartSpec["title"], isAr: boolean): string => {
+  if (!v) return "";
+  if (typeof v === "string") return v;
+  return (isAr ? v.ar : v.en) || v.en || v.ar || "";
+};
+
+// Interactive, themed chart for a post section (recharts). Style varies by `chart.type`.
+function PostChart({ chart, isAr }: { chart: PostChartSpec; isAr: boolean }) {
+  const data = Array.isArray(chart?.data) ? chart.data.filter((d) => d && typeof d.value === "number") : [];
+  if (data.length === 0) return null;
+  const type = chart.type || "bar";
+  const title = chartLoc(chart.title, isAr);
+  const source = chartLoc(chart.source, isAr);
+  const unit = chart.unit || "";
+  const fmt = (v: number) => `${v}${unit}`;
+  const axis = { fill: "rgba(255,255,255,0.4)", fontSize: 11 } as const;
+  const grid = "rgba(255,255,255,0.06)";
+  const tip = { background: "#0b0b0d", border: "1px solid rgba(0,229,255,0.25)", borderRadius: 12, color: "#e6e8ec", fontSize: 12 };
+  return (
+    <figure className="my-8 rounded-2xl border border-cyan-400/20 bg-foreground/[0.02] p-5 sm:p-6">
+      {title && <figcaption className="mb-4 text-sm font-mono-accent uppercase tracking-[0.14em] text-cyan-300">{title}</figcaption>}
+      <div className="h-64 sm:h-72 w-full" dir="ltr">
+        <ResponsiveContainer width="100%" height="100%">
+          {type === "line" ? (
+            <LineChart data={data} margin={{ top: 6, right: 12, left: -8, bottom: 0 }}>
+              <CartesianGrid stroke={grid} vertical={false} />
+              <XAxis dataKey="label" tick={axis} tickLine={false} axisLine={{ stroke: grid }} />
+              <YAxis tick={axis} tickLine={false} axisLine={false} tickFormatter={fmt} width={46} />
+              <Tooltip contentStyle={tip} formatter={(v: any) => fmt(Number(v))} cursor={{ stroke: "rgba(0,229,255,0.25)" }} />
+              <Line type="monotone" dataKey="value" stroke="#00e5ff" strokeWidth={2.5} dot={{ r: 3, fill: "#00e5ff" }} activeDot={{ r: 5 }} />
+            </LineChart>
+          ) : type === "area" ? (
+            <AreaChart data={data} margin={{ top: 6, right: 12, left: -8, bottom: 0 }}>
+              <defs>
+                <linearGradient id="pcArea" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="#00e5ff" stopOpacity={0.5} />
+                  <stop offset="100%" stopColor="#00e5ff" stopOpacity={0} />
+                </linearGradient>
+              </defs>
+              <CartesianGrid stroke={grid} vertical={false} />
+              <XAxis dataKey="label" tick={axis} tickLine={false} axisLine={{ stroke: grid }} />
+              <YAxis tick={axis} tickLine={false} axisLine={false} tickFormatter={fmt} width={46} />
+              <Tooltip contentStyle={tip} formatter={(v: any) => fmt(Number(v))} />
+              <Area type="monotone" dataKey="value" stroke="#00e5ff" strokeWidth={2.5} fill="url(#pcArea)" />
+            </AreaChart>
+          ) : type === "pie" ? (
+            <PieChart>
+              <Tooltip contentStyle={tip} formatter={(v: any) => fmt(Number(v))} />
+              <Pie data={data} dataKey="value" nameKey="label" cx="50%" cy="50%" outerRadius="80%" innerRadius="45%" paddingAngle={2} stroke="#0b0b0d">
+                {data.map((_, i) => <Cell key={i} fill={CHART_COLORS[i % CHART_COLORS.length]} />)}
+              </Pie>
+            </PieChart>
+          ) : (
+            <BarChart data={data} margin={{ top: 6, right: 12, left: -8, bottom: 0 }}>
+              <CartesianGrid stroke={grid} vertical={false} />
+              <XAxis dataKey="label" tick={axis} tickLine={false} axisLine={{ stroke: grid }} />
+              <YAxis tick={axis} tickLine={false} axisLine={false} tickFormatter={fmt} width={46} />
+              <Tooltip contentStyle={tip} formatter={(v: any) => fmt(Number(v))} cursor={{ fill: "rgba(0,229,255,0.06)" }} />
+              <Bar dataKey="value" radius={[6, 6, 0, 0]}>
+                {data.map((_, i) => <Cell key={i} fill={CHART_COLORS[i % CHART_COLORS.length]} />)}
+              </Bar>
+            </BarChart>
+          )}
+        </ResponsiveContainer>
+      </div>
+      {source && <p className="mt-3 text-[11px] text-foreground/35">{isAr ? "المصدر: " : "Source: "}{source}</p>}
+    </figure>
+  );
+}
 
 export default function InsightPost() {
   const { slug } = useParams<{ slug: string }>();
@@ -82,9 +212,9 @@ export default function InsightPost() {
             alt={isAr ? post.title.ar : post.title.en}
             loading="eager"
             fetchPriority="high"
-            className="w-full h-full object-cover opacity-25"
+            className="w-full h-full object-cover opacity-40 dark:opacity-25"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/80 to-[#050505]/40" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background/75 via-background/55 to-background/20 dark:from-background dark:via-background/80 dark:to-background/40" />
         </div>
         <div className="absolute inset-0 bg-grid opacity-40" />
         <div className="noise absolute inset-0" />
@@ -185,14 +315,13 @@ export default function InsightPost() {
                     
                     {/* Content with improved typography */}
                     <div className="prose prose-invert prose-lg max-w-none">
-                      <p className={`text-foreground/75 leading-[1.9] text-base sm:text-lg tracking-wide ${
-                        isAr ? 'text-justify' : '[text-align:justify]'
-                      } ${
-                        !isAr ? 'first-letter:text-5xl first-letter:font-bold first-letter:text-cyan-300 first-letter:float-left first-letter:me-3 first-letter:mt-1 first-letter:leading-none' : ''
-                      }`}>
-                        {isAr ? section.body.ar : section.body.en}
-                      </p>
+                      <ArticleBody
+                        text={isAr ? section.body.ar : section.body.en}
+                        dropCap={!isAr && !/references|sources|مصادر|المراجع/i.test(`${section.heading.en} ${section.heading.ar}`)}
+                      />
                     </div>
+
+                    {section.chart && <PostChart chart={section.chart} isAr={isAr} />}
 
                     {/* Accent Border Bottom */}
                     {i < post.sections.length - 1 && (
@@ -258,9 +387,9 @@ export default function InsightPost() {
                       <img
                         src={p.image}
                         alt={isAr ? p.title.ar : p.title.en}
-                        className="w-full h-full object-cover opacity-40 group-hover:opacity-55 group-hover:scale-105 transition-all duration-500"
+                        className="w-full h-full object-cover opacity-55 group-hover:opacity-70 dark:opacity-40 dark:group-hover:opacity-55 group-hover:scale-105 transition-all duration-500"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#050505]" />
+                      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background" />
                       <span className="absolute top-3 left-3 rtl:left-auto rtl:right-3 text-[10px] font-mono-accent uppercase tracking-[0.15em] px-2.5 py-1 rounded-full border border-cyan-400/35 text-cyan-300 bg-cyan-400/10">
                         {isAr ? p.tag.ar : p.tag.en}
                       </span>

@@ -4,7 +4,6 @@ import { MapPin, Rocket, ShieldCheck, Headphones } from "lucide-react";
 import { useLang } from "../contexts/LanguageContext";
 import PulseDivider from "../components/PulseDivider";
 import { Reveal, Stagger, StaggerItem } from "../components/Reveal";
-import MagneticButton from "../components/MagneticButton";
 import Heartbeat from "../components/Heartbeat";
 import SEO from "../components/SEO";
 
@@ -30,10 +29,10 @@ export default function About() {
             role="presentation"
             loading="eager"
             fetchPriority="high"
-            className="w-full h-[130%] object-cover opacity-60"
+            className="w-full h-[130%] object-cover opacity-70 dark:opacity-60"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#050505]/40 via-[#050505]/70 to-[#050505]" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#050505]/70 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/55 to-background dark:from-background/40 dark:via-background/70" />
+          <div className="absolute inset-0 bg-gradient-to-r from-background/45 to-transparent dark:from-background/70" />
         </motion.div>
         <div className="absolute inset-0 bg-grid opacity-30" />
 
@@ -100,10 +99,6 @@ export default function About() {
                 <MapPin className="h-4 w-4 text-cyan-400 shrink-0 mt-1" />
                 <span className="text-sm text-foreground/60">{t.about.address}</span>
               </div>
-              <div className="mt-8 flex gap-4 flex-wrap">
-                <MagneticButton to="/contact">{t.cta.contactUs}</MagneticButton>
-                <MagneticButton to="/contact" variant="ghost">{t.cta.contactUs}</MagneticButton>
-              </div>
               <div className="mt-6 flex items-center gap-3">
                 <span className="text-xs text-foreground/40 font-mono-accent uppercase tracking-[0.18em]">
                   {isAr ? "تابعنا:" : "Follow us:"}
@@ -131,19 +126,49 @@ export default function About() {
             <Reveal delay={0.2}>
               <div className="relative rounded-3xl overflow-hidden border border-foreground/10 aspect-video">
                 <img
-                  src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1200&q=80"
+                  src="/company.png"
                   alt="Global operations"
                   loading="lazy"
-                  className="w-full h-full object-cover opacity-60"
+                  className="w-full h-full object-cover opacity-70 dark:opacity-60"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#050505]/80 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/55 to-transparent dark:from-background/80" />
                 <div className="absolute bottom-4 left-4 right-4">
                   <div className="text-xs font-mono-accent uppercase tracking-[0.28em] text-cyan-300/70 mb-1">{t.about.hq}</div>
                   <p className="text-sm text-foreground/80">{t.about.address}</p>
+                  <p className="text-xs text-foreground/50 font-mono-accent uppercase tracking-[0.2em] mt-2">
+                    {isAr ? "عمليات عالمية • فرق موزعة • تعاون بدون حدود" : "Global operations • Distributed teams • Borderless collaboration"}
+                  </p>
                 </div>
               </div>
             </Reveal>
           </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="relative py-20 sm:py-28">
+        <div className="mx-auto max-w-5xl px-6 lg:px-8">
+          <Reveal>
+            <div className="relative overflow-hidden rounded-3xl border border-cyan-400/20 bg-gradient-to-b from-cyan-500/[0.06] to-transparent p-8 sm:p-12 text-center">
+              <div className="absolute inset-0 bg-grid opacity-30" />
+              <div className="relative">
+                <Heartbeat className="w-40 h-8 mx-auto mb-6" />
+                <h3 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-chrome">
+                  {isAr ? "هل لديك فكرة أو مشروع تعمل عليه؟" : "Ready to work with us?"}
+                </h3>
+                <p className="mt-4 text-foreground/60 max-w-xl mx-auto">
+                  {isAr
+                    ? "سواء كنت تخطط لبناء نظام جديد، أو تطوير منصة قائمة، أو أتمتة عمليات داخل شركتك، يسعدنا مناقشة متطلباتك واقتراح الحل المناسب."
+                    : "Let's build something great together. Get in touch to discuss your project."}
+                </p>
+                <div className="mt-8">
+                  <a href="/contact" className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 px-6 py-3 text-sm font-bold text-[#050505] hover:opacity-90 transition-opacity">
+                    {isAr ? "تواصل معنا" : "Contact Us"}
+                  </a>
+                </div>
+              </div>
+            </div>
+          </Reveal>
         </div>
       </section>
     </div>

@@ -42,8 +42,10 @@ interface SEOProps {
   noIndex?: boolean;
 }
 
-// Fallback OG image — replace /Raanzlr.png with /opengraph.jpg once the 1200x630 file is created in /public/
-const DEFAULT_OG_IMAGE = 'https://raanzlr.com/Raanzlr.png';
+// Social share preview image (919x527 logo). Served from Supabase Storage so link/social
+// previews render regardless of which domain (raanzlr.com vs *.vercel.app) serves the site.
+const OG_IMAGE_EN = 'https://dnpaagicskxzukeczifj.supabase.co/storage/v1/object/public/blog-images/email/logo-raanzlr.png';
+const OG_IMAGE_AR = 'https://dnpaagicskxzukeczifj.supabase.co/storage/v1/object/public/blog-images/email/logo-raanzlr.png';
 
 // Segment display names for breadcrumbs
 const SEGMENT_NAMES: Record<string, { en: string; ar: string }> = {
@@ -52,7 +54,7 @@ const SEGMENT_NAMES: Record<string, { en: string; ar: string }> = {
   insights: { en: 'Insights', ar: 'المدونة' },
   'case-studies': { en: 'Case Studies', ar: 'دراسات الحالة' },
   industries: { en: 'Industries', ar: 'القطاعات' },
-  about: { en: 'About', ar: 'عنا' },
+  about: { en: 'About', ar: 'من نحن' },
   contact: { en: 'Contact', ar: 'تواصل معنا' },
   faq: { en: 'FAQ', ar: 'الأسئلة الشائعة' },
 };
@@ -65,7 +67,7 @@ export default function SEO({
   descriptionAr,
   keywords,
   keywordsAr,
-  image = DEFAULT_OG_IMAGE,
+  image,
   type = 'website',
   path: pathProp,
   article,
@@ -104,6 +106,9 @@ export default function SEO({
   const alternateLocale = isAr ? 'en_US' : 'ar_AE';
   const htmlLang = isAr ? 'ar' : 'en';
   const htmlDir = isAr ? 'rtl' : 'ltr';
+
+  // Choose the locale-appropriate social card unless an explicit image is provided.
+  const resolvedImage = image ?? (isAr ? OG_IMAGE_AR : OG_IMAGE_EN);
 
   // Build BreadcrumbList for detail/section pages
   const buildBreadcrumb = () => {
@@ -158,7 +163,7 @@ export default function SEO({
       description: resolvedDescription,
       url: canonicalUrl,
       inLanguage: htmlLang,
-      image,
+      image: resolvedImage,
       ...(type === 'article' && article
         ? {
             datePublished: article.publishedTime,
@@ -172,7 +177,7 @@ export default function SEO({
               name: 'Raanzlr',
               logo: {
                 '@type': 'ImageObject',
-                url: 'https://raanzlr.com/Raanzlr.png',
+                url: 'https://raanzlr.com/logo-raanzlr.png',
               },
             },
             articleSection: article.section,
@@ -226,9 +231,10 @@ export default function SEO({
       <meta property="og:title" content={resolvedTitle} />
       <meta property="og:description" content={resolvedDescription} />
       <meta property="og:url" content={canonicalUrl} />
-      <meta property="og:image" content={image} />
-      <meta property="og:image:width" content="1200" />
-      <meta property="og:image:height" content="630" />
+      <meta property="og:image" content={resolvedImage} />
+      <meta property="og:image:alt" content={resolvedTitle || 'Raanzlr'} />
+      <meta property="og:image:width" content="919" />
+      <meta property="og:image:height" content="527" />
       <meta property="og:locale" content={locale} />
       <meta property="og:locale:alternate" content={alternateLocale} />
 
@@ -255,7 +261,7 @@ export default function SEO({
       <meta name="twitter:creator" content="@raanzlr" />
       <meta name="twitter:title" content={resolvedTitle} />
       <meta name="twitter:description" content={resolvedDescription} />
-      <meta name="twitter:image" content={image} />
+      <meta name="twitter:image" content={resolvedImage} />
       <meta
         name="twitter:image:alt"
         content={resolvedTitle || 'Raanzlr — AI Automation & Software Engineering'}

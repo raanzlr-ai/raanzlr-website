@@ -1,6 +1,10 @@
 packages:
   - artifacts/raanzlr
 
+allowBuilds:
+  '@tsparticles/engine': true
+  esbuild: true
+
 autoInstallPeers: false
 
 catalog:

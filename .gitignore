@@ -106,3 +106,33 @@ image-generator-package.json
 
 # Temporary market data
 artifacts/raanzlr/src/data/markets_additions.txt
+
+# Local agent/tool directories (never commit)
+.claude/
+.kiro/
+.qodo/
+.local/
+.vercel/
+daily-visuals/
+artifacts/raanzlr/.claude/
+artifacts/raanzlr/docs/
+*.cmd
+generate-sitemaps.js
+
+# Remaining local docs and notes
+ARABIC_CONTENT_PROGRESS.md
+COMPLETION_REPORT_FINAL.md
+CREATE_INDUSTRY_PAGES.md
+DEPLOYMENT_GUIDE.md
+INDUSTRIES_PROGRESS.md
+MARKETS_ANALYSIS.md
+QUICK_DEPLOY.md
+Raanzlr-Arabic-SEO-Audit.md
+Research*.md
+SEO REPORT FROM SITE.MD
+SERVICESRICH_ANALYSIS.md
+arabics_notes.md
+
+# Unused WIP sources
+artifacts/raanzlr/src/components/ThemeToggle.main-wip.tsx
+artifacts/raanzlr/src/data/INDUSTRIES_FULL.json

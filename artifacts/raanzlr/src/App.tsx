@@ -1,10 +1,12 @@
-import React, { Suspense, lazy } from "react";
+import React, { Suspense, lazy, useEffect, useCallback } from "react";
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { Toaster } from "./components/ui/sonner";
 import { LanguageProvider } from "./contexts/LanguageContext";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import CustomCursor from "./components/CustomCursor";
+import { ParticlesProvider } from "@tsparticles/react";
+import { loadSlim } from "@tsparticles/slim";
 
 const Home = lazy(() => import("./pages/Home"));
 const Services = lazy(() => import("./pages/Services"));
@@ -13,6 +15,7 @@ const About = lazy(() => import("./pages/About"));
 const Contact = lazy(() => import("./pages/Contact"));
 const FAQ = lazy(() => import("./pages/FAQ"));
 const Industries = lazy(() => import("./pages/Industries"));
+const IndustryDetail = lazy(() => import("./pages/IndustryDetail"));
 const CaseStudies = lazy(() => import("./pages/CaseStudies"));
 const CaseStudyDetail = lazy(() => import("./pages/CaseStudyDetail"));
 const Insights = lazy(() => import("./pages/Insights"));
@@ -22,6 +25,7 @@ const MarketDetail = lazy(() => import("./pages/MarketDetail"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const TermsOfService = lazy(() => import("./pages/TermsOfService"));
 const Admin = lazy(() => import("./pages/Admin"));
+const NotFound = lazy(() => import("./pages/not-found"));
 
 const PageLoader = () => (
   <div className="min-h-screen flex items-center justify-center bg-background">
@@ -31,7 +35,27 @@ const PageLoader = () => (
 
 function AppContent() {
   const location = useLocation();
-  const isAdmin = location.pathname === "/admin" || location.pathname.endsWith("/admin");
+  // Match /admin and /:lang/admin, tolerating a trailing slash (Vercel may serve /admin/).
+  // Without the trailing-slash tolerance the site Navbar renders on top of the Admin's own
+  // top bar — the "two headers" bug.
+  const isAdmin = /(^|\/)admin\/?$/.test(location.pathname);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    // SPA page_view for GA4 — the gtag config sets send_page_view:false, so each
+    // client-side navigation (and the initial load) is reported here exactly once.
+    const id = window.setTimeout(() => {
+      const gtag = (window as any).gtag;
+      if (typeof gtag === "function") {
+        gtag("event", "page_view", {
+          page_path: location.pathname + location.search,
+          page_location: window.location.href,
+          page_title: document.title,
+        });
+      }
+    }, 0);
+    return () => window.clearTimeout(id);
+  }, [location.pathname, location.search]);
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
@@ -48,6 +72,7 @@ function AppContent() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/faq" element={<FAQ />} />
             <Route path="/industries" element={<Industries />} />
+            <Route path="/industries/:slug" element={<IndustryDetail />} />
             <Route path="/case-studies" element={<CaseStudies />} />
             <Route path="/case-studies/:slug" element={<CaseStudyDetail />} />
             <Route path="/insights" element={<Insights />} />
@@ -67,6 +92,7 @@ function AppContent() {
             <Route path="/:lang/contact" element={<Contact />} />
             <Route path="/:lang/faq" element={<FAQ />} />
             <Route path="/:lang/industries" element={<Industries />} />
+            <Route path="/:lang/industries/:slug" element={<IndustryDetail />} />
             <Route path="/:lang/case-studies" element={<CaseStudies />} />
             <Route path="/:lang/case-studies/:slug" element={<CaseStudyDetail />} />
             <Route path="/:lang/insights" element={<Insights />} />
@@ -78,7 +104,7 @@ function AppContent() {
             <Route path="/:lang/terms-of-service" element={<TermsOfService />} />
             <Route path="/:lang/admin" element={<Admin />} />
             
-            <Route path="*" element={<Home />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
       </main>
@@ -89,10 +115,16 @@ function AppContent() {
 }
 
 function App() {
+  const initParticles = useCallback(async (engine: any) => {
+    await loadSlim(engine);
+  }, []);
+
   return (
     <BrowserRouter basename={import.meta.env.BASE_URL?.replace(/\/$/, "") || ""}>
       <LanguageProvider>
-        <AppContent />
+        <ParticlesProvider init={initParticles}>
+          <AppContent />
+        </ParticlesProvider>
       </LanguageProvider>
     </BrowserRouter>
   );

@@ -10,8 +10,10 @@ import { POSTS } from "../data/posts";
 import { Post, fromStaticPost, fetchAllPosts } from "../lib/posts";
 
 const SUPABASE_URL = "https://dnpaagicskxzukeczifj.supabase.co";
-const SUPABASE_ANON_KEY =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRucGFhZ2ljc2t4enVrZWN6aWZqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE4OTYyNzksImV4cCI6MjA5NzQ3MjI3OX0.fI0GuwGnTQU7k7HOCwTBP2q0xIjR0s9bmDl0b9SfWN0";
+const SUPABASE_ANON_KEY = (
+  (import.meta.env.VITE_SUPABASE_ANON_KEY as string) ||
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRucGFhZ2ljc2t4enVrZWN6aWZqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE4OTYyNzksImV4cCI6MjA5NzQ3MjI3OX0.fI0GuwGnTQU7k7HOCwTBP2q0xIjR0s9bmDl0b9SfWN0"
+).trim().replace(/^\uFEFF/, "");
 
 // ---------------------------------------------------------------------------
 // SubscribeModal
@@ -26,9 +28,12 @@ function SubscribeModal({ open, onClose, isAr }: SubscribeModalProps) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [country, setCountry] = useState("");
+  const [lang, setLang] = useState<"ar" | "en">(isAr ? "ar" : "en");
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [isRobot, setIsRobot] = useState(false);
+  const [robotError, setRobotError] = useState(false);
 
   // Reset state each time modal opens
   useEffect(() => {
@@ -36,9 +41,12 @@ function SubscribeModal({ open, onClose, isAr }: SubscribeModalProps) {
       setName("");
       setEmail("");
       setCountry("");
+      setLang(isAr ? "ar" : "en");
       setLoading(false);
       setSuccess(false);
       setError(null);
+      setIsRobot(false);
+      setRobotError(false);
     }
   }, [open]);
 
@@ -46,6 +54,13 @@ function SubscribeModal({ open, onClose, isAr }: SubscribeModalProps) {
     e.preventDefault();
     setLoading(true);
     setError(null);
+
+    if (!isRobot) {
+      setRobotError(true);
+      setLoading(false);
+      setTimeout(() => setRobotError(false), 3000);
+      return;
+    }
 
     try {
       const res = await fetch(`${SUPABASE_URL}/rest/v1/subscribers`, {
@@ -56,11 +71,12 @@ function SubscribeModal({ open, onClose, isAr }: SubscribeModalProps) {
           "Content-Type": "application/json",
           Prefer: "return=minimal",
         },
-        body: JSON.stringify({ email, name, country: country || null }),
+        body: JSON.stringify({ email, name, country: country || null, lang }),
       });
 
       if (res.status === 201 || res.status === 200) {
         setSuccess(true);
+        setIsRobot(false);
         // TODO: Email notification sending is handled by n8n workflow
         // Set up Supabase webhook → n8n → email service (SendGrid/Resend) for automatic notifications
         setTimeout(() => {
@@ -184,11 +200,66 @@ function SubscribeModal({ open, onClose, isAr }: SubscribeModalProps) {
                   />
                 </div>
 
+                {/* Preferred newsletter language — subscriber chooses which language their emails arrive in */}
+                <div>
+                  <label className="block text-xs text-foreground/50 mb-1.5 font-mono-accent uppercase tracking-wide">
+                    {isAr ? "لغة النشرة" : "Newsletter language"} *
+                  </label>
+                  <div className="grid grid-cols-2 gap-2">
+                    <button
+                      type="button"
+                      onClick={() => setLang("ar")}
+                      aria-pressed={lang === "ar"}
+                      className={`rounded-xl border px-4 py-2.5 text-sm font-medium transition-colors ${lang === "ar" ? "border-cyan-400/60 bg-cyan-400/10 text-cyan-200" : "border-foreground/10 bg-foreground/[0.04] text-foreground/60 hover:border-foreground/25"}`}
+                    >
+                      العربية
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setLang("en")}
+                      aria-pressed={lang === "en"}
+                      className={`rounded-xl border px-4 py-2.5 text-sm font-medium transition-colors ${lang === "en" ? "border-cyan-400/60 bg-cyan-400/10 text-cyan-200" : "border-foreground/10 bg-foreground/[0.04] text-foreground/60 hover:border-foreground/25"}`}
+                    >
+                      English
+                    </button>
+                  </div>
+                  <p className="mt-1.5 text-[11px] text-foreground/40">
+                    {isAr ? "سنرسل لك المقالات الجديدة بهذه اللغة." : "We'll email you new articles in this language."}
+                  </p>
+                </div>
+
                 {error && (
                   <p className="text-sm text-red-400 bg-red-400/10 border border-red-400/20 rounded-xl px-4 py-3">
                     {error}
                   </p>
                 )}
+
+                {/* Robot check */}
+                <div>
+                  <label className="inline-flex items-center gap-3 cursor-pointer select-none group">
+                    <span className={`h-5 w-5 rounded-md border-2 flex items-center justify-center transition-all flex-shrink-0 ${isRobot ? "border-cyan-400 bg-cyan-400/20" : "border-foreground/20 bg-foreground/[0.03]"} group-hover:border-cyan-400/60`}>
+                      {isRobot && (
+                        <svg className="h-3 w-3 text-cyan-400" viewBox="0 0 12 12" fill="none">
+                          <path d="M2 6l3 3 5-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      )}
+                      <input
+                        type="checkbox"
+                        className="sr-only"
+                        checked={isRobot}
+                        onChange={e => { setIsRobot(e.target.checked); if (e.target.checked) setRobotError(false); }}
+                      />
+                    </span>
+                    <span className="text-sm text-foreground/70">
+                      {isAr ? "أنا لست روبوتاً" : "I am not a robot"}
+                    </span>
+                  </label>
+                  {robotError && (
+                    <p className="text-xs text-red-400 mt-1.5">
+                      {isAr ? "يرجى التأكيد أنك لست روبوتاً" : "Please confirm you are not a robot."}
+                    </p>
+                  )}
+                </div>
 
                 <button
                   type="submit"
@@ -197,7 +268,7 @@ function SubscribeModal({ open, onClose, isAr }: SubscribeModalProps) {
                 >
                   {loading
                     ? isAr
-                      ? "جاري الإرسال..."
+                      ? "جارٍ الإرسال..."
                       : "Subscribing..."
                     : isAr
                     ? "اشتراك"
@@ -221,6 +292,7 @@ export default function Insights() {
   const [apiPosts, setApiPosts] = useState<Post[]>([]);
   const [postsLoaded, setPostsLoaded] = useState(false);
   const [showSubscribe, setShowSubscribe] = useState(false);
+  const [page, setPage] = useState(1);
 
   const staticPosts = POSTS.map(fromStaticPost);
 
@@ -239,6 +311,15 @@ export default function Insights() {
 
   const featured = allPosts.find(p => p.featured);
   const rest = allPosts.filter(p => !p.featured);
+
+  const PER_PAGE = 10;
+  const totalPages = Math.max(1, Math.ceil(rest.length / PER_PAGE));
+  const pageSafe = Math.min(Math.max(1, page), totalPages);
+  const pagePosts = rest.slice((pageSafe - 1) * PER_PAGE, pageSafe * PER_PAGE);
+  const goToPage = (n: number) => {
+    setPage(n);
+    if (typeof window !== "undefined") window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   const fmt = (d: string) => new Date(d).toLocaleDateString(isAr ? "ar-SA" : "en-US", { year: "numeric", month: "long", day: "numeric" });
 
@@ -272,16 +353,16 @@ export default function Insights() {
 
       <PulseDivider />
 
-      {/* Featured */}
-      {featured && (
+      {/* Featured (page 1 only) */}
+      {featured && pageSafe === 1 && (
         <section className="relative py-16 sm:py-20">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <Reveal>
               <Link to={`/insights/${featured.slug}`} className="group relative overflow-hidden rounded-3xl border border-foreground/10 bg-foreground/[0.02] hover:border-cyan-400/20 transition-colors block">
                 <div className="grid lg:grid-cols-2">
                   <div className="relative h-64 lg:h-auto overflow-hidden">
-                    <img src={featured.image} alt={isAr ? featured.title.ar : featured.title.en} className="w-full h-full object-cover opacity-50 group-hover:opacity-65 group-hover:scale-105 transition-all duration-700" />
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#050505]/80 lg:bg-gradient-to-b" />
+                    <img src={featured.image} alt={isAr ? featured.title.ar : featured.title.en} className="w-full h-full object-cover opacity-65 group-hover:opacity-80 dark:opacity-50 dark:group-hover:opacity-65 group-hover:scale-105 transition-all duration-700" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent to-background/60 dark:to-background/80 lg:bg-gradient-to-b" />
                   </div>
                   <div className="p-8 sm:p-10 flex flex-col justify-center">
                     <div className="flex items-center gap-3 mb-4">
@@ -313,12 +394,12 @@ export default function Insights() {
       <section className="relative py-8 sm:py-12 pb-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <Stagger className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {rest.map((post) => (
+            {pagePosts.map((post) => (
               <StaggerItem key={post.slug}>
                 <Link to={`/insights/${post.slug}`} className="group relative overflow-hidden rounded-2xl border border-foreground/10 bg-foreground/[0.02] hover:border-cyan-400/25 transition-colors h-full flex flex-col block">
                   <div className="relative h-44 overflow-hidden">
-                    <img src={post.image} alt={isAr ? post.title.ar : post.title.en} className="w-full h-full object-cover opacity-40 group-hover:opacity-55 group-hover:scale-105 transition-all duration-500" />
-                    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#050505]" />
+                    <img src={post.image} alt={isAr ? post.title.ar : post.title.en} className="w-full h-full object-cover opacity-55 group-hover:opacity-70 dark:opacity-40 dark:group-hover:opacity-55 group-hover:scale-105 transition-all duration-500" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background" />
                     <div className="absolute top-3 left-3 rtl:left-auto rtl:right-3">
                       <span className="text-[10px] font-mono-accent uppercase tracking-[0.15em] px-2.5 py-1 rounded-full border border-cyan-400/35 text-cyan-300 bg-cyan-400/10">
                         {isAr ? post.tag.ar : post.tag.en}
@@ -340,6 +421,42 @@ export default function Insights() {
               </StaggerItem>
             ))}
           </Stagger>
+
+          {totalPages > 1 && (
+            <div className="mt-14 flex flex-wrap items-center justify-center gap-2">
+              <button
+                type="button"
+                onClick={() => goToPage(pageSafe - 1)}
+                disabled={pageSafe === 1}
+                className="inline-flex items-center gap-1.5 rounded-lg border border-foreground/10 bg-foreground/[0.03] px-3.5 py-2 text-xs font-mono-accent uppercase tracking-[0.15em] text-foreground/60 hover:border-cyan-400/40 hover:text-cyan-300 transition-colors disabled:opacity-30 disabled:pointer-events-none"
+              >
+                <ArrowRight className="h-3.5 w-3.5 rotate-180 rtl:rotate-0" /> {isAr ? "السابق" : "Prev"}
+              </button>
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map((n) => (
+                <button
+                  key={n}
+                  type="button"
+                  onClick={() => goToPage(n)}
+                  aria-current={n === pageSafe ? "page" : undefined}
+                  className={`h-9 min-w-9 rounded-lg border px-3 text-xs font-mono-accent transition-colors ${
+                    n === pageSafe
+                      ? "border-cyan-400/50 bg-cyan-400/10 text-cyan-200"
+                      : "border-foreground/10 bg-foreground/[0.03] text-foreground/55 hover:border-cyan-400/30 hover:text-cyan-300"
+                  }`}
+                >
+                  {n}
+                </button>
+              ))}
+              <button
+                type="button"
+                onClick={() => goToPage(pageSafe + 1)}
+                disabled={pageSafe === totalPages}
+                className="inline-flex items-center gap-1.5 rounded-lg border border-foreground/10 bg-foreground/[0.03] px-3.5 py-2 text-xs font-mono-accent uppercase tracking-[0.15em] text-foreground/60 hover:border-cyan-400/40 hover:text-cyan-300 transition-colors disabled:opacity-30 disabled:pointer-events-none"
+              >
+                {isAr ? "التالي" : "Next"} <ArrowRight className="h-3.5 w-3.5 rtl:rotate-180" />
+              </button>
+            </div>
+          )}
 
           <Reveal delay={0.3}>
             <div className="mt-16 text-center">

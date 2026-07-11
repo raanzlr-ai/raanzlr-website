@@ -11,12 +11,12 @@ import PulseDivider from "../components/PulseDivider";
 import MagneticButton from "../components/MagneticButton";
 import Heartbeat from "../components/Heartbeat";
 import SEO from "../components/SEO";
-import SyriaFlag from "../components/SyriaFlag";
+import FlagImage from "../components/FlagImage";
 import { MARKET_DETAILS } from "../data/markets";
 
 export default function MarketDetail() {
   const { slug } = useParams<{ slug: string }>();
-  const { isAr } = useLang();
+  const { isAr, localizedPath } = useLang();
   
   const market = MARKET_DETAILS.find(m => m.slug === slug);
   
@@ -46,9 +46,9 @@ export default function MarketDetail() {
             alt={content.name}
             loading="eager"
             fetchPriority="high"
-            className="w-full h-full object-cover opacity-10"
+            className="w-full h-full object-cover opacity-25 dark:opacity-10"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#050505]/70 via-[#050505]/85 to-[#050505]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/45 via-background/70 to-background dark:from-background/70 dark:via-background/85" />
         </div>
         <div className="absolute inset-0 bg-grid opacity-30" />
         <div className="noise absolute inset-0" />
@@ -61,7 +61,7 @@ export default function MarketDetail() {
             transition={{ duration: 0.5 }}
           >
             <Link
-              to="/markets"
+              to={localizedPath("/markets")}
               className="inline-flex items-center gap-2 text-xs font-mono-accent uppercase tracking-[0.18em] text-foreground/50 hover:text-cyan-300 transition-colors mb-6"
             >
               <ArrowLeft className="h-3.5 w-3.5 rtl:rotate-180" />
@@ -80,18 +80,13 @@ export default function MarketDetail() {
           </motion.div>
 
           <div className="mt-6 flex items-center gap-4">
-            <motion.span
+            <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className={market.flag === "SYRIA_FLAG" ? "" : "text-6xl"}
             >
-              {market.flag === "SYRIA_FLAG" ? (
-                <SyriaFlag className="w-20 h-14" />
-              ) : (
-                market.flag
-              )}
-            </motion.span>
+              <FlagImage code={market.code} alt={`${content.name} flag`} className="w-20 h-auto rounded-sm shadow-sm" />
+            </motion.div>
             <motion.h1
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}

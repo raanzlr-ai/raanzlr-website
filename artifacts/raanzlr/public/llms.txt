@@ -1,0 +1,38 @@
+# Raanzlr
+
+> Raanzlr builds practical AI agents, workflow automation, web platforms, and mobile apps for teams in the GCC, MENA, Türkiye, Europe, and the U.S.
+
+Raanzlr is an AI automation and software engineering agency headquartered in New Jersey, USA, serving clients across the Middle East, North Africa, Türkiye, and Europe. Founded in 2023.
+
+## Services
+
+- **AI Chatbots**: Custom Arabic and multilingual AI chatbots and virtual assistants
+- **Workflow Automation**: End-to-end business process automation using n8n, Make, and custom pipelines
+- **Web Development**: Full-stack web platforms and SaaS applications
+- **Mobile Apps**: iOS and Android applications with AI capabilities
+- **Custom AI Solutions**: RAG systems, LLM fine-tuning, and bespoke AI models
+- **CRM Integration**: Salesforce, HubSpot, and custom CRM automation
+- **UI/UX Design**: User experience design with Arabic RTL expertise
+- **Consulting**: AI strategy and digital transformation consulting
+
+## Markets
+
+GCC (Saudi Arabia, UAE, Qatar, Kuwait, Bahrain, Oman), Levant (Syria), Türkiye, Europe
+
+## Key Pages
+
+- Homepage (English): https://raanzlr.com/en/
+- Homepage (Arabic): https://raanzlr.com/ar/
+- Services: https://raanzlr.com/en/services
+- Industries: https://raanzlr.com/en/industries
+- Markets: https://raanzlr.com/en/markets
+- Case Studies: https://raanzlr.com/en/case-studies
+- Insights / Blog: https://raanzlr.com/en/insights
+- Contact: https://raanzlr.com/en/contact
+- FAQ: https://raanzlr.com/en/faq
+
+## Contact
+
+- Email: contact@raanzlr.com
+- LinkedIn: https://www.linkedin.com/company/raanzlr
+- Twitter/X: https://twitter.com/raanzlr

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Building2, ShoppingCart, Heart, GraduationCap, Truck, Hotel, Scale, Factory, ArrowRight } from "lucide-react";
 import { useLang } from "../contexts/LanguageContext";
@@ -12,14 +13,14 @@ const INDUSTRIES = [
     icon: Building2,
     key: "finance",
     en: { title: "Finance & Banking", desc: "AI-powered compliance monitoring, intelligent fraud detection, automated KYC, and 24/7 multilingual customer support bots for banks and fintech firms across the GCC.", tags: ["Fraud Detection", "KYC Automation", "Chatbots", "Compliance AI"] },
-    ar: { title: "المالية والمصرفية", desc: "مراقبة الامتثال بالذكاء الاصطناعي، كشف الاحتيال الذكي، أتمتة KYC، ودعم العملاء متعدد اللغات على مدار الساعة للبنوك وشركات التقنية المالية.", tags: ["كشف الاحتيال", "أتمتة KYC", "روبوتات دعم", "امتثال AI"] },
+    ar: { title: "المالية والمصرفية", desc: "نساعد البنوك وشركات التقنية المالية على مراقبة الامتثال، كشف الاحتيال، أتمتة KYC، وخدمة العملاء بلغات متعددة على مدار الساعة.", tags: ["كشف الاحتيال", "أتمتة KYC", "روبوتات دعم", "امتثال ذكي"] },
     image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=800&q=80",
   },
   {
     icon: ShoppingCart,
     key: "retail",
     en: { title: "Retail & E-Commerce", desc: "Personalised product recommendations, AI-driven inventory forecasting, WhatsApp shopping assistants, and automated order tracking for MENA's booming retail sector.", tags: ["Recommendation AI", "Inventory AI", "WhatsApp Bot", "Order Automation"] },
-    ar: { title: "التجزئة والتجارة الإلكترونية", desc: "توصيات المنتجات المخصصة، توقع المخزون بالذكاء الاصطناعي، مساعدو التسوق عبر واتساب، وتتبع الطلبات الآلي لقطاع التجزئة.", tags: ["AI توصيات", "ذكاء المخزون", "بوت واتساب", "أتمتة الطلبات"] },
+    ar: { title: "التجزئة والتجارة الإلكترونية", desc: "توصيات منتجات أدق، توقع للمخزون، مساعدو تسوق عبر واتساب، وتتبع آلي للطلبات في قطاع سريع الحركة.", tags: ["توصيات ذكية", "ذكاء المخزون", "بوت واتساب", "أتمتة الطلبات"] },
     image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=800&q=80",
   },
   {
@@ -33,8 +34,8 @@ const INDUSTRIES = [
     icon: GraduationCap,
     key: "education",
     en: { title: "Education & EdTech", desc: "Adaptive learning platforms, AI tutoring assistants, automated grading pipelines, and multilingual student support systems for universities and online academies.", tags: ["AI Tutoring", "Adaptive Learning", "Auto-Grading", "Student Support"] },
-    ar: { title: "التعليم والتكنولوجيا التعليمية", desc: "منصات التعلم التكيفي، مساعدو الذكاء الاصطناعي للتدريس، خطوط التصحيح الآلي، وأنظمة دعم الطلاب متعددة اللغات.", tags: ["توجيه AI", "تعلم تكيفي", "تصحيح آلي", "دعم الطلاب"] },
-    image: "/industries/education-edtech-ai.png",
+    ar: { title: "التعليم والتكنولوجيا التعليمية", desc: "منصات تعلم تكيفي، مساعدين للتدريس، تصحيح آلي، ودعم طلابي متعدد اللغات للجامعات والأكاديميات.", tags: ["توجيه ذكي", "تعلم تكيفي", "تصحيح آلي", "دعم الطلاب"] },
+    image: "/industries/education-edtech.jpg",
   },
   {
     icon: Truck,
@@ -47,21 +48,21 @@ const INDUSTRIES = [
     icon: Hotel,
     key: "hospitality",
     en: { title: "Hospitality & Tourism", desc: "AI concierge bots for hotels, automated reservation management, multilingual guest support in Arabic/English/Turkish, and review sentiment analysis for hospitality brands.", tags: ["AI Concierge", "Reservation Automation", "Guest Support", "Sentiment Analysis"] },
-    ar: { title: "الضيافة والسياحة", desc: "روبوتات كونسيرج للفنادق، إدارة الحجوزات الآلية، دعم الضيوف متعدد اللغات، وتحليل مشاعر التقييمات لعلامات الضيافة.", tags: ["كونسيرج AI", "أتمتة الحجوزات", "دعم الضيوف", "تحليل المشاعر"] },
+    ar: { title: "الضيافة والسياحة", desc: "كونسيرج ذكي للفنادق، إدارة حجوزات آلية، دعم ضيوف متعدد اللغات، وتحليل للتقييمات يساعد الإدارة على التحرك بسرعة.", tags: ["كونسيرج ذكي", "أتمتة الحجوزات", "دعم الضيوف", "تحليل المشاعر"] },
     image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
   },
   {
     icon: Scale,
     key: "legal",
     en: { title: "Legal & Professional Services", desc: "Contract analysis AI, legal document summarization, client intake automation, and intelligent billing systems for law firms and professional service firms.", tags: ["Contract AI", "Document Summarization", "Client Intake", "Billing Automation"] },
-    ar: { title: "الخدمات القانونية والمهنية", desc: "ذكاء اصطناعي لتحليل العقود، تلخيص المستندات القانونية، أتمتة استقبال العملاء، وأنظمة فوترة ذكية للمكاتب القانونية.", tags: ["AI عقود", "تلخيص الوثائق", "استقبال العملاء", "أتمتة الفوترة"] },
+    ar: { title: "الخدمات القانونية والمهنية", desc: "تحليل عقود، تلخيص مستندات قانونية، أتمتة استقبال العملاء، وفوترة أوضح للمكاتب القانونية وشركات الخدمات المهنية.", tags: ["تحليل العقود", "تلخيص الوثائق", "استقبال العملاء", "أتمتة الفوترة"] },
     image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=800&q=80",
   },
   {
     icon: Factory,
     key: "manufacturing",
     en: { title: "Manufacturing & Industry", desc: "Predictive quality control, automated defect detection with computer vision, smart production scheduling, and IoT data pipeline automation for factories.", tags: ["Quality Control AI", "Computer Vision", "Production Scheduling", "IoT Automation"] },
-    ar: { title: "التصنيع والصناعة", desc: "ضبط الجودة التنبؤي، كشف العيوب الآلي بالرؤية الحاسوبية، جدولة الإنتاج الذكية، وأتمتة خطوط بيانات IoT للمصانع.", tags: ["AI جودة", "رؤية حاسوبية", "جدولة الإنتاج", "أتمتة IoT"] },
+    ar: { title: "التصنيع والصناعة", desc: "ضبط جودة تنبؤي، كشف عيوب بالرؤية الحاسوبية، جدولة إنتاج أذكى، وأتمتة لبيانات أجهزة المصانع.", tags: ["جودة ذكية", "رؤية حاسوبية", "جدولة الإنتاج", "أتمتة IoT"] },
     image: "https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?auto=format&fit=crop&w=800&q=80",
   },
 ];
@@ -90,7 +91,7 @@ export default function Industries() {
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.25 }}
             className="mt-5 max-w-2xl text-base md:text-lg text-foreground/65">
             {isAr
-              ? "خبرتنا العميقة في قطاعات الأعمال الرئيسية تمكّننا من تقديم حلول ذكاء اصطناعي وأتمتة مصممة خصيصاً لتحديات صناعتك."
+              ? "نفهم اختلاف كل قطاع: الامتثال في البنوك، سرعة الطلب في التجزئة، وحساسية البيانات في الصحة. لذلك نبني الحل حول واقع عملك لا حول قالب جاهز."
               : "Our deep expertise across key business verticals enables us to deliver AI and automation solutions precisely engineered for your industry's unique challenges."}
           </motion.p>
         </div>
@@ -98,7 +99,7 @@ export default function Industries() {
 
       <PulseDivider />
 
-      <section className="relative py-20 sm:py-24">
+      <section className="relative py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <Stagger className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
             {INDUSTRIES.map((ind) => {
@@ -106,10 +107,10 @@ export default function Industries() {
               const content = isAr ? ind.ar : ind.en;
               return (
                 <StaggerItem key={ind.key}>
-                  <div className="group relative overflow-hidden rounded-2xl border border-foreground/10 bg-foreground/[0.02] hover:border-cyan-400/30 transition-colors h-full flex flex-col">
+                  <Link to={`/industries/${ind.key}`} className="group relative overflow-hidden rounded-2xl border border-foreground/10 bg-foreground/[0.02] hover:border-cyan-400/30 transition-colors h-full flex flex-col block">
                     <div className="relative h-36 overflow-hidden">
-                      <img src={ind.image} alt={content.title} loading="lazy" className="w-full h-full object-cover opacity-40 group-hover:opacity-60 transition-opacity duration-500" />
-                      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#050505]" />
+                      <img src={ind.image} alt={content.title} loading="lazy" className="w-full h-full object-cover opacity-60 group-hover:opacity-80 dark:opacity-40 dark:group-hover:opacity-60 transition-opacity duration-500" />
+                      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background dark:block hidden" />
                       <div className="absolute bottom-3 left-4">
                         <div className="h-10 w-10 rounded-xl border border-cyan-400/40 bg-cyan-400/10 flex items-center justify-center">
                           <Icon className="h-5 w-5 text-cyan-300" />
@@ -126,8 +127,12 @@ export default function Industries() {
                           </span>
                         ))}
                       </div>
+                      <div className="mt-4 pt-4 border-t border-foreground/5 flex items-center gap-1.5 text-xs font-mono-accent uppercase tracking-[0.15em] text-cyan-300/60 group-hover:text-cyan-300 transition-colors">
+                        {isAr ? "اكتشف المزيد" : "Explore"}
+                        <ArrowRight className="h-3 w-3 rtl:rotate-180" />
+                      </div>
                     </div>
-                  </div>
+                  </Link>
                 </StaggerItem>
               );
             })}

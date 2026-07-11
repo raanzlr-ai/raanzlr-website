@@ -19,7 +19,7 @@ const BENEFITS = {
     "جلسة استراتيجية مركزة لمدة 30 دقيقة مع مهندس كبير",
     "تقييم صادق لفرص الأتمتة لديك",
     "تقدير أولي للجدول الزمني والميزانية",
-    "بدون ضغط مبيعات — فقط توجيه تقني حقيقي",
+    "بدون ضغط مبيعات، فقط توجيه تقني حقيقي",
   ],
 };
 
@@ -81,7 +81,7 @@ export default function BookACall() {
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.25 }}
             className="mt-5 max-w-xl mx-auto text-base md:text-lg text-foreground/65">
             {isAr
-              ? "احجز مكالمة مجانية لمدة 30 دقيقة مع أحد مهندسينا الكبار. لا توجد عروض مبيعات — فقط محادثة صادقة حول ما يمكننا بناؤه معاً."
+              ? "احجز مكالمة مجانية لمدة 30 دقيقة مع أحد مهندسينا الكبار. لا توجد عروض مبيعات، فقط محادثة صادقة حول ما يمكننا بناؤه معاً."
               : "Book a free 30-minute call with one of our senior engineers. No sales pitch — just an honest conversation about what we could build together."}
           </motion.p>
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1, delay: 0.4 }} className="mt-6 flex justify-center">
@@ -118,7 +118,7 @@ export default function BookACall() {
                 </div>
                 <p className="text-sm text-foreground/55 leading-relaxed">
                   {isAr
-                    ? "نحن نقدر وقتك. إذا لم تكن الجلسة مفيدة، لا نتوقع شيئاً — هذا وعدنا لك."
+                    ? "نحن نقدر وقتك. إذا لم تكن الجلسة مفيدة، لا نتوقع شيئاً، هذا وعدنا لك."
                     : "We respect your time. If the session isn't useful, we expect nothing — that's our commitment to you."}
                 </p>
                 <div className="mt-4 flex items-center gap-2 text-sm text-foreground/45">

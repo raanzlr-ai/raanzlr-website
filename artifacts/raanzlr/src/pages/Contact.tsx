@@ -10,7 +10,7 @@ import Heartbeat from "../components/Heartbeat";
 import SEO from "../components/SEO";
 import PhoneInput from "../components/PhoneInputWithSearch";
 
-const SUPABASE_SERVICE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRucGFhZ2ljc2t4enVrZWN6aWZqIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4MTg5NjI3OSwiZXhwIjoyMDk3NDcyMjc5fQ.idUWbOdKw_rRMSAuuK9mUcjmfvWrQmz6rZ3LyxKMXAc";
+const SUPABASE_ANON_KEY = ((import.meta.env.VITE_SUPABASE_ANON_KEY as string) || "").trim().replace(/^\uFEFF/, "");
 const N8N_CONTACT = import.meta.env.VITE_N8N_CONTACT_WEBHOOK;
 const N8N_SERVICE = import.meta.env.VITE_N8N_SERVICE_WEBHOOK;
 
@@ -48,8 +48,8 @@ async function submitToSupabase(table: string, payload: Record<string, unknown>)
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "apikey": SUPABASE_SERVICE_KEY,
-      "Authorization": `Bearer ${SUPABASE_SERVICE_KEY}`,
+      "apikey": SUPABASE_ANON_KEY,
+      "Authorization": `Bearer ${SUPABASE_ANON_KEY}`,
       "Prefer": "return=minimal",
     },
     body: JSON.stringify(payload),
@@ -75,8 +75,18 @@ export default function Contact() {
   const [svc, setSvc] = useState({ service: preselect || SERVICES_LIST[0], full_name: "", email: "", phone_code: "+1", phone: "", role: "", company_type: "", company_size: "", budget_range: "", best_time: "", challenge: "" });
   const [svcLoading, setSvcLoading] = useState(false);
 
+  const [generalRobot, setGeneralRobot] = useState(false);
+  const [svcRobot, setSvcRobot] = useState(false);
+  const [generalRobotError, setGeneralRobotError] = useState(false);
+  const [svcRobotError, setSvcRobotError] = useState(false);
+
   const submitGeneral = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!generalRobot) {
+      setGeneralRobotError(true);
+      setTimeout(() => setGeneralRobotError(false), 3000);
+      return;
+    }
     setGeneralLoading(true);
     try {
       const payload = {
@@ -92,6 +102,7 @@ export default function Contact() {
       if (N8N_CONTACT) fetch(N8N_CONTACT, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) }).catch(() => {});
       toast.success(t.contact.success);
       setGeneral({ name: "", email: "", phone_code: "+1", phone: "", subject: "", message: "", best_time: "" });
+      setGeneralRobot(false);
     } catch (err) {
       console.error("[Contact Form] General submit error:", err);
       toast.error(t.contact.error);
@@ -102,6 +113,11 @@ export default function Contact() {
 
   const submitService = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!svcRobot) {
+      setSvcRobotError(true);
+      setTimeout(() => setSvcRobotError(false), 3000);
+      return;
+    }
     setSvcLoading(true);
     try {
       const payload = {
@@ -121,6 +137,7 @@ export default function Contact() {
       if (N8N_SERVICE) fetch(N8N_SERVICE, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) }).catch(() => {});
       toast.success(t.contact.success);
       setSvc({ service: SERVICES_LIST[0], full_name: "", email: "", phone_code: "+1", phone: "", role: "", company_type: "", company_size: "", budget_range: "", best_time: "", challenge: "" });
+      setSvcRobot(false);
     } catch (err) {
       console.error("[Contact Form] Service submit error:", err);
       toast.error(t.contact.error);
@@ -250,6 +267,27 @@ export default function Contact() {
                     <label className={labelCls}>{datetimeLabel}</label>
                     <input type="datetime-local" className={fieldCls + " [color-scheme:dark]"} value={general.best_time} onChange={e => setGeneral(s => ({ ...s, best_time: e.target.value }))} />
                   </div>
+                  <div>
+                    <label className="inline-flex items-center gap-3 cursor-pointer select-none group">
+                      <span className={`h-5 w-5 rounded-md border-2 flex items-center justify-center transition-all ${generalRobot ? "border-cyan-400 bg-cyan-400/20" : "border-foreground/20 bg-foreground/[0.03]"} group-hover:border-cyan-400/60`}>
+                        {generalRobot && (
+                          <svg className="h-3 w-3 text-cyan-400" viewBox="0 0 12 12" fill="none">
+                            <path d="M2 6l3 3 5-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                          </svg>
+                        )}
+                        <input
+                          type="checkbox"
+                          className="sr-only"
+                          checked={generalRobot}
+                          onChange={e => { setGeneralRobot(e.target.checked); if (e.target.checked) setGeneralRobotError(false); }}
+                        />
+                      </span>
+                      <span className="text-sm text-foreground/70">{isAr ? "أنا لست روبوتاً" : "I am not a robot"}</span>
+                    </label>
+                    {generalRobotError && (
+                      <p className="text-xs text-red-400 mt-1.5">{isAr ? "يرجى التأكيد أنك لست روبوتاً" : "Please confirm you are not a robot."}</p>
+                    )}
+                  </div>
                   <button type="submit" disabled={generalLoading}
                     className="w-full sm:w-auto rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 px-8 py-3 text-sm font-bold text-[#050505] shadow-[0_0_20px_rgba(0,240,255,0.3)] hover:shadow-[0_0_30px_rgba(0,240,255,0.5)] transition-shadow disabled:opacity-60">
                     {generalLoading ? (isAr ? "جارٍ الإرسال..." : "Sending...") : t.cta.sendMessage}
@@ -303,6 +341,27 @@ export default function Contact() {
                   <div>
                     <label className={labelCls}>{t.contact.service.challenge}</label>
                     <textarea required rows={4} className={fieldCls} value={svc.challenge} onChange={e => setSvc(s => ({ ...s, challenge: e.target.value }))} />
+                  </div>
+                  <div>
+                    <label className="inline-flex items-center gap-3 cursor-pointer select-none group">
+                      <span className={`h-5 w-5 rounded-md border-2 flex items-center justify-center transition-all ${svcRobot ? "border-cyan-400 bg-cyan-400/20" : "border-foreground/20 bg-foreground/[0.03]"} group-hover:border-cyan-400/60`}>
+                        {svcRobot && (
+                          <svg className="h-3 w-3 text-cyan-400" viewBox="0 0 12 12" fill="none">
+                            <path d="M2 6l3 3 5-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                          </svg>
+                        )}
+                        <input
+                          type="checkbox"
+                          className="sr-only"
+                          checked={svcRobot}
+                          onChange={e => { setSvcRobot(e.target.checked); if (e.target.checked) setSvcRobotError(false); }}
+                        />
+                      </span>
+                      <span className="text-sm text-foreground/70">{isAr ? "أنا لست روبوتاً" : "I am not a robot"}</span>
+                    </label>
+                    {svcRobotError && (
+                      <p className="text-xs text-red-400 mt-1.5">{isAr ? "يرجى التأكيد أنك لست روبوتاً" : "Please confirm you are not a robot."}</p>
+                    )}
                   </div>
                   <button type="submit" disabled={svcLoading}
                     className="w-full sm:w-auto rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 px-8 py-3 text-sm font-bold text-[#050505] shadow-[0_0_20px_rgba(0,240,255,0.3)] hover:shadow-[0_0_30px_rgba(0,240,255,0.5)] transition-shadow disabled:opacity-60">
