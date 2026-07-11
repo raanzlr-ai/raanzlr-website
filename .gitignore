@@ -136,3 +136,6 @@ arabics_notes.md
 # Unused WIP sources
 artifacts/raanzlr/src/components/ThemeToggle.main-wip.tsx
 artifacts/raanzlr/src/data/INDUSTRIES_FULL.json
+
+.vercel
+.env*
