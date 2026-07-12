@@ -57,8 +57,8 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-16 sm:h-18">
             {/* Logo */}
             <Link to={localizedPath("/")} className="flex items-center gap-2.5 shrink-0" aria-label="Raanzlr Home">
-              <img src="/logo-raanzlr.webp" alt="Raanzlr logo" width="48" height="28" className={`h-6 sm:h-9 w-auto ${isAr ? "order-last" : "order-first"}`} />
-              <img src="/Raanzlr.webp" alt="Raanzlr" width="189" height="28" className="h-4 w-auto sm:h-7" />
+              <img src="/logo-raanzlr-80.webp" srcSet="/logo-raanzlr-80.webp 80w, /logo-raanzlr.webp 160w" sizes="(min-width: 640px) 62px, 41px" alt="Raanzlr logo" width="48" height="28" className={`h-6 sm:h-9 w-auto ${isAr ? "order-last" : "order-first"}`} />
+              <img src="/Raanzlr-280.webp" srcSet="/Raanzlr-280.webp 280w, /Raanzlr.webp 560w" sizes="(min-width: 640px) 189px, 108px" alt="Raanzlr" width="189" height="28" className="h-4 w-auto sm:h-7" />
             </Link>
 
             {/* Desktop Nav */}

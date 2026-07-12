@@ -1,7 +1,12 @@
-# Agent Access — Raanzlr
+# Auth.md
 
-Raanzlr (https://raanzlr.com) is a public marketing and content website for an
-AI automation and software engineering agency.
+Agent access policy for Raanzlr (https://raanzlr.com) — a public marketing
+and content website for an AI automation and software engineering agency.
+
+## Registration
+
+**No agent registration is required.** There is no sign-up flow, credential
+issuance, or identity claim process on this domain.
 
 ## Authentication
 

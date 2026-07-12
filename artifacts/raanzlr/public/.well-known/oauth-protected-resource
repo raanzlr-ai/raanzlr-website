@@ -1,6 +1,7 @@
 {
   "resource": "https://raanzlr.com",
   "authorization_servers": ["https://raanzlr.com"],
-  "scopes_supported": [],
-  "bearer_methods_supported": ["header"]
+  "scopes_supported": ["public:read"],
+  "bearer_methods_supported": ["header"],
+  "resource_documentation": "https://raanzlr.com/auth.md"
 }

@@ -47,8 +47,8 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2">
             <Link to={localizedPath("/")} className="flex items-center gap-2.5 mb-4 w-fit">
-              <img src="/Raanzlr.webp" alt="Raanzlr" className="h-8 w-auto" />
-              <img src="/logo-raanzlr.webp" alt="Raanzlr logo" width="70" height="40" className="h-10 w-auto" />
+              <img src="/Raanzlr-280.webp" srcSet="/Raanzlr-280.webp 280w, /Raanzlr.webp 560w" sizes="216px" alt="Raanzlr" className="h-8 w-auto" />
+              <img src="/logo-raanzlr-80.webp" srcSet="/logo-raanzlr-80.webp 80w, /logo-raanzlr.webp 160w" sizes="68px" alt="Raanzlr logo" width="70" height="40" className="h-10 w-auto" />
             </Link>
             <p className="text-sm text-foreground/55 leading-relaxed max-w-xs">{t.footer.tagline}</p>
             <div className="mt-5">

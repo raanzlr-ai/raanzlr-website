@@ -28,7 +28,7 @@ const en = {
     whyTitle: "Why teams choose us",
     whySub: "Clear thinking, senior engineering, and results you can measure.",
     servicesLabel: "// services",
-    servicesPreview: "What we build",
+    servicesPreview: "AI & software services we build",
     servicesPreviewSub: "From conversational AI to enterprise platforms — engineered with precision.",
     features: [
       { title: "Give your team time back", desc: "We replace repetitive manual work with reliable systems. Your people get to focus on sales, service, operations, and decisions that need judgment." },
@@ -231,8 +231,8 @@ const en = {
   isAr: false,
   seo: {
     home: {
-      title: "Raanzlr — AI Automation, Web Apps & Software Engineering",
-      description: "Raanzlr builds practical AI agents, workflow automation, web platforms, and mobile apps for teams across the GCC, MENA, Türkiye, Europe, and the U.S. — bilingual Arabic and English, engineered to ship.",
+      title: "Raanzlr — AI Automation & Software Engineering Services",
+      description: "Raanzlr builds practical AI agents, workflow automation services, web platforms, and mobile apps that grow your business — bilingual Arabic and English for the GCC, MENA, Türkiye, Europe, and the U.S.",
       keywords: "AI automation agency, Arabic AI chatbot, workflow automation, custom AI development, web application development, mobile app development, software engineering GCC, AI agency MENA",
     },
     services: {

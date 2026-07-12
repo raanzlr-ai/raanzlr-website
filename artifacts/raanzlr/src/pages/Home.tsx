@@ -65,7 +65,9 @@ const HeroLogoStage = () => {
       </div>
       <div className="absolute inset-0 flex items-center justify-center">
         <motion.img
-          src="/Raanzlr.webp"
+          src="/Raanzlr-280.webp"
+          srcSet="/Raanzlr-280.webp 280w, /Raanzlr.webp 560w"
+          sizes="(min-width: 640px) 280px, 45vw"
           alt="Raanzlr — AI automation, web apps and software engineering"
           className="h-[50%] w-[50%] object-contain floaty drop-shadow-[0_0_60px_rgba(0,240,255,0.55)]"
           initial={{ opacity: 0, scale: 0.85 }}
