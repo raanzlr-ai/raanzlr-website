@@ -86,13 +86,13 @@ export default function Industries() {
           </motion.div>
           <motion.h1 initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }}
             className="mt-6 max-w-4xl font-display text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.04] tracking-tighter text-chrome">
-            {isAr ? "نهندس حلولاً لكل قطاع." : "Engineering solutions for every industry."}
+            {isAr ? "القطاعات" : "Industries"}
           </motion.h1>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.25 }}
             className="mt-5 max-w-2xl text-base md:text-lg text-foreground/65">
             {isAr
-              ? "نفهم اختلاف كل قطاع: الامتثال في البنوك، سرعة الطلب في التجزئة، وحساسية البيانات في الصحة. لذلك نبني الحل حول واقع عملك لا حول قالب جاهز."
-              : "Our deep expertise across key business verticals enables us to deliver AI and automation solutions precisely engineered for your industry's unique challenges."}
+              ? "لكل قطاع تحدياته ومتطلباته الخاصة، لذلك نصمم حلول الذكاء الاصطناعي والبرمجيات بما يتناسب مع طبيعة كل نشاط، مع التركيز على تحسين الكفاءة، وأتمتة العمليات، وتقديم حلول مرنة تدعم نمو الأعمال."
+              : "Each industry has its unique challenges and requirements, so we design AI and software solutions tailored to each sector's nature, focusing on improving efficiency, automating processes, and delivering flexible solutions that support business growth."}
           </motion.p>
         </div>
       </section>

@@ -46,9 +46,9 @@ export default function MarketDetail() {
             alt={content.name}
             loading="eager"
             fetchPriority="high"
-            className="w-full h-full object-cover opacity-25 dark:opacity-10"
+            className="w-full h-full object-cover opacity-40 dark:opacity-10"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/45 via-background/70 to-background dark:from-background/70 dark:via-background/85" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/25 via-background/50 to-background dark:from-background/70 dark:via-background/85" />
         </div>
         <div className="absolute inset-0 bg-grid opacity-30" />
         <div className="noise absolute inset-0" />

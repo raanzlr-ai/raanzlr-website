@@ -9,6 +9,11 @@ import SEO from "../components/SEO";
 
 const VALUE_ICONS = [Rocket, ShieldCheck, Headphones];
 
+// Shown only on this page — Contact and Footer keep t.about.address unchanged.
+const ABOUT_ENTITY_NAME = "WAFA INTERNATIONAL";
+const ABOUT_ADDRESS_LINE1 = "4030 Plaza Dr #3 #15 (10030)";
+const ABOUT_ADDRESS_LINE2 = "Casper, WY 82604";
+
 export default function About() {
   const { t, isAr } = useLang();
   const heroRef = useRef<HTMLElement>(null);
@@ -24,7 +29,7 @@ export default function About() {
       <section ref={heroRef} className="relative min-h-[100vh] overflow-hidden flex items-center">
         <motion.div style={{ y: bgY }} className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1772090131833-f7db87feab28?crop=entropy&cs=srgb&fm=jpg&q=85&w=1800"
+            src="/about-hero-global.webp"
             alt=""
             role="presentation"
             loading="eager"
@@ -97,7 +102,11 @@ export default function About() {
               <p className="mt-4 text-foreground/60 leading-relaxed">{t.about.hqDesc}</p>
               <div className="mt-6 flex items-start gap-3">
                 <MapPin className="h-4 w-4 text-cyan-400 shrink-0 mt-1" />
-                <span className="text-sm text-foreground/60">{t.about.address}</span>
+                <span className="text-sm text-foreground/60">
+                  <span className="block text-foreground/80 font-medium">{ABOUT_ENTITY_NAME}</span>
+                  <span className="block">{ABOUT_ADDRESS_LINE1}</span>
+                  <span className="block">{ABOUT_ADDRESS_LINE2}</span>
+                </span>
               </div>
               <div className="mt-6 flex items-center gap-3">
                 <span className="text-xs text-foreground/40 font-mono-accent uppercase tracking-[0.18em]">
@@ -134,9 +143,10 @@ export default function About() {
                 <div className="absolute inset-0 bg-gradient-to-t from-background/55 to-transparent dark:from-background/80" />
                 <div className="absolute bottom-4 left-4 right-4">
                   <div className="text-xs font-mono-accent uppercase tracking-[0.28em] text-cyan-300/70 mb-1">{t.about.hq}</div>
-                  <p className="text-sm text-foreground/80">{t.about.address}</p>
+                  <p className="text-sm text-foreground/80 font-medium">{ABOUT_ENTITY_NAME}</p>
+                  <p className="text-sm text-foreground/70">{ABOUT_ADDRESS_LINE1}, {ABOUT_ADDRESS_LINE2}</p>
                   <p className="text-xs text-foreground/50 font-mono-accent uppercase tracking-[0.2em] mt-2">
-                    {isAr ? "عمليات عالمية • فرق موزعة • تعاون بدون حدود" : "Global operations • Distributed teams • Borderless collaboration"}
+                    {isAr ? "تعاون مرن • تواصل مستمر • حلول مصممة للنمو" : "Flexible collaboration • Continuous communication • Solutions designed for growth"}
                   </p>
                 </div>
               </div>
@@ -154,12 +164,12 @@ export default function About() {
               <div className="relative">
                 <Heartbeat className="w-40 h-8 mx-auto mb-6" />
                 <h3 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-chrome">
-                  {isAr ? "هل لديك فكرة أو مشروع تعمل عليه؟" : "Ready to work with us?"}
+                  {isAr ? "هل لديك مشروع أو فكرة ترغب في تطويرها؟" : "Do you have a project or idea you want to develop?"}
                 </h3>
                 <p className="mt-4 text-foreground/60 max-w-xl mx-auto">
                   {isAr
-                    ? "سواء كنت تخطط لبناء نظام جديد، أو تطوير منصة قائمة، أو أتمتة عمليات داخل شركتك، يسعدنا مناقشة متطلباتك واقتراح الحل المناسب."
-                    : "Let's build something great together. Get in touch to discuss your project."}
+                    ? "سواء كنت تخطط لتطوير منصة جديدة، أو أتمتة العمليات داخل شركتك، أو دمج تقنيات الذكاء الاصطناعي في أعمالك، يسعد فريق Raanzlr بالتعرف على احتياجاتك ومناقشة أفضل الحلول التي تناسب أهدافك. تواصل معنا لنبدأ الحديث حول مشروعك."
+                    : "Whether you're planning to develop a new platform, automate processes within your company, or integrate AI technologies into your business, the Raanzlr team is happy to learn about your needs and discuss the best solutions that fit your goals. Contact us to start the conversation about your project."}
                 </p>
                 <div className="mt-8">
                   <a href="/contact" className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 px-6 py-3 text-sm font-bold text-[#050505] hover:opacity-90 transition-opacity">

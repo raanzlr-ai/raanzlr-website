@@ -27,13 +27,13 @@ export default function CaseStudies() {
           </motion.div>
           <motion.h1 initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }}
             className="mt-6 max-w-4xl font-display text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.04] tracking-tighter text-chrome">
-            {isAr ? "ما نستطيع بناؤه لك." : "What we build for you."}
+            {isAr ? "دراسات الحالة" : "Case Studies"}
           </motion.h1>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.25 }}
             className="mt-5 max-w-2xl text-base md:text-lg text-foreground/65">
             {isAr
-              ? "هذه نماذج تمثيلية للمشاريع التي نبنيها، وتعكس تحديات حقيقية نحلها وطريقة عملنا في التنفيذ. نحافظ على سرية بيانات عملائنا الفعليين."
-              : "These showcase the types of projects we engineer — reflecting real challenge patterns and our delivery approach. Actual client details are kept confidential."}
+              ? "تعرض هذه الصفحة أمثلة وسيناريوهات تطبيقية توضح أنواع الحلول التي نصممها وكيف يمكن للذكاء الاصطناعي وأتمتة الأعمال أن يساعدا الشركات على معالجة تحدياتها التشغيلية. جميع الأمثلة معروضة لأغراض توضيحية مع الحفاظ على خصوصية العملاء وبياناتهم."
+              : "This page showcases examples and application scenarios that demonstrate the types of solutions we design and how AI and business automation can help companies address their operational challenges. All examples are presented for illustrative purposes while maintaining client privacy and data confidentiality."}
           </motion.p>
         </div>
       </section>
@@ -47,8 +47,8 @@ export default function CaseStudies() {
               <StaggerItem key={c.slug}>
                 <Link to={`/case-studies/${c.slug}`} className="group relative overflow-hidden rounded-3xl border border-foreground/10 bg-foreground/[0.02] hover:border-cyan-400/25 transition-all h-full flex flex-col block">
                   <div className="relative h-48 overflow-hidden">
-                    <img src={c.image} alt={isAr ? c.title.ar : c.title.en} className="w-full h-full object-cover opacity-55 group-hover:opacity-70 dark:opacity-40 dark:group-hover:opacity-55 group-hover:scale-105 transition-all duration-700" />
-                    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background" />
+                    <img src={c.image} alt={isAr ? c.title.ar : c.title.en} className="w-full h-full object-cover opacity-100 dark:opacity-40 dark:group-hover:opacity-55 group-hover:scale-105 transition-all duration-700" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background hidden dark:block" />
                     <div className="absolute top-4 left-4 rtl:left-auto rtl:right-4 flex gap-2">
                       <span className="text-[10px] font-mono-accent uppercase tracking-[0.18em] px-2.5 py-1 rounded-full border border-cyan-400/40 text-cyan-300 bg-cyan-400/10">
                         {isAr ? c.tag.ar : c.tag.en}

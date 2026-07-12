@@ -63,8 +63,8 @@ export default function Services() {
                     <div className="shimmer-layer absolute inset-0 pointer-events-none z-10" />
                     <div className="relative h-40 overflow-hidden">
                       <img src={s.image} alt={s.title} loading="lazy"
-                        className="w-full h-full object-cover opacity-55 group-hover:opacity-70 dark:opacity-40 dark:group-hover:opacity-60 transition-opacity duration-500" />
-                      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background" />
+                        className="w-full h-full object-cover opacity-100 dark:opacity-40 dark:group-hover:opacity-60 transition-opacity duration-500" />
+                      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background hidden dark:block" />
                       <span className={`absolute top-3 right-3 rtl:right-auto rtl:left-3 text-[10px] font-mono-accent uppercase tracking-[0.18em] px-2.5 py-1 rounded-full border ${isHigh ? "border-cyan-400/50 text-cyan-300 bg-cyan-400/10" : "border-blue-400/50 text-blue-300 bg-blue-400/10"}`}>
                         {isHigh ? t.services.highDemand : t.services.standard}
                       </span>

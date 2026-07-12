@@ -106,9 +106,9 @@ export default function ServiceDetail() {
             alt={service.title}
             loading="eager"
             fetchPriority="high"
-            className="w-full h-full object-cover opacity-30 dark:opacity-15"
+            className="w-full h-full object-cover opacity-50 dark:opacity-15"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/35 via-background/65 to-background dark:from-background/60 dark:via-background/80" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/45 to-background dark:from-background/60 dark:via-background/80" />
         </div>
         <div className="absolute inset-0 bg-grid opacity-40" />
         <div className="absolute -top-20 right-0 h-[500px] w-[500px] rounded-full bg-blue-600/10 blur-[130px]" />
