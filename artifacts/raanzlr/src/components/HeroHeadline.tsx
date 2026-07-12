@@ -139,10 +139,9 @@ export default function HeroHeadline({ isAr }: { isAr: boolean }) {
             <span className="mx-1 inline-block w-[3px] sm:w-[4px]" />
           </span>
         ))}
-        <h1
-          aria-label={full}
-          className="col-start-1 row-start-1 font-display font-bold leading-[1.1] tracking-tighter text-4xl sm:text-5xl md:text-6xl lg:text-7xl"
-        >
+        <h1 className="col-start-1 row-start-1 font-display font-bold leading-[1.1] tracking-tighter text-4xl sm:text-5xl md:text-6xl lg:text-7xl">
+          {/* Full phrase for crawlers and screen readers — the animated spans below are aria-hidden. */}
+          <span className="sr-only">{full}</span>
           <span aria-hidden className="text-chrome">
             {leadShown}
           </span>

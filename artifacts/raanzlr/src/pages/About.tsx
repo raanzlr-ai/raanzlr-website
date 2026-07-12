@@ -135,7 +135,7 @@ export default function About() {
             <Reveal delay={0.2}>
               <div className="relative rounded-3xl overflow-hidden border border-foreground/10 aspect-video">
                 <img
-                  src="/company.png"
+                  src="/company.webp"
                   alt="Global operations"
                   loading="lazy"
                   className="w-full h-full object-cover opacity-70 dark:opacity-60"

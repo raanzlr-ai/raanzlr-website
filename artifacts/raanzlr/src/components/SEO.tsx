@@ -42,10 +42,10 @@ interface SEOProps {
   noIndex?: boolean;
 }
 
-// Social share preview image (919x527 logo). Served from Supabase Storage so link/social
-// previews render regardless of which domain (raanzlr.com vs *.vercel.app) serves the site.
-const OG_IMAGE_EN = 'https://dnpaagicskxzukeczifj.supabase.co/storage/v1/object/public/blog-images/email/logo-raanzlr.png';
-const OG_IMAGE_AR = 'https://dnpaagicskxzukeczifj.supabase.co/storage/v1/object/public/blog-images/email/logo-raanzlr.png';
+// Social share preview image — the dedicated 1200x630 Open Graph card, served
+// from the production domain (matches the static og:image in index.html).
+const OG_IMAGE_EN = 'https://raanzlr.com/opengraph.png';
+const OG_IMAGE_AR = 'https://raanzlr.com/opengraph-ar.png';
 
 // Segment display names for breadcrumbs
 const SEGMENT_NAMES: Record<string, { en: string; ar: string }> = {
@@ -233,8 +233,8 @@ export default function SEO({
       <meta property="og:url" content={canonicalUrl} />
       <meta property="og:image" content={resolvedImage} />
       <meta property="og:image:alt" content={resolvedTitle || 'Raanzlr'} />
-      <meta property="og:image:width" content="919" />
-      <meta property="og:image:height" content="527" />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
       <meta property="og:locale" content={locale} />
       <meta property="og:locale:alternate" content={alternateLocale} />
 

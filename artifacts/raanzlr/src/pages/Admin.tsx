@@ -155,7 +155,7 @@ function LoginScreen({ onLogin }: { onLogin: () => void }) {
   return (
     <div className="min-h-screen bg-background flex items-center justify-center px-4">
       <div className="w-full max-w-sm">
-        <img src="/Raanzlr.png" alt="Raanzlr" className="h-8 w-auto mx-auto mb-8 opacity-80" />
+        <img src="/Raanzlr.webp" alt="Raanzlr" className="h-8 w-auto mx-auto mb-8 opacity-80" />
         <div className="rounded-2xl border border-foreground/10 bg-foreground/[0.03] p-8">
           <h1 className="text-xl font-bold text-foreground mb-1">Admin Access</h1>
           <p className="text-sm text-foreground/40 mb-6">Raanzlr back office</p>
@@ -1615,7 +1615,7 @@ export default function Admin() {
       <div className="border-b border-foreground/8 bg-background sticky top-0 z-40">
         <div className="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <img src="/Raanzlr.png" alt="Raanzlr" className="h-6 w-auto opacity-70" />
+            <img src="/Raanzlr.webp" alt="Raanzlr" className="h-6 w-auto opacity-70" />
             <span className="text-xs text-foreground/30 border-l border-foreground/10 pl-4">Admin</span>
           </div>
           <button

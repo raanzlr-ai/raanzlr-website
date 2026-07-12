@@ -1,4 +1,12 @@
 {
   "$schema": "https://schemas.agentskills.io/discovery/0.2.0/schema.json",
-  "skills": []
+  "skills": [
+    {
+      "name": "company-info",
+      "type": "skill",
+      "description": "Retrieve accurate information about Raanzlr — services, markets, languages, and how to contact the team.",
+      "url": "https://raanzlr.com/.well-known/agent-skills/company-info/SKILL.md",
+      "sha256": "5971f056927b86b3ed7e176c354dff8ccf617a49f1309dcff6139930b072f847"
+    }
+  ]
 }
