@@ -33,10 +33,10 @@ const TooltipBox = ({ active, payload, label, unit }: any) => {
   return (
     <div
       dir="ltr"
-      className="rounded-lg border border-cyan-400/30 bg-card/95 px-3 py-2 text-xs shadow-xl"
+      className="rounded-lg border border-border bg-card px-3 py-2 text-xs shadow-xl"
     >
-      <div className="font-mono-accent uppercase tracking-[0.14em] text-foreground/45">{label}</div>
-      <div className="mt-0.5 font-display text-sm font-semibold text-cyan-300">
+      <div className="font-mono-accent uppercase tracking-[0.14em] text-foreground/80">{label}</div>
+      <div className="mt-0.5 font-display text-sm font-semibold text-primary">
         {fmt(payload[0].value, unit)}
       </div>
     </div>

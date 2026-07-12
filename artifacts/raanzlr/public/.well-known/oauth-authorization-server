@@ -7,6 +7,12 @@
   "response_types_supported": ["code"],
   "agent_auth": {
     "skill": "https://isitagentready.com/.well-known/agent-skills/auth-md/SKILL.md",
-    "register_uri": "https://raanzlr.com/auth.md"
+    "register_uri": "https://raanzlr.com/auth.md",
+    "registration": "open",
+    "identity_types": ["none"],
+    "credential_types": ["none"],
+    "claim_uri": null,
+    "revocation_uri": null,
+    "notes": "No authentication required; all content is public and read-only. No registration, identity claim, credential issuance, or token revocation is available on this domain."
   }
 }

@@ -14,7 +14,7 @@ const SECTIONS_EN = [
   { icon: AlertCircle, title: "Intellectual Property", content: ["Unless otherwise stated in the agreement, ownership of outputs developed specifically for the client transfers after all agreed financial obligations are completed.", "Raanzlr retains ownership rights to tools, libraries, frameworks, and general technologies previously developed or used in multiple projects."] },
   { icon: Scale, title: "Limitation of Liability", content: ["We make reasonable efforts to deliver high-quality services, however we do not guarantee services are completely error-free or guarantee specific business results, as outcomes also depend on factors beyond our control."] },
   { icon: MessageSquare, title: "Amendments", content: ["We may update these terms when necessary, and the version published on the website becomes the approved version from its publication date."] },
-  { icon: MessageSquare, title: "Contact", content: ["For any inquiries related to these terms, you can contact us via:", "info@raanzlr.com", "9 Branch Brook Dr #10030, Belleville, NJ 07109, USA"] },
+  { icon: MessageSquare, title: "Contact", content: ["For any inquiries related to these terms, you can contact us via:", "info@raanzlr.com", "4030 Plaza Dr #3 #15 (10030), Casper, WY 82604, USA"] },
 ];
 
 const SECTIONS_AR = [
@@ -24,7 +24,7 @@ const SECTIONS_AR = [
   { icon: AlertCircle, title: "الملكية الفكرية", content: ["ما لم يُنص على خلاف ذلك في الاتفاقية، تنتقل ملكية المخرجات التي يتم تطويرها خصيصاً للعميل بعد استكمال جميع الالتزامات المالية المتفق عليها.", "وتحتفظ Raanzlr بحقوق ملكية الأدوات والمكتبات والأطر البرمجية والتقنيات العامة التي تم تطويرها مسبقاً أو المستخدمة في أكثر من مشروع."] },
   { icon: Scale, title: "حدود المسؤولية", content: ["نبذل جهداً معقولاً لتقديم خدمات عالية الجودة، إلا أننا لا نضمن خلو الخدمات من الأخطاء بشكل كامل أو تحقيق نتائج تجارية محددة، إذ تعتمد النتائج أيضاً على عوامل خارج نطاق سيطرتنا."] },
   { icon: MessageSquare, title: "التعديلات", content: ["يجوز لنا تحديث هذه الشروط عند الحاجة، ويصبح الإصدار المنشور على الموقع هو الإصدار المعتمد من تاريخ نشره."] },
-  { icon: MessageSquare, title: "التواصل", content: ["لأي استفسار يتعلق بهذه الشروط، يمكنك التواصل معنا عبر:", "info@raanzlr.com", "9 Branch Brook Dr #10030, Belleville, NJ 07109, USA"] },
+  { icon: MessageSquare, title: "التواصل", content: ["لأي استفسار يتعلق بهذه الشروط، يمكنك التواصل معنا عبر:", "info@raanzlr.com", "4030 Plaza Dr #3 #15 (10030), Casper, WY 82604, USA"] },
 ];
 
 export default function TermsOfService() {

@@ -58,7 +58,7 @@ const en = {
           "Cut repetitive support work, improve satisfaction",
           "Handle more volume without hiring immediately",
         ],
-        image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1400&q=80",
+        image: "/services/ai-chatbots.webp",
       },
       {
         key: "workflow-automation", tier: "high",
@@ -71,7 +71,7 @@ const en = {
           "Fewer errors, fewer bottlenecks",
           "Teams spend time on work that matters",
         ],
-        image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1400&q=80",
+        image: "/services/workflow-automation.webp",
       },
       {
         key: "ai-video-dubbing", tier: "high",
@@ -84,7 +84,7 @@ const en = {
           "Get clean transcripts and subtitles in multiple languages for SEO and accessibility",
           "Localize shorts, tutorials, ads, and training videos faster than traditional studios",
         ],
-        image: "https://images.unsplash.com/photo-1478737270239-2f02b77fc618?auto=format&fit=crop&w=1400&q=80",
+        image: "/services/ai-video-dubbing.webp",
       },
       {
         key: "web-development", tier: "high",
@@ -97,7 +97,7 @@ const en = {
           "Modular architecture, easier to maintain",
           "Multilingual and RTL-ready from day one",
         ],
-        image: "https://images.unsplash.com/photo-1542831371-29b0f74f9713?auto=format&fit=crop&w=1400&q=80",
+        image: "/services/web-development.webp",
       },
       {
         key: "mobile-apps", tier: "standard",
@@ -110,7 +110,7 @@ const en = {
           "Work offline when connectivity drops",
           "Meet security and compliance requirements",
         ],
-        image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1400&q=80",
+        image: "/services/mobile-apps.webp",
       },
       {
         key: "custom-ai", tier: "standard",
@@ -123,7 +123,7 @@ const en = {
           "Build defensible IP and competitive advantages",
           "Control costs through caching and smart routing",
         ],
-        image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=1400&q=80",
+        image: "/services/custom-ai.webp",
       },
       {
         key: "crm-integration", tier: "standard",
@@ -136,7 +136,7 @@ const en = {
           "Resilient pipelines with full error tracking",
           "Documentation that speeds up onboarding",
         ],
-        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=80",
+        image: "/services/crm-integration.webp",
       },
       {
         key: "ui-ux", tier: "standard",
@@ -149,7 +149,7 @@ const en = {
           "Consistent visual identity across properties",
           "Faster development with component libraries",
         ],
-        image: "https://images.unsplash.com/photo-1559028012-481c04fa702d?auto=format&fit=crop&w=1400&q=80",
+        image: "/services/ui-ux.webp",
       },
       {
         key: "consulting", tier: "standard",
@@ -162,7 +162,7 @@ const en = {
           "Immediate opportunities to cut SaaS and infra costs",
           "Security and scalability reviews",
         ],
-        image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1400&q=80",
+        image: "/services/consulting.webp",
       },
     ],
   },
@@ -179,7 +179,7 @@ const en = {
     ],
     hq: "HEADQUARTERS",
     hqLabel: "// headquarters",
-    address: "9 Branch Brook Dr #10030, Belleville, NJ 07109",
+    address: "4030 Plaza Dr #3 #15 (10030), Casper, WY 82604",
     hqTitle: "We work with companies from our headquarters in the United States.",
     hqDesc: "Raanzlr is headquartered in New Jersey, United States, and we work with companies in various markets through a flexible collaboration model that combines remote meetings, continuous communication, and professional project management, ensuring a smooth work experience regardless of geographic location.",
   },
@@ -340,7 +340,7 @@ const ar: typeof en = {
         desc: "وكلاء ذكيون يعملون عبر واتساب، موقعك الإلكتروني، وإنستغرام للرد على العملاء، تأهيل الفرص البيعية، حجز المواعيد، وتحويل المحادثات إلى فريقك عند الحاجة.",
         long: "نصمّم الوكيل وندرّبه ونطلقه ليفهم خدماتك وأسعارك وسياساتك وهوية علامتك. ونربطه بنظام إدارة العملاء والتقويم وأدوات الدعم وبياناتك، حتى يحصل العميل على إجابة مفيدة لا رد آلي جاف.",
         helps: ["رد أولي خلال ثوانٍ في أي وقت", "تأهيل العملاء تلقائياً ومزامنتهم مع نظام إدارة العلاقات", "تقليل ضغط الدعم المتكرر وتحسين رضا العملاء", "استيعاب حجم أكبر دون الحاجة لتوظيف فوري"],
-        image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1400&q=80",
+        image: "/services/ai-chatbots.webp",
       },
       {
         key: "workflow-automation", tier: "high",
@@ -348,7 +348,7 @@ const ar: typeof en = {
         desc: "نربط أنظمتك المختلفة ونؤتمت سير العمل بين الأقسام لتقليل الأخطاء، إلغاء الأعمال اليدوية، وتسريع تنفيذ العمليات اليومية.",
         long: "نبني الأتمتة عبر n8n وZapier وMake وواجهات برمجية وسكريبتات مخصصة، من التقارير وتوزيع العملاء إلى الموافقات وتنظيف البيانات. تبقى أنظمتك متزامنة دون نسخ ولصق يدوي.",
         helps: ["إنهاء النسخ واللصق بين المنصات", "مزامنة بيانات العملاء والطلبات والتقارير", "تقليل الأخطاء والتأخير التشغيلي", "إعطاء الفريق وقتاً للعمل الأهم"],
-        image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1400&q=80",
+        image: "/services/workflow-automation.webp",
       },
       {
         key: "ai-video-dubbing", tier: "high",
@@ -361,7 +361,7 @@ const ar: typeof en = {
           "الحصول على نصوص وترجمات بلغات متعددة لتحسين SEO وإمكانية الوصول",
           "أقلمة القصيرات والشروحات والإعلانات ومقاطع التدريب أسرع من الاستوديوهات التقليدية",
         ],
-        image: "https://images.unsplash.com/photo-1478737270239-2f02b77fc618?auto=format&fit=crop&w=1400&q=80",
+        image: "/services/ai-video-dubbing.webp",
       },
       {
         key: "web-development", tier: "high",
@@ -369,7 +369,7 @@ const ar: typeof en = {
         desc: "نبني مواقع احترافية، منصات SaaS، لوحات تحكم، وبوابات عملاء تجمع بين الأداء العالي، سهولة الاستخدام، وقابلية التوسع.",
         long: "نبني تجارب ويب سريعة وسهلة الوصول وجاهزة لمحركات البحث، بأطر حديثة: صفحات هبوط، مواقع متعددة اللغات، بوابات عملاء، متاجر، ومنتجات سحابية، جميعها بدعم قوي للكتابة من اليمين.",
         helps: ["تحويل عدد أكبر من الزوار إلى عملاء مؤهلين", "تحسين الأداء وقابلية الفهرسة", "بنية منظمة أسهل في الصيانة", "إطلاق صفحات متعددة اللغات بدعم عربي صحيح"],
-        image: "https://images.unsplash.com/photo-1542831371-29b0f74f9713?auto=format&fit=crop&w=1400&q=80",
+        image: "/services/web-development.webp",
       },
       {
         key: "mobile-apps", tier: "standard",
@@ -377,7 +377,7 @@ const ar: typeof en = {
         desc: "تطبيقات iOS وAndroid مصممة لتلبية احتياجات عملائك أو فرق العمل الداخلية، مع التركيز على الأداء، الاستقرار، وتجربة المستخدم.",
         long: "نبني تطبيقات أصلية ومتعددة المنصات للاستخدامات التجارية والاستهلاكية. كل تطبيق مصمم حول تدفقات المستخدم الحقيقية، يعمل دون اتصال عند الحاجة، ويستوفي معايير متاجر التطبيقات.",
         helps: ["الوصول إلى المستخدمين على أجهزتهم المفضلة", "زيادة الاحتفاظ بحملات إشعارات ذكية", "ضمان العمل المتواصل حتى عند انقطاع الاتصال", "استيفاء معايير الأمان والامتثال المطلوبة"],
-        image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1400&q=80",
+        image: "/services/mobile-apps.webp",
       },
       {
         key: "custom-ai", tier: "standard",
@@ -385,7 +385,7 @@ const ar: typeof en = {
         desc: "نطوّر حلولاً تعتمد على بياناتك الخاصة، تشمل فهم المستندات، البحث الذكي، أنظمة الاسترجاع المعزز، والتكامل مع عملياتك الحالية.",
         long: "حين لا تكفي الأدوات الجاهزة، نصمم أنظمة مبنية حول مستنداتك وعملياتك وبياناتك: استرجاع معزز، تصنيف، استخراج، تقييم، ضوابط، وضبط للتكلفة.",
         helps: ["استخراج رؤى قابلة للتطبيق من المستندات الداخلية والبيانات غير المهيكلة", "دقة أعلى من أدوات الذكاء الاصطناعي العامة لأنها مبنية على مصادرك أنت", "بناء ملكية فكرية ومزايا تنافسية", "ضبط التكاليف التشغيلية عبر التخزين المؤقت والتوجيه الذكي"],
-        image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=1400&q=80",
+        image: "/services/custom-ai.webp",
       },
       {
         key: "crm-integration", tier: "standard",
@@ -393,7 +393,7 @@ const ar: typeof en = {
         desc: "نوحّد أنظمتك المختلفة من خلال تكاملات مستقرة وآمنة بين أدوات إدارة العملاء، أنظمة ERP، قواعد البيانات، والتطبيقات الداخلية.",
         long: "نبني جسوراً موثوقة بين أنظمتك المختلفة وقواعد بياناتك المخصصة وأنظمتك القديمة: مصدر حقيقة واحد، سجلات واضحة، إعادة محاولة تلقائية، وتوثيق يستطيع فريقك استخدامه فعلاً.",
         helps: ["إنشاء مصدر حقيقة واحد لجميع بيانات المؤسسة", "إزالة صوامع البيانات وعمليات المزامنة اليدوية", "الاعتماد على خطوط بيانات مرنة مع تتبع شامل للأخطاء", "تسريع تأهيل المطورين بتوثيق واضح"],
-        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=80",
+        image: "/services/crm-integration.webp",
       },
       {
         key: "ui-ux", tier: "standard",
@@ -401,7 +401,7 @@ const ar: typeof en = {
         desc: "نصمم واجهات حديثة وتجارب استخدام تجعل الأنظمة المعقدة أكثر وضوحاً وسهولة، مع التركيز على احتياجات المستخدم الفعلية.",
         long: "نصمم رحلات المستخدم والنماذج الأولية وأنظمة التصميم والواجهات المصقولة بالتوازي مع التطوير. نبني على مهام حقيقية وسهولة وصول وتحويل، لا على الزخرفة.",
         helps: ["تحسين معدلات التحويل عبر جميع نقاط التفاعل", "تقليل الاحتكاك والتسرب في التدفقات الرئيسية", "الحفاظ على هوية بصرية موحدة عبر جميع الممتلكات الرقمية", "تسريع دورات التطوير عبر مكتبات المكونات"],
-        image: "https://images.unsplash.com/photo-1559028012-481c04fa702d?auto=format&fit=crop&w=1400&q=80",
+        image: "/services/ui-ux.webp",
       },
       {
         key: "consulting", tier: "standard",
@@ -409,7 +409,7 @@ const ar: typeof en = {
         desc: "نراجع البنية التقنية الحالية، نحدد فرص التحسين، ونقدم توصيات عملية تشمل الأداء، الأمان، الأتمتة، وقابلية التوسع.",
         long: "نراجع أنظمتك والكود والعمليات والأدوات لتحديد ما يبطئك. تحصل على خارطة طريق عملية توازن بين تأثير الأعمال والجهد الهندسي والتكلفة والمخاطر.",
         helps: ["الحصول على تقييم محايد لبنيتك التقنية", "خارطة طريق مرتبة بالأولويات مرتبطة بتأثير الأعمال", "تحديد فرص فورية لتقليل تكاليف البرمجيات والبنية التحتية", "إجراء مراجعات شاملة للأمان وقابلية التوسع"],
-        image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1400&q=80",
+        image: "/services/consulting.webp",
       },
     ],
   },
@@ -427,7 +427,7 @@ const ar: typeof en = {
     ],
     hq: "المقر الرئيسي",
     hqLabel: "// المقر الرئيسي",
-    address: "9 Branch Brook Dr #10030, Belleville, NJ 07109",
+    address: "4030 Plaza Dr #3 #15 (10030), Casper, WY 82604",
     hqTitle: "نعمل مع الشركات من مقرنا في الولايات المتحدة",
     hqDesc: "يقع مقر Raanzlr في ولاية نيوجيرسي بالولايات المتحدة، ونعمل مع الشركات في مختلف الأسواق من خلال نموذج تعاون مرن يجمع بين الاجتماعات عن بُعد، والتواصل المستمر، وإدارة المشاريع باحترافية، بما يضمن تجربة عمل سلسة بغض النظر عن الموقع الجغرافي.",
     hqImageTagline: "عمليات عالمية • فرق موزعة • تعاون بدون حدود",

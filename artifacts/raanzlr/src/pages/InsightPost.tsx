@@ -87,7 +87,9 @@ function PostChart({ chart, isAr }: { chart: PostChartSpec; isAr: boolean }) {
   const fmt = (v: number) => `${v}${unit}`;
   const axis = { fill: "rgba(255,255,255,0.4)", fontSize: 11 } as const;
   const grid = "rgba(255,255,255,0.06)";
-  const tip = { background: "#0b0b0d", border: "1px solid rgba(0,229,255,0.25)", borderRadius: 12, color: "#e6e8ec", fontSize: 12 };
+  const tip = { background: "hsl(var(--card))", border: "1px solid hsl(var(--border))", borderRadius: 12, color: "hsl(var(--foreground))", fontSize: 12 };
+  const tipLabel = { color: "hsl(var(--foreground))" };
+  const tipItem = { color: "hsl(var(--foreground))" };
   return (
     <figure className="my-8 rounded-2xl border border-cyan-400/20 bg-foreground/[0.02] p-5 sm:p-6">
       {title && <figcaption className="mb-4 text-sm font-mono-accent uppercase tracking-[0.14em] text-cyan-300">{title}</figcaption>}
@@ -98,7 +100,7 @@ function PostChart({ chart, isAr }: { chart: PostChartSpec; isAr: boolean }) {
               <CartesianGrid stroke={grid} vertical={false} />
               <XAxis dataKey="label" tick={axis} tickLine={false} axisLine={{ stroke: grid }} />
               <YAxis tick={axis} tickLine={false} axisLine={false} tickFormatter={fmt} width={46} />
-              <Tooltip contentStyle={tip} formatter={(v: any) => fmt(Number(v))} cursor={{ stroke: "rgba(0,229,255,0.25)" }} />
+              <Tooltip contentStyle={tip} labelStyle={tipLabel} itemStyle={tipItem} formatter={(v: any) => fmt(Number(v))} cursor={{ stroke: "rgba(0,229,255,0.25)" }} />
               <Line type="monotone" dataKey="value" stroke="#00e5ff" strokeWidth={2.5} dot={{ r: 3, fill: "#00e5ff" }} activeDot={{ r: 5 }} />
             </LineChart>
           ) : type === "area" ? (
@@ -112,12 +114,12 @@ function PostChart({ chart, isAr }: { chart: PostChartSpec; isAr: boolean }) {
               <CartesianGrid stroke={grid} vertical={false} />
               <XAxis dataKey="label" tick={axis} tickLine={false} axisLine={{ stroke: grid }} />
               <YAxis tick={axis} tickLine={false} axisLine={false} tickFormatter={fmt} width={46} />
-              <Tooltip contentStyle={tip} formatter={(v: any) => fmt(Number(v))} />
+              <Tooltip contentStyle={tip} labelStyle={tipLabel} itemStyle={tipItem} formatter={(v: any) => fmt(Number(v))} />
               <Area type="monotone" dataKey="value" stroke="#00e5ff" strokeWidth={2.5} fill="url(#pcArea)" />
             </AreaChart>
           ) : type === "pie" ? (
             <PieChart>
-              <Tooltip contentStyle={tip} formatter={(v: any) => fmt(Number(v))} />
+              <Tooltip contentStyle={tip} labelStyle={tipLabel} itemStyle={tipItem} formatter={(v: any) => fmt(Number(v))} />
               <Pie data={data} dataKey="value" nameKey="label" cx="50%" cy="50%" outerRadius="80%" innerRadius="45%" paddingAngle={2} stroke="#0b0b0d">
                 {data.map((_, i) => <Cell key={i} fill={CHART_COLORS[i % CHART_COLORS.length]} />)}
               </Pie>
@@ -127,7 +129,7 @@ function PostChart({ chart, isAr }: { chart: PostChartSpec; isAr: boolean }) {
               <CartesianGrid stroke={grid} vertical={false} />
               <XAxis dataKey="label" tick={axis} tickLine={false} axisLine={{ stroke: grid }} />
               <YAxis tick={axis} tickLine={false} axisLine={false} tickFormatter={fmt} width={46} />
-              <Tooltip contentStyle={tip} formatter={(v: any) => fmt(Number(v))} cursor={{ fill: "rgba(0,229,255,0.06)" }} />
+              <Tooltip contentStyle={tip} labelStyle={tipLabel} itemStyle={tipItem} formatter={(v: any) => fmt(Number(v))} cursor={{ fill: "rgba(0,229,255,0.06)" }} />
               <Bar dataKey="value" radius={[6, 6, 0, 0]}>
                 {data.map((_, i) => <Cell key={i} fill={CHART_COLORS[i % CHART_COLORS.length]} />)}
               </Bar>

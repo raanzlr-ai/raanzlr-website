@@ -34,10 +34,10 @@ export default function About() {
             role="presentation"
             loading="eager"
             fetchPriority="high"
-            className="w-full h-[130%] object-cover opacity-70 dark:opacity-60"
+            className="w-full h-[130%] object-cover opacity-100 dark:opacity-60"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/55 to-background dark:from-background/40 dark:via-background/70" />
-          <div className="absolute inset-0 bg-gradient-to-r from-background/45 to-transparent dark:from-background/70" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/10 via-background/25 to-background/55 dark:from-background/40 dark:via-background/70 dark:to-background" />
+          <div className="absolute inset-0 bg-gradient-to-r from-background/25 to-transparent dark:from-background/70" />
         </motion.div>
         <div className="absolute inset-0 bg-grid opacity-30" />
 
@@ -140,9 +140,9 @@ export default function About() {
                   sizes="(min-width: 1024px) 600px, 100vw"
                   alt="Global operations"
                   loading="lazy"
-                  className="w-full h-full object-cover opacity-70 dark:opacity-60"
+                  className="w-full h-full object-cover opacity-100 dark:opacity-60"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/55 to-transparent dark:from-background/80" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/30 to-transparent dark:from-background/80" />
                 <div className="absolute bottom-4 left-4 right-4">
                   <div className="text-xs font-mono-accent uppercase tracking-[0.28em] text-cyan-300/70 mb-1">{t.about.hq}</div>
                   <p className="text-sm text-foreground/80 font-medium">{ABOUT_ENTITY_NAME}</p>

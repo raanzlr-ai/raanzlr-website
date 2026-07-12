@@ -19,6 +19,28 @@ The OAuth metadata published under `/.well-known/oauth-protected-resource`
 and `/.well-known/oauth-authorization-server` is reserved for future use;
 no token issuance is available today.
 
+## agent_auth
+
+The `agent_auth` metadata below mirrors the block published under
+`/.well-known/oauth-authorization-server`. **No registration or authentication
+is required** — there are no identity types, credentials, claim flows, or
+token revocation on this domain. All content is public and read-only.
+
+```json
+{
+  "agent_auth": {
+    "skill": "https://isitagentready.com/.well-known/agent-skills/auth-md/SKILL.md",
+    "register_uri": "https://raanzlr.com/auth.md",
+    "registration": "open",
+    "identity_types": ["none"],
+    "credential_types": ["none"],
+    "claim_uri": null,
+    "revocation_uri": null,
+    "notes": "No authentication required; all content is public and read-only. No registration, identity claim, credential issuance, or token revocation is available on this domain."
+  }
+}
+```
+
 ## What agents can do here
 
 - Read structured site information: `/llms.txt`

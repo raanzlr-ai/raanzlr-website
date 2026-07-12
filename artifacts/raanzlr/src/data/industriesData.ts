@@ -34,7 +34,7 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
   {
     slug: "finance",
     icon: Building2,
-    heroImage: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=1200&q=80",
+    heroImage: "/industries/finance.webp",
     en: {
       name: "Finance & Banking",
       heroTitle: "AI-Powered Financial Services for the GCC",
@@ -243,7 +243,7 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
   {
     slug: "retail",
     icon: ShoppingCart,
-    heroImage: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1200&q=80",
+    heroImage: "/industries/retail.webp",
     en: {
       name: "Retail & E-Commerce",
       heroTitle: "AI-Powered Retail for the GCC Digital Economy",
@@ -452,7 +452,7 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
   {
     slug: "healthcare",
     icon: Heart,
-    heroImage: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=80",
+    heroImage: "/industries/healthcare.webp",
     en: {
       name: "Healthcare",
       heroTitle: "AI-Powered Healthcare for the GCC",
@@ -661,7 +661,7 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
   {
     slug: "education",
     icon: GraduationCap,
-    heroImage: "/industries/Education & EdTech.jpg",
+    heroImage: "/industries/education.webp",
     en: {
       name: "Education & EdTech",
       heroTitle: "AI-Powered Education for the GCC's Future",
@@ -870,7 +870,7 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
   {
     slug: "logistics",
     icon: Truck,
-    heroImage: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80",
+    heroImage: "/industries/logistics.webp",
     en: {
       name: "Logistics & Supply Chain",
       heroTitle: "AI-Powered Logistics for GCC Trade Hubs",
@@ -1080,7 +1080,7 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
   {
     slug: "hospitality",
     icon: Hotel,
-    heroImage: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80",
+    heroImage: "/industries/hospitality.webp",
     en: {
       name: "Hospitality & Tourism",
       heroTitle: "AI-Powered Hospitality for GCC Tourism Boom",
@@ -1289,7 +1289,7 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
   {
     slug: "legal",
     icon: Scale,
-    heroImage: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1200&q=80",
+    heroImage: "/industries/legal.webp",
     en: {
       name: "Legal & Professional Services",
       heroTitle: "AI-Powered Legal Services for GCC Law Firms",
@@ -1498,7 +1498,7 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
   {
     slug: "manufacturing",
     icon: Factory,
-    heroImage: "https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?auto=format&fit=crop&w=1200&q=80",
+    heroImage: "/industries/manufacturing.webp",
     en: {
       name: "Manufacturing & Industry",
       heroTitle: "Industry 4.0 Transformation for GCC Manufacturing",

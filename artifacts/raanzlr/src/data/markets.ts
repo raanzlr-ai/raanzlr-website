@@ -4,7 +4,7 @@ export const MARKET_DETAILS = [
     slug: "saudi-arabia",
     flag: "🇸🇦",
     code: "SA",
-    heroImage: "https://images.unsplash.com/photo-1591608971362-f08b2a75731a?auto=format&fit=crop&w=1920&q=80",
+    heroImage: "/markets/saudi-arabia.webp",
     en: {
       name: "Saudi Arabia",
       region: "GCC",
@@ -273,7 +273,7 @@ export const MARKET_DETAILS = [
     slug: "uae",
     flag: "🇦🇪",
     code: "AE",
-    heroImage: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1920&q=80",
+    heroImage: "/markets/uae.webp",
     en: {
       name: "United Arab Emirates",
       region: "GCC",
@@ -541,7 +541,7 @@ export const MARKET_DETAILS = [
     slug: "qatar",
     flag: "🇶🇦",
     code: "QA",
-    heroImage: "https://images.unsplash.com/photo-1570701703726-118f0ec95edc?auto=format&fit=crop&w=1920&q=80",
+    heroImage: "/markets/qatar.webp",
     en: {
       name: "Qatar",
       region: "GCC",
@@ -805,7 +805,7 @@ export const MARKET_DETAILS = [
     slug: "kuwait",
     flag: "🇰🇼",
     code: "KW",
-    heroImage: "https://images.unsplash.com/photo-1585208798174-6cedd86e019a?auto=format&fit=crop&w=1920&q=80",
+    heroImage: "/markets/kuwait.webp",
     en: {
       name: "Kuwait",
       region: "GCC",
@@ -1070,7 +1070,7 @@ export const MARKET_DETAILS = [
     slug: "bahrain",
     flag: "🇧🇭",
     code: "BH",
-    heroImage: "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?auto=format&fit=crop&w=1920&q=80",
+    heroImage: "/markets/bahrain.webp",
     en: {
       name: "Bahrain", region: "GCC", cities: "Manama, Muharraq, Riffa",
       metaDescription: "AI automation and custom software for Bahrain businesses. We help financial services, technology, logistics, and growing companies build practical digital operations.",
@@ -1114,7 +1114,7 @@ export const MARKET_DETAILS = [
 
   // OMAN
   {
-    slug: "oman", flag: "🇴🇲", code: "OM", heroImage: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=1920&q=80",
+    slug: "oman", flag: "🇴🇲", code: "OM", heroImage: "/markets/oman.webp",
     en: {
       name: "Oman", region: "GCC", cities: "Muscat, Sohar, Salalah, Duqm", metaDescription: "AI automation and custom software for Oman businesses. We support organisations modernising operations across logistics, manufacturing, tourism, and technology.", keywords: "AI automation Oman, software development Muscat, Oman Vision 2040 technology, business automation Oman, custom software Oman",
       heroTitle: "AI Automation & Custom Software Development for Oman", heroDescription: "Oman's Vision 2040 places economic diversification and digital transformation at the centre of the country's future. Raanzlr helps Omani organisations build practical systems for connected operations, better service delivery, and informed decisions across growing sectors.",
@@ -1141,7 +1141,7 @@ export const MARKET_DETAILS = [
 
   // SYRIA
   {
-    slug: "syria", flag: "🇸🇾", code: "SY", heroImage: "https://images.unsplash.com/photo-1548786811-dd6e453ccca7?auto=format&fit=crop&w=1920&q=80",
+    slug: "syria", flag: "🇸🇾", code: "SY", heroImage: "/markets/syria.webp",
     en: {
       name: "Syria", region: "Levant", cities: "Damascus, Aleppo, Homs, and distributed teams", metaDescription: "Practical software, AI automation, and operational systems for Syrian organisations, teams, and diaspora-led initiatives focused on continuity and service delivery.", keywords: "software development Syria, AI automation Syria, Syrian business operations, Arabic software teams, operational transformation Syria", heroTitle: "Practical Digital Systems for Syrian Organisations and Teams", heroDescription: "Syria's operating environment calls for careful, adaptable technology work. Raanzlr supports organisations, distributed teams, and diaspora-led initiatives with software and automation that strengthen continuity, organise work, and improve access to reliable operational information.",
       whyTitle: "Technology for Continuity, Coordination, and Practical Progress", whyParagraphs: ["Syria has experienced profound disruption to infrastructure, services, institutions, and livelihoods. Useful digital work must start with the realities of teams and communities, not assumptions about a uniform market or operating environment.", "Organisations may need to coordinate distributed staff, maintain service records, manage requests, or preserve institutional knowledge despite changing conditions. Focused systems can make responsibilities and information clearer while retaining human judgement.", "We begin by understanding users, access constraints, data sensitivity, and the operating process. We do not make claims about legal, financial, security, or regulatory outcomes; those require appropriate local and specialist advice."], keyAdvantages: ["Arabic-native user experiences", "Workflows for distributed teams", "Modular systems that can evolve", "Clear data ownership and access design", "Human review in sensitive processes"], servicesTitle: "Services for Syrian Organisations and Teams",
@@ -1160,7 +1160,7 @@ export const MARKET_DETAILS = [
 
   // TURKIYE
   {
-    slug: "turkey", flag: "🇹🇷", code: "TR", heroImage: "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?auto=format&fit=crop&w=1920&q=80",
+    slug: "turkey", flag: "🇹🇷", code: "TR", heroImage: "/markets/turkey.webp",
     en: {
       name: "Türkiye", region: "Europe & Asia", cities: "Istanbul, Ankara, Izmir, Bursa", metaDescription: "AI automation and custom software for businesses in Türkiye. We build multilingual systems for technology, manufacturing, logistics, services, and growing teams.", keywords: "AI automation Türkiye, software development Istanbul, Turkish AI systems, business automation Turkey, custom software Türkiye", heroTitle: "AI Automation & Custom Software Development for Türkiye", heroDescription: "Türkiye combines a large domestic market, regional connectivity, and active industries spanning ICT, manufacturing, logistics, financial services, tourism, and startups. Raanzlr builds multilingual systems that help teams simplify operations and serve customers consistently.",
       whyTitle: "Why Türkiye Businesses Are Building Smarter Operations", whyParagraphs: ["Türkiye's Investment Office identifies ICT, automotive, machinery, logistics, financial investments and startups, life sciences, energy, and tourism as important sectors. These organisations commonly work across suppliers, locations, channels, and customer segments.", "That complexity makes disconnected processes costly in time and attention. Better workflow design, shared operational data, and useful customer tools can reduce friction without removing teams from important decisions.", "We identify an achievable first improvement, build it around the languages and systems your team uses, and create a foundation that can be extended when it proves useful."], keyAdvantages: ["Turkish, Arabic, and English experiences where needed", "Cross-border product and workflow design", "Integration for multi-system operations", "Practical tools for service and industrial teams", "Focused, staged delivery"], servicesTitle: "Services for Businesses in Türkiye",
@@ -1179,7 +1179,7 @@ export const MARKET_DETAILS = [
 
   // EUROPE
   {
-    slug: "europe", flag: "🇪🇺", code: "EU", heroImage: "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&w=1920&q=80",
+    slug: "europe", flag: "🇪🇺", code: "EU", heroImage: "/markets/europe.webp",
     en: {
       name: "Europe", region: "Europe", cities: "Multi-market and multilingual delivery", metaDescription: "AI automation and custom software for organisations operating across European markets. We build multilingual, privacy-conscious systems for connected teams and services.", keywords: "AI automation Europe, custom software European markets, multilingual software, GDPR-conscious product design, cross-border operations", heroTitle: "AI Automation & Custom Software for European Markets", heroDescription: "Europe is a region of connected but distinct markets, languages, operating practices, and legal frameworks. Raanzlr helps organisations build practical multilingual software and automation that supports teams, customers, and cross-border operations without treating the region as a single country.",
       whyTitle: "Why European Operations Need Context-Aware Systems", whyParagraphs: ["European organisations often serve multiple markets, languages, and teams through shared platforms. A useful system must handle local content and operating differences while keeping core processes understandable and maintainable.", "The GDPR regulates the processing of personal data in the EU and EEA where it applies. Product design can support privacy-conscious practices through data minimisation, access controls, clear records, and review with the organisation's own legal advisers; it does not by itself establish legal compliance.", "We begin with users, data flows, and operational decisions. From there, we build a focused improvement that can work across markets and be extended without losing clarity for local teams."], keyAdvantages: ["Multilingual product and workflow design", "Cross-market operating models", "Privacy-conscious technical choices", "Integration for distributed business systems", "Clear separation of global and local processes"], servicesTitle: "Services for European Market Operations",

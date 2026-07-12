@@ -37,8 +37,8 @@ export default function IndustryDetail() {
       {/* Hero Section */}
       <section className="relative min-h-[70vh] flex items-center overflow-hidden pt-28 sm:pt-32">
         <div className="absolute inset-0">
-          <img src={industry.heroImage} alt={content.name} loading="eager" fetchPriority="high" className="w-full h-full object-cover opacity-40 dark:opacity-10" />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/25 via-background/50 to-background dark:from-background/70 dark:via-background/85" />
+          <img src={industry.heroImage} alt={content.name} loading="eager" fetchPriority="high" className="w-full h-full object-cover opacity-100 dark:opacity-10" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/10 via-background/25 to-background/60 dark:from-background/70 dark:via-background/85 dark:to-background" />
         </div>
         <div className="absolute inset-0 bg-grid opacity-30" />
         <div className="noise absolute inset-0" />

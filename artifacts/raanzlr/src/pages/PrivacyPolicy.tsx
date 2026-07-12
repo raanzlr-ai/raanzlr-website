@@ -14,7 +14,7 @@ const SECTIONS_EN = [
   { icon: Shield, title: "Cookies", content: ["Our website uses cookies and similar technologies to improve the user experience, analyze website performance, and understand how visitors interact with it. You can control cookie settings through your browser."] },
   { icon: UserCheck, title: "Third-Party Services", content: ["Our website may use third-party services such as analytics tools, hosting providers, or web fonts to improve performance and user experience. These services are subject to their own privacy policies."] },
   { icon: Shield, title: "Your Rights", content: ["Under applicable laws, you may have the right to:", "• Access your personal data.", "• Correct inaccurate information.", "• Request deletion of your data when legally possible.", "• Object to certain types of data processing.", "• Request a copy of your data in cases permitted by law."] },
-  { icon: Mail, title: "Contact Us", content: ["If you have any questions regarding this privacy policy or how we process your data, you can contact us via:", "info@raanzlr.com", "9 Branch Brook Dr #10030, Belleville, NJ 07109, USA"] },
+  { icon: Mail, title: "Contact Us", content: ["If you have any questions regarding this privacy policy or how we process your data, you can contact us via:", "info@raanzlr.com", "4030 Plaza Dr #3 #15 (10030), Casper, WY 82604, USA"] },
 ];
 
 const SECTIONS_AR = [
@@ -24,7 +24,7 @@ const SECTIONS_AR = [
   { icon: Shield, title: "ملفات تعريف الارتباط (Cookies)", content: ["يستخدم موقعنا ملفات تعريف الارتباط وتقنيات مشابهة لتحسين تجربة الاستخدام، وتحليل أداء الموقع، وفهم كيفية تفاعل الزوار معه. ويمكنك التحكم في إعدادات ملفات تعريف الارتباط من خلال متصفحك."] },
   { icon: UserCheck, title: "خدمات الجهات الخارجية", content: ["قد يستخدم موقعنا خدمات خارجية مثل أدوات التحليلات أو مزودي الاستضافة أو الخطوط الإلكترونية لتحسين الأداء وتجربة الاستخدام. تخضع هذه الخدمات لسياسات الخصوصية الخاصة بها."] },
   { icon: Shield, title: "حقوقك", content: ["بحسب القوانين المعمول بها، قد يكون لك الحق في:", "• الوصول إلى بياناتك الشخصية.", "• تصحيح المعلومات غير الدقيقة.", "• طلب حذف بياناتك عندما يكون ذلك ممكناً قانونياً.", "• الاعتراض على بعض أنواع معالجة البيانات.", "• طلب نسخة من بياناتك في الحالات التي يسمح بها القانون."] },
-  { icon: Mail, title: "التواصل معنا", content: ["إذا كانت لديك أي استفسارات تتعلق بسياسة الخصوصية أو بطريقة معالجة بياناتك، يمكنك التواصل معنا عبر:", "info@raanzlr.com", "9 Branch Brook Dr #10030, Belleville, NJ 07109, USA"] },
+  { icon: Mail, title: "التواصل معنا", content: ["إذا كانت لديك أي استفسارات تتعلق بسياسة الخصوصية أو بطريقة معالجة بياناتك، يمكنك التواصل معنا عبر:", "info@raanzlr.com", "4030 Plaza Dr #3 #15 (10030), Casper, WY 82604, USA"] },
 ];
 
 export default function PrivacyPolicy() {
