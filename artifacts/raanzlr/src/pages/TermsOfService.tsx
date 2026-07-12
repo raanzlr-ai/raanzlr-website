@@ -8,21 +8,23 @@ import MagneticButton from "../components/MagneticButton";
 import SEO from "../components/SEO";
 
 const SECTIONS_EN = [
-  { icon: FileText, title: "Acceptance of Terms", content: ["By accessing or using Raanzlr's website and services, you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our services.", "These terms apply to all visitors, users, and clients of Raanzlr's website and services. We reserve the right to update these terms at any time, with changes effective upon posting."] },
-  { icon: Scale, title: "Our Services", content: ["Raanzlr provides software engineering, AI development, workflow automation, and related consulting services. Specific terms for each engagement are governed by individual service agreements or statements of work.", "We reserve the right to modify, suspend, or discontinue any aspect of our services at any time. We will provide reasonable notice for any significant changes affecting active client engagements."] },
-  { icon: CreditCard, title: "Payments & Billing", content: ["Payment terms are specified in individual project agreements. Standard terms include an upfront deposit (typically 30-50%) with the remainder due upon milestone completion or project delivery.", "All prices are quoted in USD unless otherwise specified. Late payments may be subject to interest charges. We reserve the right to suspend work on projects with outstanding invoices."] },
-  { icon: AlertCircle, title: "Intellectual Property", content: ["Upon full payment, clients receive ownership of all custom code, designs, and deliverables created specifically for their project.", "Raanzlr retains ownership of any pre-existing proprietary frameworks, tools, libraries, or methodologies used in project delivery. Open-source components are licensed under their respective licenses.", "Neither party may use the other's trademarks, logos, or brand materials without prior written consent."] },
-  { icon: Scale, title: "Limitation of Liability", content: ["Raanzlr's liability to clients is limited to the total amount paid for the specific service giving rise to the claim. We are not liable for indirect, incidental, special, or consequential damages.", "We make no warranties that our services will be error-free or uninterrupted. Software development involves inherent uncertainties, and we work diligently to mitigate risks but cannot guarantee specific outcomes."] },
-  { icon: MessageSquare, title: "Governing Law & Disputes", content: ["These terms are governed by the laws of the State of New Jersey, United States. Any disputes arising from these terms or our services will be resolved through good-faith negotiation before pursuing formal legal proceedings.", "For any questions about these terms or to resolve a dispute, contact us at: info@raanzlr.com or 9 Branch Brook Dr #10030, Belleville, NJ 07109, USA."] },
+  { icon: FileText, title: "Use of the Website", content: ["You may use the website to browse our services, contact us, or request additional information, provided that you do not use it in a manner that violates laws, affects its operation, or infringes on the rights of others."] },
+  { icon: Scale, title: "Services", content: ["Raanzlr provides software development services, AI solutions, business automation, and technical consulting.", "The scope, phases, duration, costs, and terms of each project are determined through a separate agreement or quote agreed upon with the client."] },
+  { icon: CreditCard, title: "Pricing and Payments", content: ["All fees and payment terms are specified within the agreement for each project.", "Project execution does not begin until agreed-upon requirements are met, including initial deposits if applicable."] },
+  { icon: AlertCircle, title: "Intellectual Property", content: ["Unless otherwise stated in the agreement, ownership of outputs developed specifically for the client transfers after all agreed financial obligations are completed.", "Raanzlr retains ownership rights to tools, libraries, frameworks, and general technologies previously developed or used in multiple projects."] },
+  { icon: Scale, title: "Limitation of Liability", content: ["We make reasonable efforts to deliver high-quality services, however we do not guarantee services are completely error-free or guarantee specific business results, as outcomes also depend on factors beyond our control."] },
+  { icon: MessageSquare, title: "Amendments", content: ["We may update these terms when necessary, and the version published on the website becomes the approved version from its publication date."] },
+  { icon: MessageSquare, title: "Contact", content: ["For any inquiries related to these terms, you can contact us via:", "info@raanzlr.com", "9 Branch Brook Dr #10030, Belleville, NJ 07109, USA"] },
 ];
 
 const SECTIONS_AR = [
-  { icon: FileText, title: "قبول الشروط", content: ["باستخدام موقع Raanzlr وخدماتها، فإنك توافق على الالتزام بهذه الشروط. إذا كنت لا توافق، يرجى عدم استخدام خدماتنا.", "تنطبق هذه الشروط على جميع زوار الموقع والمستخدمين والعملاء. نحتفظ بحق تحديث هذه الشروط في أي وقت."] },
-  { icon: Scale, title: "خدماتنا", content: ["تقدم Raanzlr خدمات هندسة البرمجيات والذكاء الاصطناعي وأتمتة سير العمل والاستشارات ذات الصلة. تُحكم شروط محددة لكل مشاركة من خلال اتفاقيات خدمة أو بيانات عمل فردية.", "نحتفظ بالحق في تعديل أو تعليق أو إيقاف أي جانب من خدماتنا في أي وقت مع إشعار معقول."] },
-  { icon: CreditCard, title: "المدفوعات والفوترة", content: ["شروط الدفع محددة في اتفاقيات المشروع الفردية. تتضمن الشروط القياسية دفعة مقدمة (عادة 30-50%) والباقي عند اكتمال المعالم أو تسليم المشروع.", "جميع الأسعار مقتبسة بالدولار الأمريكي ما لم يُنص على خلاف ذلك. قد تخضع المدفوعات المتأخرة لرسوم فائدة."] },
-  { icon: AlertCircle, title: "الملكية الفكرية", content: ["عند الدفع الكامل، يحصل العملاء على ملكية جميع الأكواد المخصصة والتصاميم والمخرجات المنشأة خصيصاً لمشروعهم.", "تحتفظ Raanzlr بملكية أي أطر أو أدوات أو مكتبات أو منهجيات خاصة موجودة مسبقاً تُستخدم في تسليم المشروع.", "لا يجوز لأي طرف استخدام العلامات التجارية أو الشعارات أو مواد العلامة التجارية للطرف الآخر دون موافقة خطية مسبقة."] },
-  { icon: Scale, title: "حدود المسؤولية", content: ["تقتصر مسؤولية Raanzlr تجاه العملاء على إجمالي المبلغ المدفوع مقابل الخدمة المحددة التي أدت إلى المطالبة.", "لا نقدم ضمانات بأن خدماتنا ستكون خالية من الأخطاء أو غير منقطعة. نعمل بجد للحد من المخاطر لكن لا يمكننا ضمان نتائج محددة."] },
-  { icon: MessageSquare, title: "القانون الحاكم والنزاعات", content: ["تخضع هذه الشروط لقوانين ولاية نيوجيرسي، الولايات المتحدة. أي نزاعات تُحل أولاً من خلال التفاوض بحسن نية.", "للتواصل: info@raanzlr.com أو 9 Branch Brook Dr #10030, Belleville, NJ 07109, USA."] },
+  { icon: FileText, title: "استخدام الموقع", content: ["يجوز لك استخدام الموقع للاطلاع على خدماتنا أو التواصل معنا أو طلب معلومات إضافية، بشرط عدم استخدامه بطريقة تخالف القوانين أو تؤثر على تشغيله أو على حقوق الآخرين."] },
+  { icon: Scale, title: "الخدمات", content: ["تقدم Raanzlr خدمات تطوير البرمجيات، وحلول الذكاء الاصطناعي، وأتمتة الأعمال، والاستشارات التقنية.", "ويتم تحديد نطاق كل مشروع، ومراحله، ومدته، وتكاليفه، وشروطه من خلال اتفاقية أو عرض سعر مستقل يتم الاتفاق عليه مع العميل."] },
+  { icon: CreditCard, title: "الأسعار والمدفوعات", content: ["تحدد جميع الرسوم وشروط الدفع ضمن الاتفاقية الخاصة بكل مشروع.", "ولا يبدأ تنفيذ المشروع إلا بعد استكمال المتطلبات المتفق عليها، بما في ذلك الدفعات الأولية إن وجدت."] },
+  { icon: AlertCircle, title: "الملكية الفكرية", content: ["ما لم يُنص على خلاف ذلك في الاتفاقية، تنتقل ملكية المخرجات التي يتم تطويرها خصيصاً للعميل بعد استكمال جميع الالتزامات المالية المتفق عليها.", "وتحتفظ Raanzlr بحقوق ملكية الأدوات والمكتبات والأطر البرمجية والتقنيات العامة التي تم تطويرها مسبقاً أو المستخدمة في أكثر من مشروع."] },
+  { icon: Scale, title: "حدود المسؤولية", content: ["نبذل جهداً معقولاً لتقديم خدمات عالية الجودة، إلا أننا لا نضمن خلو الخدمات من الأخطاء بشكل كامل أو تحقيق نتائج تجارية محددة، إذ تعتمد النتائج أيضاً على عوامل خارج نطاق سيطرتنا."] },
+  { icon: MessageSquare, title: "التعديلات", content: ["يجوز لنا تحديث هذه الشروط عند الحاجة، ويصبح الإصدار المنشور على الموقع هو الإصدار المعتمد من تاريخ نشره."] },
+  { icon: MessageSquare, title: "التواصل", content: ["لأي استفسار يتعلق بهذه الشروط، يمكنك التواصل معنا عبر:", "info@raanzlr.com", "9 Branch Brook Dr #10030, Belleville, NJ 07109, USA"] },
 ];
 
 export default function TermsOfService() {
@@ -50,8 +52,8 @@ export default function TermsOfService() {
           </p>
           <p className="mt-6 text-base text-foreground/65 leading-relaxed max-w-2xl">
             {isAr
-              ? "يرجى قراءة شروط الخدمة هذه بعناية قبل استخدام خدمات Raanzlr. تحكم هذه الشروط علاقتنا بك."
-              : "Please read these Terms of Service carefully before using Raanzlr's services. These terms govern our relationship with you."}
+              ? "تنظم هذه الشروط استخدامك لموقع Raanzlr والخدمات التي نقدمها. باستخدام الموقع أو طلب أي من خدماتنا، فإنك توافق على الالتزام بهذه الشروط."
+              : "These terms govern your use of the Raanzlr website and the services we provide. By using the website or requesting any of our services, you agree to comply with these terms."}
           </p>
         </div>
       </section>

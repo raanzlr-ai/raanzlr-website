@@ -94,13 +94,13 @@ export default function Markets() {
           </motion.div>
           <motion.h1 initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }}
             className="mt-6 max-w-4xl font-display text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.04] tracking-tighter text-chrome">
-            {isAr ? "نبني للأسواق الأكثر طموحاً في العالم." : "We build for the world's most ambitious markets."}
+            {isAr ? "الأسواق" : "Markets"}
           </motion.h1>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.25 }}
             className="mt-5 max-w-2xl text-base md:text-lg text-foreground/65">
             {isAr
-              ? "نقدم في الخليج وتركيا وأوروبا هندسة برمجية ومنتجات ذكاء اصطناعي تراعي واقع المنافسة في كل سوق."
-              : "From the Gulf states to Turkey and Europe, we deliver software engineering and AI products tailored to the competitive realities of each market."}
+              ? "نطور حلول الذكاء الاصطناعي والبرمجيات المخصصة للشركات في أسواق متعددة، مع مراعاة احتياجات كل سوق، واختلاف بيئات العمل، والمتطلبات التنظيمية، وطبيعة المستخدمين، لضمان حلول عملية وقابلة للتوسع."
+              : "We develop AI solutions and custom software for companies in multiple markets, taking into account each market's needs, different work environments, regulatory requirements, and user characteristics, to ensure practical and scalable solutions."}
           </motion.p>
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1, delay: 0.5 }} className="mt-8">
             <Heartbeat className="w-48 h-8" />
