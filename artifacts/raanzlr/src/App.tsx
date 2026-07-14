@@ -84,26 +84,49 @@ function AppContent() {
             <Route path="/terms-of-service" element={<TermsOfService />} />
             <Route path="/admin" element={<Admin />} />
             
-            {/* Routes with language prefix */}
-            <Route path="/:lang/" element={<Home />} />
-            <Route path="/:lang/services" element={<Services />} />
-            <Route path="/:lang/services/:slug" element={<ServiceDetail />} />
-            <Route path="/:lang/about" element={<About />} />
-            <Route path="/:lang/contact" element={<Contact />} />
-            <Route path="/:lang/faq" element={<FAQ />} />
-            <Route path="/:lang/industries" element={<Industries />} />
-            <Route path="/:lang/industries/:slug" element={<IndustryDetail />} />
-            <Route path="/:lang/case-studies" element={<CaseStudies />} />
-            <Route path="/:lang/case-studies/:slug" element={<CaseStudyDetail />} />
-            <Route path="/:lang/insights" element={<Insights />} />
-            <Route path="/:lang/insights/:slug" element={<InsightPost />} />
-            <Route path="/:lang/markets" element={<Markets />} />
-            <Route path="/:lang/markets/:slug" element={<MarketDetail />} />
-            <Route path="/:lang/book-a-call" element={<Navigate to="/contact" replace />} />
-            <Route path="/:lang/privacy-policy" element={<PrivacyPolicy />} />
-            <Route path="/:lang/terms-of-service" element={<TermsOfService />} />
-            <Route path="/:lang/admin" element={<Admin />} />
-            
+            {/* Routes with language prefix — "en"/"ar" only (not a wildcard :lang
+                param), so any other single-segment path (a typo, an old bookmark)
+                falls through to the catch-all 404 below instead of silently
+                rendering Home. useLang() derives language from the URL string
+                itself, not from a route param, so this is safe to be explicit. */}
+            <Route path="/en" element={<Home />} />
+            <Route path="/en/services" element={<Services />} />
+            <Route path="/en/services/:slug" element={<ServiceDetail />} />
+            <Route path="/en/about" element={<About />} />
+            <Route path="/en/contact" element={<Contact />} />
+            <Route path="/en/faq" element={<FAQ />} />
+            <Route path="/en/industries" element={<Industries />} />
+            <Route path="/en/industries/:slug" element={<IndustryDetail />} />
+            <Route path="/en/case-studies" element={<CaseStudies />} />
+            <Route path="/en/case-studies/:slug" element={<CaseStudyDetail />} />
+            <Route path="/en/insights" element={<Insights />} />
+            <Route path="/en/insights/:slug" element={<InsightPost />} />
+            <Route path="/en/markets" element={<Markets />} />
+            <Route path="/en/markets/:slug" element={<MarketDetail />} />
+            <Route path="/en/book-a-call" element={<Navigate to="/contact" replace />} />
+            <Route path="/en/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/en/terms-of-service" element={<TermsOfService />} />
+            <Route path="/en/admin" element={<Admin />} />
+
+            <Route path="/ar" element={<Home />} />
+            <Route path="/ar/services" element={<Services />} />
+            <Route path="/ar/services/:slug" element={<ServiceDetail />} />
+            <Route path="/ar/about" element={<About />} />
+            <Route path="/ar/contact" element={<Contact />} />
+            <Route path="/ar/faq" element={<FAQ />} />
+            <Route path="/ar/industries" element={<Industries />} />
+            <Route path="/ar/industries/:slug" element={<IndustryDetail />} />
+            <Route path="/ar/case-studies" element={<CaseStudies />} />
+            <Route path="/ar/case-studies/:slug" element={<CaseStudyDetail />} />
+            <Route path="/ar/insights" element={<Insights />} />
+            <Route path="/ar/insights/:slug" element={<InsightPost />} />
+            <Route path="/ar/markets" element={<Markets />} />
+            <Route path="/ar/markets/:slug" element={<MarketDetail />} />
+            <Route path="/ar/book-a-call" element={<Navigate to="/contact" replace />} />
+            <Route path="/ar/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/ar/terms-of-service" element={<TermsOfService />} />
+            <Route path="/ar/admin" element={<Admin />} />
+
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
