@@ -109,7 +109,7 @@ export default function Industries() {
                 <StaggerItem key={ind.key}>
                   <Link to={`/industries/${ind.key}`} className="group relative overflow-hidden rounded-2xl border border-foreground/10 bg-foreground/[0.02] hover:border-cyan-400/30 transition-colors h-full flex flex-col block">
                     <div className="relative h-36 overflow-hidden">
-                      <img src={ind.image} alt={content.title} loading="lazy" className="w-full h-full object-cover opacity-100 dark:opacity-40 dark:group-hover:opacity-60 transition-opacity duration-500" />
+                      <img src={ind.image} alt={content.title} loading="lazy" className="w-full h-full object-cover opacity-100" />
                       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background hidden dark:block" />
                       <div className="absolute bottom-3 left-4">
                         <div className="h-10 w-10 rounded-xl border border-cyan-400/40 bg-cyan-400/10 flex items-center justify-center">
@@ -122,12 +122,12 @@ export default function Industries() {
                       <p className="mt-2 text-sm text-foreground/55 leading-relaxed flex-1">{content.desc}</p>
                       <div className="mt-4 flex flex-wrap gap-1.5">
                         {content.tags.map((tag) => (
-                          <span key={tag} className="text-[10px] font-mono-accent uppercase tracking-[0.15em] px-2 py-1 rounded-full border border-cyan-400/20 text-cyan-300/70 bg-cyan-400/5">
+                          <span key={tag} className="text-[10px] font-mono-accent uppercase tracking-[0.15em] px-2 py-1 rounded-full border border-cyan-400/20 text-primary bg-cyan-400/5">
                             {tag}
                           </span>
                         ))}
                       </div>
-                      <div className="mt-4 pt-4 border-t border-foreground/5 flex items-center gap-1.5 text-xs font-mono-accent uppercase tracking-[0.15em] text-cyan-300/60 group-hover:text-cyan-300 transition-colors">
+                      <div className="mt-4 pt-4 border-t border-foreground/5 flex items-center gap-1.5 text-xs font-mono-accent uppercase tracking-[0.15em] text-primary/80 group-hover:text-primary transition-colors">
                         {isAr ? "اكتشف المزيد" : "Explore"}
                         <ArrowRight className="h-3 w-3 rtl:rotate-180" />
                       </div>

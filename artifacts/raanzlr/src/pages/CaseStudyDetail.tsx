@@ -43,7 +43,7 @@ export default function CaseStudyDetail() {
           <img
             src={study.image}
             alt={isAr ? study.title.ar : study.title.en}
-            className="w-full h-full object-cover opacity-35 dark:opacity-20"
+            className="w-full h-full object-cover opacity-35"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background/75 via-background/60 to-background/30 dark:from-background dark:via-background/85 dark:to-background/50" />
         </div>
@@ -213,7 +213,7 @@ export default function CaseStudyDetail() {
                       <img
                         src={c.image}
                         alt={isAr ? c.title.ar : c.title.en}
-                        className="w-full h-full object-cover opacity-100 dark:opacity-40 dark:group-hover:opacity-55 group-hover:scale-105 transition-all duration-700"
+                        className="w-full h-full object-cover opacity-100 group-hover:scale-105 transition-all duration-700"
                       />
                       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background hidden dark:block" />
                       <div className="absolute top-4 left-4 rtl:left-auto rtl:right-4 flex gap-2">

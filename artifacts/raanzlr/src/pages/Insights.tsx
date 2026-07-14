@@ -358,7 +358,7 @@ export default function Insights() {
               <Link to={`/insights/${featured.slug}`} className="group relative overflow-hidden rounded-3xl border border-foreground/10 bg-foreground/[0.02] hover:border-cyan-400/20 transition-colors block">
                 <div className="grid lg:grid-cols-2">
                   <div className="relative h-64 lg:h-auto overflow-hidden">
-                    <img src={featured.image} alt={isAr ? featured.title.ar : featured.title.en} className="w-full h-full object-cover opacity-100 dark:opacity-50 dark:group-hover:opacity-65 group-hover:scale-105 transition-all duration-700" />
+                    <img src={featured.image} alt={isAr ? featured.title.ar : featured.title.en} className="w-full h-full object-cover opacity-100 group-hover:scale-105 transition-all duration-700" />
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent to-background/60 dark:to-background/80 lg:bg-gradient-to-b hidden dark:block" />
                   </div>
                   <div className="p-8 sm:p-10 flex flex-col justify-center">
@@ -395,7 +395,7 @@ export default function Insights() {
               <StaggerItem key={post.slug}>
                 <Link to={`/insights/${post.slug}`} className="group relative overflow-hidden rounded-2xl border border-foreground/10 bg-foreground/[0.02] hover:border-cyan-400/25 transition-colors h-full flex flex-col block">
                   <div className="relative h-44 overflow-hidden">
-                    <img src={post.image} alt={isAr ? post.title.ar : post.title.en} className="w-full h-full object-cover opacity-100 dark:opacity-40 dark:group-hover:opacity-55 group-hover:scale-105 transition-all duration-500" />
+                    <img src={post.image} alt={isAr ? post.title.ar : post.title.en} className="w-full h-full object-cover opacity-100 group-hover:scale-105 transition-all duration-500" />
                     <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background hidden dark:block" />
                     <div className="absolute top-3 left-3 rtl:left-auto rtl:right-3">
                       <span className="text-[10px] font-mono-accent uppercase tracking-[0.15em] px-2.5 py-1 rounded-full border border-cyan-400/35 text-cyan-300 bg-cyan-400/10">

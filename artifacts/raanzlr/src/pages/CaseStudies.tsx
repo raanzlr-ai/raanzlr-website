@@ -47,7 +47,7 @@ export default function CaseStudies() {
               <StaggerItem key={c.slug}>
                 <Link to={`/case-studies/${c.slug}`} className="group relative overflow-hidden rounded-3xl border border-foreground/10 bg-foreground/[0.02] hover:border-cyan-400/25 transition-all h-full flex flex-col block">
                   <div className="relative h-48 overflow-hidden">
-                    <img src={c.image} alt={isAr ? c.title.ar : c.title.en} className="w-full h-full object-cover opacity-100 dark:opacity-40 dark:group-hover:opacity-55 group-hover:scale-105 transition-all duration-700" />
+                    <img src={c.image} alt={isAr ? c.title.ar : c.title.en} className="w-full h-full object-cover opacity-100 group-hover:scale-105 transition-all duration-700" />
                     <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background hidden dark:block" />
                     <div className="absolute top-4 left-4 rtl:left-auto rtl:right-4 flex gap-2">
                       <span className="text-[10px] font-mono-accent uppercase tracking-[0.18em] px-2.5 py-1 rounded-full border border-cyan-400/40 text-cyan-300 bg-cyan-400/10">

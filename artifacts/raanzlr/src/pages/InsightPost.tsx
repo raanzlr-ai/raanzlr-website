@@ -214,7 +214,7 @@ export default function InsightPost() {
             alt={isAr ? post.title.ar : post.title.en}
             loading="eager"
             fetchPriority="high"
-            className="w-full h-full object-cover opacity-40 dark:opacity-25"
+            className="w-full h-full object-cover opacity-40"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background/75 via-background/55 to-background/20 dark:from-background dark:via-background/80 dark:to-background/40" />
         </div>
@@ -389,7 +389,7 @@ export default function InsightPost() {
                       <img
                         src={p.image}
                         alt={isAr ? p.title.ar : p.title.en}
-                        className="w-full h-full object-cover opacity-100 dark:opacity-40 dark:group-hover:opacity-55 group-hover:scale-105 transition-all duration-500"
+                        className="w-full h-full object-cover opacity-100 group-hover:scale-105 transition-all duration-500"
                       />
                       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background hidden dark:block" />
                       <span className="absolute top-3 left-3 rtl:left-auto rtl:right-3 text-[10px] font-mono-accent uppercase tracking-[0.15em] px-2.5 py-1 rounded-full border border-cyan-400/35 text-cyan-300 bg-cyan-400/10">

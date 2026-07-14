@@ -106,7 +106,7 @@ export default function ServiceDetail() {
             alt={service.title}
             loading="eager"
             fetchPriority="high"
-            className="w-full h-full object-cover opacity-50 dark:opacity-15"
+            className="w-full h-full object-cover opacity-50"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/45 to-background dark:from-background/60 dark:via-background/80" />
         </div>
