@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { Mail, FileText, Eye, EyeOff, RefreshCw, LogOut, Clock, User, Phone, Plus, Pencil, Trash2, ChevronDown, ChevronUp, X, Star, Globe, CheckCircle, AlertCircle, Users } from "lucide-react";
 import SEO from "../components/SEO";
+import ThemeToggle from "../components/ThemeToggle";
 
 const ADMIN_EMAIL = "mohammed_okla@raanzlr.com";
 const ADMIN_TOKEN_KEY = "raanzlr_admin_token";
@@ -153,9 +154,11 @@ function LoginScreen({ onLogin }: { onLogin: () => void }) {
   };
 
   return (
-    <div className="min-h-screen bg-background flex items-center justify-center px-4">
+    <div className="min-h-screen bg-background flex items-center justify-center px-4 relative">
+      <ThemeToggle className="absolute top-4 right-4 h-9 w-9" />
       <div className="w-full max-w-sm">
-        <img src="/Raanzlr.webp" alt="Raanzlr" className="h-8 w-auto mx-auto mb-8 opacity-80" />
+        <img src="/Raanzlr-280-dark.webp" alt="Raanzlr" className="h-8 w-auto mx-auto mb-8 opacity-80 dark:hidden" />
+        <img src="/Raanzlr-280.webp" alt="Raanzlr" className="h-8 w-auto mx-auto mb-8 opacity-80 hidden dark:block" />
         <div className="rounded-2xl border border-foreground/10 bg-foreground/[0.03] p-8">
           <h1 className="text-xl font-bold text-foreground mb-1">Admin Access</h1>
           <p className="text-sm text-foreground/40 mb-6">Raanzlr back office</p>
@@ -210,6 +213,8 @@ function ContactsTab() {
   const [selected, setSelected] = useState<Contact | null>(null);
   const [filterType, setFilterType] = useState<"all" | "general" | "service">("all");
   const [error, setError] = useState<string | null>(null);
+  const [confirmDeleteId, setConfirmDeleteId] = useState<number | null>(null);
+  const [deletingId, setDeletingId] = useState<number | null>(null);
 
   const load = () => {
     setLoading(true);
@@ -232,6 +237,34 @@ function ContactsTab() {
   };
 
   useEffect(() => { load(); }, []);
+
+  const handleDelete = async (e: React.MouseEvent, id: number) => {
+    e.stopPropagation();
+    if (confirmDeleteId !== id) {
+      setConfirmDeleteId(id);
+      setTimeout(() => setConfirmDeleteId(prev => (prev === id ? null : prev)), 3000);
+      return;
+    }
+    setDeletingId(id);
+    const adminKey = getAdminKey();
+    try {
+      const res = await fetch(`${SUPABASE_URL}/rest/v1/contacts?id=eq.${id}`, {
+        method: "DELETE",
+        headers: {
+          "apikey": SUPABASE_ANON_KEY,
+          "Authorization": `Bearer ${adminKey}`,
+        }
+      });
+      if (!res.ok) throw new Error(`Server error ${res.status}`);
+      setContacts(prev => prev.filter(c => c.id !== id));
+      if (selected?.id === id) setSelected(null);
+    } catch (err: any) {
+      setError(err.message ?? "Failed to delete submission.");
+    } finally {
+      setDeletingId(null);
+      setConfirmDeleteId(null);
+    }
+  };
 
   const fmt = (iso: string) => new Date(iso).toLocaleString("en-GB", { dateStyle: "medium", timeStyle: "short" });
 
@@ -346,15 +379,26 @@ function ContactsTab() {
                       <p className="text-sm text-foreground/70 leading-relaxed">{c.challenge}</p>
                     </div>
                   )}
-                  <div className="col-span-full pt-2 flex gap-3">
-                    <a href={`mailto:${c.email}?subject=Re: ${c.subject ?? "Your Inquiry"}`} className="text-xs text-cyan-400 hover:underline flex items-center gap-1">
-                      <Mail className="h-3.5 w-3.5" /> Reply by email
-                    </a>
-                    {c.phone && (
-                      <a href={`tel:${c.phone}`} className="text-xs text-cyan-400 hover:underline flex items-center gap-1">
-                        <Phone className="h-3.5 w-3.5" /> {c.phone}
+                  <div className="col-span-full pt-2 flex items-center justify-between gap-3 flex-wrap">
+                    <div className="flex items-center gap-3">
+                      <a href={`mailto:${c.email}?subject=Re: ${c.subject ?? "Your Inquiry"}`} className="text-xs text-cyan-400 hover:underline flex items-center gap-1">
+                        <Mail className="h-3.5 w-3.5" /> Reply by email
                       </a>
-                    )}
+                      {c.phone && (
+                        <a href={`tel:${c.phone}`} className="text-xs text-cyan-400 hover:underline flex items-center gap-1">
+                          <Phone className="h-3.5 w-3.5" /> {c.phone}
+                        </a>
+                      )}
+                    </div>
+                    <button
+                      type="button"
+                      onClick={(e) => handleDelete(e, c.id)}
+                      disabled={deletingId === c.id}
+                      className={`flex items-center gap-1.5 text-xs rounded-lg px-3 py-1.5 transition-all border disabled:opacity-50 ${confirmDeleteId === c.id ? "text-foreground bg-red-500/20 border-red-500/40 hover:bg-red-500/30" : "text-red-400 hover:text-red-300 border-foreground/10 hover:border-red-400/20"}`}
+                    >
+                      <Trash2 className="h-3.5 w-3.5" />
+                      {deletingId === c.id ? "Deleting…" : confirmDeleteId === c.id ? "Confirm delete?" : "Delete"}
+                    </button>
                   </div>
                 </div>
               )}
@@ -1615,15 +1659,19 @@ export default function Admin() {
       <div className="border-b border-foreground/8 bg-background sticky top-0 z-40">
         <div className="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <img src="/Raanzlr.webp" alt="Raanzlr" className="h-6 w-auto opacity-70" />
+            <img src="/Raanzlr-280-dark.webp" alt="Raanzlr" className="h-6 w-auto opacity-70 dark:hidden" />
+            <img src="/Raanzlr-280.webp" alt="Raanzlr" className="h-6 w-auto opacity-70 hidden dark:block" />
             <span className="text-xs text-foreground/30 border-l border-foreground/10 pl-4">Admin</span>
           </div>
-          <button
-            onClick={() => { sessionStorage.removeItem("raanzlr_admin"); sessionStorage.removeItem(ADMIN_TOKEN_KEY); setAuthed(false); }}
-            className="flex items-center gap-1.5 text-xs text-foreground/30 hover:text-foreground transition-colors"
-          >
-            <LogOut className="h-3.5 w-3.5" /> Sign out
-          </button>
+          <div className="flex items-center gap-3">
+            <ThemeToggle className="h-8 w-8" />
+            <button
+              onClick={() => { sessionStorage.removeItem("raanzlr_admin"); sessionStorage.removeItem(ADMIN_TOKEN_KEY); setAuthed(false); }}
+              className="flex items-center gap-1.5 text-xs text-foreground/30 hover:text-foreground transition-colors"
+            >
+              <LogOut className="h-3.5 w-3.5" /> Sign out
+            </button>
+          </div>
         </div>
       </div>
 
