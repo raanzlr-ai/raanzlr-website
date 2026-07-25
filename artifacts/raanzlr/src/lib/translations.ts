@@ -233,7 +233,7 @@ const en = {
     home: {
       title: "Raanzlr — AI Automation & Software Engineering Services",
       description: "Raanzlr builds practical AI agents, workflow automation services, web platforms, and mobile apps that grow your business — bilingual Arabic and English for the GCC, MENA, Türkiye, Europe, and the U.S.",
-      keywords: "AI automation agency, Arabic AI chatbot, workflow automation, custom AI development, web application development, mobile app development, software engineering GCC, AI agency MENA",
+      keywords: "AI automation agency, Arabic AI chatbot, workflow automation, custom AI development, web application development, mobile app development, software engineering GCC, AI agency MENA, Raanzlr, Ranzlr, Raanzelr, Raanzelr",
     },
     services: {
       title: "AI Automation, Chatbots, Web & Mobile App Services · Raanzlr",
@@ -482,7 +482,7 @@ const ar: typeof en = {
     home: {
       title: "Raanzlr | أتمتة بالذكاء الاصطناعي ومواقع وتطبيقات وبرمجيات",
       description: "Raanzlr تبني وكلاء ذكاء اصطناعي، أتمتة أعمال، منصات ويب، وتطبيقات جوال للفرق في الخليج والشرق الأوسط وتركيا وأوروبا والولايات المتحدة.",
-      keywords: "أتمتة بالذكاء الاصطناعي، روبوت واتساب عربي، تطوير ذكاء اصطناعي مخصص، تطوير مواقع، تطوير تطبيقات جوال، شركة برمجة في الخليج",
+      keywords: "أتمتة بالذكاء الاصطناعي، روبوت واتساب عربي، تطوير ذكاء اصطناعي مخصص، تطوير مواقع، تطوير تطبيقات جوال، شركة برمجة في الخليج، رانزلر، راانزلر، رعنزلر، رعانزلر، رانزلير، راانزلير، Raanzlr، Ranzlr",
     },
     services: {
       title: "خدمات الذكاء الاصطناعي والأتمتة وتطوير المواقع والتطبيقات · Raanzlr",

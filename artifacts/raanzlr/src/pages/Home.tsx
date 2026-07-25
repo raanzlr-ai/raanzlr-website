@@ -143,11 +143,6 @@ export default function Home() {
         <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 w-full py-32 md:py-36">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-6 items-center">
             <div className="lg:col-span-6">
-              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}
-                className="inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-cyan-400/5 px-3.5 py-1.5 text-[10px] sm:text-xs font-mono-accent uppercase tracking-[0.22em] text-cyan-300">
-                <span className="inline-block h-1.5 w-1.5 rounded-full bg-cyan-400 animate-pulse" />
-                {t.home.eyebrow}
-              </motion.div>
               <HeroHeadline isAr={isAr} />
               <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.25 }}
                 className="mt-7 max-w-xl text-base md:text-lg leading-relaxed text-foreground/65">

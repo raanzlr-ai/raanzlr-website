@@ -137,8 +137,9 @@
 
 /* ── TYPOGRAPHY CLASSES ────────────────────────────── */
 .font-display  { font-family: "Space Grotesk", sans-serif; }
-.font-mono-accent { font-family: "IBM Plex Mono", monospace; }
+.font-mono-accent { font-family: "Space Grotesk", sans-serif; font-weight: 600; }
 [dir="rtl"] .font-display { font-family: "Tajawal", sans-serif; }
+[dir="rtl"] .font-mono-accent { font-family: "Tajawal", sans-serif; font-weight: 700; }
 
 /* ── RTL / ARABIC HEADING FIX ───────────────────────
    Tajawal has taller ascenders — tighten line-height on
