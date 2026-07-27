@@ -64,6 +64,10 @@ dist/
 artifacts/mockup-sandbox/
 attached_assets/
 scripts/
+# ...except the app's build scripts. `npm run build` invokes
+# scripts/prerender.mjs, so excluding it breaks the Vercel build with
+# MODULE_NOT_FOUND even though the build passes locally.
+!artifacts/raanzlr/scripts/
 
 # Agent memory and documentation
 .agents/
