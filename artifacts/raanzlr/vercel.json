@@ -53,8 +53,8 @@
       "permanent": true
     },
     {
-      "source": "/:section(services|industries|markets|case-studies|insights)/:slug+",
-      "destination": "/en/:section/:slug+",
+      "source": "/:section(services|industries|markets|case-studies|insights)/:slug([^./]+)",
+      "destination": "/en/:section/:slug",
       "permanent": true
     }
   ],
