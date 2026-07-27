@@ -52,9 +52,17 @@
     <title>Raanzlr — AI Automation & Software Engineering Services</title>
     <meta data-rh="true" name="description" content="Raanzlr builds practical AI agents, workflow automation services, web platforms, and mobile apps that grow your business — bilingual Arabic and English for the GCC, MENA, Türkiye, Europe, and the U.S." />
     <meta data-rh="true" name="keywords" content="AI automation agency, Arabic AI chatbot, workflow automation, custom AI development, web application development, mobile app development, software engineering GCC, AI agency MENA" />
-    <meta data-rh="true" name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <!-- noindex, and no canonical, on purpose.
+
+         Everything between SEO:START and SEO:END is replaced wholesale by
+         react-helmet output for all 98 prerendered pages, so this never
+         reaches a real page. It applies only to dist/index.html itself, which
+         Vercel serves for exactly two things: /admin, and an insights slug
+         published since the last build. That shell used to answer 200 with a
+         canonical of /en, which turned every bogus /en/insights/<slug> into a
+         soft 404 claiming to be the home page. -->
+    <meta data-rh="true" name="robots" content="noindex, follow" />
     <meta name="author" content="Raanzlr" />
-    <link data-rh="true" rel="canonical" href="https://raanzlr.com/en" />
 
     <!-- hreflang: bilingual site -->
     <link data-rh="true" rel="alternate" hreflang="en" href="https://raanzlr.com/en" />
