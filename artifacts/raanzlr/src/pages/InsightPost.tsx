@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useParams, Link, Navigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { Link, Navigate } from "../components/LocalizedLink";
 import { motion } from "framer-motion";
 import { ArrowLeft, Clock, CalendarDays, ArrowRight } from "lucide-react";
 import { useLang } from "../contexts/LanguageContext";
@@ -146,19 +147,26 @@ export default function InsightPost() {
   const { slug } = useParams<{ slug: string }>();
   const { isAr } = useLang();
 
-  const [post, setPost] = useState<Post | null | undefined>(undefined);
-  const [others, setOthers] = useState<Post[]>([]);
+  // Seeded synchronously, not in an effect: the build-time prerender only runs
+  // the first render pass, so a post that arrives via useEffect would ship as a
+  // bare "Loading…" page with no <h1> and no article schema. Starting from the
+  // static seed means the HTML is complete before any JavaScript runs; the
+  // Supabase fetch below still overrides it with admin-authored content.
+  const [post, setPost] = useState<Post | null | undefined>(() => {
+    const seed = POSTS.find((p) => p.slug === slug);
+    return seed ? fromStaticPost(seed) : undefined;
+  });
+  const [others, setOthers] = useState<Post[]>(() =>
+    POSTS.filter((p) => p.slug !== slug).slice(0, 3).map(fromStaticPost),
+  );
 
   useEffect(() => {
     if (!slug) return;
 
-    // Immediately show static post while API loads
+    // Re-seed on slug change — the initializers above only run on first mount.
     const staticPost = POSTS.find(p => p.slug === slug);
-    if (staticPost) {
-      setPost(fromStaticPost(staticPost));
-    }
-    const staticOthers = POSTS.filter(p => p.slug !== slug).slice(0, 3).map(fromStaticPost);
-    setOthers(staticOthers);
+    setPost(staticPost ? fromStaticPost(staticPost) : undefined);
+    setOthers(POSTS.filter(p => p.slug !== slug).slice(0, 3).map(fromStaticPost));
 
     // Fetch from API (may override static)
     fetchPost(slug).then(apiPost => {

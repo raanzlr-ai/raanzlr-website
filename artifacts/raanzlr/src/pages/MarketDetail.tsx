@@ -1,5 +1,6 @@
 import React from "react";
-import { useParams, Navigate, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { Navigate, Link } from "../components/LocalizedLink";
 import { motion } from "framer-motion";
 import { 
   Globe2, TrendingUp, Building2, Zap, ArrowRight, 

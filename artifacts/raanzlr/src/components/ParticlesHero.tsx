@@ -1,6 +1,19 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { Particles } from "@tsparticles/react";
+import { Particles, ParticlesProvider } from "@tsparticles/react";
+import { loadSlim } from "@tsparticles/slim";
 import { useTheme } from "next-themes";
+
+// The provider lives here rather than around the whole app on purpose:
+// ParticlesProvider renders `loaded ? children : null`, so hoisting it to the
+// root blanks the entire site until the tsParticles engine finishes loading —
+// and makes the build-time prerender emit an empty page. Scoped here, only the
+// decorative canvas waits on the engine.
+//
+// The callback must be module-level: ParticlesProvider throws if the `init`
+// identity changes across the app lifecycle.
+const initParticlesEngine = async (engine: unknown) => {
+  await loadSlim(engine as never);
+};
 
 type ParticlesHeroProps = {
   id?: string;
@@ -78,13 +91,15 @@ const ParticlesHero = ({
   if (!mounted) return null;
 
   return (
-    <Particles
-      key={`${id}-${resolvedTheme ?? "system"}`}
-      id={id}
-      options={particleOptions}
-      className="absolute inset-0 pointer-events-none"
-      style={{ width: "100%", height: "100%" }}
-    />
+    <ParticlesProvider init={initParticlesEngine}>
+      <Particles
+        key={`${id}-${resolvedTheme ?? "system"}`}
+        id={id}
+        options={particleOptions}
+        className="absolute inset-0 pointer-events-none"
+        style={{ width: "100%", height: "100%" }}
+      />
+    </ParticlesProvider>
   );
 };
 

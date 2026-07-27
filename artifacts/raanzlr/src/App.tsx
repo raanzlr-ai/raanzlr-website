@@ -1,12 +1,10 @@
-import React, { Suspense, lazy, useEffect, useCallback } from "react";
+import React, { Suspense, lazy, useEffect } from "react";
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { Toaster } from "./components/ui/sonner";
 import { LanguageProvider } from "./contexts/LanguageContext";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import CustomCursor from "./components/CustomCursor";
-import { ParticlesProvider } from "@tsparticles/react";
-import { loadSlim } from "@tsparticles/slim";
 
 const Home = lazy(() => import("./pages/Home"));
 const Services = lazy(() => import("./pages/Services"));
@@ -137,18 +135,23 @@ function AppContent() {
   );
 }
 
-function App() {
-  const initParticles = useCallback(async (engine: any) => {
-    await loadSlim(engine);
-  }, []);
+/**
+ * Everything below the router. Kept router-agnostic so the build-time
+ * prerenderer (scripts/prerender.mjs via src/entry-server.tsx) can mount the
+ * exact same tree under a StaticRouter and emit real HTML per route.
+ */
+export function AppShell() {
+  return (
+    <LanguageProvider>
+      <AppContent />
+    </LanguageProvider>
+  );
+}
 
+function App() {
   return (
     <BrowserRouter basename={import.meta.env.BASE_URL?.replace(/\/$/, "") || ""}>
-      <LanguageProvider>
-        <ParticlesProvider init={initParticles}>
-          <AppContent />
-        </ParticlesProvider>
-      </LanguageProvider>
+      <AppShell />
     </BrowserRouter>
   );
 }

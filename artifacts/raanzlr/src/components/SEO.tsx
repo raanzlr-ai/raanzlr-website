@@ -78,13 +78,18 @@ export default function SEO({
   const location = useLocation();
   const isAr = lang === 'ar';
 
-  // Resolve path: use explicit prop, or derive from router location
-  const rawPath = (pathProp ?? location.pathname.replace(/^\/(en|ar)/, '')) || '/';
+  // Resolve path: use explicit prop, or derive from router location.
+  // Any trailing slash is stripped so the canonical never points at a URL that
+  // Vercel 308-redirects (`trailingSlash: false`).
+  const rawPath =
+    (pathProp ?? location.pathname.replace(/^\/(en|ar)(?=\/|$)/, '')).replace(/\/+$/, '') || '/';
 
-  // Build canonical & alternate URLs
+  // Build canonical & alternate URLs. Home is "/en" — no trailing slash — which
+  // is the site's one official URL shape for every page.
   const baseUrl = 'https://raanzlr.com';
-  const enUrl = `${baseUrl}/en${rawPath === '/' ? '/' : rawPath}`;
-  const arUrl = `${baseUrl}/ar${rawPath === '/' ? '/' : rawPath}`;
+  const suffix = rawPath === '/' ? '' : rawPath;
+  const enUrl = `${baseUrl}/en${suffix}`;
+  const arUrl = `${baseUrl}/ar${suffix}`;
   const canonicalUrl = isAr ? arUrl : enUrl;
 
   // Resolve title / description / keywords from pageKey or explicit props
@@ -116,8 +121,7 @@ export default function SEO({
     if (segments.length < 2) return null; // Only show breadcrumb on depth >= 2
 
     const homeLabel = isAr ? 'الرئيسية' : 'Home';
-    const homePath = isAr ? arUrl.replace(rawPath === '/' ? '/' : rawPath, '/') : enUrl.replace(rawPath === '/' ? '/' : rawPath, '/');
-    const baseHome = `${baseUrl}/${isAr ? 'ar' : 'en'}/`;
+    const baseHome = `${baseUrl}/${isAr ? 'ar' : 'en'}`;
 
     const items: Array<{ position: number; name: string; item?: string }> = [
       { position: 1, name: homeLabel, item: baseHome },

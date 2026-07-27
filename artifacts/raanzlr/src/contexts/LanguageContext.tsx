@@ -32,12 +32,21 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   const location = useLocation();
   const navigate = useNavigate();
 
+  // Derived from the router location (not window.location) so this renders
+  // identically during the build-time prerender and on the client. Only the
+  // no-locale-prefix fallback touches browser storage, and that path never runs
+  // on the server.
   const [lang, setLangState] = useState<Lang>(() => {
-    const pathLang = langFromPath(window.location.pathname);
+    const pathLang = langFromPath(location.pathname);
     if (pathLang) return pathLang;
-    const stored = localStorage.getItem("raanzlr-lang");
-    if (stored === "ar" || stored === "en") return stored;
-    const browser = navigator.language.toLowerCase();
+    if (typeof window === "undefined") return "en";
+    try {
+      const stored = localStorage.getItem("raanzlr-lang");
+      if (stored === "ar" || stored === "en") return stored;
+    } catch {
+      /* storage blocked (private mode / embedded webview) */
+    }
+    const browser = navigator.language?.toLowerCase() ?? "";
     return browser.startsWith("ar") ? "ar" : "en";
   });
 
@@ -51,7 +60,11 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     document.documentElement.dir = isAr ? "rtl" : "ltr";
     document.documentElement.lang = lang;
-    localStorage.setItem("raanzlr-lang", lang);
+    try {
+      localStorage.setItem("raanzlr-lang", lang);
+    } catch {
+      /* storage blocked — the URL prefix remains the source of truth */
+    }
   }, [lang, isAr]);
 
   const localizedPath = (path: string, targetLang: Lang = lang) => {
@@ -59,7 +72,9 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     const [pathAndSearch, hash = ""] = path.split("#");
     const [rawPath, search = ""] = pathAndSearch.split("?");
     const normalizedPath = stripLocale(rawPath.startsWith("/") ? rawPath : `/${rawPath}`);
-    const localized = `/${targetLang}${normalizedPath === "/" ? "/" : normalizedPath}`;
+    // No trailing slash anywhere — "/en", "/en/faq". This is the site's single
+    // canonical URL shape; Vercel 308-redirects the trailing-slash variants.
+    const localized = `/${targetLang}${normalizedPath === "/" ? "" : normalizedPath}`;
     return `${localized}${search ? `?${search}` : ""}${hash ? `#${hash}` : ""}`;
   };
 

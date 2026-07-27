@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link } from "../components/LocalizedLink";
 import { Bot, Workflow, Globe2, Smartphone, Sparkles, PlugZap, PenTool, ShieldCheck, ArrowUpRight } from "lucide-react";
 import { useLang } from "../contexts/LanguageContext";
 import { Reveal, Stagger, StaggerItem } from "../components/Reveal";

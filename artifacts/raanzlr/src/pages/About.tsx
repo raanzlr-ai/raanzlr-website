@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { MapPin, Rocket, ShieldCheck, Headphones } from "lucide-react";
 import { useLang } from "../contexts/LanguageContext";
+import { Link } from "../components/LocalizedLink";
 import PulseDivider from "../components/PulseDivider";
 import { Reveal, Stagger, StaggerItem } from "../components/Reveal";
 import Heartbeat from "../components/Heartbeat";
@@ -174,9 +175,9 @@ export default function About() {
                     : "Whether you're planning to develop a new platform, automate processes within your company, or integrate AI technologies into your business, the Raanzlr team is happy to learn about your needs and discuss the best solutions that fit your goals. Contact us to start the conversation about your project."}
                 </p>
                 <div className="mt-8">
-                  <a href="/contact" className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 px-6 py-3 text-sm font-bold text-[#050505] hover:opacity-90 transition-opacity">
+                  <Link to="/contact" className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 px-6 py-3 text-sm font-bold text-[#050505] hover:opacity-90 transition-opacity">
                     {isAr ? "تواصل معنا" : "Contact Us"}
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

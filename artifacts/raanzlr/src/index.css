@@ -298,3 +298,14 @@
 @media (prefers-reduced-motion: reduce) {
   .type-caret { animation: none; }
 }
+
+/* Prerendered pages (scripts/prerender.mjs) ship framer-motion's `initial`
+   styles inline — typically `opacity:0`. With JavaScript those animate in on
+   hydration. Without it they never would, leaving the static HTML invisible to
+   text-mode readers and non-rendering crawlers. The head bootstrap adds `.js`
+   to <html> before first paint, so this only ever applies when scripting is
+   off; animations for real visitors are untouched. */
+html:not(.js) #root[data-ssr] [style*="opacity:0"] {
+  opacity: 1 !important;
+  transform: none !important;
+}

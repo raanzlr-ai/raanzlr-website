@@ -4,6 +4,9 @@ node_modules/
 
 # Build output
 dist/
+# Throwaway SSR bundle: built by vite.config.ssr.ts, consumed by
+# scripts/prerender.mjs, never deployed (outputDirectory is dist).
+dist-ssr/
 *.tsbuildinfo
 
 # Environment variables (never commit)

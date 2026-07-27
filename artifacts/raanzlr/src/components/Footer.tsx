@@ -48,9 +48,9 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <Link to={localizedPath("/")} className="flex items-center gap-2.5 mb-4 w-fit">
               {/* Dark wordmark for light theme, light wordmark for dark theme */}
-              <img src="/Raanzlr-280-dark.webp" srcSet="/Raanzlr-280-dark.webp 280w, /Raanzlr-dark.webp 560w" sizes="216px" alt="Raanzlr" className="h-8 w-auto dark:hidden" />
-              <img src="/Raanzlr-280.webp" srcSet="/Raanzlr-280.webp 280w, /Raanzlr.webp 560w" sizes="216px" alt="Raanzlr" className="h-8 w-auto hidden dark:block" />
-              <img src="/logo-raanzlr-80.webp" srcSet="/logo-raanzlr-80.webp 80w, /logo-raanzlr.webp 160w" sizes="68px" alt="Raanzlr logo" width="70" height="40" className="h-10 w-auto" />
+              <img src="/Raanzlr-280-dark.webp" srcSet="/Raanzlr-280-dark.webp 280w, /Raanzlr-dark.webp 560w" sizes="216px" alt={isAr ? "راانزلر Raanzlr" : "Raanzlr"} className="h-8 w-auto dark:hidden" />
+              <img src="/Raanzlr-280.webp" srcSet="/Raanzlr-280.webp 280w, /Raanzlr.webp 560w" sizes="216px" alt={isAr ? "راانزلر Raanzlr" : "Raanzlr"} className="h-8 w-auto hidden dark:block" />
+              <img src="/logo-raanzlr-80.webp" srcSet="/logo-raanzlr-80.webp 80w, /logo-raanzlr.webp 160w" sizes="68px" alt={isAr ? "شعار راانزلر" : "Raanzlr logo"} width="70" height="40" className="h-10 w-auto" />
             </Link>
             <p className="text-sm text-foreground/55 leading-relaxed max-w-xs">{t.footer.tagline}</p>
             <div className="mt-5">
@@ -164,7 +164,7 @@ export default function Footer() {
         {/* Bottom */}
         <div className="mt-12 pt-6 border-t border-foreground/8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-foreground/35">
-            © {new Date().getFullYear()} Raanzlr. {t.footer.rights}
+            © {new Date().getFullYear()} {isAr ? "راانزلر Raanzlr" : "Raanzlr"}. {t.footer.rights}
           </p>
           <p className="text-[10px] font-mono-accent uppercase tracking-[0.32em] text-foreground/25">
             {t.footer.engineered}

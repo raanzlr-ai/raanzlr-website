@@ -36,6 +36,12 @@
           el.classList.add(isDark ? "dark" : "light");
           el.style.colorScheme = isDark ? "dark" : "light";
         } catch (e) {}
+        // Marks scripting as available before first paint. Prerendered pages
+        // carry framer-motion's `opacity:0` initial styles; index.css reveals
+        // them for `html:not(.js)` so non-JS clients still see the content.
+        try {
+          document.documentElement.classList.add("js");
+        } catch (e) {}
       })();
     </script>
 
@@ -48,19 +54,19 @@
     <meta data-rh="true" name="keywords" content="AI automation agency, Arabic AI chatbot, workflow automation, custom AI development, web application development, mobile app development, software engineering GCC, AI agency MENA" />
     <meta data-rh="true" name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="author" content="Raanzlr" />
-    <link data-rh="true" rel="canonical" href="https://raanzlr.com/en/" />
+    <link data-rh="true" rel="canonical" href="https://raanzlr.com/en" />
 
     <!-- hreflang: bilingual site -->
-    <link data-rh="true" rel="alternate" hreflang="en" href="https://raanzlr.com/en/" />
-    <link data-rh="true" rel="alternate" hreflang="ar" href="https://raanzlr.com/ar/" />
-    <link data-rh="true" rel="alternate" hreflang="x-default" href="https://raanzlr.com/en/" />
+    <link data-rh="true" rel="alternate" hreflang="en" href="https://raanzlr.com/en" />
+    <link data-rh="true" rel="alternate" hreflang="ar" href="https://raanzlr.com/ar" />
+    <link data-rh="true" rel="alternate" hreflang="x-default" href="https://raanzlr.com/en" />
 
     <!-- Open Graph -->
     <meta data-rh="true" property="og:type" content="website" />
     <meta data-rh="true" property="og:site_name" content="Raanzlr" />
     <meta data-rh="true" property="og:title" content="Raanzlr — AI Automation & Software Engineering Services" />
     <meta data-rh="true" property="og:description" content="Raanzlr builds practical AI agents, workflow automation services, web platforms, and mobile apps that grow your business — bilingual Arabic and English for the GCC, MENA, Türkiye, Europe, and the U.S." />
-    <meta data-rh="true" property="og:url" content="https://raanzlr.com/en/" />
+    <meta data-rh="true" property="og:url" content="https://raanzlr.com/en" />
     <meta data-rh="true" property="og:image" content="https://raanzlr.com/opengraph.png" />
     <meta data-rh="true" property="og:image:width" content="1200" />
     <meta data-rh="true" property="og:image:height" content="630" />
@@ -109,6 +115,21 @@
       "@type": "Organization",
       "@id": "https://raanzlr.com/#organization",
       "name": "Raanzlr",
+      "legalName": "Raanzlr",
+      "alternateName": [
+        "راانزلر",
+        "رانزلر",
+        "راانزلير",
+        "رانزلير",
+        "رانزلار",
+        "رنزلر",
+        "شركة راانزلر",
+        "راانزلر للذكاء الاصطناعي",
+        "Raanzler",
+        "Ranzlr",
+        "Ranzler",
+        "RAANZLR"
+      ],
       "url": "https://raanzlr.com",
       "logo": "https://raanzlr.com/logo-raanzlr.png",
       "image": "https://raanzlr.com/opengraph.png",
@@ -151,6 +172,7 @@
       "@id": "https://raanzlr.com/#website",
       "url": "https://raanzlr.com",
       "name": "Raanzlr",
+      "alternateName": ["راانزلر", "رانزلر", "راانزلير", "رانزلير", "Raanzler", "Ranzlr"],
       "description": "AI Automation, Web Apps & Software Engineering for GCC, MENA & Türkiye markets",
       "inLanguage": ["en", "ar"],
       "publisher": {

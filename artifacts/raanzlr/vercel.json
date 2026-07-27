@@ -2,9 +2,75 @@
   "buildCommand": "NODE_OPTIONS=--max-old-space-size=4096 npm run build",
   "outputDirectory": "dist",
   "framework": "vite",
+  "trailingSlash": false,
   "redirects": [
-    { "source": "/", "has": [{ "type": "header", "key": "accept-language", "value": "^ar.*" }], "destination": "/ar/", "permanent": false },
-    { "source": "/", "destination": "/en/", "permanent": false }
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.raanzlr.com"
+        }
+      ],
+      "destination": "https://raanzlr.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^ar.*"
+        }
+      ],
+      "destination": "/ar",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "destination": "/en",
+      "permanent": false
+    },
+    {
+      "source": "/book-a-call",
+      "destination": "/en/contact",
+      "permanent": true
+    },
+    {
+      "source": "/en/book-a-call",
+      "destination": "/en/contact",
+      "permanent": true
+    },
+    {
+      "source": "/ar/book-a-call",
+      "destination": "/ar/contact",
+      "permanent": true
+    },
+    {
+      "source": "/:section(services|industries|markets|case-studies|insights|about|contact|faq|privacy-policy|terms-of-service)",
+      "destination": "/en/:section",
+      "permanent": true
+    },
+    {
+      "source": "/:section(services|industries|markets|case-studies|insights)/:slug+",
+      "destination": "/en/:section/:slug+",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/admin",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/:lang(en|ar)/admin",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/:lang(en|ar)/insights/:slug",
+      "destination": "/index.html"
+    }
   ],
   "headers": [
     {
@@ -89,10 +155,45 @@
           "value": "*"
         }
       ]
+    },
+    {
+      "source": "/auth.md",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/markdown; charset=utf-8"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        }
+      ]
+    },
+    {
+      "source": "/.well-known/agent-skills/(.*).md",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/markdown; charset=utf-8"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        }
+      ]
+    },
+    {
+      "source": "/(sitemap|sitemap-en|sitemap-ar).xml",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/xml; charset=utf-8"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
     }
-  ],
-  "rewrites": [
-    { "source": "/(en|ar)/(admin|book-a-call)", "destination": "/index.html" },
-    { "source": "/((?!en/|ar/).*)", "destination": "/index.html" }
   ]
 }

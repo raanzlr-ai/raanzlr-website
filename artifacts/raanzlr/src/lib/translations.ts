@@ -233,7 +233,7 @@ const en = {
     home: {
       title: "Raanzlr — AI Automation & Software Engineering Services",
       description: "Raanzlr builds practical AI agents, workflow automation services, web platforms, and mobile apps that grow your business — bilingual Arabic and English for the GCC, MENA, Türkiye, Europe, and the U.S.",
-      keywords: "AI automation agency, Arabic AI chatbot, workflow automation, custom AI development, web application development, mobile app development, software engineering GCC, AI agency MENA, Raanzlr, Ranzlr, Raanzelr, Raanzelr",
+      keywords: "AI automation agency, Arabic AI chatbot, workflow automation, custom AI development, web application development, mobile app development, software engineering GCC, AI agency MENA, Raanzlr, Ranzlr, Raanzler, Ranzler, Raanzelr, راانزلر, رانزلر",
     },
     services: {
       title: "AI Automation, Chatbots, Web & Mobile App Services · Raanzlr",
@@ -480,8 +480,8 @@ const ar: typeof en = {
   isAr: true,
   seo: {
     home: {
-      title: "Raanzlr | أتمتة بالذكاء الاصطناعي ومواقع وتطبيقات وبرمجيات",
-      description: "Raanzlr تبني وكلاء ذكاء اصطناعي، أتمتة أعمال، منصات ويب، وتطبيقات جوال للفرق في الخليج والشرق الأوسط وتركيا وأوروبا والولايات المتحدة.",
+      title: "راانزلر Raanzlr | أتمتة بالذكاء الاصطناعي ومواقع وتطبيقات",
+      description: "راانزلر (Raanzlr) تبني وكلاء ذكاء اصطناعي، أتمتة أعمال، منصات ويب، وتطبيقات جوال للفرق في الخليج والشرق الأوسط وتركيا وأوروبا والولايات المتحدة.",
       keywords: "أتمتة بالذكاء الاصطناعي، روبوت واتساب عربي، تطوير ذكاء اصطناعي مخصص، تطوير مواقع، تطوير تطبيقات جوال، شركة برمجة في الخليج، رانزلر، راانزلر، رعنزلر، رعانزلر، رانزلير، راانزلير، Raanzlr، Ranzlr",
     },
     services: {
@@ -490,9 +490,9 @@ const ar: typeof en = {
       keywords: "خدمات ذكاء اصطناعي، تطوير روبوت واتساب، أتمتة n8n، شركة تطوير ويب، تطوير تطبيقات iOS و Android",
     },
     about: {
-      title: "عن Raanzlr | استوديو هندسي لبرمجيات عصر الذكاء الاصطناعي",
-      description: "نحن فريق من المهندسين وخبراء الذكاء الاصطناعي نساعد الشركات على التحول الرقمي وبناء منتجات تقنية مستقرة وقابلة للتوسع.",
-      keywords: "فريق Raanzlr، شركة هندسة برمجيات، فريق ذكاء اصطناعي الشرق الأوسط، وكالة تقنية تركيا",
+      title: "عن راانزلر Raanzlr | استوديو هندسي لبرمجيات عصر الذكاء الاصطناعي",
+      description: "راانزلر فريق من المهندسين وخبراء الذكاء الاصطناعي نساعد الشركات على التحول الرقمي وبناء منتجات تقنية مستقرة وقابلة للتوسع.",
+      keywords: "فريق راانزلر، من هي راانزلر، شركة رانزلر، Raanzlr، شركة هندسة برمجيات، فريق ذكاء اصطناعي الشرق الأوسط، وكالة تقنية تركيا",
     },
     contact: {
       title: "تواصل مع Raanzlr | ابدأ مشروعك التقني اليوم",

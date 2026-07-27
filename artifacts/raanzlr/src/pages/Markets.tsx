@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Globe2, MapPin } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link } from "../components/LocalizedLink";
 import { useLang } from "../contexts/LanguageContext";
 import { Reveal, Stagger, StaggerItem } from "../components/Reveal";
 import PulseDivider from "../components/PulseDivider";

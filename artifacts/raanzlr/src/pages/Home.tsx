@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { Bot, Workflow, Globe2, Smartphone, Sparkles, PlugZap, PenTool, ShieldCheck, Clock, TrendingUp, Award, Languages, ArrowRight, ChevronDown } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link } from "../components/LocalizedLink";
 import { useLang } from "../contexts/LanguageContext";
 import ParticlesHero from "../components/ParticlesHero";
 import HeroHeadline from "../components/HeroHeadline";

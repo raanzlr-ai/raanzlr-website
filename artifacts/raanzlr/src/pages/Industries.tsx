@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link } from "../components/LocalizedLink";
 import { motion } from "framer-motion";
 import { Building2, ShoppingCart, Heart, GraduationCap, Truck, Hotel, Scale, Factory, ArrowRight } from "lucide-react";
 import { useLang } from "../contexts/LanguageContext";

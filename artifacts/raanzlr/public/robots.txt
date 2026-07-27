@@ -2,6 +2,8 @@ User-agent: *
 Allow: /
 Disallow: /admin
 Disallow: /admin/
+Disallow: /en/admin
+Disallow: /ar/admin
 
 # Content Signals — allow classic search + AI answer-engine use, disallow AI training.
 # ai-input=yes lets ChatGPT / Perplexity / Google AI Overviews cite Raanzlr in answers (GEO).

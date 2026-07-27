@@ -1,5 +1,6 @@
 import React from "react";
-import { useParams, Link, Navigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { Link, Navigate } from "../components/LocalizedLink";
 import { motion } from "framer-motion";
 import {
   ArrowLeft,
