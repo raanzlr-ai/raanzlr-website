@@ -2,7 +2,7 @@
 
 > Raanzlr builds practical AI agents, workflow automation, web platforms, and mobile apps for teams in the GCC, MENA, Türkiye, Europe, and the U.S.
 
-Raanzlr is an AI automation and software engineering agency headquartered in New Jersey, USA, serving clients across the Middle East, North Africa, Türkiye, and Europe. Founded in 2023.
+Raanzlr is an AI automation and software engineering agency headquartered in Casper, Wyoming, USA, serving clients across the Middle East, North Africa, Türkiye, and Europe. Founded in 2023.
 
 ## Services
 
@@ -33,6 +33,6 @@ GCC (Saudi Arabia, UAE, Qatar, Kuwait, Bahrain, Oman), Levant (Syria), Türkiye,
 
 ## Contact
 
-- Email: contact@raanzlr.com
+- Email: info@raanzlr.com
 - LinkedIn: https://www.linkedin.com/company/raanzlr
 - Twitter/X: https://twitter.com/raanzlr

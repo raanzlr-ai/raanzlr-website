@@ -113,6 +113,37 @@ function recordToPost(r: any): Post {
   };
 }
 
+/**
+ * Posts known before any network request.
+ *
+ * The Insights pages used to render the static seed from src/data/posts.ts and
+ * then swap it for the Supabase copy once the fetch resolved — the reader saw
+ * the wrong article for a moment before the real one replaced it. The
+ * prerenderer now reads Supabase at build time, renders the real content into
+ * the static HTML, and embeds the same payload as JSON. The browser picks it up
+ * synchronously below, so the first paint already matches the server markup and
+ * there is nothing left to swap.
+ *
+ * Still only a cache: the runtime fetch keeps running and wins if a post
+ * changed after the last build.
+ */
+let primed: Post[] | null = null;
+
+if (typeof window !== "undefined") {
+  const embedded = (window as unknown as { __RAANZLR_POSTS__?: unknown }).__RAANZLR_POSTS__;
+  if (Array.isArray(embedded) && embedded.length > 0) primed = embedded as Post[];
+}
+
+/** Seed the cache. Called by the prerenderer before it renders any route. */
+export function primePosts(posts: Post[]): void {
+  primed = posts.length > 0 ? posts : null;
+}
+
+/** The build-time payload, or null when unavailable (callers fall back to the seed). */
+export function primedPosts(): Post[] | null {
+  return primed;
+}
+
 /** Fetch a single post by slug. Resolves to null if not found or on error. */
 export async function fetchPost(slug: string): Promise<Post | null> {
   try {

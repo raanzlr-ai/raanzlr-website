@@ -99,8 +99,38 @@ function buildSitemapIndex(lastmod) {
 
 // ---------------------------------------------------------------------------
 
+/**
+ * Posts the browser should know about before it runs any code, serialised into
+ * the page. Without this the client re-renders the static seed from
+ * src/data/posts.ts and only swaps in the real article once its fetch resolves,
+ * which readers see as the wrong content flashing by.
+ *
+ * `<` is escaped so a post body containing "</script>" cannot break out.
+ */
+function postsPayload(posts) {
+  if (!posts.length) return "";
+  const json = JSON.stringify(posts).replace(/</g, "\\u003c");
+  return `<script>window.__RAANZLR_POSTS__=${json}</script>`;
+}
+
 async function main() {
-  const { render, ROUTES, LOCALES, localeUrl } = await import(SSR_ENTRY);
+  const { render, ROUTES, LOCALES, localeUrl, loadPosts, makeRoutes } = await import(SSR_ENTRY);
+
+  // Read the live posts once, before rendering anything.
+  let posts = [];
+  try {
+    posts = await loadPosts();
+  } catch (error) {
+    console.warn(`prerender: could not read posts from Supabase (${error}) — using the static seed.`);
+  }
+  // Article routes come from the live posts, so anything published since the
+  // static seed was written still gets prerendered and listed in the sitemap.
+  const routes = posts.length ? makeRoutes(posts.map((p) => p.slug)) : ROUTES;
+  console.log(
+    posts.length
+      ? `prerender: primed ${posts.length} published posts from Supabase.`
+      : "prerender: no posts returned — articles will render from the static seed.",
+  );
 
   const template = readFileSync(join(DIST, "index.html"), "utf8");
   for (const [name, re] of [
@@ -113,17 +143,35 @@ async function main() {
     }
   }
 
-  const compose = (rendered) =>
+  const compose = (rendered, payload = "") =>
     template
       .replace(HTML_TAG_RE, literal(`<html ${rendered.htmlAttributes}>`))
       .replace(SEO_BLOCK_RE, literal(rendered.head))
-      .replace(ROOT_RE, literal(`<div id="root" data-ssr="true">${rendered.html}</div>`));
+      .replace(
+        ROOT_RE,
+        literal(`<div id="root" data-ssr="true">${rendered.html}</div>${payload}`),
+      );
+
+  /**
+   * Only the article routes need the payload, and a detail page only needs its
+   * own post plus the three "read next" cards it renders — matching what the
+   * client derives, so hydration lines up without shipping the whole archive.
+   */
+  const payloadFor = (path) => {
+    if (!posts.length) return "";
+    if (path === "/insights") return postsPayload(posts);
+    if (!path.startsWith("/insights/")) return "";
+    const slug = path.slice("/insights/".length);
+    const post = posts.find((p) => p.slug === slug);
+    if (!post) return "";
+    return postsPayload([post, ...posts.filter((p) => p.slug !== slug).slice(0, 3)]);
+  };
 
   const titles = new Map();
   let written = 0;
 
   for (const locale of LOCALES) {
-    for (const route of ROUTES) {
+    for (const route of routes) {
       const url = localeUrl(locale, route.path);
       const rendered = await render(url);
 
@@ -147,7 +195,10 @@ async function main() {
       }
       titles.set(title, url);
 
-      writeFile(join(locale, route.path === "/" ? "" : route.path, "index.html"), compose(rendered));
+      writeFile(
+        join(locale, route.path === "/" ? "" : route.path, "index.html"),
+        compose(rendered, payloadFor(route.path)),
+      );
       written++;
     }
   }
@@ -165,12 +216,12 @@ async function main() {
 
   const lastmod = (process.env.SOURCE_DATE || new Date().toISOString()).slice(0, 10);
   for (const locale of LOCALES) {
-    writeFile(`sitemap-${locale}.xml`, buildSitemap(locale, ROUTES, lastmod, LOCALES));
+    writeFile(`sitemap-${locale}.xml`, buildSitemap(locale, routes, lastmod, LOCALES));
   }
   writeFile("sitemap.xml", buildSitemapIndex(lastmod));
 
   console.log(
-    `prerender: ${written} HTML files (${ROUTES.length} routes x ${LOCALES.length} locales + 404) ` +
+    `prerender: ${written} HTML files (${routes.length} routes x ${LOCALES.length} locales + 404) ` +
       `and 3 sitemaps written to dist/.`,
   );
 }

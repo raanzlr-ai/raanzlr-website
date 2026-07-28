@@ -213,7 +213,11 @@ export default function SEO({
       <title>{resolvedTitle}</title>
       <meta name="title" content={resolvedTitle} />
       <meta name="description" content={resolvedDescription} />
-      {resolvedKeywords && <meta name="keywords" content={resolvedKeywords} />}
+      {/* No <meta name="keywords">. Google has ignored it since 2009, and the
+          brand misspellings it used to carry (Ranzlr, Raanzler, رانزلر…) are
+          expressed properly as Organization.alternateName in index.html, where
+          search engines actually read them. The keywords strings stay in
+          translations.ts as editorial notes for whoever writes the copy. */}
       <meta
         name="robots"
         content={

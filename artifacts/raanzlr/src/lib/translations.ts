@@ -181,7 +181,7 @@ const en = {
     hqLabel: "// headquarters",
     address: "4030 Plaza Dr #3 #15 (10030), Casper, WY 82604",
     hqTitle: "We work with companies from our headquarters in the United States.",
-    hqDesc: "Raanzlr is headquartered in New Jersey, United States, and we work with companies in various markets through a flexible collaboration model that combines remote meetings, continuous communication, and professional project management, ensuring a smooth work experience regardless of geographic location.",
+    hqDesc: "Raanzlr is headquartered in Casper, Wyoming, United States, and we work with companies in various markets through a flexible collaboration model that combines remote meetings, continuous communication, and professional project management, ensuring a smooth work experience regardless of geographic location.",
   },
   contact: {
     eyebrow: "LET'S COLLABORATE",
@@ -429,7 +429,7 @@ const ar: typeof en = {
     hqLabel: "// المقر الرئيسي",
     address: "4030 Plaza Dr #3 #15 (10030), Casper, WY 82604",
     hqTitle: "نعمل مع الشركات من مقرنا في الولايات المتحدة",
-    hqDesc: "يقع مقر Raanzlr في ولاية نيوجيرسي بالولايات المتحدة، ونعمل مع الشركات في مختلف الأسواق من خلال نموذج تعاون مرن يجمع بين الاجتماعات عن بُعد، والتواصل المستمر، وإدارة المشاريع باحترافية، بما يضمن تجربة عمل سلسة بغض النظر عن الموقع الجغرافي.",
+    hqDesc: "يقع مقر Raanzlr في كاسبر بولاية وايومنغ الأمريكية، ونعمل مع الشركات في مختلف الأسواق من خلال نموذج تعاون مرن يجمع بين الاجتماعات عن بُعد، والتواصل المستمر، وإدارة المشاريع باحترافية، بما يضمن تجربة عمل سلسة بغض النظر عن الموقع الجغرافي.",
     hqImageTagline: "عمليات عالمية • فرق موزعة • تعاون بدون حدود",
   },
   contact: {

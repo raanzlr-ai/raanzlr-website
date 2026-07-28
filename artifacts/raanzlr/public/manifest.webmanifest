@@ -1,0 +1,18 @@
+{
+  "name": "Raanzlr — AI Automation & Software Engineering",
+  "short_name": "Raanzlr",
+  "description": "Raanzlr builds AI agents, workflow automation, web platforms and mobile apps for teams across the GCC, MENA, Türkiye, Europe and the United States.",
+  "start_url": "/en",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#0a0a0a",
+  "lang": "en",
+  "dir": "ltr",
+  "categories": ["business", "productivity", "developer"],
+  "icons": [
+    { "src": "/favicon-32.png", "sizes": "32x32", "type": "image/png" },
+    { "src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "/logo-raanzlr.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}

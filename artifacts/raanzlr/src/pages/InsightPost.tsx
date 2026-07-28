@@ -9,7 +9,7 @@ import PulseDivider from "../components/PulseDivider";
 import MagneticButton from "../components/MagneticButton";
 import SEO from "../components/SEO";
 import { POSTS } from "../data/posts";
-import { Post, PostChartSpec, fromStaticPost, fetchPost, fetchAllPosts } from "../lib/posts";
+import { Post, PostChartSpec, fromStaticPost, fetchPost, fetchAllPosts, primedPosts } from "../lib/posts";
 import { ResponsiveContainer, BarChart, Bar, LineChart, Line, AreaChart, Area, PieChart, Pie, Cell, XAxis, YAxis, Tooltip, CartesianGrid } from "recharts";
 
 // Turns Markdown [text](url) links and bare URLs inside body text into clickable, safe anchors.
@@ -143,30 +143,42 @@ function PostChart({ chart, isAr }: { chart: PostChartSpec; isAr: boolean }) {
   );
 }
 
+/** The post to show before any network request: build-time payload, else seed. */
+function seedPost(slug?: string): Post | undefined {
+  const fromBuild = primedPosts()?.find((p) => p.slug === slug);
+  if (fromBuild) return fromBuild;
+  const fromSeed = POSTS.find((p) => p.slug === slug);
+  return fromSeed ? fromStaticPost(fromSeed) : undefined;
+}
+
+/** The three "read next" posts, from the same source as seedPost. */
+function seedOthers(slug?: string): Post[] {
+  const fromBuild = primedPosts();
+  if (fromBuild) return fromBuild.filter((p) => p.slug !== slug).slice(0, 3);
+  return POSTS.filter((p) => p.slug !== slug).slice(0, 3).map(fromStaticPost);
+}
+
 export default function InsightPost() {
   const { slug } = useParams<{ slug: string }>();
   const { isAr } = useLang();
 
   // Seeded synchronously, not in an effect: the build-time prerender only runs
   // the first render pass, so a post that arrives via useEffect would ship as a
-  // bare "Loading…" page with no <h1> and no article schema. Starting from the
-  // static seed means the HTML is complete before any JavaScript runs; the
-  // Supabase fetch below still overrides it with admin-authored content.
-  const [post, setPost] = useState<Post | null | undefined>(() => {
-    const seed = POSTS.find((p) => p.slug === slug);
-    return seed ? fromStaticPost(seed) : undefined;
-  });
-  const [others, setOthers] = useState<Post[]>(() =>
-    POSTS.filter((p) => p.slug !== slug).slice(0, 3).map(fromStaticPost),
-  );
+  // bare "Loading…" page with no <h1> and no article schema.
+  //
+  // seedPost/seedOthers prefer the build-time Supabase payload over the static
+  // seed in src/data/posts.ts. Rendering the seed first and swapping once the
+  // fetch resolved is what made a stale article flash before the real one.
+  const [post, setPost] = useState<Post | null | undefined>(() => seedPost(slug));
+  const [others, setOthers] = useState<Post[]>(() => seedOthers(slug));
 
   useEffect(() => {
     if (!slug) return;
 
     // Re-seed on slug change — the initializers above only run on first mount.
     const staticPost = POSTS.find(p => p.slug === slug);
-    setPost(staticPost ? fromStaticPost(staticPost) : undefined);
-    setOthers(POSTS.filter(p => p.slug !== slug).slice(0, 3).map(fromStaticPost));
+    setPost(seedPost(slug));
+    setOthers(seedOthers(slug));
 
     // Fetch from API (may override static)
     fetchPost(slug).then(apiPost => {

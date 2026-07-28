@@ -17,11 +17,30 @@ import { HelmetProvider } from "react-helmet-async";
 import type { HelmetServerState } from "react-helmet-async";
 import { ThemeProvider } from "next-themes";
 import { AppShell } from "./App";
+import { fetchAllPosts, primePosts } from "./lib/posts";
+import type { Post } from "./lib/posts";
 
 // Re-exported so the prerenderer and the sitemap generator read the route list
 // straight out of the SSR bundle instead of maintaining their own copy.
-export { ROUTES, ROUTE_PATHS, LOCALES, localeUrl } from "./routes";
+export { ROUTES, ROUTE_PATHS, LOCALES, localeUrl, makeRoutes } from "./routes";
 export type { RouteMeta, Locale } from "./routes";
+
+/**
+ * Read the published posts from Supabase once, before any route is rendered.
+ *
+ * This hits the same public REST endpoint the browser already uses — nothing
+ * about the backend changes. It exists so the prerendered article HTML is the
+ * real admin-authored content rather than the static seed in src/data/posts.ts,
+ * which the browser would otherwise visibly replace a moment after paint.
+ *
+ * Returns [] when Supabase is unreachable, so the caller can fall back to the
+ * seed instead of failing the build.
+ */
+export async function loadPosts(): Promise<Post[]> {
+  const posts = await fetchAllPosts();
+  primePosts(posts);
+  return posts;
+}
 
 // react-helmet-async infers this from `document`, but be explicit: on the
 // server it must collect head tags into the context object instead of trying

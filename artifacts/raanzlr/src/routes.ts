@@ -43,19 +43,34 @@ function section(
   ];
 }
 
-export const ROUTES: RouteMeta[] = [
-  { path: "/", priority: 1.0, changefreq: "weekly" },
-  ...section("/services", serviceKeys, 0.9, 0.8),
-  ...section("/industries", slugs(INDUSTRY_DETAILS), 0.8, 0.7),
-  ...section("/markets", slugs(MARKET_DETAILS), 0.8, 0.7),
-  ...section("/case-studies", slugs(CASES), 0.7, 0.6),
-  ...section("/insights", slugs(POSTS), 0.8, 0.7),
-  { path: "/about", priority: 0.7, changefreq: "monthly" },
-  { path: "/contact", priority: 0.8, changefreq: "monthly" },
-  { path: "/faq", priority: 0.7, changefreq: "monthly" },
-  { path: "/privacy-policy", priority: 0.3, changefreq: "yearly" },
-  { path: "/terms-of-service", priority: 0.3, changefreq: "yearly" },
-];
+/**
+ * Build the route list.
+ *
+ * @param postSlugs Live article slugs read from Supabase at build time. The
+ *   static seed in src/data/posts.ts carries only a handful of articles, so
+ *   deriving article routes from it left everything published since then out of
+ *   both the prerender and the sitemap — invisible to search engines. Falls
+ *   back to the seed when Supabase is unreachable.
+ */
+export function makeRoutes(postSlugs?: string[]): RouteMeta[] {
+  const articles = postSlugs?.length ? postSlugs : slugs(POSTS);
+  return [
+    { path: "/", priority: 1.0, changefreq: "weekly" },
+    ...section("/services", serviceKeys, 0.9, 0.8),
+    ...section("/industries", slugs(INDUSTRY_DETAILS), 0.8, 0.7),
+    ...section("/markets", slugs(MARKET_DETAILS), 0.8, 0.7),
+    ...section("/case-studies", slugs(CASES), 0.7, 0.6),
+    ...section("/insights", articles, 0.8, 0.7),
+    { path: "/about", priority: 0.7, changefreq: "monthly" },
+    { path: "/contact", priority: 0.8, changefreq: "monthly" },
+    { path: "/faq", priority: 0.7, changefreq: "monthly" },
+    { path: "/privacy-policy", priority: 0.3, changefreq: "yearly" },
+    { path: "/terms-of-service", priority: 0.3, changefreq: "yearly" },
+  ];
+}
+
+/** Default route list, built from the static seed. */
+export const ROUTES: RouteMeta[] = makeRoutes();
 
 /** Just the paths, for callers that do not care about sitemap hints. */
 export const ROUTE_PATHS: string[] = ROUTES.map((r) => r.path);

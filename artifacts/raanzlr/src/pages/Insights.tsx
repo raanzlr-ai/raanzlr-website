@@ -7,7 +7,7 @@ import { Reveal, Stagger, StaggerItem } from "../components/Reveal";
 import PulseDivider from "../components/PulseDivider";
 import SEO from "../components/SEO";
 import { POSTS } from "../data/posts";
-import { Post, fromStaticPost, fetchAllPosts } from "../lib/posts";
+import { Post, fromStaticPost, fetchAllPosts, primedPosts } from "../lib/posts";
 import Turnstile from "../components/Turnstile";
 
 const SUPABASE_URL = "https://dnpaagicskxzukeczifj.supabase.co";
@@ -286,8 +286,11 @@ function SubscribeModal({ open, onClose, isAr }: SubscribeModalProps) {
 export default function Insights() {
   const { isAr } = useLang();
 
-  const [apiPosts, setApiPosts] = useState<Post[]>([]);
-  const [postsLoaded, setPostsLoaded] = useState(false);
+  // Start from the build-time Supabase payload when it is present, so the first
+  // paint already shows the real articles instead of the static seed that then
+  // gets swapped out under the reader.
+  const [apiPosts, setApiPosts] = useState<Post[]>(() => primedPosts() ?? []);
+  const [postsLoaded, setPostsLoaded] = useState(() => primedPosts() !== null);
   const [showSubscribe, setShowSubscribe] = useState(false);
   const [page, setPage] = useState(1);
 
