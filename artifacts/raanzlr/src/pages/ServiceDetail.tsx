@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { Link, Navigate } from "../components/LocalizedLink";
+import { getServiceDetail } from "../lib/serviceDetails";
 import { motion } from "framer-motion";
 import {
   ArrowLeft,
@@ -86,6 +87,23 @@ export default function ServiceDetail() {
       : {}),
   };
 
+  // Per-service Q&A. Only web-development carries entries today; any service
+  // that gains a `faq` array in src/lib/serviceDetails.ts is rendered and gets
+  // FAQPage schema automatically — no further code needed.
+  const detail = getServiceDetail(service.key, isAr);
+  const faq = detail?.faq ?? [];
+  const faqSchema = faq.length
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: faq.map((item) => ({
+          "@type": "Question",
+          name: item.q,
+          acceptedAnswer: { "@type": "Answer", text: item.a },
+        })),
+      }
+    : null;
+
   return (
     <div className="relative">
       <SEO
@@ -96,7 +114,7 @@ export default function ServiceDetail() {
         keywords={`${enSvc?.title}, AI GCC, automation MENA, software development`}
         keywordsAr={`${arSvc?.title}، ذكاء اصطناعي الخليج، أتمتة الشرق الأوسط`}
         path={`/services/${service.key}`}
-        schema={serviceSchema}
+        schema={faqSchema ? [serviceSchema, faqSchema] : serviceSchema}
       />
 
       {/* Hero */}
@@ -554,6 +572,36 @@ export default function ServiceDetail() {
                 );
               })}
             </Stagger>
+          </div>
+        </section>
+      )}
+
+      {/* Q&A. Rendered as plain headings and paragraphs rather than a JS
+          accordion so the answers are in the HTML for crawlers and answer
+          engines, which is also what makes the FAQPage schema above legitimate
+          — Google requires the marked-up content to be visible on the page. */}
+      {faq.length > 0 && (
+        <section className="relative py-20 sm:py-24">
+          <div className="mx-auto max-w-4xl px-6 lg:px-8">
+            <Reveal>
+              <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-chrome">
+                {isAr ? "أسئلة شائعة عن هذه الخدمة" : "Frequently asked questions"}
+              </h2>
+            </Reveal>
+            <dl className="mt-8 space-y-6">
+              {faq.map((item) => (
+                <Reveal key={item.q}>
+                  <div className="rounded-2xl border border-foreground/10 bg-foreground/[0.02] p-6">
+                    <dt className="font-display text-base sm:text-lg font-semibold text-foreground">
+                      {item.q}
+                    </dt>
+                    <dd className="mt-3 text-sm sm:text-base text-foreground/65 leading-relaxed">
+                      {item.a}
+                    </dd>
+                  </div>
+                </Reveal>
+              ))}
+            </dl>
           </div>
         </section>
       )}
