@@ -13,6 +13,7 @@ import { MARKET_DETAILS } from "./data/markets";
 import { INDUSTRY_DETAILS } from "./data/industriesData";
 import { CASES } from "./data/cases";
 import { POSTS } from "./data/posts";
+import { PER_PAGE } from "./lib/insightsPaging";
 
 /** A route plus the sitemap hints that go with it. */
 export interface RouteMeta {
@@ -54,6 +55,24 @@ function section(
  */
 export function makeRoutes(postSlugs?: string[]): RouteMeta[] {
   const articles = postSlugs?.length ? postSlugs : slugs(POSTS);
+
+  /**
+   * Archive pages 2..N.
+   *
+   * One post is rendered as the hero above the grid, so the grid paginates
+   * `articles.length - 1` posts. Without these routes, pages 2+ existed only as
+   * React state and every article past the first ten was linked from nowhere.
+   */
+  const archivePages = Math.max(1, Math.ceil(Math.max(0, articles.length - 1) / PER_PAGE));
+  const insightsPages: RouteMeta[] = Array.from(
+    { length: archivePages - 1 },
+    (_, i) => ({
+      path: `/insights/page/${i + 2}`,
+      priority: 0.5,
+      changefreq: "weekly" as const,
+    }),
+  );
+
   return [
     { path: "/", priority: 1.0, changefreq: "weekly" },
     ...section("/services", serviceKeys, 0.9, 0.8),
@@ -61,6 +80,7 @@ export function makeRoutes(postSlugs?: string[]): RouteMeta[] {
     ...section("/markets", slugs(MARKET_DETAILS), 0.8, 0.7),
     ...section("/case-studies", slugs(CASES), 0.7, 0.6),
     ...section("/insights", articles, 0.8, 0.7),
+    ...insightsPages,
     { path: "/about", priority: 0.7, changefreq: "monthly" },
     { path: "/contact", priority: 0.8, changefreq: "monthly" },
     { path: "/faq", priority: 0.7, changefreq: "monthly" },

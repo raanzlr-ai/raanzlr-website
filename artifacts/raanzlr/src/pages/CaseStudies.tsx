@@ -7,6 +7,7 @@ import { Reveal, Stagger, StaggerItem } from "../components/Reveal";
 import PulseDivider from "../components/PulseDivider";
 import MagneticButton from "../components/MagneticButton";
 import SEO from "../components/SEO";
+import { itemListSchema } from "../lib/pageSchema";
 import { CASES } from "../data/cases";
 
 export default function CaseStudies() {
@@ -14,7 +15,20 @@ export default function CaseStudies() {
 
   return (
     <div className="relative">
-      <SEO pageKey="caseStudies" path="/case-studies" />
+      <SEO
+        pageKey="caseStudies"
+        path="/case-studies"
+        pageType="CollectionPage"
+        schema={itemListSchema(
+          isAr ? "ar" : "en",
+          "/case-studies",
+          CASES.map((c) => ({
+            name: isAr ? c.title.ar : c.title.en,
+            path: `/case-studies/${c.slug}`,
+          })),
+          isAr ? "سيناريوهات الحلول" : "Solution scenarios",
+        )}
+      />
 
       <section className="relative min-h-[60vh] flex items-center overflow-hidden pt-28 sm:pt-32">
         <div className="absolute inset-0 bg-grid" />
@@ -27,7 +41,7 @@ export default function CaseStudies() {
           </motion.div>
           <motion.h1 initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }}
             className="mt-6 max-w-4xl font-display text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.04] tracking-tighter text-chrome">
-            {isAr ? "دراسات الحالة" : "Case Studies"}
+            {isAr ? "سيناريوهات الحلول" : "Solution Scenarios"}
           </motion.h1>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.25 }}
             className="mt-5 max-w-2xl text-base md:text-lg text-foreground/65">
@@ -47,7 +61,7 @@ export default function CaseStudies() {
               <StaggerItem key={c.slug}>
                 <Link to={`/case-studies/${c.slug}`} className="group relative overflow-hidden rounded-3xl border border-foreground/10 bg-foreground/[0.02] hover:border-cyan-400/25 transition-all h-full flex flex-col block">
                   <div className="relative h-48 overflow-hidden">
-                    <img src={c.image} alt={isAr ? c.title.ar : c.title.en} className="w-full h-full object-cover opacity-100 group-hover:scale-105 transition-all duration-700" />
+                    <img src={c.image} alt={isAr ? c.title.ar : c.title.en} className="w-full h-full object-cover opacity-100 group-hover:scale-105 transition-all duration-700"  loading="lazy" decoding="async" />
                     <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background hidden dark:block" />
                     <div className="absolute top-4 left-4 rtl:left-auto rtl:right-4 flex gap-2">
                       <span className="text-[10px] font-mono-accent uppercase tracking-[0.18em] px-2.5 py-1 rounded-full border border-cyan-400/40 text-cyan-300 bg-cyan-400/10">
@@ -87,7 +101,7 @@ export default function CaseStudies() {
             <h2 className="font-display text-2xl sm:text-3xl font-bold text-chrome">{isAr ? "مشروعك يمكن أن يكون التالي." : "Your project could be next."}</h2>
             <p className="mt-4 text-foreground/60 max-w-md mx-auto">{isAr ? "احجز استشارة مجانية لنناقش كيف يمكن لمشروعك الوصول إلى نتائج مشابهة." : "Book a free consultation and let's discuss how we can help you achieve similar results."}</p>
             <div className="mt-8 flex justify-center gap-4 flex-wrap">
-              <MagneticButton to="/contact">{isAr ? "تواصل معنا للبدء" : "Get in Touch"}</MagneticButton>
+              <MagneticButton to="/contact" ctaLocation="case_studies_hub_cta">{isAr ? "تواصل معنا للبدء" : "Get in Touch"}</MagneticButton>
             </div>
           </Reveal>
         </div>

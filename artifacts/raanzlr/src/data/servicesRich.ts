@@ -3,10 +3,11 @@
 // audiences — not machine-translated — with correct domain terminology
 // (e.g. localization = الأقلمة, not التوطين).
 //
-// Statistics are sourced from 2024-2026 market research (PwC Middle East,
-// IMARC, Statista, Semrush, MuleSoft, IBM, CSA Research, Forrester, Market.us,
-// Mordor, Precedence Research, DataReportal). Sources are surfaced in the UI
-// as caption text under each chart.
+// No statistics live in this file. The earlier market-research charts and
+// performance-style metrics were removed on 2026-09-18 because their sources
+// could not be verified (see docs/HANDOFF, "Removed statistics"). Every metric
+// below is a capability of the service, not a result. Add a number back only
+// with a named, dated, checked source.
 
 export type Lang = "en" | "ar";
 
@@ -25,15 +26,6 @@ export interface RichStep {
   desc: string;
 }
 
-export interface RichChart {
-  kind: "bar" | "area" | "donut";
-  title: string;
-  unit?: string;
-  source: string;
-  // Bar/area: ordered points. Donut: two slices (first = highlighted).
-  data: { name: string; value: number }[];
-}
-
 export interface RichComparison {
   title: string;
   colA: string; // the old / traditional way
@@ -47,10 +39,22 @@ export interface ServiceRich {
   capabilities: RichCapability[];
   forCompanies: string[];
   forCustomers: string[];
-  chart: RichChart;
   comparison: RichComparison;
   process: RichStep[];
   stack: string[];
+
+  /**
+   * Authored but not rendered anywhere yet.
+   *
+   * The Arabic `consulting` entry carries alternate "for companies" / "for
+   * customers" lines and two extra capability blocks that no component reads.
+   * They are typed here so the file type-checks and the copy is not lost;
+   * either render them in both locales or delete them — leaving Arabic-only
+   * content in the data file helps nobody.
+   */
+  forCompaniesChart?: string[];
+  forCustomersChart?: string[];
+  additionalCapabilities?: RichCapability[];
 }
 
 type RichMap = Record<string, ServiceRich>;
@@ -62,9 +66,9 @@ const en: RichMap = {
     tagline:
       "Multilingual AI agents that answer, qualify, and book around the clock — on the channels your customers already live in.",
     metrics: [
-      { value: "≤ 23s", label: "Average first response, day or night" },
-      { value: "45%+", label: "Of routine queries resolved without a human" },
-      { value: "96%", label: "Of Gulf smartphone users reachable on WhatsApp" },
+      { value: "AR + EN", label: "Arabic dialects and English handled by one agent" },
+      { value: "3 channels", label: "WhatsApp, website chat, and Instagram DMs" },
+      { value: "Human handoff", label: "Escalation with the full conversation attached" },
     ],
     capabilities: [
       { title: "Intent & entity engine", desc: "Reads what the customer actually wants and pulls out dates, names, and products from messy, mixed-language messages." },
@@ -89,19 +93,6 @@ const en: RichMap = {
       "Replies in their own dialect, not stilted formal Arabic",
       "A smooth handoff to a real person when the question is complex",
     ],
-    chart: {
-      kind: "area",
-      title: "GCC conversational-AI market ($M)",
-      unit: "$M",
-      source: "GulfSaaSReview — GCC AI Chatbot Market 2026 (41.2% CAGR)",
-      data: [
-        { name: "2026", value: 185 },
-        { name: "2027", value: 262 },
-        { name: "2028", value: 370 },
-        { name: "2029", value: 525 },
-        { name: "2030", value: 750 },
-      ],
-    },
     comparison: {
       title: "Traditional support vs. a Raanzlr AI agent",
       colA: "Traditional support",
@@ -111,7 +102,7 @@ const en: RichMap = {
         { aspect: "Languages", a: "Limited by who's on shift", b: "Arabic dialects + English at once" },
         { aspect: "Lead capture", a: "Missed after hours", b: "Captured, qualified, synced to CRM" },
         { aspect: "Scaling", a: "Hire and train more agents", b: "Handles volume spikes instantly" },
-        { aspect: "Cost per chat", a: "$6–$40 per ticket", b: "A fraction of a dollar" },
+        { aspect: "Cost per conversation", a: "Rises with every added agent", b: "Marginal cost stays low as volume grows" },
       ],
     },
     process: [
@@ -128,9 +119,9 @@ const en: RichMap = {
     tagline:
       "Connect your tools and retire the copy-paste — reliable automations that run the busywork across sales, support, finance, and ops.",
     metrics: [
-      { value: "240 hrs", label: "Reclaimed per employee, per year" },
-      { value: "~75%", label: "Fewer errors on repetitive admin work" },
-      { value: "248%", label: "Three-year ROI on workflow automation" },
+      { value: "Full logs", label: "Every automated step recorded and traceable" },
+      { value: "Approvals", label: "Human sign-off points built into the flow" },
+      { value: "Your stack", label: "CRM, ERP, helpdesk, Slack, Teams, and Google Workspace connected" },
     ],
     capabilities: [
       { title: "Trigger-based workflows", desc: "Event-driven automations (webhook, schedule, record change) that run with no one pressing start." },
@@ -143,8 +134,8 @@ const en: RichMap = {
       { title: "AI-assisted steps", desc: "LLM nodes that classify, summarize, draft replies, and route inside the workflow itself." },
     ],
     forCompanies: [
-      "Reclaim the ~30% of activities that are automatable across most roles",
-      "Cut process cost by 20–30% (and up to 50–70% with intelligent automation)",
+      "Take repetitive, rule-based activities off your team's plate",
+      "Lower the cost of each repeated process by removing manual steps",
       "Shrink lead-response, approval, and onboarding cycles from days to minutes",
       "Eliminate the silent errors that come from manual re-keying",
       "Scale throughput on volume spikes without scaling headcount",
@@ -155,24 +146,13 @@ const en: RichMap = {
       "The same reliable experience regardless of who is on shift",
       "Staff freed to solve real problems instead of shuffling data",
     ],
-    chart: {
-      kind: "bar",
-      title: "Operating-cost reduction by automation tier (%)",
-      unit: "%",
-      source: "McKinsey & Gartner via shno.co, 2026",
-      data: [
-        { name: "Manual", value: 0 },
-        { name: "Basic", value: 27 },
-        { name: "Intelligent", value: 60 },
-      ],
-    },
     comparison: {
       title: "Manual operations vs. automated workflows",
       colA: "Manual operations",
       colB: "Automated workflows",
       rows: [
         { aspect: "Data entry", a: "Copy-paste between tools", b: "Synced automatically, both directions" },
-        { aspect: "Errors", a: "Frequent, hard to trace", b: "~75% fewer, with full logs" },
+        { aspect: "Errors", a: "Frequent, hard to trace", b: "Fewer manual slips, with full logs" },
         { aspect: "Speed", a: "Days for approvals & routing", b: "Minutes, end to end" },
         { aspect: "Capacity", a: "Capped by staff hours", b: "Scales with volume, not headcount" },
         { aspect: "Visibility", a: "Spreadsheets and guesswork", b: "Live dashboards and alerts" },
@@ -192,9 +172,9 @@ const en: RichMap = {
     tagline:
       "Turn one video into many languages — AI voiceovers, accurate transcripts, and timing that keep your original music, energy, and intent.",
     metrics: [
-      { value: "90–95%", label: "Lower cost than traditional studio dubbing" },
-      { value: "Same-day", label: "Turnaround vs. 2–6 weeks in a studio" },
-      { value: "76%", label: "Of consumers prefer to buy in their own language" },
+      { value: "Multi-language", label: "One source video, many target languages" },
+      { value: "Voice clone", label: "Speaker voice, pacing, and emotion carried across" },
+      { value: "Subtitles", label: "Captions delivered with the dubbed audio" },
     ],
     capabilities: [
       { title: "Speech-to-text (ASR)", desc: "Timestamped transcription of the original audio, robust even on noisy or fast speech." },
@@ -207,8 +187,8 @@ const en: RichMap = {
       { title: "Dialect & accent control", desc: "One source to many languages, with a choice of Gulf, Egyptian, or Levantine Arabic." },
     ],
     forCompanies: [
-      "Reach 400M+ Arabic speakers plus EU, US, and Türkiye without re-shooting",
-      "Replace $100–$500-per-minute studio dubbing with AI at a fraction of the cost",
+      "Reach Arabic-speaking audiences plus the EU, US, and Türkiye without re-shooting",
+      "Replace studio dubbing sessions with an AI pipeline and a human review pass",
       "Launch every language version alongside the original, same day",
       "Re-monetize your back catalogue of tutorials, ads, and training in new markets",
       "Boost discoverability with translated captions feeding search and social",
@@ -219,23 +199,13 @@ const en: RichMap = {
       "Higher comprehension and completion of the content",
       "Captions for sound-off viewing and accessibility",
     ],
-    chart: {
-      kind: "bar",
-      title: "Cost per finished minute, per language ($)",
-      unit: "$",
-      source: "Camb.ai — AI vs. Traditional Dubbing, 2025",
-      data: [
-        { name: "Traditional studio", value: 300 },
-        { name: "AI localization", value: 10 },
-      ],
-    },
     comparison: {
       title: "Traditional studio dubbing vs. AI localization (الأقلمة)",
       colA: "Traditional studio",
       colB: "Raanzlr AI localization",
       rows: [
-        { aspect: "Cost / minute", a: "$100–$500 per language", b: "$2–$20 per language" },
-        { aspect: "Turnaround", a: "2–6 weeks", b: "Hours to same day" },
+        { aspect: "Cost", a: "Studio time per language", b: "AI pipeline per language" },
+        { aspect: "Turnaround", a: "Weeks of scheduling and recording", b: "Much shorter, set by video length and review" },
         { aspect: "Languages", a: "One at a time, costly", b: "Many in parallel" },
         { aspect: "Voice", a: "New voice actor each time", b: "Cloned, consistent voice identity" },
         { aspect: "Deliverables", a: "Final video only", b: "Video + audio + transcript/SRT files" },
@@ -255,9 +225,9 @@ const en: RichMap = {
     tagline:
       "Marketing sites, SaaS dashboards, portals, and storefronts — engineered end to end: frontend, backend, database, SEO, AEO, and bilingual RTL.",
     metrics: [
-      { value: "+8.4%", label: "Conversion lift from a 0.1s mobile speed gain" },
-      { value: "53%", label: "Of mobile visits bounce if a page takes over 3s" },
-      { value: "$2.08T", label: "GCC e-commerce market by 2034 (15.15% CAGR)" },
+      { value: "Full stack", label: "Frontend, backend, database, hosting, and DevOps" },
+      { value: "SEO + AEO", label: "Search and answer-engine structure built in" },
+      { value: "AR + EN", label: "Bilingual, RTL-ready interfaces" },
     ],
     capabilities: [
       { title: "Frontend", desc: "React / Next.js built to Core Web Vitals — fast, responsive, accessible (WCAG), and true RTL Arabic." },
@@ -282,18 +252,6 @@ const en: RichMap = {
       "Equally smooth on the phones that dominate Gulf web traffic",
       "Accessible to everyone, including screen-reader and keyboard users",
     ],
-    chart: {
-      kind: "area",
-      title: "Google searches showing AI Overviews (%)",
-      unit: "%",
-      source: "Semrush AI Overviews Study, 2025",
-      data: [
-        { name: "Jan", value: 6.49 },
-        { name: "Mar", value: 13 },
-        { name: "May", value: 19 },
-        { name: "Jul", value: 24.61 },
-      ],
-    },
     comparison: {
       title: "Template / offshore build vs. a Raanzlr platform",
       colA: "Template / offshore",
@@ -320,13 +278,13 @@ const en: RichMap = {
     tagline:
       "Native and cross-platform iOS and Android apps for customers, field teams, and internal ops — fast, offline-ready, and store-compliant.",
     metrics: [
-      { value: "$739.6B", label: "Global app market revenue in 2026" },
-      { value: "+50%", label: "Retention lift from strong onboarding" },
-      { value: "82%", label: "Of GCC e-commerce happens on mobile" },
+      { value: "iOS + Android", label: "Native or one cross-platform codebase" },
+      { value: "Offline-first", label: "Apps that keep working on weak connections" },
+      { value: "RTL-ready", label: "Arabic layouts built in from day one" },
     ],
     capabilities: [
       { title: "Native development", desc: "Swift/SwiftUI and Kotlin/Jetpack Compose for maximum performance and device-API access." },
-      { title: "Cross-platform", desc: "One React Native or Flutter codebase to both stores — roughly 30–40% faster to launch." },
+      { title: "Cross-platform", desc: "One React Native or Flutter codebase to both stores, which can shorten time to launch." },
       { title: "Offline-first", desc: "Local sync, caching, and conflict resolution so the app works on weak or no connectivity." },
       { title: "Push & re-engagement", desc: "Segmented, behavior-triggered notifications via FCM and APNs that bring users back." },
       { title: "In-app payments", desc: "Apple/Google purchases plus Gulf gateways — mada, STC Pay, Tap, HyperPay, Apple Pay." },
@@ -337,7 +295,7 @@ const en: RichMap = {
     forCompanies: [
       "Launch to both stores faster from a single cross-platform codebase",
       "Open a direct mobile revenue channel with in-app purchases and m-commerce",
-      "Lift retention with onboarding and personalized push by up to 50%",
+      "Support retention with clear onboarding and personalized push",
       "Digitize field and ops workflows with offline-capable apps",
       "Own a persistent home-screen touchpoint the web can't match",
     ],
@@ -347,18 +305,6 @@ const en: RichMap = {
       "Relevant notifications instead of generic noise",
       "Encrypted, store-vetted apps they can trust with payments",
     ],
-    chart: {
-      kind: "area",
-      title: "Global app-market revenue ($B)",
-      unit: "$B",
-      source: "Statista Market Forecast (8.17% CAGR to 2031)",
-      data: [
-        { name: "2026", value: 740 },
-        { name: "2028", value: 866 },
-        { name: "2030", value: 1014 },
-        { name: "2031", value: 1100 },
-      ],
-    },
     comparison: {
       title: "Mobile web only vs. a native / cross-platform app",
       colA: "Mobile web only",
@@ -385,9 +331,9 @@ const en: RichMap = {
     tagline:
       "Bespoke AI built around your private knowledge — RAG, document intelligence, extraction, and guardrails that generic tools can't match.",
     metrics: [
-      { value: "30–40%", label: "Lower document-processing cost" },
-      { value: "50–70%", label: "Faster processing throughput" },
-      { value: "$135.2B", label: "AI contribution to KSA GDP by 2030 (PwC)" },
+      { value: "RAG", label: "Answers grounded in your own documents" },
+      { value: "Guardrails", label: "Safety and access rules around every model call" },
+      { value: "Evaluation", label: "Quality measured on your data, not assumed" },
     ],
     capabilities: [
       { title: "RAG pipeline", desc: "Grounds answers in your own documents so the AI stops hallucinating and starts citing." },
@@ -402,7 +348,7 @@ const en: RichMap = {
     forCompanies: [
       "Unlock insight trapped in internal docs and unstructured data",
       "Get accuracy generic AI can't reach, grounded in your own sources",
-      "Cut processing cost 30–40% and manual handling by up to 75%",
+      "Cut processing cost and manual handling of documents and data",
       "Build defensible IP instead of renting someone else's model",
       "Deploy privately and in-region for finance, healthcare, legal, and government",
     ],
@@ -412,18 +358,6 @@ const en: RichMap = {
       "Sensitive data kept protected and on-policy",
       "Staff with instant context, so questions aren't repeated",
     ],
-    chart: {
-      kind: "area",
-      title: "Global RAG market size ($B)",
-      unit: "$B",
-      source: "MarketsandMarkets — RAG Market (38.4% CAGR)",
-      data: [
-        { name: "2025", value: 1.94 },
-        { name: "2027", value: 3.7 },
-        { name: "2029", value: 7.1 },
-        { name: "2030", value: 9.86 },
-      ],
-    },
     comparison: {
       title: "Generic AI tool vs. a custom RAG system",
       colA: "Generic AI tool",
@@ -450,9 +384,9 @@ const en: RichMap = {
     tagline:
       "Connect CRMs, ERPs, databases, and legacy tools into one observable source of truth — clean APIs, logs, retries, and documentation.",
     metrics: [
-      { value: "897", label: "Apps in the average enterprise — only 29% integrated" },
-      { value: "$4.7M", label: "Average annual spend on custom integrations" },
-      { value: "39%", label: "Of IT team time goes to building integrations" },
+      { value: "Two-way sync", label: "Systems kept consistent in both directions" },
+      { value: "Legacy-ready", label: "Connectors for older systems without replacing them" },
+      { value: "Documented", label: "Handover docs and monitoring included" },
     ],
     capabilities: [
       { title: "REST / GraphQL APIs", desc: "Clean, documented endpoints that expose and connect your system data securely." },
@@ -465,9 +399,9 @@ const en: RichMap = {
       { title: "Docs & handover", desc: "API specs, data-flow diagrams, and runbooks your team can actually operate." },
     ],
     forCompanies: [
-      "Close the integration gap that leaves 71% of enterprise apps siloed",
-      "Reclaim the ~39% of IT time spent rebuilding custom integrations",
-      "End the ~19% of the week staff lose hunting for information",
+      "Close the integration gap that leaves enterprise apps siloed",
+      "Reclaim IT time spent rebuilding custom integrations",
+      "End the time staff lose hunting for information",
       "Cut duplicate and stale records that corrupt reporting",
       "Lay the clean-data foundation that analytics and AI require",
     ],
@@ -477,16 +411,6 @@ const en: RichMap = {
       "Faster quoting, shipping, and resolution with no manual lookups",
       "Consistent numbers because data flows from one verified source",
     ],
-    chart: {
-      kind: "donut",
-      title: "Enterprise apps that are actually integrated",
-      unit: "%",
-      source: "MuleSoft 2025 Connectivity Benchmark",
-      data: [
-        { name: "Integrated", value: 29 },
-        { name: "Siloed", value: 71 },
-      ],
-    },
     comparison: {
       title: "Disconnected systems vs. one source of truth",
       colA: "Disconnected systems",
@@ -513,9 +437,9 @@ const en: RichMap = {
     tagline:
       "Research-led product design — flows, wireframes, design systems, and interfaces that make complex software feel effortless.",
     metrics: [
-      { value: "$100", label: "Returned for every $1 invested in UX" },
-      { value: "up to 400%", label: "Conversion lift from end-to-end UX work" },
-      { value: "50ms", label: "All it takes for a user to judge your interface" },
+      { value: "RTL-first", label: "Arabic layouts designed, not mirrored" },
+      { value: "WCAG", label: "Accessibility checked against WCAG" },
+      { value: "Research-led", label: "Decisions tested before they are built" },
     ],
     capabilities: [
       { title: "UX research", desc: "Interviews, surveys, and analytics to understand real users before any pixels." },
@@ -528,11 +452,11 @@ const en: RichMap = {
       { title: "RTL Arabic design", desc: "Mirrored layouts and Arabic typography designed as a discipline, not a translation step." },
     ],
     forCompanies: [
-      "Lift conversion across every touchpoint — up to 400% on full UX work",
-      "Earn one of the highest ROIs in product: ~$100 back per $1 spent",
+      "Lift conversion across every touchpoint by removing friction, not by guesswork",
+      "Spend design effort where it changes the outcome, before it is expensive to cpent",
       "Cut support tickets and rework by catching problems before code",
       "Ship faster as teams build from a vetted design system",
-      "Reduce churn from the ~88% of users who won't return after bad UX",
+      "Reduce churn from users who leave after a bad experience",
     ],
     forCustomers: [
       "Complete tasks without confusion or training",
@@ -540,17 +464,6 @@ const en: RichMap = {
       "Inclusive design that works with assistive tech and in bright sun",
       "A consistent feel across every screen and channel",
     ],
-    chart: {
-      kind: "bar",
-      title: "Conversion lift from design investment (%)",
-      unit: "%",
-      source: "Forrester (via Eficode) & Baymard, 2025",
-      data: [
-        { name: "Checkout fix", value: 35 },
-        { name: "UI redesign", value: 200 },
-        { name: "Full UX", value: 400 },
-      ],
-    },
     comparison: {
       title: "Developer-default UI vs. researched UX",
       colA: "Developer-default UI",
@@ -573,13 +486,66 @@ const en: RichMap = {
     stack: ["Figma · Dev Mode", "FigJam", "Storybook", "Tokens Studio", "Maze · Hotjar", "Stark · axe (a11y)", "Tailwind · shadcn/ui", "Framer · Lottie"],
   },
 
+  dashboards: {
+    tagline:
+      "Live operational dashboards and data pipelines that put sales, operations, and finance numbers in one place, built from your own systems.",
+    metrics: [
+      { value: "Live data", label: "Pulled from your CRM, ERP, spreadsheets, and databases" },
+      { value: "Role views", label: "Separate screens for leadership, operations, and finance" },
+      { value: "Alerts", label: "Threshold alerts to email, Slack, or Teams" },
+    ],
+    capabilities: [
+      { title: "KPI design", desc: "Agrees the few numbers that matter and how each one is defined, before anything is built." },
+      { title: "Data pipelines", desc: "ETL / ELT from CRMs, ERPs, spreadsheets, and databases into one clean store." },
+      { title: "Live dashboards", desc: "Operational screens that refresh from source systems, in Arabic and English with RTL layouts." },
+      { title: "Role-based views", desc: "Leadership, operations, and finance each see the slice they need, with access control." },
+      { title: "Drill-down & filters", desc: "Move from a headline number to the records behind it." },
+      { title: "Alerts & scheduled reports", desc: "Threshold alerts and scheduled summaries to email, Slack, or Teams." },
+      { title: "Data quality checks", desc: "Validation and reconciliation so the numbers can be trusted." },
+      { title: "Embedded & custom UIs", desc: "Dashboards inside your own portal or app when off-the-shelf BI does not fit." },
+    ],
+    forCompanies: [
+      "Replace weekly spreadsheet assembly with numbers that update themselves",
+      "Give leadership one agreed definition of each KPI",
+      "Spot exceptions early with alerts instead of month-end surprises",
+      "Show Arabic and English users the same data in their own language and direction",
+      "Keep sensitive numbers behind role-based access",
+    ],
+    forCustomers: [
+      "Numbers they can trust and trace back to the source",
+      "Answers in seconds instead of waiting for a report",
+      "A clear view in their own language, on any device",
+      "Fewer meetings spent reconciling versions of the truth",
+    ],
+    comparison: {
+      title: "Spreadsheet reporting vs. a live dashboard",
+      colA: "Spreadsheet reporting",
+      colB: "Live dashboard",
+      rows: [
+        { aspect: "Freshness", a: "Stale by the time it is shared", b: "Refreshes from source systems" },
+        { aspect: "Definitions", a: "Every team calculates its own", b: "One agreed definition per KPI" },
+        { aspect: "Exceptions", a: "Found at month end", b: "Flagged by alerts" },
+        { aspect: "Access", a: "Files emailed around", b: "Role-based views" },
+        { aspect: "Languages", a: "Usually English only", b: "Arabic and English, RTL-ready" },
+      ],
+    },
+    process: [
+      { title: "Discovery & KPI definition", desc: "Agree the questions the dashboard must answer, and the definition and source of each KPI." },
+      { title: "Data audit & pipeline design", desc: "Check the quality of each source and design the extract-and-transform path." },
+      { title: "Build & connect", desc: "Build the pipelines and screens and connect them to the source systems." },
+      { title: "Validate with real data", desc: "Reconcile the numbers against your current reports and fix the differences." },
+      { title: "Launch & handover", desc: "Go live with access rules, alerts, and documentation for your team." },
+    ],
+    stack: ["PostgreSQL · BigQuery · Snowflake", "Airbyte · Fivetran · dbt", "Apache Airflow", "React · Next.js", "Metabase · Superset · Grafana", "Recharts · D3", "Slack · Teams alerts", "OAuth 2.0 · RBAC"],
+  },
+
   consulting: {
     tagline:
       "A clear, evidence-based read on your stack — architecture, security, performance, and cost — turned into a prioritized roadmap.",
     metrics: [
-      { value: "~40%", label: "Of IT budget lost to technical-debt fallout" },
-      { value: "29%", label: "Of cloud spend is wasted on average" },
-      { value: "$7.3M", label: "Average cost of a Middle East data breach" },
+      { value: "Audit-first", label: "Architecture, security, performance, and cloud cost reviewed" },
+      { value: "Roadmap", label: "Prioritized findings you can act on" },
+      { value: "Written report", label: "Findings and a roadmap, not just a call" },
     ],
     capabilities: [
       { title: "Architecture review", desc: "Maps the system end to end and flags bottlenecks, single points of failure, and brittle coupling." },
@@ -592,9 +558,9 @@ const en: RichMap = {
       { title: "Prioritized roadmap", desc: "Ranks every finding by business impact, effort, cost, and risk into a sequenced plan." },
     ],
     forCompanies: [
-      "Surface cloud waste and tech-debt drains — structured programs cut cloud bills 25–30%",
+      "Surface cloud waste and tech-debt drains with a structured review",
       "Close security gaps before they become a multi-million-dollar breach",
-      "Reclaim the ~33% of developer time currently lost to technical debt",
+      "Reclaim developer time lost to technical debt",
       "Turn 'it feels slow and risky' into a quantified, budgetable roadmap",
       "Catch reliability and scaling weaknesses before they cause outages",
     ],
@@ -604,17 +570,6 @@ const en: RichMap = {
       "Faster page loads, checkouts, and response times",
       "Improvements shipped sooner as engineering drag drops",
     ],
-    chart: {
-      kind: "bar",
-      title: "Where IT budget quietly leaks (%)",
-      unit: "%",
-      source: "McKinsey (via SIG) & Flexera State of the Cloud 2026",
-      data: [
-        { name: "Tech debt", value: 40 },
-        { name: "Cloud waste", value: 29 },
-        { name: "Avoidable", value: 69 },
-      ],
-    },
     comparison: {
       title: "Flying blind vs. an audited roadmap",
       colA: "Flying blind",
@@ -622,7 +577,7 @@ const en: RichMap = {
       rows: [
         { aspect: "Decisions", a: "Gut feel and guesswork", b: "Evidence-based and scored" },
         { aspect: "Security", a: "Unknown exposure", b: "OWASP-mapped, prioritized" },
-        { aspect: "Cloud cost", a: "Quietly overspending", b: "Right-sized, 25–30% saved" },
+        { aspect: "Cloud cost", a: "Quietly overspending", b: "Right-sized to actual use" },
         { aspect: "Tech debt", a: "Slows every release", b: "Quantified and sequenced" },
         { aspect: "Roadmap", a: "Reactive firefighting", b: "Prioritized by impact" },
       ],
@@ -646,9 +601,9 @@ const ar: RichMap = {
     tagline:
       "نبني وكلاء ذكاء اصطناعي يعملون عبر واتساب، موقعك الإلكتروني، وإنستغرام للرد على العملاء، تأهيل الفرص البيعية، حجز المواعيد، وتنفيذ المهام المتكررة على مدار الساعة.",
     metrics: [
-      { value: "≤ ٢٣ ثانية", label: "متوسط زمن أول استجابة للعملاء" },
-      { value: "+٤٥٪", label: "من الاستفسارات المتكررة يمكن معالجتها تلقائياً" },
-      { value: "٩٦٪", label: "من مستخدمي الهواتف في الخليج يمكن الوصول إليهم عبر واتساب" },
+      { value: "عربي + إنجليزي", label: "لهجات عربية وإنجليزية في وكيل واحد" },
+      { value: "٣ قنوات", label: "واتساب ودردشة الموقع ورسائل إنستغرام" },
+      { value: "تحويل لموظف", label: "تصعيد إلى شخص مع سجل المحادثة كاملاً" },
     ],
     capabilities: [
       { title: "فهم نية العميل", desc: "يحلل رسائل العملاء حتى وإن كانت مختصرة أو غير مرتبة، ويستخرج المعلومات المهمة مثل الأسماء، المنتجات، التواريخ، والطلبات." },
@@ -684,19 +639,6 @@ const ar: RichMap = {
       "رد بلهجته هو، لا بعربية فصحى متكلّفة",
       "تحويل سلس لموظف حقيقي حين يكون السؤال معقّداً",
     ],
-    chart: {
-      kind: "area",
-      title: "حجم سوق المحادثة الذكية في الخليج (مليون دولار)",
-      unit: "M$",
-      source: "GulfSaaSReview، سوق روبوتات المحادثة في الخليج ٢٠٢٦ (نمو ٤١٪)",
-      data: [
-        { name: "٢٠٢٦", value: 185 },
-        { name: "٢٠٢٧", value: 262 },
-        { name: "٢٠٢٨", value: 370 },
-        { name: "٢٠٢٩", value: 525 },
-        { name: "٢٠٣٠", value: 750 },
-      ],
-    },
     comparison: {
       title: "الدعم التقليدي مقابل وكيل Raanzlr الذكي",
       colA: "الدعم التقليدي",
@@ -706,7 +648,7 @@ const ar: RichMap = {
         { aspect: "اللغات", a: "محدودة بمن هو في الدوام", b: "لهجات عربية + إنجليزية معاً" },
         { aspect: "التقاط العملاء", a: "يضيع خارج الدوام", b: "يُلتقط ويُؤهَّل ويُزامَن" },
         { aspect: "التوسّع", a: "توظيف وتدريب المزيد", b: "يستوعب الذروة فوراً" },
-        { aspect: "كلفة المحادثة", a: "٦–٤٠ دولاراً للتذكرة", b: "جزء بسيط من الدولار" },
+        { aspect: "كلفة المحادثة", a: "ترتفع مع كل موظف إضافي", b: "تبقى الكلفة الحدّية منخفضة مع نمو الحجم" },
       ],
     },
     process: [
@@ -723,9 +665,9 @@ const ar: RichMap = {
     tagline:
       "نطوّر أنظمة أتمتة تربط أدواتك المختلفة وتنفّذ المهام المتكررة تلقائياً، لتقليل الأخطاء، تسريع العمليات، ومنح فريقك وقتاً للتركيز على الأعمال ذات القيمة الأعلى.",
     metrics: [
-      { value: "٢٤٠ ساعة", label: "يمكن توفيرها سنوياً لكل موظف من خلال أتمتة المهام المتكررة" },
-      { value: "٧٥٪", label: "انخفاض محتمل في الأخطاء الناتجة عن إدخال البيانات يدوياً" },
-      { value: "٢٤٨٪", label: "عائد استثمار تقديري على المدى الطويل عند تطبيق الأتمتة بالشكل الصحيح" },
+      { value: "سجل كامل", label: "كل خطوة مؤتمتة مسجلة وقابلة للتتبع" },
+      { value: "موافقات", label: "نقاط اعتماد بشرية ضمن مسار العمل" },
+      { value: "أدواتكم", label: "ربط الـ CRM والـ ERP وSlack وTeams وGoogle Workspace" },
     ],
     capabilities: [
       { title: "تشغيل تلقائي للعمليات", desc: "تنطلق الأتمتة مباشرة عند حدوث حدث معين، مثل استلام طلب جديد، إنشاء عميل، تحديث ملف، أو استقبال رسالة." },
@@ -754,17 +696,6 @@ const ar: RichMap = {
       { title: "معالجة المستندات والفواتير", desc: "نستخرج البيانات المهمة من ملفات PDF، الفواتير، النماذج، والمستندات الممسوحة ضوئياً، ثم نرسلها تلقائياً إلى أنظمة المالية أو التشغيل، مما يقلل الإدخال اليدوي ويسرّع معالجة الطلبات والمعاملات." },
       { title: "ذكاء اصطناعي داخل سير العمل", desc: "نستخدم الذكاء الاصطناعي داخل مسارات الأتمتة لفهم الرسائل والطلبات، تصنيفها، تلخيصها، صياغة ردود أولية، وتوجيهها تلقائياً إلى القسم أو الشخص المناسب." },
     ],
-    chart: {
-      kind: "bar",
-      title: "نسبة خفض كلفة التشغيل حسب مستوى الأتمتة (٪)",
-      unit: "%",
-      source: "ماكنزي وغارتنر عبر shno.co، ٢٠٢٦",
-      data: [
-        { name: "يدوي", value: 0 },
-        { name: "أساسي", value: 27 },
-        { name: "ذكي", value: 60 },
-      ],
-    },
     comparison: {
       title: "العمليات اليدوية مقابل الأتمتة",
       colA: "العمليات اليدوية",
@@ -791,9 +722,9 @@ const ar: RichMap = {
     tagline:
       "حوّل فيديو واحداً إلى نسخ متعددة اللغات بأصوات طبيعية وترجمة دقيقة وتوقيت يحافظ على نبرة المحتوى ورسالته الأصلية.",
     metrics: [
-      { value: "+٩٠٪", label: "أوفر من الدبلجة التقليدية" },
-      { value: "خلال يوم", label: "أسرع من دورة الإنتاج التقليدية" },
-      { value: "٧٦٪", label: "يفضّلون المحتوى بلغتهم الأم" },
+      { value: "لغات متعددة", label: "فيديو واحد بلغات مستهدفة متعددة" },
+      { value: "استنساخ الصوت", label: "نقل صوت المتحدث وإيقاعه وانفعاله" },
+      { value: "ترجمة نصية", label: "ترجمات نصية مع الصوت المدبلج" },
     ],
     capabilities: [
       { title: "تحويل الكلام إلى نص", desc: "نفرّغ الكلام من الفيديو إلى نص دقيق مع توقيت مناسب لكل جملة." },
@@ -818,23 +749,13 @@ const ar: RichMap = {
       "فهم الرسالة بسهولة ومتابعة الفيديو حتى النهاية",
       "ترجمات معروضة للمشاهدة بدون صوت ولدعم ذوي الإعاقة السمعية",
     ],
-    chart: {
-      kind: "bar",
-      title: "الكلفة لكل دقيقة منجزة لكل لغة (دولار)",
-      unit: "$",
-      source: "Camb.ai، الدبلجة الذكية مقابل التقليدية، ٢٠٢٥",
-      data: [
-        { name: "استوديو تقليدي", value: 300 },
-        { name: "أقلمة ذكية", value: 10 },
-      ],
-    },
     comparison: {
       title: "الدبلجة الاستوديوهية التقليدية مقابل الأقلمة الذكية",
       colA: "استوديو تقليدي",
       colB: "أقلمة Raanzlr الذكية",
       rows: [
-        { aspect: "الكلفة/الدقيقة", a: "١٠٠–٥٠٠ دولار للغة", b: "٢–٢٠ دولاراً للغة" },
-        { aspect: "مدة الإنجاز", a: "٢–٦ أسابيع", b: "ساعات إلى يوم واحد" },
+        { aspect: "الكلفة", a: "استوديو لكل لغة", b: "مسار ذكاء اصطناعي لكل لغة" },
+        { aspect: "مدة الإنجاز", a: "أسابيع من الجدولة والتسجيل", b: "أقصر بكثير، وتحددها مدة الفيديو والمراجعة" },
         { aspect: "اللغات", a: "واحدة تلو الأخرى ومكلفة", b: "عدة لغات بالتوازي" },
         { aspect: "الصوت", a: "ممثل صوتي جديد كل مرة", b: "صوت مستنسخ بهوية ثابتة" },
         { aspect: "المُسلَّمات", a: "الفيديو النهائي فقط", b: "فيديو + صوت + ملفات نصية" },
@@ -854,9 +775,9 @@ const ar: RichMap = {
     tagline:
       "نبني مواقع احترافية، متاجر إلكترونية، بوابات عملاء، ولوحات تحكم سريعة وآمنة، تجمع بين الأداء العالي، سهولة الاستخدام، وقابلية التوسع، مع دعم كامل للعربية واللغات المتعددة.",
     metrics: [
-      { value: "+٨٫٤٪", label: "تحسن محتمل في معدلات التحويل مع تحسين سرعة تحميل الموقع" },
-      { value: "٥٣٪", label: "من مستخدمي الجوال يغادرون المواقع البطيئة قبل التفاعل معها" },
-      { value: "٢٫٠٨ تريليون", label: "القيمة المتوقعة لسوق التجارة الإلكترونية في الخليج خلال السنوات القادمة" },
+      { value: "حزمة كاملة", label: "واجهة وخادم وقاعدة بيانات واستضافة وDevOps" },
+      { value: "SEO + AEO", label: "بنية للبحث ومحركات الإجابة منذ البداية" },
+      { value: "عربي + إنجليزي", label: "واجهات ثنائية اللغة تدعم RTL" },
     ],
     capabilities: [
       { title: "تطوير الواجهة الأمامية", desc: "نبني واجهات حديثة وسريعة تستجيب لجميع أحجام الشاشات، مع تجربة استخدام واضحة وسلسة." },
@@ -881,18 +802,6 @@ const ar: RichMap = {
       "محتوى متوفر بلغات متعددة بطريقة طبيعية",
       "تنقل بسيط يساعد المستخدم على الوصول لما يحتاجه بسرعة",
     ],
-    chart: {
-      kind: "area",
-      title: "نسبة عمليات بحث جوجل التي تُظهِر إجابات الذكاء الاصطناعي (٪)",
-      unit: "%",
-      source: "دراسة Semrush لإجابات الذكاء الاصطناعي، ٢٠٢٥",
-      data: [
-        { name: "يناير", value: 6.49 },
-        { name: "مارس", value: 13 },
-        { name: "مايو", value: 19 },
-        { name: "يوليو", value: 24.61 },
-      ],
-    },
     comparison: {
       title: "الحلول الجاهزة مقابل منصة Raanzlr",
       colA: "الحلول الجاهزة",
@@ -919,9 +828,9 @@ const ar: RichMap = {
     tagline:
       "تطبيقات iOS وAndroid للعملاء والفرق الميدانية والعمليات اليومية، بتجربة استخدام سلسة وأداء موثوق على مختلف الأجهزة.",
     metrics: [
-      { value: "٧٣٩٫٦ مليار", label: "إيرادات سوق التطبيقات العالمي في ٢٠٢٦" },
-      { value: "+٥٠٪", label: "احتفاظ أعلى بالمستخدمين مع تجربة دخول واضحة" },
-      { value: "٨٢٪", label: "الجوال قناة رئيسية للتجارة في الخليج" },
+      { value: "iOS + Android", label: "تطبيق أصلي أو قاعدة كود واحدة متعددة المنصات" },
+      { value: "يعمل دون اتصال", label: "تطبيقات تواصل العمل عند ضعف الاتصال" },
+      { value: "جاهز لـ RTL", label: "تخطيطات عربية من اليوم الأول" },
     ],
     capabilities: [
       { title: "تطوير أصلي", desc: "نطوّر تطبيقات iOS وAndroid باستخدام Swift/SwiftUI وKotlin/Compose عندما يحتاج المشروع إلى أعلى أداء ووصول كامل لإمكانات الجهاز." },
@@ -946,18 +855,6 @@ const ar: RichMap = {
       "تنبيهات مرتبطة بسلوك المستخدم واحتياجه، لا رسائل عامة مزعجة",
       "تطبيق منشور عبر المتاجر، مع أمان مناسب للدفع وحماية البيانات",
     ],
-    chart: {
-      kind: "area",
-      title: "إيرادات سوق التطبيقات العالمي (مليار دولار)",
-      unit: "B$",
-      source: "توقعات Statista (نمو ٨٪ حتى ٢٠٣١)",
-      data: [
-        { name: "٢٠٢٦", value: 740 },
-        { name: "٢٠٢٨", value: 866 },
-        { name: "٢٠٣٠", value: 1014 },
-        { name: "٢٠٣١", value: 1100 },
-      ],
-    },
     comparison: {
       title: "ويب الجوال فقط مقابل تطبيق أصلي / متعدد المنصات",
       colA: "ويب الجوال فقط",
@@ -984,9 +881,9 @@ const ar: RichMap = {
     tagline:
       "نصمم أنظمة ذكاء اصطناعي مبنية على بيانات شركتك ومعرفتها الداخلية لمساعدتك على فهم المستندات، استخراج المعلومات، أتمتة المهام المعرفية، واتخاذ قرارات أسرع وأكثر دقة.",
     metrics: [
-      { value: "٣٠–٤٠٪", label: "خفض محتمل في تكلفة معالجة المستندات والبيانات بفضل الأتمتة الذكية" },
-      { value: "٥٠–٧٠٪", label: "تسريع عمليات التصنيف، الاستخراج، وتحليل المعلومات" },
-      { value: "١٣٥٫٢ مليار دولار", label: "القيمة المتوقعة لإسهام الذكاء الاصطناعي في الاقتصاد السعودي بحلول عام 2030" },
+      { value: "RAG", label: "إجابات مبنية على مستنداتكم أنتم" },
+      { value: "ضوابط أمان", label: "قواعد أمان ووصول حول كل استدعاء للنموذج" },
+      { value: "تقييم", label: "قياس الجودة على بياناتكم لا افتراضها" },
     ],
     capabilities: [
       { title: "البحث داخل المعرفة الداخلية", desc: "نبني نظاماً يستطيع البحث في مستنداتك وقواعد بياناتك والإجابة اعتماداً على معلومات شركتك فقط." },
@@ -1011,18 +908,6 @@ const ar: RichMap = {
       "الاعتماد على إجابات موثقة تستند إلى بيانات الشركة",
       "تسريع تنفيذ المهام اليومية وتقليل الأعمال المتكررة",
     ],
-    chart: {
-      kind: "area",
-      title: "حجم سوق الاسترجاع المعزّز عالمياً (مليار دولار)",
-      unit: "B$",
-      source: "MarketsandMarkets، سوق RAG (نمو ٣٨٪)",
-      data: [
-        { name: "٢٠٢٥", value: 1.94 },
-        { name: "٢٠٢٧", value: 3.7 },
-        { name: "٢٠٢٩", value: 7.1 },
-        { name: "٢٠٣٠", value: 9.86 },
-      ],
-    },
     comparison: {
       title: "أداة ذكاء عامة مقابل نظام استرجاع مخصّص",
       colA: "أداة ذكاء عامة",
@@ -1049,9 +934,9 @@ const ar: RichMap = {
     tagline:
       "نوحّد أنظمتك المختلفة في منظومة مترابطة تتبادل البيانات تلقائياً، مما يقلل العمل اليدوي، يحسن دقة المعلومات، ويمنح فريقك رؤية موحدة لجميع العمليات.",
     metrics: [
-      { value: "٨٩٧", label: "متوسط عدد التطبيقات المستخدمة داخل المؤسسات الكبيرة" },
-      { value: "٢٩٪", label: "فقط من تطبيقات المؤسسات تكون مترابطة بشكل فعّال" },
-      { value: "٣٩٪", label: "من وقت فرق التقنية يُستهلك في تطوير وصيانة التكاملات" },
+      { value: "مزامنة ثنائية", label: "اتساق الأنظمة في الاتجاهين" },
+      { value: "أنظمة قديمة", label: "موصلات للأنظمة القديمة دون استبدالها" },
+      { value: "موثّق", label: "وثائق تسليم ومراقبة ضمن المشروع" },
     ],
     capabilities: [
       { title: "تطوير واجهات برمجية حديثة", desc: "نصمم واجهات REST وGraphQL آمنة وموثقة تسهّل تبادل البيانات بين الأنظمة المختلفة." },
@@ -1076,16 +961,6 @@ const ar: RichMap = {
       "تجربة أكثر سلاسة دون الحاجة إلى إعادة إدخال البيانات",
       "استجابة أفضل بفضل تكامل جميع الأنظمة",
     ],
-    chart: {
-      kind: "donut",
-      title: "نسبة تطبيقات المؤسسة المترابطة فعلاً",
-      unit: "%",
-      source: "MuleSoft، معيار الترابط ٢٠٢٥",
-      data: [
-        { name: "مترابطة", value: 29 },
-        { name: "معزولة", value: 71 },
-      ],
-    },
     comparison: {
       title: "أنظمة منفصلة مقابل مصدر حقيقة واحد",
       colA: "أنظمة منفصلة",
@@ -1112,9 +987,9 @@ const ar: RichMap = {
     tagline:
       "نصمم واجهات وتجارب استخدام تساعد المستخدمين على إنجاز مهامهم بسهولة، وتمنح منتجاتك الرقمية تجربة واضحة، متناسقة، وقابلة للنمو.",
     metrics: [
-      { value: "١٠٠×", label: "قد يحقق الاستثمار في تجربة المستخدم عائداً مرتفعاً عند تطبيقه بالشكل الصحيح" },
-      { value: "حتى ٤٠٠٪", label: "تحسن محتمل في معدلات التحويل عند تحسين تجربة المستخدم بشكل متكامل" },
-      { value: "٥٠ مللي ثانية", label: "الوقت الذي يحتاجه المستخدم لتكوين انطباعه الأول عن واجهتك" },
+      { value: "RTL أولاً", label: "تصميم عربي أصيل لا مجرد عكس للواجهة" },
+      { value: "WCAG", label: "فحص إتاحة الوصول وفق WCAG" },
+      { value: "قائم على البحث", label: "قرارات تُختبر قبل أن تُبنى" },
     ],
     capabilities: [
       { title: "بحث تجربة المستخدم", desc: "ندرس سلوك المستخدمين واحتياجاتهم من خلال المقابلات، التحليلات، والاستبيانات لبناء قرارات تصميم تستند إلى بيانات حقيقية." },
@@ -1139,17 +1014,6 @@ const ar: RichMap = {
       "تجربة استخدام متناسقة على مختلف الأجهزة",
       "واجهات واضحة تدعم العربية وسهلة القراءة والتفاعل",
     ],
-    chart: {
-      kind: "bar",
-      title: "ارتفاع التحويل من الاستثمار في التصميم (٪)",
-      unit: "%",
-      source: "Forrester (عبر Eficode) وBaymard، ٢٠٢٥",
-      data: [
-        { name: "إصلاح الدفع", value: 35 },
-        { name: "إعادة تصميم الواجهة", value: 200 },
-        { name: "تجربة متكاملة", value: 400 },
-      ],
-    },
     comparison: {
       title: "واجهة افتراضية من المطوّر مقابل تجربة مبنية على بحث",
       colA: "واجهة افتراضية",
@@ -1172,13 +1036,66 @@ const ar: RichMap = {
     stack: ["Figma · Dev Mode", "FigJam", "Storybook", "Tokens Studio", "Maze · Hotjar", "Stark · axe (وصول)", "Tailwind · shadcn/ui", "Framer · Lottie"],
   },
 
+  dashboards: {
+    tagline:
+      "لوحات تشغيلية حيّة وخطوط بيانات تجمع أرقام المبيعات والعمليات والمالية في مكان واحد، مبنية من أنظمتكم.",
+    metrics: [
+      { value: "بيانات حيّة", label: "تُسحب من نظام إدارة العملاء وERP والجداول وقواعد البيانات" },
+      { value: "عروض حسب الدور", label: "شاشات مختلفة للإدارة والعمليات والمالية" },
+      { value: "تنبيهات", label: "تنبيهات حدّية عبر البريد أو Slack أو Teams" },
+    ],
+    capabilities: [
+      { title: "تصميم المؤشرات", desc: "نتفق معكم على الأرقام القليلة المهمة وعلى كيفية تعريف كل منها قبل البناء." },
+      { title: "خطوط البيانات", desc: "استخراج البيانات وتحويلها من أنظمة CRM وERP والجداول وقواعد البيانات إلى مخزن نظيف واحد." },
+      { title: "لوحات حيّة", desc: "شاشات تشغيلية تتحدّث من الأنظمة المصدر، بالعربية والإنجليزية وبدعم الكتابة من اليمين." },
+      { title: "عروض حسب الدور", desc: "تعرض الإدارة والعمليات والمالية ما يخص كلاً منها، مع ضبط صلاحيات الوصول." },
+      { title: "التفصيل والتصفية", desc: "الانتقال من الرقم الرئيسي إلى السجلات التي تقف خلفه." },
+      { title: "التنبيهات والتقارير المجدولة", desc: "تنبيهات حدّية وملخصات مجدولة عبر البريد أو Slack أو Teams." },
+      { title: "فحوصات جودة البيانات", desc: "تحقق ومطابقة حتى تكون الأرقام موثوقة." },
+      { title: "لوحات مدمجة ومخصصة", desc: "لوحات داخل بوابتكم أو تطبيقكم حين لا تناسب أدوات BI الجاهزة." },
+    ],
+    forCompanies: [
+      "استبدال تجميع الجداول الأسبوعي بأرقام تتحدّث تلقائياً",
+      "تعريف واحد متفق عليه لكل مؤشر أداء",
+      "اكتشاف الاستثناءات مبكراً عبر التنبيهات بدل مفاجآت نهاية الشهر",
+      "عرض البيانات نفسها للمستخدمين العرب والإنجليز بلغتهم واتجاههم",
+      "حماية الأرقام الحساسة بصلاحيات وصول حسب الدور",
+    ],
+    forCustomers: [
+      "أرقام يثقون بها ويمكن تتبعها إلى مصدرها",
+      "إجابات خلال ثوانٍ بدل انتظار التقرير",
+      "رؤية واضحة بلغتهم وعلى أي جهاز",
+      "اجتماعات أقل لمطابقة النسخ المختلفة من الحقيقة",
+    ],
+    comparison: {
+      title: "تقارير الجداول مقابل لوحة حيّة",
+      colA: "تقارير الجداول",
+      colB: "لوحة حيّة",
+      rows: [
+        { aspect: "حداثة البيانات", a: "قديمة عند مشاركتها", b: "تتحدّث من الأنظمة المصدر" },
+        { aspect: "التعريفات", a: "كل فريق يحسب بطريقته", b: "تعريف واحد لكل مؤشر" },
+        { aspect: "الاستثناءات", a: "تُكتشف في نهاية الشهر", b: "تنبّه إليها التنبيهات" },
+        { aspect: "الوصول", a: "ملفات تُرسل بالبريد", b: "عروض حسب الدور" },
+        { aspect: "اللغات", a: "غالباً بالإنجليزية فقط", b: "عربي وإنجليزي مع دعم RTL" },
+      ],
+    },
+    process: [
+      { title: "الاكتشاف وتعريف المؤشرات", desc: "نتفق على الأسئلة التي تجيب عنها اللوحة وعلى تعريف كل مؤشر ومصدره." },
+      { title: "تدقيق البيانات وتصميم الخطوط", desc: "نفحص جودة كل مصدر ونصمم مسار الاستخراج والتحويل." },
+      { title: "البناء والربط", desc: "نبني الخطوط واللوحات ونربطها بالأنظمة المصدر." },
+      { title: "التحقق ببيانات حقيقية", desc: "نطابق الأرقام مع تقاريركم الحالية ونصحح الفروقات." },
+      { title: "الإطلاق والتسليم", desc: "نطلق اللوحة مع صلاحيات وتنبيهات وتوثيق لفريقكم." },
+    ],
+    stack: ["PostgreSQL · BigQuery · Snowflake", "Airbyte · Fivetran · dbt", "Apache Airflow", "React · Next.js", "Metabase · Superset · Grafana", "Recharts · D3", "Slack · Teams alerts", "OAuth 2.0 · RBAC"],
+  },
+
   consulting: {
     tagline:
       "نقيّم البنية التقنية لشركتك من جميع الجوانب، بدءاً من جودة الكود والأداء وصولاً إلى الأمان والبنية السحابية، ثم نحول النتائج إلى خطة عمل واضحة تساعدك على اتخاذ قرارات تقنية أكثر دقة.",
     metrics: [
-      { value: "~٤٠٪", label: "من ميزانية التطوير قد تُستهلك في معالجة الدين التقني عند غياب التخطيط المناسب" },
-      { value: "٢٩٪", label: "من تكاليف البنية السحابية يمكن أن تذهب إلى موارد غير مستغلة بالشكل الأمثل" },
-      { value: "٧٫٣ مليون دولار", label: "متوسط تكلفة اختراق بيانات كبير في منطقة الشرق الأوسط وفق تقارير الصناعة" },
+      { value: "تدقيق أولاً", label: "مراجعة المعمارية والأمان والأداء وتكلفة السحابة" },
+      { value: "خارطة طريق", label: "نتائج مرتبة حسب الأولوية قابلة للتنفيذ" },
+      { value: "تقرير مكتوب", label: "نتائج وخارطة طريق لا مجرد مكالمة" },
     ],
     capabilities: [
       { title: "مراجعة البنية التقنية", desc: "نحلل مكونات النظام بالكامل لتحديد نقاط الاختناق، مواطن التعقيد، ومخاطر الاعتماد على عناصر يصعب صيانتها أو تطويرها." },
@@ -1203,17 +1120,6 @@ const ar: RichMap = {
       "حماية أفضل للبيانات",
       "تجربة استخدام أكثر موثوقية مع تقليل الأعطال",
     ],
-    chart: {
-      kind: "bar",
-      title: "أين تتسرّب ميزانية التقنية بهدوء (٪)",
-      unit: "%",
-      source: "ماكنزي (عبر SIG) وFlexera State of the Cloud 2026",
-      data: [
-        { name: "الدين التقني", value: 40 },
-        { name: "هدر السحابة", value: 29 },
-        { name: "قابل للتفادي", value: 69 },
-      ],
-    },
     comparison: {
       title: "العمل بلا رؤية مقابل خارطة طريق مدقَّقة",
       colA: "بلا رؤية",
@@ -1221,7 +1127,7 @@ const ar: RichMap = {
       rows: [
         { aspect: "القرارات", a: "حدس وتخمين", b: "قائمة على أدلة ومُقيَّمة" },
         { aspect: "الأمان", a: "تعرّض مجهول", b: "مرتبط بـOWASP ومرتّب" },
-        { aspect: "كلفة السحابة", a: "إنفاق زائد بهدوء", b: "محجوم، توفير ٢٥–٣٠٪" },
+        { aspect: "كلفة السحابة", a: "إنفاق زائد بهدوء", b: "محجوم حسب الاستخدام الفعلي" },
         { aspect: "الدين التقني", a: "يبطّئ كل إصدار", b: "مقيس ومتسلسل" },
         { aspect: "خارطة الطريق", a: "إطفاء حرائق رد فعلي", b: "مرتّبة حسب الأثر" },
       ],

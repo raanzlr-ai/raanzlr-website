@@ -1,13 +1,13 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { translations } from "../lib/translations";
+import { translations, type Translations } from "../lib/translations";
 
 type Lang = "en" | "ar";
 
 interface LangContextValue {
   lang: Lang;
   isAr: boolean;
-  t: typeof translations.en;
+  t: Translations;
   setLang: (l: Lang) => void;
   toggleLang: () => void;
   localizedPath: (path: string, targetLang?: Lang) => string;

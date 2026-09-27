@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import { useLang } from '../contexts/LanguageContext';
 import { useLocation } from 'react-router-dom';
+import { clampTitle, clampDescription } from '../lib/meta';
 
 // Maps pageKey to translation seo keys
 type SeoPageKey =
@@ -25,12 +26,28 @@ interface SEOProps {
   /** Override or custom description */
   description?: string;
   descriptionAr?: string;
-  keywords?: string;
-  keywordsAr?: string;
   image?: string;
   type?: 'website' | 'article';
   /** Path relative to domain, e.g. "/services/ai-chatbots" */
   path?: string;
+  /**
+   * schema.org type for the page node. Defaults to WebPage, or BlogPosting when
+   * `type="article"`. Set explicitly so a contact page is a ContactPage, a hub
+   * is a CollectionPage, and so on — a generic WebPage on every page tells a
+   * parser nothing about what the page is.
+   */
+  pageType?:
+    | "WebPage"
+    | "ContactPage"
+    | "AboutPage"
+    | "CollectionPage"
+    | "Blog"
+    | "Article"
+    | "BlogPosting";
+  /** Previous page in a paginated series, locale-less path. Emits rel="prev". */
+  prevPath?: string;
+  /** Next page in a paginated series, locale-less path. Emits rel="next". */
+  nextPath?: string;
   article?: {
     publishedTime?: string;
     modifiedTime?: string;
@@ -52,7 +69,7 @@ const SEGMENT_NAMES: Record<string, { en: string; ar: string }> = {
   services: { en: 'Services', ar: 'الخدمات' },
   markets: { en: 'Markets', ar: 'الأسواق' },
   insights: { en: 'Insights', ar: 'المدونة' },
-  'case-studies': { en: 'Case Studies', ar: 'دراسات الحالة' },
+  'case-studies': { en: 'Solution Scenarios', ar: 'سيناريوهات الحلول' },
   industries: { en: 'Industries', ar: 'القطاعات' },
   about: { en: 'About', ar: 'من نحن' },
   contact: { en: 'Contact', ar: 'تواصل معنا' },
@@ -65,14 +82,15 @@ export default function SEO({
   titleAr,
   description,
   descriptionAr,
-  keywords,
-  keywordsAr,
   image,
   type = 'website',
   path: pathProp,
   article,
   schema,
   noIndex = false,
+  pageType,
+  prevPath,
+  nextPath,
 }: SEOProps) {
   const { lang, t } = useLang();
   const location = useLocation();
@@ -92,6 +110,12 @@ export default function SEO({
   const arUrl = `${baseUrl}/ar${suffix}`;
   const canonicalUrl = isAr ? arUrl : enUrl;
 
+  /** Absolute URL in the current locale for a locale-less path. */
+  const localeAbsolute = (p: string) =>
+    `${baseUrl}/${isAr ? "ar" : "en"}${p === "/" ? "" : p}`;
+  const prevUrl = prevPath ? localeAbsolute(prevPath) : undefined;
+  const nextUrl = nextPath ? localeAbsolute(nextPath) : undefined;
+
   // Resolve title / description / keywords from pageKey or explicit props
   const seo = t.seo as Record<string, { title: string; description: string; keywords: string }>;
 
@@ -103,9 +127,12 @@ export default function SEO({
     ? (descriptionAr ?? (pageKey && seo[pageKey]?.description) ?? description ?? '')
     : (description ?? (pageKey && seo[pageKey]?.description) ?? '');
 
-  const resolvedKeywords = isAr
-    ? (keywordsAr ?? (pageKey && seo[pageKey]?.keywords) ?? keywords)
-    : (keywords ?? (pageKey && seo[pageKey]?.keywords));
+  // Search-result meta only. Post titles and descriptions come from Supabase,
+  // so an over-long string cannot be fixed in code — clamp it at render time
+  // instead of letting Google pick the truncation point. Schema headline,
+  // breadcrumb names and visible headings keep the full authored text.
+  const metaTitle = clampTitle(resolvedTitle);
+  const metaDescription = clampDescription(resolvedDescription);
 
   const locale = isAr ? 'ar_AE' : 'en_US';
   const alternateLocale = isAr ? 'en_US' : 'ar_AE';
@@ -147,6 +174,9 @@ export default function SEO({
     return {
       '@context': 'https://schema.org',
       '@type': 'BreadcrumbList',
+      // Referenced by the page node's `breadcrumb` property, so the two are one
+      // graph instead of two unrelated islands.
+      '@id': `${canonicalUrl}#breadcrumb`,
       itemListElement: items.map((item) => ({
         '@type': 'ListItem',
         position: item.position,
@@ -160,30 +190,38 @@ export default function SEO({
   const generateSchema = () => {
     const breadcrumb = buildBreadcrumb();
 
+    // Stable node ids declared in index.html. Referencing them keeps every page
+    // node attached to one entity graph rather than emitting three disconnected
+    // JSON-LD islands per page.
+    const ORG_ID = 'https://raanzlr.com/#organization';
+    const SITE_ID = 'https://raanzlr.com/#website';
+
+    const resolvedPageType = pageType ?? (type === 'article' ? 'BlogPosting' : 'WebPage');
+    const isArticleNode = resolvedPageType === 'BlogPosting' || resolvedPageType === 'Article';
+
     const baseSchema: Record<string, unknown> = {
       '@context': 'https://schema.org',
-      '@type': type === 'article' ? 'BlogPosting' : 'WebPage',
+      '@type': resolvedPageType,
+      '@id': `${canonicalUrl}#webpage`,
       headline: resolvedTitle,
       description: resolvedDescription,
       url: canonicalUrl,
       inLanguage: htmlLang,
       image: resolvedImage,
-      ...(type === 'article' && article
+      isPartOf: { '@id': SITE_ID },
+      publisher: { '@id': ORG_ID },
+      ...(breadcrumb ? { breadcrumb: { '@id': `${canonicalUrl}#breadcrumb` } } : {}),
+      ...(isArticleNode && article
         ? {
+            mainEntityOfPage: { '@id': `${canonicalUrl}#webpage` },
             datePublished: article.publishedTime,
+            // Undefined is dropped by JSON.stringify, so an article with no
+            // recorded edit simply omits dateModified rather than claiming one.
             dateModified: article.modifiedTime,
-            author: {
-              '@type': 'Organization',
-              name: article.author || 'Raanzlr',
-            },
-            publisher: {
-              '@type': 'Organization',
-              name: 'Raanzlr',
-              logo: {
-                '@type': 'ImageObject',
-                url: 'https://raanzlr.com/logo-raanzlr.png',
-              },
-            },
+            author:
+              article.author && article.author !== 'Raanzlr'
+                ? { '@type': 'Person', name: article.author }
+                : { '@id': ORG_ID },
             articleSection: article.section,
             keywords: article.tags?.join(', '),
           }
@@ -210,9 +248,9 @@ export default function SEO({
       <html lang={htmlLang} dir={htmlDir} />
 
       {/* Primary Meta Tags */}
-      <title>{resolvedTitle}</title>
-      <meta name="title" content={resolvedTitle} />
-      <meta name="description" content={resolvedDescription} />
+      <title>{metaTitle}</title>
+      <meta name="title" content={metaTitle} />
+      <meta name="description" content={metaDescription} />
       {/* No <meta name="keywords">. Google has ignored it since 2009, and the
           brand misspellings it used to carry (Ranzlr, Raanzler, رانزلر…) are
           expressed properly as Organization.alternateName in index.html, where
@@ -227,6 +265,11 @@ export default function SEO({
         }
       />
       <link rel="canonical" href={canonicalUrl} />
+      {/* Paginated series. Google no longer uses rel=prev/next for indexing,
+          but the crawlable <a> links in the pager are what matter; these stay
+          as accurate document relationships for other consumers. */}
+      {prevUrl && <link rel="prev" href={prevUrl} />}
+      {nextUrl && <link rel="next" href={nextUrl} />}
 
       {/* Hreflang Tags */}
       <link rel="alternate" hrefLang="en" href={enUrl} />
@@ -236,8 +279,8 @@ export default function SEO({
       {/* Open Graph / Facebook */}
       <meta property="og:type" content={type} />
       <meta property="og:site_name" content="Raanzlr" />
-      <meta property="og:title" content={resolvedTitle} />
-      <meta property="og:description" content={resolvedDescription} />
+      <meta property="og:title" content={metaTitle} />
+      <meta property="og:description" content={metaDescription} />
       <meta property="og:url" content={canonicalUrl} />
       <meta property="og:image" content={resolvedImage} />
       <meta property="og:image:alt" content={resolvedTitle || 'Raanzlr'} />
@@ -264,11 +307,14 @@ export default function SEO({
       )}
 
       {/* Twitter Card */}
+      {/* twitter:card still governs how X/Slack/LinkedIn render the preview.
+          twitter:site and twitter:creator are deliberately absent: the @raanzlr
+          handle they pointed at returns 404, and attributing a card to a
+          non-existent account is a broken entity signal. Restore both only if
+          the account is actually created. */}
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:site" content="@raanzlr" />
-      <meta name="twitter:creator" content="@raanzlr" />
-      <meta name="twitter:title" content={resolvedTitle} />
-      <meta name="twitter:description" content={resolvedDescription} />
+      <meta name="twitter:title" content={metaTitle} />
+      <meta name="twitter:description" content={metaDescription} />
       <meta name="twitter:image" content={resolvedImage} />
       <meta
         name="twitter:image:alt"

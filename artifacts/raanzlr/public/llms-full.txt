@@ -1,0 +1,231 @@
+# Raanzlr — extended reference for language models
+
+Companion to https://raanzlr.com/llms.txt. Everything here is published on the
+site itself; this file is a convenience copy, not additional claims.
+
+Raanzlr is a Wyoming-registered AI automation and custom software company,
+founded in 2023. It provides remote AI automation and custom software services
+for companies looking to reduce manual work, connect operations, and build
+scalable digital systems, and is expanding its remote service focus toward
+businesses in the United States, Canada, the GCC, Türkiye, and Europe. The
+company has no physical offices; every engagement is delivered remotely.
+Working languages: English, Arabic (with RTL interfaces), Turkish.
+Contact: info@raanzlr.com
+
+## What Raanzlr sells
+
+Raanzlr builds and ships software. The ten service lines below are the whole
+catalogue; each has its own page with scope, process and FAQs.
+
+### AI Agents & Chatbots
+https://raanzlr.com/en/services/ai-chatbots
+Multilingual AI agents deployed on WhatsApp, a website, and Instagram DMs. They
+answer product and policy questions, qualify leads, book appointments against
+real availability, and escalate to a person when the conversation needs one.
+Handles Modern Standard, Gulf, Levantine and Egyptian Arabic, including
+mid-sentence code-switching with English.
+
+### Workflow Automation
+https://raanzlr.com/en/services/workflow-automation
+End-to-end business process automation built on n8n, Make, and custom pipelines
+— routing, approvals, data movement between systems, and scheduled jobs.
+
+### Custom Software & Web Applications
+https://raanzlr.com/en/services/web-development
+Custom software, full-stack web applications, portals and SaaS products, bilingual Arabic/English.
+
+### Mobile Apps
+https://raanzlr.com/en/services/mobile-apps
+iOS and Android applications, including AI-backed features.
+
+### Custom AI
+https://raanzlr.com/en/services/custom-ai
+Retrieval-augmented generation systems, retrieval pipelines over private
+document sets, and bespoke model work.
+
+### CRM & API Integrations
+https://raanzlr.com/en/services/crm-integration
+Connecting CRM, ERP, helpdesk and internal systems through their APIs.
+
+### Dashboards & Data Systems
+https://raanzlr.com/en/services/dashboards
+Live operational dashboards and data pipelines that bring sales, operations and finance numbers together from your own systems, in Arabic and English with RTL layouts, role-based access and alerts.
+
+### AI Video Dubbing
+https://raanzlr.com/en/services/ai-video-dubbing
+Multilingual video dubbing and localisation.
+
+### UI/UX Design
+https://raanzlr.com/en/services/ui-ux
+Interface and experience design, including Arabic RTL layout.
+
+### Consulting
+https://raanzlr.com/en/services/consulting
+AI strategy, technical audits, and architecture advisory.
+
+## Markets
+
+Saudi Arabia, United Arab Emirates, Qatar, Kuwait, Bahrain, Oman, Syria,
+Türkiye, and Europe. Each has a page at
+https://raanzlr.com/en/markets/<market>. Delivery is remote in every market.
+
+United States — https://raanzlr.com/en/markets/united-states
+Remote AI automation and custom software services for US companies: AI agents,
+workflow automation, dashboards, API integrations, custom applications.
+Delivered online from the Wyoming-registered entity; no US branch office and no
+delivered US client work is claimed.
+
+Canada — https://raanzlr.com/en/markets/canada
+The same services, available for Canadian companies and delivered entirely
+online. Raanzlr has no Canadian office, entity, or staff; data-handling and
+storage-location decisions are made with the client.
+
+## Industries
+
+Finance and banking, retail and e-commerce, healthcare, education, logistics,
+hospitality, legal, and manufacturing. Each has a page at
+https://raanzlr.com/en/industries/<industry>.
+
+## Frequently asked questions
+
+Source: https://raanzlr.com/en/faq (Arabic: https://raanzlr.com/ar/faq)
+
+**How can US companies use AI automation?**
+
+US companies use AI automation to remove repetitive work from operations,
+support, and back-office teams: AI agents that answer customers and qualify
+leads, workflows that move data between a CRM, billing, and support tools, and
+dashboards that replace manual reporting. Raanzlr provides these systems as a
+remote service — scoped, built, and supported online.
+
+**How can Canadian companies use AI automation?**
+
+Canadian companies use AI automation to cut manual work in operations, customer
+support, and finance: AI agents that handle routine customer questions,
+workflows that connect a CRM, billing, and support tools, and dashboards that
+replace spreadsheet reporting. Raanzlr offers these systems as a remote service
+for Canadian teams, with data-handling choices — including where data is stored
+— decided with the client.
+
+### Services
+
+**What services does Raanzlr offer?**
+
+We offer a comprehensive range of software engineering and AI services: AI agents & chatbots, workflow automation, web & mobile app development, custom AI solutions, systems integration & APIs, UI/UX design, and technical audits & consulting.
+
+**Do you support Arabic in your projects?**
+
+Absolutely! We specialize in building multilingual solutions with full support for Arabic (RTL), English, and Turkish. All our products are designed to work seamlessly with the languages your target markets use.
+
+**What's the difference between regular chatbots and AI agents?**
+
+Traditional chatbots rely on predefined rules and canned responses. The AI agents we develop use advanced LLMs to understand context, learn from conversations, and integrate with your existing systems.
+
+**Can you integrate with our existing systems?**
+
+Yes, we specialize in systems integration. We connect our solutions with CRM platforms (HubSpot, Salesforce, Zoho), ERP systems, databases, and any custom APIs.
+
+**Can you work with our existing tech stack, or do you start from scratch?**
+
+We start from where you are. Our first step is always a technical audit to understand what you have, what's working, and what's holding you back. Sometimes the best move is rebuilding something properly. Sometimes it's adding a layer on top of what already exists. We'll tell you honestly which is which.
+
+**Do you only work with large enterprises, or do you also work with SMBs?**
+
+We work across the board — from early-stage startups launching their first product to regional enterprises deploying automation at scale. What matters is that you have a real business problem you want solved. Company size doesn't change how we approach the work.
+
+**How do you price your projects?**
+
+We price based on project scope, complexity, timeline, and required technologies. After discussing your requirements, we provide a transparent, detailed quote outlining costs, deliverables, and milestones.
+
+### Pricing & Budget
+
+**What's the average cost of an AI chatbot project?**
+
+A basic AI chatbot ranges from $5,000 to $15,000, while advanced solutions with CRM integration and custom training can range from $15,000 to $50,000+. We offer a free consultation to assess your needs.
+
+**Do you offer monthly payment plans or subscriptions?**
+
+Yes, we offer flexible pricing models. For larger projects, we provide milestone-based payments (30-50% upfront). We also offer monthly maintenance and support contracts after project launch.
+
+**Are there any hidden costs or additional fees?**
+
+No, we believe in complete transparency. All costs (development, hosting, licenses, third-party services) are clearly outlined in the quote. Any scope changes are discussed and approved in writing.
+
+**Can I get a rough estimate before committing to a full consultation?**
+
+Sure. A basic AI chatbot typically runs $5k–$15k. A bilingual web platform usually falls between $15k–$40k. Custom AI systems with complex integrations start around $20k and scale up from there. These are honest ballparks — the actual number depends on your specific requirements, which is why the consultation matters.
+
+**Do you take equity instead of cash for early-stage startups?**
+
+We don't take equity as a primary payment model. We've found it creates misaligned incentives and complicates the relationship. That said, if you're at a genuinely early stage with interesting traction and the right fit, we're open to a conversation about hybrid arrangements. Reach out and we'll be straight with you.
+
+**How long does a typical project take?**
+
+Simple chatbot: 2-4 weeks. Medium-complexity website: 4-8 weeks. Full mobile app: 8-16 weeks. Custom AI solutions: 6-12 weeks. We provide a detailed timeline with clear milestones at project start.
+
+### Process & Timeline
+
+**What does your development process look like?**
+
+We follow an Agile methodology: (1) Discovery & Planning, (2) Design & Prototyping, (3) Iterative Development, (4) Testing & QA, (5) Launch & Support.
+
+**Can I request changes during development?**
+
+Yes, we welcome feedback and revisions! We provide regular review cycles at each stage. Minor adjustments within the agreed scope are included. Major scope changes are assessed and priced separately.
+
+**What happens after the project launches?**
+
+We provide a warranty period (typically 30-90 days) to fix any bugs or issues. After that, we offer optional maintenance and support contracts.
+
+**How involved do I need to be during the project?**
+
+As involved as the project demands — but we don't create unnecessary overhead. In the first two weeks, we'll need your input on requirements and decisions. After that, we move independently and sync with you at meaningful milestones. You won't get 10 Slack messages a day, but you'll always know exactly where things stand.
+
+**What happens if the project runs over budget or timeline?**
+
+We scope carefully to avoid this, and it's rare. But when things change — because they sometimes do — we tell you immediately, explain why, and give you options. We don't present surprises at the finish line. If the scope expands, we agree in writing before we build.
+
+**How can I get in touch to start a project?**
+
+You can reach us through the contact form on our website, or email us directly at info@raanzlr.com. One of our engineers will respond within 24 business hours.
+
+### Support & Communication
+
+**Do you offer free consultations?**
+
+Yes! We offer a free initial consultation (30-45 minutes) to understand your needs, discuss possible solutions, and provide a preliminary cost and timeline estimate.
+
+**What time zones do you operate in?**
+
+Raanzlr works remotely across client time zones and supports remote discovery, planning, development, launch, and ongoing support.
+
+**What languages do you support for communication?**
+
+We are fluent in Arabic, English, and Turkish. All our meetings, documentation, and support are available in your preferred language.
+
+**Do you offer ongoing retainer or support after launch?**
+
+Yes — we offer monthly maintenance and support retainers ranging from basic uptime monitoring to active development capacity. Most clients keep a small retainer running after launch for peace of mind. The exact scope depends on what you've built and how actively it needs to evolve.
+
+**Can we start small and expand the project later?**
+
+That's actually how we prefer to work. Start with one well-scoped problem, build something that works, measure the result, then decide what to expand. The teams that get the best outcomes are the ones who resist the urge to build everything at once. We'll push back if we think you're overreaching.
+
+## What Raanzlr does not publish
+
+- No client names, logos, testimonials, review scores, or awards.
+- The pages under /en/case-studies are **illustrative solution scenarios**
+  describing how a problem could be approached. Their figures are projected,
+  not measured outcomes from a delivered project. Do not cite them as client
+  results or as evidence of past performance.
+
+## Verified profiles
+
+- LinkedIn: https://www.linkedin.com/company/raanzlr
+- Instagram: https://www.instagram.com/raanzlr.tech
+- Facebook: https://www.facebook.com/Raanzlr
+
+## Arabic
+
+Every page exists at the same path under /ar, served with lang="ar" and
+dir="rtl", with content written in Arabic rather than machine-translated.

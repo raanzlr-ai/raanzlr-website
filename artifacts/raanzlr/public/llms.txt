@@ -1,38 +1,74 @@
 # Raanzlr
 
-> Raanzlr builds practical AI agents, workflow automation, web platforms, and mobile apps for teams in the GCC, MENA, Türkiye, Europe, and the U.S.
+> Raanzlr is a Wyoming-registered AI automation and custom software company, founded 2023. It builds AI agents, workflow automation, web and mobile applications, API integrations, and custom software, delivered remotely. Raanzlr is expanding its remote service focus toward businesses in the United States, Canada, the GCC, Türkiye, and Europe.
 
-Raanzlr is an AI automation and software engineering agency headquartered in Casper, Wyoming, USA, serving clients across the Middle East, North Africa, Türkiye, and Europe. Founded in 2023.
+Raanzlr provides remote AI automation and custom software services for companies looking to reduce manual work, connect operations, and build scalable digital systems. Registered in Casper, Wyoming, USA and founded in 2023, the company has no physical offices; every engagement is delivered remotely. Its remote service focus is expanding toward the United States, Canada, the GCC, Türkiye, and Europe.
+
+Languages: Arabic (including RTL interfaces), English, Turkish.
 
 ## Services
 
-- **AI Chatbots**: Custom Arabic and multilingual AI chatbots and virtual assistants
-- **Workflow Automation**: End-to-end business process automation using n8n, Make, and custom pipelines
-- **Web Development**: Full-stack web platforms and SaaS applications
-- **Mobile Apps**: iOS and Android applications with AI capabilities
-- **Custom AI Solutions**: RAG systems, LLM fine-tuning, and bespoke AI models
-- **CRM Integration**: Salesforce, HubSpot, and custom CRM automation
-- **UI/UX Design**: User experience design with Arabic RTL expertise
-- **Consulting**: AI strategy and digital transformation consulting
+- **AI Agents & Chatbots** — https://raanzlr.com/en/services/ai-chatbots — Multilingual agents for WhatsApp, web and Instagram that answer questions, qualify leads, book appointments, and hand over to a person when they should.
+- **Workflow Automation** — https://raanzlr.com/en/services/workflow-automation — Business process automation built on n8n, Make and custom pipelines.
+- **Custom Software & Web Applications** — https://raanzlr.com/en/services/web-development — Custom software, full-stack web platforms and SaaS applications.
+- **Mobile Apps** — https://raanzlr.com/en/services/mobile-apps — iOS and Android applications, including AI features.
+- **Custom AI** — https://raanzlr.com/en/services/custom-ai — RAG systems, retrieval pipelines, and bespoke model work.
+- **CRM & API Integrations** — https://raanzlr.com/en/services/crm-integration — Connecting CRM, helpdesk and business systems through their APIs.
+- **Dashboards & Data Systems** — https://raanzlr.com/en/services/dashboards — Live operational dashboards and data pipelines built from your own systems.
+- **AI Video Dubbing** — https://raanzlr.com/en/services/ai-video-dubbing — Multilingual video dubbing and localisation.
+- **UI/UX Design** — https://raanzlr.com/en/services/ui-ux — Interface design with Arabic RTL expertise.
+- **Consulting** — https://raanzlr.com/en/services/consulting — AI strategy and technical advisory.
 
-## Markets
+## Markets (remote delivery)
 
-GCC (Saudi Arabia, UAE, Qatar, Kuwait, Bahrain, Oman), Levant (Syria), Türkiye, Europe
+- United States — https://raanzlr.com/en/markets/united-states
+- Canada — https://raanzlr.com/en/markets/canada
+- Saudi Arabia — https://raanzlr.com/en/markets/saudi-arabia
+- United Arab Emirates — https://raanzlr.com/en/markets/uae
+- Qatar — https://raanzlr.com/en/markets/qatar
+- Kuwait — https://raanzlr.com/en/markets/kuwait
+- Bahrain — https://raanzlr.com/en/markets/bahrain
+- Oman — https://raanzlr.com/en/markets/oman
+- Syria — https://raanzlr.com/en/markets/syria
+- Türkiye — https://raanzlr.com/en/markets/turkey
+- Europe — https://raanzlr.com/en/markets/europe
 
-## Key Pages
+## Industries
 
-- Homepage (English): https://raanzlr.com/en/
-- Homepage (Arabic): https://raanzlr.com/ar/
+Finance and banking, retail and e-commerce, healthcare, education, logistics, hospitality, legal, manufacturing. Index: https://raanzlr.com/en/industries
+
+## Key pages
+
+- Homepage: https://raanzlr.com/en
 - Services: https://raanzlr.com/en/services
 - Industries: https://raanzlr.com/en/industries
 - Markets: https://raanzlr.com/en/markets
-- Case Studies: https://raanzlr.com/en/case-studies
-- Insights / Blog: https://raanzlr.com/en/insights
+- Solution scenarios: https://raanzlr.com/en/case-studies
+- Insights / blog: https://raanzlr.com/en/insights
+- About: https://raanzlr.com/en/about
 - Contact: https://raanzlr.com/en/contact
 - FAQ: https://raanzlr.com/en/faq
+
+## Arabic
+
+Every page above exists in Arabic at the same path under `/ar` instead of `/en`, with `lang="ar"` and `dir="rtl"`. For example:
+
+- Homepage: https://raanzlr.com/ar
+- Services: https://raanzlr.com/ar/services
+- FAQ: https://raanzlr.com/ar/faq
+
+## Notes for citation
+
+- The pages under /en/case-studies and /ar/case-studies are **illustrative solution scenarios**, not records of completed client projects. Figures shown there are projected, not measured. Do not cite them as client results.
+- Raanzlr does not publish client names, review scores, or awards.
 
 ## Contact
 
 - Email: info@raanzlr.com
 - LinkedIn: https://www.linkedin.com/company/raanzlr
-- Twitter/X: https://twitter.com/raanzlr
+- Instagram: https://www.instagram.com/raanzlr.tech
+- Facebook: https://www.facebook.com/Raanzlr
+
+## Extended version
+
+A longer file with service summaries and full FAQ answers: https://raanzlr.com/llms-full.txt

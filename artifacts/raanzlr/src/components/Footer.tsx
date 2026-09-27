@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Mail, MapPin } from "lucide-react";
 import { useLang } from "../contexts/LanguageContext";
+import { trackCta, trackEmailClick, trackSocialClick } from "../lib/analytics";
 import Heartbeat from "./Heartbeat";
 import ParticlesHero from "./ParticlesHero";
 
@@ -11,7 +12,7 @@ const LINKS = {
     { href: "/", en: "Home", ar: "الرئيسية" },
     { href: "/services", en: "Services", ar: "الخدمات" },
     { href: "/about", en: "About Us", ar: "من نحن" },
-    { href: "/case-studies", en: "Case Studies", ar: "دراسات الحالة" },
+    { href: "/case-studies", en: "Solution Scenarios", ar: "سيناريوهات الحلول" },
     { href: "/insights", en: "Insights", ar: "المدونة" },
   ],
   resources: [
@@ -27,7 +28,7 @@ const LINKS = {
 };
 
 export default function Footer() {
-  const { t, isAr, localizedPath } = useLang();
+  const { t, isAr, lang, localizedPath } = useLang();
 
   return (
     <footer className="relative border-t border-foreground/8 mt-8 overflow-hidden">
@@ -57,7 +58,7 @@ export default function Footer() {
               <Heartbeat className="w-32 h-7 opacity-70" />
             </div>
             <div className="mt-5 space-y-2">
-              <a href="mailto:info@raanzlr.com" className="flex items-center gap-2 text-xs text-foreground/45 hover:text-cyan-300 transition-colors">
+              <a href="mailto:info@raanzlr.com" onClick={() => trackEmailClick("footer", lang)} className="flex items-center gap-2 text-xs text-foreground/45 hover:text-cyan-300 transition-colors">
                 <Mail className="h-3.5 w-3.5 text-cyan-400" />
                 info@raanzlr.com
               </a>
@@ -70,6 +71,7 @@ export default function Footer() {
             <div className="mt-5 flex items-center gap-3">
               <a
                 href="https://www.facebook.com/Raanzlr"
+                onClick={() => trackSocialClick("facebook", lang)}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Facebook"
@@ -81,6 +83,7 @@ export default function Footer() {
               </a>
               <a
                 href="https://www.instagram.com/raanzlr.tech"
+                onClick={() => trackSocialClick("instagram", lang)}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
@@ -92,6 +95,7 @@ export default function Footer() {
               </a>
               <a
                 href="https://www.linkedin.com/company/raanzlr"
+                onClick={() => trackSocialClick("linkedin", lang)}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
@@ -153,6 +157,7 @@ export default function Footer() {
             <div className="mt-8">
               <Link
                 to={localizedPath("/contact")}
+                onClick={() => trackCta(isAr ? "تواصل معنا" : "Contact Us", "footer_cta")}
                 className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 px-4 py-2.5 text-sm font-bold text-[#050505] shadow-[0_0_20px_rgba(0,240,255,0.3)]"
               >
                 {isAr ? "تواصل معنا" : "Contact Us"}

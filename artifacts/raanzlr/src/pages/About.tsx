@@ -11,7 +11,10 @@ import SEO from "../components/SEO";
 const VALUE_ICONS = [Rocket, ShieldCheck, Headphones];
 
 // Shown only on this page — Contact and Footer keep t.about.address unchanged.
-const ABOUT_ENTITY_NAME = "WAFA INTERNATIONAL";
+// Raanzlr is the registered entity; the page name, the footer and schema.org
+// `legalName` all say the same thing, so a parser resolves one organisation
+// rather than two competing ones at the same address.
+const ABOUT_ENTITY_NAME = "Raanzlr";
 const ABOUT_ADDRESS_LINE1 = "4030 Plaza Dr #3 #15 (10030)";
 const ABOUT_ADDRESS_LINE2 = "Casper, WY 82604";
 
@@ -25,7 +28,7 @@ export default function About() {
 
   return (
     <div className="relative">
-      <SEO pageKey="about" path="/about" />
+      <SEO pageKey="about" path="/about" pageType="AboutPage" />
 
       <section ref={heroRef} className="relative min-h-[100vh] overflow-hidden flex items-center">
         <motion.div style={{ y: bgY }} className="absolute inset-0">

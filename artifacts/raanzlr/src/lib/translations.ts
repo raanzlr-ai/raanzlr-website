@@ -1,6 +1,26 @@
 export const BRAND = "Raanzlr";
 export const CONTACT_EMAIL = "info@raanzlr.com";
 
+/**
+ * Widens the literal types `as const` produces back to `string`.
+ *
+ * `en` is declared `as const` so nested objects keep their shape, but that also
+ * pins every value to its own literal type. Typing the Arabic dictionary as
+ * `typeof en` then demands that each Arabic string be *identical* to the
+ * English one — which produced ~200 type errors and made the whole file
+ * unusable for type checking. Widening keeps the structural guarantee (same
+ * keys, same nesting) and drops the value-identity nonsense.
+ */
+type Widen<T> = T extends string
+  ? string
+  : T extends number
+    ? number
+    : T extends boolean
+      ? boolean
+      : T extends readonly (infer U)[]
+        ? readonly Widen<U>[]
+        : { readonly [K in keyof T]: Widen<T[K]> };
+
 const en = {
   nav: { home: "Home", services: "Services", about: "About Us", contact: "Contact" },
   cta: {
@@ -41,6 +61,25 @@ const en = {
     eyebrow: "OUR EXPERTISE",
     title: "Software that fits your operation, not the other way around.",
     sub: "We ship practical systems for sales, support, ops, and product teams — WhatsApp AI agents, automation, web platforms, mobile apps.",
+    intro:
+      "Raanzlr builds and ships software. Ten service lines, grouped below by the kind of problem they solve. Every engagement is delivered remotely, in Arabic and English, and starts with a free discovery call rather than a proposal.",
+    groups: {
+      agents: {
+        title: "AI Agents & Automation",
+        intro:
+          "For work that is repetitive, high volume, or currently handled by a person copying data between systems. These are the engagements that remove hours rather than add a screen.",
+      },
+      software: {
+        title: "Custom Software & Interfaces",
+        intro:
+          "For when an off-the-shelf product does not fit how you actually operate. Web platforms, mobile apps, and the interface design that makes them usable in Arabic and English alike.",
+      },
+      connect: {
+        title: "Integration, Content & Advisory",
+        intro:
+          "For connecting what you already run, localising what you already publish, and deciding what to build before anyone writes code.",
+      },
+    },
     highDemand: "HIGH DEMAND",
     standard: "AVAILABLE",
     hoverHint: "Auto-rotating preview",
@@ -88,8 +127,8 @@ const en = {
       },
       {
         key: "web-development", tier: "high",
-        title: "Web Platforms & Apps",
-        desc: "Marketing sites, SaaS dashboards, portals, and e-commerce experiences built for speed, conversion, and maintenance.",
+        title: "Custom Software & Web Applications",
+        desc: "Custom software, web applications, portals, and marketing sites built for speed, conversion, and maintenance.",
         long: "We build accessible, SEO-ready web experiences with modern frameworks and clean architecture. Landing pages, multilingual corporate sites, customer portals, storefronts, multi-tenant SaaS products — all with strong RTL support.",
         helps: [
           "More visitors become qualified leads",
@@ -127,7 +166,7 @@ const en = {
       },
       {
         key: "crm-integration", tier: "standard",
-        title: "API & Systems Integration",
+        title: "CRM & API Integrations",
         desc: "Connect CRMs, ERPs, databases, dashboards, and internal tools with clean APIs and observable data pipelines.",
         long: "We build reliable bridges between HubSpot, Salesforce, Zoho, Odoo, custom databases, and legacy systems. Single source of truth, clear logs, automated retries, and documentation your team can use.",
         helps: [
@@ -152,6 +191,19 @@ const en = {
         image: "/services/ui-ux.webp",
       },
       {
+        key: "dashboards", tier: "standard",
+        title: "Dashboards & Data Systems",
+        desc: "Live operational dashboards and data pipelines that bring sales, operations, and finance numbers into one place, built from your own systems.",
+        long: "We define the KPIs with your team, then build data pipelines from your CRM, ERP, spreadsheets, and databases into dashboards that work in Arabic and English with RTL layouts, role-based access, and alerts.",
+        helps: [
+          "Numbers that update themselves instead of weekly spreadsheet assembly",
+          "One agreed definition for every KPI",
+          "Exceptions flagged early by alerts",
+          "The same data in Arabic and English, in the right direction",
+        ],
+        image: "/services/dashboards.webp",
+      },
+      {
         key: "consulting", tier: "standard",
         title: "Technical Audits & Consulting",
         desc: "A clear technical review of your stack, automation opportunities, security risks, performance gaps, and what to do next.",
@@ -169,7 +221,7 @@ const en = {
   about: {
     eyebrow: "ABOUT RAANZLR",
     title: "We build AI solutions and software that help companies work more efficiently.",
-    sub: "At Raanzlr, we focus on developing AI-based solutions, process automation, and custom software tailored to each company's needs. Our goal is to build practical, scalable, and user-friendly systems that help our clients improve performance, simplify operations, and support their business growth.",
+    sub: "At Raanzlr, we focus on developing AI-based solutions, process automation, and custom software tailored to each company's needs. Our goal is to build practical, scalable, and user-friendly systems that help teams improve performance, simplify operations, and support business growth.",
     principlesLabel: "// How we work",
     principlesTitle: "How we work",
     values: [
@@ -177,11 +229,11 @@ const en = {
       { title: "Quality from the start", desc: "We care about building stable and scalable solutions, with attention to code quality, testing, performance, and documentation, so that systems are ready for actual use and able to keep pace with business growth." },
       { title: "Solutions designed to fit your work nature", desc: "We don't rely on ready-made templates or one-size-fits-all solutions, but we start by understanding the project goals and workflow, then design the technical solution in line with the organization's current needs and future plans." },
     ],
-    hq: "HEADQUARTERS",
-    hqLabel: "// headquarters",
+    hq: "REGISTERED OFFICE",
+    hqLabel: "// registered office",
     address: "4030 Plaza Dr #3 #15 (10030), Casper, WY 82604",
-    hqTitle: "We work with companies from our headquarters in the United States.",
-    hqDesc: "Raanzlr is headquartered in Casper, Wyoming, United States, and we work with companies in various markets through a flexible collaboration model that combines remote meetings, continuous communication, and professional project management, ensuring a smooth work experience regardless of geographic location.",
+    hqTitle: "Raanzlr is a US-registered company, working remotely.",
+    hqDesc: "Raanzlr is registered in Casper, Wyoming, United States. Every engagement is delivered remotely — through online discovery, planning, development, launch, and support — with meetings scheduled to overlap the client's working hours.",
   },
   contact: {
     eyebrow: "LET'S COLLABORATE",
@@ -231,18 +283,18 @@ const en = {
   isAr: false,
   seo: {
     home: {
-      title: "Raanzlr — AI Automation & Software Engineering Services",
-      description: "Raanzlr builds practical AI agents, workflow automation services, web platforms, and mobile apps that grow your business — bilingual Arabic and English for the GCC, MENA, Türkiye, Europe, and the U.S.",
+      title: "Raanzlr — AI Automation & Custom Software Company",
+      description: "Raanzlr builds AI agents, workflow automation, dashboards, and custom software — delivered remotely, in English and Arabic. Focused on the US, Canada, GCC, Türkiye, and Europe.",
       keywords: "AI automation agency, Arabic AI chatbot, workflow automation, custom AI development, web application development, mobile app development, software engineering GCC, AI agency MENA, Raanzlr, Ranzlr, Raanzler, Ranzler, Raanzelr, راانزلر, رانزلر",
     },
     services: {
-      title: "AI Automation, Chatbots, Web & Mobile App Services · Raanzlr",
-      description: "Explore Raanzlr services: AI agents, Arabic chatbots, workflow automation, web platforms, mobile apps, API integrations, UX design, and technical consulting.",
+      title: "AI Automation & Custom Software Services — Raanzlr",
+      description: "AI agents, workflow automation, custom software, web apps, dashboards, and API integrations — remote services for businesses targeting operational efficiency.",
       keywords: "AI chatbot development, workflow automation n8n, web development agency, mobile app development, API integration, UI UX design, technical consulting MENA",
     },
     about: {
-      title: "About Raanzlr — AI Engineering Studio for the Modern Enterprise",
-      description: "Meet the team behind Raanzlr — specialized software engineers, AI researchers, and product designers building production-grade technology for MENA, Europe, and global markets.",
+      title: "About Raanzlr — AI Automation & Custom Software Company",
+      description: "Raanzlr is a Wyoming-registered software company, founded 2023. How it scopes and builds AI automation and custom software — every engagement delivered remotely.",
       keywords: "Raanzlr team, software engineering studio, AI development company, MENA tech agency, multilingual software development",
     },
     contact: {
@@ -256,18 +308,18 @@ const en = {
       keywords: "AI automation blog, Arabic NLP, RAG systems, WhatsApp Business API, workflow automation ROI, SaaS development GCC",
     },
     caseStudies: {
-      title: "AI Automation Case Studies for GCC, MENA & Türkiye — Raanzlr",
-      description: "See how Raanzlr designs AI agents, automation systems, dashboards, and multilingual software for real business workflows.",
+      title: "AI & Automation Solution Scenarios — Raanzlr",
+      description: "Illustrative scenarios showing how Raanzlr approaches AI agents, workflow automation, dashboards and bilingual software. Projected outcomes, not client results.",
       keywords: "AI automation case studies, GCC software projects, WhatsApp AI agent case study, CRM automation, RAG case study Arabic",
     },
     industries: {
-      title: "AI Automation by Industry — Finance, Retail, Healthcare & More · Raanzlr",
-      description: "AI agents, automation, and software solutions for finance, retail, healthcare, education, logistics, hospitality, legal, and manufacturing teams.",
+      title: "AI Automation by Industry · Raanzlr",
+      description: "AI agents, automation, and custom software for finance, retail, healthcare, education, logistics, hospitality, legal, and manufacturing teams — delivered remotely.",
       keywords: "AI for finance, AI for retail, healthcare automation, EdTech AI, logistics automation, legal AI, manufacturing AI",
     },
     markets: {
-      title: "AI & Software Engineering for GCC, MENA, Türkiye & Europe · Raanzlr",
-      description: "Raanzlr serves teams in Saudi Arabia, UAE, Kuwait, Qatar, Bahrain, Oman, Türkiye, Europe, and the U.S. with bilingual AI and software delivery.",
+      title: "AI Automation & Custom Software by Market — Raanzlr",
+      description: "Raanzlr offers remote AI automation and custom software services, with a focus on the United States, Canada, the GCC, Türkiye, and Europe.",
       keywords: "AI agency Saudi Arabia, AI agency UAE, software engineering GCC, AI development Türkiye, MENA automation company",
     },
     faq: {
@@ -288,7 +340,7 @@ const en = {
   },
 } as const;
 
-const ar: typeof en = {
+const ar: Translations = {
   nav: { home: "الرئيسية", services: "الخدمات", about: "من نحن", contact: "تواصل" },
   cta: {
     getStarted: "ابدأ مشروعك",
@@ -328,6 +380,25 @@ const ar: typeof en = {
     eyebrow: "خبراتنا",
     title: "حلول تقنية مصممة لتبسيط أعمالك وتسريع نموها",
     sub: "نطوّر حلول ذكاء اصطناعي، أنظمة أتمتة، منصات ويب، وتطبيقات مخصصة تساعد الشركات على تحسين الكفاءة، تقليل الأعمال اليدوية، وتقديم تجربة أفضل لعملائها.",
+    intro:
+      "Raanzlr تبني البرمجيات وتسلّمها. عشرة خطوط خدمة، مجمّعة أدناه حسب نوع المشكلة التي تعالجها. كل مشروع يُنفَّذ عن بُعد، بالعربية والإنجليزية، ويبدأ بمكالمة اكتشاف مجانية لا بعرض سعر.",
+    groups: {
+      agents: {
+        title: "وكلاء الذكاء الاصطناعي والأتمتة",
+        intro:
+          "للأعمال المتكررة وكبيرة الحجم، أو التي ينفذها شخص حالياً بنسخ البيانات بين الأنظمة. هذه هي المشاريع التي تزيل ساعات عمل بدل أن تضيف شاشة جديدة.",
+      },
+      software: {
+        title: "البرمجيات المخصصة والواجهات",
+        intro:
+          "عندما لا يناسبكم منتج جاهز لطريقة عملكم الفعلية. منصات ويب، وتطبيقات جوال، وتصميم الواجهات الذي يجعلها قابلة للاستخدام بالعربية والإنجليزية معاً.",
+      },
+      connect: {
+        title: "الربط والمحتوى والاستشارات",
+        intro:
+          "لربط الأنظمة التي تشغّلونها اليوم، وتوطين المحتوى الذي تنشرونه، وتحديد ما يجب بناؤه قبل أن يكتب أحد أي شيفرة.",
+      },
+    },
     highDemand: "الأكثر طلباً",
     standard: "متاح",
     hoverHint: "معاينة تلقائية",
@@ -365,7 +436,7 @@ const ar: typeof en = {
       },
       {
         key: "web-development", tier: "high",
-        title: "تطوير المواقع ومنصات الويب",
+        title: "تطوير البرمجيات المخصصة وتطبيقات الويب",
         desc: "نبني مواقع احترافية، منصات SaaS، لوحات تحكم، وبوابات عملاء تجمع بين الأداء العالي، سهولة الاستخدام، وقابلية التوسع.",
         long: "نبني تجارب ويب سريعة وسهلة الوصول وجاهزة لمحركات البحث، بأطر حديثة: صفحات هبوط، مواقع متعددة اللغات، بوابات عملاء، متاجر، ومنتجات سحابية، جميعها بدعم قوي للكتابة من اليمين.",
         helps: ["تحويل عدد أكبر من الزوار إلى عملاء مؤهلين", "تحسين الأداء وقابلية الفهرسة", "بنية منظمة أسهل في الصيانة", "إطلاق صفحات متعددة اللغات بدعم عربي صحيح"],
@@ -389,7 +460,7 @@ const ar: typeof en = {
       },
       {
         key: "crm-integration", tier: "standard",
-        title: "ربط الأنظمة وتكامل الواجهات البرمجية",
+        title: "تكامل أنظمة CRM والواجهات البرمجية",
         desc: "نوحّد أنظمتك المختلفة من خلال تكاملات مستقرة وآمنة بين أدوات إدارة العملاء، أنظمة ERP، قواعد البيانات، والتطبيقات الداخلية.",
         long: "نبني جسوراً موثوقة بين أنظمتك المختلفة وقواعد بياناتك المخصصة وأنظمتك القديمة: مصدر حقيقة واحد، سجلات واضحة، إعادة محاولة تلقائية، وتوثيق يستطيع فريقك استخدامه فعلاً.",
         helps: ["إنشاء مصدر حقيقة واحد لجميع بيانات المؤسسة", "إزالة صوامع البيانات وعمليات المزامنة اليدوية", "الاعتماد على خطوط بيانات مرنة مع تتبع شامل للأخطاء", "تسريع تأهيل المطورين بتوثيق واضح"],
@@ -402,6 +473,14 @@ const ar: typeof en = {
         long: "نصمم رحلات المستخدم والنماذج الأولية وأنظمة التصميم والواجهات المصقولة بالتوازي مع التطوير. نبني على مهام حقيقية وسهولة وصول وتحويل، لا على الزخرفة.",
         helps: ["تحسين معدلات التحويل عبر جميع نقاط التفاعل", "تقليل الاحتكاك والتسرب في التدفقات الرئيسية", "الحفاظ على هوية بصرية موحدة عبر جميع الممتلكات الرقمية", "تسريع دورات التطوير عبر مكتبات المكونات"],
         image: "/services/ui-ux.webp",
+      },
+      {
+        key: "dashboards", tier: "standard",
+        title: "لوحات المعلومات وأنظمة البيانات",
+        desc: "لوحات تشغيلية حيّة وخطوط بيانات تجمع أرقام المبيعات والعمليات والمالية في مكان واحد، مبنية من أنظمتكم الفعلية.",
+        long: "نصمّم مؤشرات الأداء مع فريقكم، ثم نبني خطوط بيانات تسحب من نظام إدارة العملاء وأنظمة ERP وجداول البيانات وقواعد البيانات، ونعرضها في لوحات تدعم العربية والإنجليزية والكتابة من اليمين، مع صلاحيات وصول وتنبيهات.",
+        helps: ["استبدال تجميع التقارير اليدوي بأرقام تتحدّث تلقائياً", "تعريف واحد متفق عليه لكل مؤشر", "اكتشاف الاستثناءات مبكراً عبر التنبيهات", "عرض البيانات بالعربية والإنجليزية بالاتجاه الصحيح"],
+        image: "/services/dashboards.webp",
       },
       {
         key: "consulting", tier: "standard",
@@ -419,18 +498,16 @@ const ar: typeof en = {
     sub: "نطوّر حلول الذكاء الاصطناعي، وأتمتة الأعمال، والبرمجيات المخصصة للشركات التي تبحث عن أنظمة عملية، قابلة للتوسع، ومصممة للاستخدام اليومي.",
     principlesLabel: "// كيف نعمل",
     principlesTitle: "كيف نعمل",
-    principlesSub: "طريقة عملنا تقوم على الوضوح، الجودة، والشراكة الحقيقية مع عملائنا منذ بداية المشروع وحتى ما بعد الإطلاق.",
     values: [
       { title: "تواصل مباشر وشفاف", desc: "نؤمن بأن نجاح أي مشروع يبدأ بالتواصل الواضح. لذلك نحرص على أن يكون التواصل مباشراً مع الفريق المسؤول عن تنفيذ المشروع، لضمان سرعة اتخاذ القرار، وفهم المتطلبات بدقة، ومواكبة جميع مراحل التطوير." },
       { title: "الجودة منذ البداية", desc: "نهتم ببناء حلول مستقرة وقابلة للتطوير، مع الاهتمام بجودة الكود، والاختبارات، والأداء، والتوثيق، حتى تكون الأنظمة جاهزة للاستخدام الفعلي وقادرة على مواكبة نمو الأعمال." },
       { title: "حلول مصممة لتناسب طبيعة عملك", desc: "لا نعتمد على قوالب جاهزة أو حلول موحدة للجميع، بل نبدأ بفهم أهداف المشروع وآلية العمل، ثم نصمم الحل التقني بما يتوافق مع احتياجات المؤسسة الحالية وخططها المستقبلية." },
     ],
-    hq: "المقر الرئيسي",
-    hqLabel: "// المقر الرئيسي",
+    hq: "المكتب المسجّل",
+    hqLabel: "// المكتب المسجّل",
     address: "4030 Plaza Dr #3 #15 (10030), Casper, WY 82604",
-    hqTitle: "نعمل مع الشركات من مقرنا في الولايات المتحدة",
-    hqDesc: "يقع مقر Raanzlr في كاسبر بولاية وايومنغ الأمريكية، ونعمل مع الشركات في مختلف الأسواق من خلال نموذج تعاون مرن يجمع بين الاجتماعات عن بُعد، والتواصل المستمر، وإدارة المشاريع باحترافية، بما يضمن تجربة عمل سلسة بغض النظر عن الموقع الجغرافي.",
-    hqImageTagline: "عمليات عالمية • فرق موزعة • تعاون بدون حدود",
+    hqTitle: "راانزلر شركة مسجّلة في الولايات المتحدة، وتعمل عن بُعد",
+    hqDesc: "راانزلر مسجّلة في كاسبر بولاية وايومنغ الأمريكية. يُنفَّذ كل مشروع عن بُعد — عبر الاكتشاف والتخطيط والتطوير والإطلاق والدعم على الإنترنت — مع جدولة الاجتماعات بما يتوافق مع ساعات عمل العميل.",
   },
   contact: {
     eyebrow: "لنتعاون",
@@ -480,18 +557,18 @@ const ar: typeof en = {
   isAr: true,
   seo: {
     home: {
-      title: "راانزلر Raanzlr | أتمتة بالذكاء الاصطناعي ومواقع وتطبيقات",
-      description: "راانزلر (Raanzlr) تبني وكلاء ذكاء اصطناعي، أتمتة أعمال، منصات ويب، وتطبيقات جوال للفرق في الخليج والشرق الأوسط وتركيا وأوروبا والولايات المتحدة.",
+      title: "راانزلر Raanzlr | شركة أتمتة ذكاء اصطناعي وبرمجيات مخصصة",
+      description: "راانزلر (Raanzlr) تبني وكلاء ذكاء اصطناعي وأتمتة عمليات ولوحات بيانات وبرمجيات مخصصة، تُنفَّذ عن بُعد. تركيزها على الولايات المتحدة وكندا والخليج وتركيا وأوروبا.",
       keywords: "أتمتة بالذكاء الاصطناعي، روبوت واتساب عربي، تطوير ذكاء اصطناعي مخصص، تطوير مواقع، تطوير تطبيقات جوال، شركة برمجة في الخليج، رانزلر، راانزلر، رعنزلر، رعانزلر، رانزلير، راانزلير، Raanzlr، Ranzlr",
     },
     services: {
       title: "خدمات الذكاء الاصطناعي والأتمتة وتطوير المواقع والتطبيقات · Raanzlr",
-      description: "استكشف خدمات Raanzlr: وكلاء ذكاء اصطناعي، روبوتات عربية، أتمتة سير العمل، تطوير مواقع وتطبيقات، ربط أنظمة، تصميم UX، واستشارات تقنية.",
+      description: "وكلاء ذكاء اصطناعي، وأتمتة سير العمل، وبرمجيات مخصصة، وتطبيقات ويب، ولوحات بيانات، وتكاملات API — خدمات عن بُعد للشركات التي تستهدف كفاءة التشغيل.",
       keywords: "خدمات ذكاء اصطناعي، تطوير روبوت واتساب، أتمتة n8n، شركة تطوير ويب، تطوير تطبيقات iOS و Android",
     },
     about: {
       title: "عن راانزلر Raanzlr | استوديو هندسي لبرمجيات عصر الذكاء الاصطناعي",
-      description: "راانزلر فريق من المهندسين وخبراء الذكاء الاصطناعي نساعد الشركات على التحول الرقمي وبناء منتجات تقنية مستقرة وقابلة للتوسع.",
+      description: "راانزلر شركة برمجيات مسجّلة في وايومنغ، تأسست 2023. كيف تحدّد نطاق حلول أتمتة الذكاء الاصطناعي والبرمجيات المخصصة وتبنيها — وكل مشروع يُنفَّذ عن بُعد.",
       keywords: "فريق راانزلر، من هي راانزلر، شركة رانزلر، Raanzlr، شركة هندسة برمجيات، فريق ذكاء اصطناعي الشرق الأوسط، وكالة تقنية تركيا",
     },
     contact: {
@@ -505,18 +582,18 @@ const ar: typeof en = {
       keywords: "مدونة ذكاء اصطناعي، معالجة اللغة العربية، أنظمة RAG، واتساب بزنس API، عائد أتمتة الأعمال",
     },
     caseStudies: {
-      title: "دراسات حالة في الذكاء الاصطناعي والأتمتة | Raanzlr",
-      description: "اطلع على كيفية بناء Raanzlr لوكلاء ذكاء اصطناعي، أنظمة أتمتة، لوحات تحكم، وبرمجيات متعددة اللغات لعمليات أعمال حقيقية.",
+      title: "سيناريوهات حلول الذكاء الاصطناعي والأتمتة | Raanzlr",
+      description: "سيناريوهات توضيحية تبيّن كيف تعالج Raanzlr وكلاء الذكاء الاصطناعي وأتمتة العمليات ولوحات التحكم والبرمجيات ثنائية اللغة. نتائج متوقعة وليست نتائج عملاء.",
       keywords: "دراسات حالة ذكاء اصطناعي، أتمتة الخليج، روبوت واتساب، أتمتة CRM، نظام RAG عربي",
     },
     industries: {
       title: "حلول ذكاء اصطناعي وأتمتة حسب القطاع · Raanzlr",
-      description: "حلول ذكاء اصطناعي وأتمتة وبرمجيات للمالية، التجزئة، الصحة، التعليم، اللوجستيات، الضيافة، القانون، والتصنيع.",
+      description: "حلول ذكاء اصطناعي وأتمتة وبرمجيات مخصصة للمالية والتجزئة والصحة والتعليم واللوجستيات والضيافة والقانون والتصنيع — تُنفَّذ عن بُعد.",
       keywords: "ذكاء اصطناعي للمالية، أتمتة التجزئة، أتمتة الرعاية الصحية، ذكاء اصطناعي للتعليم، أتمتة اللوجستيات",
     },
     markets: {
-      title: "هندسة ذكاء اصطناعي وبرمجيات للخليج والشرق الأوسط وتركيا وأوروبا · Raanzlr",
-      description: "تخدم Raanzlr فرقاً في السعودية والإمارات والكويت وقطر والبحرين وعُمان وتركيا وأوروبا والولايات المتحدة بحلول ثنائية اللغة.",
+      title: "أتمتة ذكاء اصطناعي وبرمجيات مخصصة حسب السوق — Raanzlr",
+      description: "تقدّم راانزلر خدمات أتمتة الذكاء الاصطناعي والبرمجيات المخصصة عن بُعد، مع تركيز على الولايات المتحدة وكندا والخليج وتركيا وأوروبا.",
       keywords: "شركة ذكاء اصطناعي السعودية، شركة ذكاء اصطناعي الإمارات، تطوير برمجيات الخليج، أتمتة الشرق الأوسط",
     },
     faq: {
@@ -538,4 +615,5 @@ const ar: typeof en = {
 } as const;
 
 export const translations = { en, ar };
-export type Translations = typeof en;
+
+export type Translations = Widen<typeof en>;

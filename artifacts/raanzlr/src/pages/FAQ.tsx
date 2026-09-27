@@ -42,7 +42,7 @@ export default function FAQ() {
     support: { title: "الدعم والتواصل", questions: [
       { q: "كيف يمكنني التواصل معكم؟", a: "يمكنك التواصل عبر نموذج الاتصال في الموقع أو مراسلتنا على info@raanzlr.com، وسنرد خلال يوم عمل واحد في معظم الحالات." },
       { q: "هل تقدمون استشارة أولية مجانية؟", a: "نعم. نوفر جلسة تعريفية أولية لفهم احتياجاتك، مناقشة التحديات التي تواجهها، واقتراح أفضل نقطة للبدء دون أي التزام." },
-      { q: "في أي مناطق زمنية تعملون؟", a: "مقرنا الرئيسي في كاسبر بولاية وايومنغ الأمريكية، ولدينا فرق تعمل عبر الشرق الأوسط وأوروبا، مما يتيح لنا تقديم الدعم والاجتماعات بما يناسب معظم المناطق الزمنية لعملائنا." },
+      { q: "في أي مناطق زمنية تعملون؟", a: "تعمل راانزلر عن بُعد عبر مناطق العملاء الزمنية، وتغطّي عن بُعد مراحل الاكتشاف والتخطيط والتطوير والإطلاق والدعم المستمر. تُجدوَل المكالمات بما يتوافق مع ساعات عملكم." },
       { q: "ما اللغات التي يمكن التواصل بها؟", a: "ندعم التواصل بالعربية والإنجليزية والتركية، سواء في الاجتماعات أو الوثائق أو أثناء تنفيذ المشروع." },
       { q: "هل تقدمون دعماً مستمراً بعد التسليم؟", a: "نعم. نوفر باقات دعم وصيانة مرنة تشمل المراقبة، التحديثات، التحسينات، والتطوير المستمر، ويمكن اختيار الباقة المناسبة بحسب طبيعة النظام واحتياجاته." },
       { q: "هل يمكن البدء بمشروع صغير ثم التوسع لاحقاً؟", a: "بالتأكيد، وهذا هو النهج الذي نوصي به في كثير من الحالات. نبدأ بحل مشكلة واضحة تحقق قيمة مباشرة، ثم نبني عليها تدريجياً وفق النتائج واحتياجات العمل، مما يساعد على تقليل المخاطر وتحقيق أفضل عائد على الاستثمار." },
@@ -75,7 +75,7 @@ export default function FAQ() {
     support: { title: "Support & Communication", questions: [
       { q: "How can I get in touch to start a project?", a: "You can reach us through the contact form on our website, or email us directly at info@raanzlr.com. One of our engineers will respond within 24 business hours." },
       { q: "Do you offer free consultations?", a: "Yes! We offer a free initial consultation (30-45 minutes) to understand your needs, discuss possible solutions, and provide a preliminary cost and timeline estimate." },
-      { q: "What time zones do you operate in?", a: "Our headquarters is in Casper, Wyoming, USA (MST/MDT), and we have distributed teams in the Middle East (GST/AST) and Europe (CET/EET)." },
+      { q: "What time zones do you operate in?", a: "Raanzlr works remotely across client time zones and supports remote discovery, planning, development, launch, and ongoing support. Calls are scheduled to overlap your working hours." },
       { q: "What languages do you support for communication?", a: "We are fluent in Arabic, English, and Turkish. All our meetings, documentation, and support are available in your preferred language." },
       { q: "Do you offer ongoing retainer or support after launch?", a: "Yes — we offer monthly maintenance and support retainers ranging from basic uptime monitoring to active development capacity. Most clients keep a small retainer running after launch for peace of mind. The exact scope depends on what you've built and how actively it needs to evolve." },
       { q: "Can we start small and expand the project later?", a: "That's actually how we prefer to work. Start with one well-scoped problem, build something that works, measure the result, then decide what to expand. The teams that get the best outcomes are the ones who resist the urge to build everything at once. We'll push back if we think you're overreaching." },

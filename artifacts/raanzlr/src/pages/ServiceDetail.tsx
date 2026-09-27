@@ -2,6 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { Link, Navigate } from "../components/LocalizedLink";
 import { getServiceDetail } from "../lib/serviceDetails";
+import { getServiceFaqs } from "../data/serviceFaqs";
 import { motion } from "framer-motion";
 import {
   ArrowLeft,
@@ -12,13 +13,13 @@ import {
   Smartphone,
   Sparkles,
   PlugZap,
+  LayoutDashboard,
   PenTool,
   ShieldCheck,
   CheckCircle2,
   Layers,
   Building2,
   Users,
-  BarChart3,
   GitCompareArrows,
   Cpu,
   Check,
@@ -30,7 +31,6 @@ import { Reveal, Stagger, StaggerItem } from "../components/Reveal";
 import PulseDivider from "../components/PulseDivider";
 import MagneticButton from "../components/MagneticButton";
 import SEO from "../components/SEO";
-import ServiceChart from "../components/ServiceChart";
 import { getServiceRich } from "../data/servicesRich";
 
 const icons: Record<string, React.ElementType> = {
@@ -40,6 +40,7 @@ const icons: Record<string, React.ElementType> = {
   "mobile-apps": Smartphone,
   "custom-ai": Sparkles,
   "crm-integration": PlugZap,
+  "dashboards": LayoutDashboard,
   "ui-ux": PenTool,
   consulting: ShieldCheck,
 };
@@ -69,7 +70,7 @@ export default function ServiceDetail() {
     "serviceType": enSvc?.title ?? service.title,
     "description": service.desc,
     "provider": { "@id": "https://raanzlr.com/#organization" },
-    "areaServed": ["SA", "AE", "QA", "KW", "BH", "OM", "SY", "TR", "EU", "US"],
+    "areaServed": ["US", "CA", "SA", "AE", "QA", "KW", "BH", "OM", "SY", "TR", "EU"],
     "availableLanguage": ["ar", "en", "tr"],
     "inLanguage": isAr ? "ar" : "en",
     "url": `https://raanzlr.com/${isAr ? "ar" : "en"}/services/${service.key}`,
@@ -87,11 +88,12 @@ export default function ServiceDetail() {
       : {}),
   };
 
-  // Per-service Q&A. Only web-development carries entries today; any service
-  // that gains a `faq` array in src/lib/serviceDetails.ts is rendered and gets
-  // FAQPage schema automatically — no further code needed.
+  // Per-service Q&A, rendered in the page body and mirrored as FAQPage schema.
+  // web-development carries its own inside the rich detail record; the other
+  // eight services read from src/data/serviceFaqs.ts. Either source works and
+  // a service with neither simply renders no FAQ section.
   const detail = getServiceDetail(service.key, isAr);
-  const faq = detail?.faq ?? [];
+  const faq = detail?.faq?.length ? detail.faq : getServiceFaqs(service.key, isAr);
   const faqSchema = faq.length
     ? {
         "@context": "https://schema.org",
@@ -111,8 +113,6 @@ export default function ServiceDetail() {
         titleAr={`${arSvc?.title ?? service.title} — Raanzlr`}
         description={enSvc?.desc ?? service.desc}
         descriptionAr={arSvc?.desc ?? service.desc}
-        keywords={`${enSvc?.title}, AI GCC, automation MENA, software development`}
-        keywordsAr={`${arSvc?.title}، ذكاء اصطناعي الخليج، أتمتة الشرق الأوسط`}
         path={`/services/${service.key}`}
         schema={faqSchema ? [serviceSchema, faqSchema] : serviceSchema}
       />
@@ -360,28 +360,11 @@ export default function ServiceDetail() {
         </section>
       )}
 
-      {/* By the numbers — chart + comparison table */}
+      {/* Comparison table */}
       {rich && (
         <section className="relative py-12 sm:py-16">
           <div className="mx-auto max-w-6xl px-6 lg:px-8">
-            <div className="grid lg:grid-cols-2 gap-5 items-stretch">
-              {/* Chart */}
-              <Reveal>
-                <div className="h-full rounded-2xl border border-foreground/10 bg-foreground/[0.02] p-6 sm:p-7">
-                  <div className="flex items-center gap-3 mb-1">
-                    <BarChart3 className="h-5 w-5 text-cyan-300" />
-                    <p className="text-xs font-mono-accent uppercase tracking-[0.22em] text-cyan-300">
-                      {L("// By the numbers", "// بالأرقام")}
-                    </p>
-                  </div>
-                  <h3 className="font-display text-lg font-semibold text-foreground mb-5">{rich.chart.title}</h3>
-                  <ServiceChart chart={rich.chart} />
-                  <p className="mt-4 text-[11px] text-foreground/35 leading-relaxed">
-                    {L("Source:", "المصدر:")} {rich.chart.source}
-                  </p>
-                </div>
-              </Reveal>
-
+            <div className="mx-auto max-w-4xl">
               {/* Comparison table */}
               <Reveal delay={0.1}>
                 <div className="h-full rounded-2xl border border-foreground/10 bg-foreground/[0.02] p-6 sm:p-7">

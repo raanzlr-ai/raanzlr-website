@@ -2,12 +2,16 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Link, Navigate } from "../components/LocalizedLink";
 import { motion } from "framer-motion";
-import { ArrowLeft, Clock, CalendarDays, ArrowRight } from "lucide-react";
+import { ArrowLeft, Clock, CalendarDays, ArrowRight, ChevronDown } from "lucide-react";
 import { useLang } from "../contexts/LanguageContext";
 import { Reveal } from "../components/Reveal";
 import PulseDivider from "../components/PulseDivider";
 import MagneticButton from "../components/MagneticButton";
 import SEO from "../components/SEO";
+import AnswerBlock from "../components/AnswerBlock";
+import { faqPageSchema } from "../lib/pageSchema";
+import { toIsoDateTime, toIsoDateModified } from "../lib/date";
+import { relatedPosts } from "../lib/insightsPaging";
 import { POSTS } from "../data/posts";
 import { Post, PostChartSpec, fromStaticPost, fetchPost, fetchAllPosts, primedPosts } from "../lib/posts";
 import { ResponsiveContainer, BarChart, Bar, LineChart, Line, AreaChart, Area, PieChart, Pie, Cell, XAxis, YAxis, Tooltip, CartesianGrid } from "recharts";
@@ -154,8 +158,8 @@ function seedPost(slug?: string): Post | undefined {
 /** The three "read next" posts, from the same source as seedPost. */
 function seedOthers(slug?: string): Post[] {
   const fromBuild = primedPosts();
-  if (fromBuild) return fromBuild.filter((p) => p.slug !== slug).slice(0, 3);
-  return POSTS.filter((p) => p.slug !== slug).slice(0, 3).map(fromStaticPost);
+  if (fromBuild) return relatedPosts(fromBuild, slug, 3);
+  return relatedPosts(POSTS.map(fromStaticPost), slug, 3);
 }
 
 export default function InsightPost() {
@@ -188,7 +192,7 @@ export default function InsightPost() {
 
     // Also refresh "others" from full API posts list
     fetchAllPosts().then(posts => {
-      const apiOthers = posts.filter(p => p.slug !== slug).slice(0, 3);
+      const apiOthers = relatedPosts(posts, slug, 3);
       if (apiOthers.length > 0) setOthers(apiOthers);
     }).catch(() => {});
   }, [slug]);
@@ -205,6 +209,14 @@ export default function InsightPost() {
       day: "numeric",
     });
 
+  // Both optional and unset on most posts — see the Post.faq / Post.answerBlock
+  // doc comments in src/lib/posts.ts. Rendered only when present.
+  const answerBlock = isAr ? post.answerBlock?.ar : post.answerBlock?.en;
+  const faqItems = isAr ? post.faq?.ar : post.faq?.en;
+  const faqSchema = faqItems?.length
+    ? faqPageSchema(isAr ? "ar" : "en", `/insights/${post.slug}`, faqItems)
+    : null;
+
   return (
     <div className="relative">
       <SEO
@@ -212,14 +224,15 @@ export default function InsightPost() {
         titleAr={`${post.seo?.titleAr || post.title.ar} — Raanzlr`}
         description={post.seo?.descriptionEn || post.excerpt.en}
         descriptionAr={post.seo?.descriptionAr || post.excerpt.ar}
-        keywords={post.seo?.keywordsEn || `${post.tag.en}, AI insights GCC, automation blog MENA`}
-        keywordsAr={post.seo?.keywordsAr || `${post.tag.ar}، رؤى الذكاء الاصطناعي الخليج، مدونة الأتمتة`}
         path={`/insights/${post.slug}`}
         type="article"
         image={post.image}
+        schema={faqSchema ?? undefined}
         article={{
-          publishedTime: `${post.date}T00:00:00Z`,
-          modifiedTime: `${post.date}T00:00:00Z`,
+          publishedTime: toIsoDateTime(post.date),
+          // Only emitted when Supabase reports a genuine later edit; SEO.tsx
+          // omits dateModified entirely when this is undefined.
+          modifiedTime: toIsoDateModified(post.updatedAt, post.date),
           author: post.author || "Raanzlr",
           section: post.tag.en,
           tags: [post.tag.en],
@@ -297,6 +310,14 @@ export default function InsightPost() {
 
       <PulseDivider />
 
+      {answerBlock && (
+        <section className="relative pt-14 sm:pt-16">
+          <div className="mx-auto max-w-4xl px-6 lg:px-8">
+            <AnswerBlock question={answerBlock.q} answer={answerBlock.a} />
+          </div>
+        </section>
+      )}
+
       {/* Article Body */}
       <section className="relative py-16 sm:py-20">
         <div className="mx-auto max-w-4xl px-6 lg:px-8">
@@ -355,6 +376,33 @@ export default function InsightPost() {
             ))}
           </div>
 
+          {/* FAQ — only when the post defines one; mirrored as FAQPage schema above. */}
+          {faqItems && faqItems.length > 0 && (
+            <Reveal delay={0.2}>
+              <div className="mt-16">
+                <p className="text-xs font-mono-accent uppercase tracking-[0.22em] text-cyan-300/90 mb-4">
+                  {isAr ? "// أسئلة شائعة" : "// FAQ"}
+                </p>
+                <div className="space-y-4">
+                  {faqItems.map((item, i) => (
+                    <details
+                      key={i}
+                      className="group relative overflow-hidden rounded-2xl border border-foreground/10 bg-foreground/[0.02] hover:border-cyan-400/30 transition-colors"
+                    >
+                      <summary className="relative px-6 py-5 cursor-pointer list-none flex items-start justify-between gap-4">
+                        <span className="font-display text-base sm:text-lg font-semibold text-foreground pr-4">
+                          {item.q}
+                        </span>
+                        <ChevronDown className="h-5 w-5 text-cyan-300 shrink-0 transition-transform duration-200 group-open:rotate-180" />
+                      </summary>
+                      <div className="px-6 pb-5 text-foreground/70 leading-relaxed text-sm">{item.a}</div>
+                    </details>
+                  ))}
+                </div>
+              </div>
+            </Reveal>
+          )}
+
           {/* CTA */}
           <Reveal delay={0.3}>
             <div className="mt-16 rounded-2xl border border-cyan-400/20 bg-cyan-400/[0.04] p-8 sm:p-10">
@@ -407,6 +455,8 @@ export default function InsightPost() {
                   >
                     <div className="relative h-40 overflow-hidden">
                       <img
+                        loading="lazy"
+                        decoding="async"
                         src={p.image}
                         alt={isAr ? p.title.ar : p.title.en}
                         className="w-full h-full object-cover opacity-100 group-hover:scale-105 transition-all duration-500"

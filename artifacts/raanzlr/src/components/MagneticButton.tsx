@@ -1,6 +1,7 @@
 import React, { useRef, ReactNode } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { Link } from "./LocalizedLink";
+import { trackCta, trackEmailClick, trackWhatsAppClick } from "../lib/analytics";
 
 interface MagneticButtonProps {
   children: ReactNode;
@@ -11,6 +12,13 @@ interface MagneticButtonProps {
   testId?: string;
   className?: string;
   type?: "button" | "submit";
+  /**
+   * Where on the page this CTA sits, sent as `cta_location`. Defaults to the
+   * component name so an un-labelled CTA is still counted, just less precisely.
+   */
+  ctaLocation?: string;
+  /** Set false for a non-conversion button that should not emit `cta_click`. */
+  track?: boolean;
 }
 
 export default function MagneticButton({
@@ -22,6 +30,8 @@ export default function MagneticButton({
   testId,
   className = "",
   type = "button",
+  ctaLocation = "magnetic_button",
+  track = true,
 }: MagneticButtonProps) {
   const ref = useRef<HTMLElement>(null);
   const x = useMotionValue(0);
@@ -37,6 +47,29 @@ export default function MagneticButton({
   };
   const handleLeave = () => { x.set(0); y.set(0); };
 
+  /**
+   * The button label is the clearest human name for a CTA, so it is read from
+   * the rendered children rather than duplicated as a prop at ~20 call sites.
+   * Non-string children fall back to the testId.
+   */
+  const ctaLabel = (): string => {
+    const parts: string[] = [];
+    React.Children.forEach(children, (child) => {
+      if (typeof child === "string" || typeof child === "number") parts.push(String(child));
+    });
+    const label = parts.join(" ").replace(/\s+/g, " ").trim();
+    return label || testId || "unlabelled";
+  };
+
+  const handleActivate = () => {
+    if (track) {
+      if (href?.startsWith("mailto:")) trackEmailClick(ctaLocation);
+      else if (href?.includes("wa.me")) trackWhatsAppClick(ctaLocation);
+      else trackCta(ctaLabel(), ctaLocation);
+    }
+    onClick?.();
+  };
+
   const isGhost = variant === "ghost";
 
   const baseClass = isGhost
@@ -47,7 +80,7 @@ export default function MagneticButton({
 
   if (to) {
     return (
-      <Link to={to} data-testid={testId} style={{ display: "inline-block" }}>
+      <Link to={to} onClick={handleActivate} data-testid={testId} style={{ display: "inline-block" }}>
         <MotionSpan
           ref={ref}
           style={{ x: sx, y: sy }}
@@ -63,7 +96,7 @@ export default function MagneticButton({
 
   if (href) {
     return (
-      <a href={href} target="_blank" rel="noopener noreferrer" data-testid={testId} style={{ display: "inline-block" }}>
+      <a href={href} onClick={handleActivate} target="_blank" rel="noopener noreferrer" data-testid={testId} style={{ display: "inline-block" }}>
         <MotionSpan
           ref={ref}
           style={{ x: sx, y: sy }}
@@ -81,7 +114,7 @@ export default function MagneticButton({
     <motion.button
       ref={ref as any}
       type={type}
-      onClick={onClick}
+      onClick={handleActivate}
       data-testid={testId}
       style={{ x: sx, y: sy }}
       onMouseMove={handleMove}

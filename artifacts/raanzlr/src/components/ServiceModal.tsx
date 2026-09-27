@@ -42,7 +42,7 @@ export default function ServiceModal({ service, onClose }: ServiceModalProps) {
           >
             {/* Image header */}
             <div className="relative h-44 sm:h-52 shrink-0 overflow-hidden">
-              <img src={service.image} alt={service.title} className="w-full h-full object-cover opacity-50" />
+              <img src={service.image} alt={service.title} className="w-full h-full object-cover opacity-50"  loading="lazy" decoding="async" />
               <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#0a0a0a]" />
               <button
                 onClick={onClose}

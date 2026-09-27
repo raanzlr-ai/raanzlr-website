@@ -7,6 +7,7 @@ import { Reveal, Stagger, StaggerItem } from "../components/Reveal";
 import PulseDivider from "../components/PulseDivider";
 import MagneticButton from "../components/MagneticButton";
 import SEO from "../components/SEO";
+import { itemListSchema } from "../lib/pageSchema";
 
 const INDUSTRIES = [
   {
@@ -72,7 +73,20 @@ export default function Industries() {
 
   return (
     <div className="relative">
-      <SEO pageKey="industries" path="/industries" />
+      <SEO
+        pageKey="industries"
+        path="/industries"
+        pageType="CollectionPage"
+        schema={itemListSchema(
+          isAr ? "ar" : "en",
+          "/industries",
+          INDUSTRIES.map((i) => ({
+            name: isAr ? i.ar.title : i.en.title,
+            path: `/industries/${i.key}`,
+          })),
+          isAr ? "القطاعات التي نخدمها" : "Industries Raanzlr serves",
+        )}
+      />
 
       <section className="relative min-h-[60vh] flex items-center overflow-hidden pt-28 sm:pt-32">
         <div className="absolute inset-0 bg-grid" />
@@ -152,7 +166,7 @@ export default function Industries() {
                 : "We work with companies across a wide spectrum of verticals. Reach out to discuss how we can apply our expertise to your industry's unique challenges."}
             </p>
             <div className="mt-8 flex justify-center gap-4 flex-wrap">
-              <MagneticButton to="/contact">{isAr ? "تحدث مع خبير" : "Talk to an Expert"}</MagneticButton>
+              <MagneticButton to="/contact" ctaLocation="industries_hub_cta">{isAr ? "تحدث مع خبير" : "Talk to an Expert"}</MagneticButton>
               <MagneticButton to="/services" variant="ghost">{isAr ? "استعرض الخدمات" : "View Our Services"}</MagneticButton>
             </div>
           </Reveal>

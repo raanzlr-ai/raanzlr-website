@@ -9,21 +9,21 @@ export const MARKET_DETAILS = [
       name: "Saudi Arabia",
       region: "GCC",
       cities: "Riyadh, Jeddah, Dammam, Khobar",
-      metaDescription: "AI automation and custom software development for Saudi Arabia businesses. From Riyadh to Jeddah, we help companies automate operations and build intelligent systems aligned with Vision 2030.",
+      metaDescription: "AI automation and custom software development for Saudi businesses, delivered remotely. Arabic-first systems aligned with Vision 2030 priorities.",
       keywords: "AI automation Saudi Arabia, software development Riyadh, business automation KSA, AI solutions Saudi, custom software Jeddah, Vision 2030 technology, Saudi Arabia AI company",
       heroTitle: "AI Automation & Custom Software Development for Saudi Arabia",
       heroDescription: "Saudi Vision 2030 has sparked an incredible transformation across every sector—from healthcare and logistics to finance and retail. Companies throughout the Kingdom are racing to digitize, automate, and innovate. We partner with Saudi businesses to turn ambitious goals into working systems: AI agents that handle customer inquiries in Arabic and English, workflow automation that eliminates repetitive manual work, and custom platforms built to scale with your growth.",
       whyTitle: "Why Saudi Companies Are Moving Fast on AI & Automation",
       whyParagraphs: [
         "The Kingdom is not just talking about digital transformation—it's investing heavily in it. With mega-projects like NEOM, the Red Sea Development, and a rapidly expanding tech ecosystem in Riyadh, there's unprecedented demand for intelligent software that can keep pace.",
-        "We've seen firsthand how Saudi enterprises struggle with manual processes that worked five years ago but can't scale today. Customer follow-ups handled through WhatsApp and spreadsheets, sales teams buried in data entry, operations teams unable to get real-time visibility—these aren't just inefficiencies. They're bottlenecks that limit growth.",
+        "Saudi enterprises commonly run into manual processes that worked five years ago but can't scale today. Customer follow-ups handled through WhatsApp and spreadsheets, sales teams buried in data entry, operations teams unable to get real-time visibility—these aren't just inefficiencies. They're bottlenecks that limit growth.",
         "Our approach is straightforward: we listen to how your team actually works, identify where automation or AI can create real value, and build solutions that integrate seamlessly with your existing systems—whether that's SAP, Microsoft Dynamics, or a custom-built platform."
       ],
       keyAdvantages: [
         "Arabic-first AI systems with full right-to-left support",
         "Vision 2030 alignment and understanding of Saudi market dynamics",
         "Riyadh timezone delivery and Arabic/English communication",
-        "Experience with Saudi regulatory requirements (CITC, SAMA, SDAIA, Absher, Najiz)",
+        "Designed with Saudi regulatory requirements (CITC, SAMA, SDAIA, Absher, Najiz) in mind",
         "Integration with local payment systems (Mada, STC Pay)"
       ],
       servicesTitle: "Services Built for Saudi Businesses",
@@ -68,32 +68,32 @@ export const MARKET_DETAILS = [
         "Startups & SaaS",
         "Manufacturing"
       ],
-      useCasesTitle: "Real Use Cases for Saudi Companies",
-      useCasesIntro: "Here's how Saudi businesses are using AI and automation to solve real problems:",
+      useCasesTitle: "How Saudi Companies Can Use AI Automation",
+      useCasesIntro: "Common problems in the Saudi market and how AI and automation address them:",
       useCases: [
         {
           title: "Automating WhatsApp Customer Follow-ups",
-          description: "A Riyadh-based service company was losing leads because follow-ups took too long. We built an AI agent that captures inquiries, qualifies leads, and responds instantly in Arabic or English—reducing response time from 4 hours to under 60 seconds."
+          description: "Follow-ups that take hours lose leads. An AI agent can capture inquiries from WhatsApp and web forms, qualify them, and reply in Arabic or English within seconds of arrival, escalating to a person when the question needs one."
         },
         {
           title: "Building Internal Dashboards for Management Reports",
-          description: "A Jeddah logistics firm was compiling weekly reports manually from 5 different systems. We built a live dashboard that pulls data automatically and displays KPIs in real time. No more weekend report prep."
+          description: "Compiling a weekly management report by hand from several systems costs a day and is stale on arrival. A live dashboard can pull from those systems on a schedule and show the same KPIs continuously."
         },
         {
           title: "Creating Custom CRM Systems for Sales Teams",
-          description: "A growing retail chain needed a CRM that worked the way their Saudi sales team actually sells—not how Salesforce thinks they should. We built a custom system with Arabic interface, Mada payment tracking, and WhatsApp integration."
+          description: "Off-the-shelf CRMs assume a sales motion that may not match how a Saudi team actually sells. A custom CRM can be built around the real pipeline, with an Arabic interface, Mada payment tracking, and WhatsApp threads attached to each contact."
         },
         {
           title: "Connecting Website Forms with Sales Pipelines",
-          description: "A real estate developer in Dammam was manually entering website leads into their CRM. We automated the entire flow: form → CRM → automatic follow-up → sales assignment."
+          description: "Re-typing website leads into a CRM is slow and loses records. The whole path can be automated: form submission, CRM record, first follow-up message, and assignment to the right salesperson."
         },
         {
           title: "Developing AI Agents for Customer Support",
-          description: "A healthcare clinic network was overwhelmed with appointment inquiries. We deployed an AI agent on WhatsApp that handles booking, rescheduling, and basic medical questions in Arabic—freeing up staff for actual patient care."
+          description: "Appointment inquiries can consume a clinic's front desk. An AI agent on WhatsApp can handle booking, rescheduling, and routine questions in Arabic, and hand anything clinical to staff."
         },
         {
           title: "Automating Invoices, Approvals, and Reports",
-          description: "A professional services firm was spending 10+ hours weekly on invoice generation and approval routing. We automated the entire process—invoices generate automatically, approvals route based on amount, and reports go out every Monday morning."
+          description: "Generating invoices and chasing approvals by hand takes hours every week. Invoice generation, amount-based approval routing, and a scheduled report run can all be automated."
         }
       ],
       whyRaanzlrTitle: "Why Saudi Companies Choose Raanzlr",
@@ -102,14 +102,14 @@ export const MARKET_DETAILS = [
         "Arabic-first engineering—not English software with Arabic translation tacked on",
         "We've worked with CITC compliance, SAMA regulations, SDAIA guidelines, and platforms like Absher and Najiz",
         "Riyadh timezone availability for meetings and support",
-        "Experience integrating local platforms (Mada, STC Pay, Zid, Salla)",
+        "Integrations with local platforms (Mada, STC Pay, Zid, Salla)",
         "We speak Arabic and English fluently, in business and technical contexts"
       ],
-      faqTitle: "Common Questions from Saudi Clients",
+      faqTitle: "Common Questions About AI Automation in Saudi Arabia",
       faqs: [
         {
           q: "Do you work with companies in Saudi Arabia remotely?",
-          a: "Yes, absolutely. Most of our Saudi clients are in Riyadh, Jeddah, and Dammam, and we work entirely remotely through discovery calls, technical planning sessions, iterative development, and launch support. We're available during Riyadh business hours and can meet in person when needed."
+          a: "Raanzlr provides remote AI automation and custom software services for businesses in Saudi Arabia through discovery calls, workflow planning, iterative development, and launch support. Calls can be scheduled to overlap Riyadh business hours."
         },
         {
           q: "Can you build AI automation for Arabic-speaking teams?",
@@ -117,7 +117,7 @@ export const MARKET_DETAILS = [
         },
         {
           q: "Do you integrate with local Saudi systems like Mada and STC Pay?",
-          a: "Absolutely. We've integrated with Mada, STC Pay, and local e-commerce platforms like Zid and Salla. If you use a Saudi platform, we can likely connect it."
+          a: "Absolutely. We integrate through published APIs, which covers the platforms Saudi businesses commonly run on, including payment and e-commerce providers. If you use a Saudi platform, we can likely connect it."
         },
         {
           q: "How do we start? What's the first step?",
@@ -154,7 +154,7 @@ export const MARKET_DETAILS = [
         "تطوير أنظمة مخصصة تناسب احتياجات الشركات السعودية",
         "تكامل مع أنظمة ERP وCRM والمنصات المستخدمة داخل المؤسسة",
         "أتمتة العمليات الإدارية والتشغيلية لتوفير الوقت وتقليل الأخطاء",
-        "خبرة في المتطلبات التنظيمية والبيئة التقنية داخل المملكة",
+        "تصميم يراعي المتطلبات التنظيمية والبيئة التقنية داخل المملكة",
         "دعم فني مستمر وتنفيذ المشاريع وفق أفضل الممارسات"
       ],
       servicesTitle: "خدماتنا للشركات في المملكة العربية السعودية",
@@ -230,13 +230,13 @@ export const MARKET_DETAILS = [
       whyRaanzlrTitle: "لماذا تختار الشركات السعودية Raanzlr؟",
       whyRaanzlr: [
         "فهم عميق لاحتياجات السوق السعودي ومتطلبات التحول الرقمي",
-        "خبرة في تطوير حلول ذكاء اصطناعي وأنظمة أعمال مخصصة",
+        "تطوير حلول ذكاء اصطناعي وأنظمة أعمال مخصصة",
         "دعم كامل للغة العربية والإنجليزية في جميع الحلول",
         "تكامل مرن مع الأنظمة والمنصات المستخدمة داخل المؤسسات",
         "تنفيذ المشاريع وفق أعلى معايير الجودة والأمان",
         "شراكة طويلة المدى تشمل التطوير والدعم والتحسين المستمر"
       ],
-      faqTitle: "أسئلة شائعة من العملاء السعوديين",
+      faqTitle: "أسئلة شائعة عن أتمتة الذكاء الاصطناعي في السعودية",
       faqs: [
         {
           q: "هل تقدمون خدماتكم للشركات في جميع مناطق المملكة؟",
@@ -290,9 +290,9 @@ export const MARKET_DETAILS = [
       ],
       keyAdvantages: [
         "Multilingual AI systems (Arabic, English, Hindi) with cultural awareness",
-        "Experience with UAE regulatory frameworks (DIFC, ADGM, DED, free zones)",
+        "Designed with UAE regulatory frameworks (DIFC, ADGM, DED, free zones) in mind",
         "Dubai and Abu Dhabi timezone availability",
-        "Integration with regional platforms (Network International, Tabby, Noon)",
+        "Can integrate with regional and international payment, CRM, and commerce platforms via their APIs",
         "Understanding of emirate-specific business practices",
         "Fintech and PropTech domain expertise"
       ],
@@ -336,52 +336,52 @@ export const MARKET_DETAILS = [
         "Government & Semi-Government",
         "Startups & Scale-ups"
       ],
-      useCasesTitle: "Real Use Cases for UAE Companies",
-      useCasesIntro: "Here's how UAE businesses are using AI and automation to compete globally:",
+      useCasesTitle: "How UAE Companies Can Use AI Automation",
+      useCasesIntro: "Common ways UAE businesses can use AI and automation, shown as illustrative patterns:",
       useCases: [
         {
           title: "Multilingual Real Estate Lead Management",
-          description: "A Dubai property developer was losing international leads due to language barriers. We built an AI system that captures inquiries in Arabic, English, or Hindi, qualifies them instantly, and routes to the right agent—regardless of timezone."
+          description: "Property enquiries arrive in several languages and outside office hours. An AI system can capture them in Arabic, English or Hindi, qualify them, and route each one to the right agent regardless of timezone."
         },
         {
           title: "Fintech Compliance Automation",
-          description: "An Abu Dhabi fintech was spending 15 hours weekly on regulatory reporting for ADGM. We automated the entire process—data extraction, validation, report generation, and submission tracking."
+          description: "Regulatory reporting is repetitive and deadline-bound. Data extraction, validation, report generation, and submission tracking can be automated, with a full audit trail of each run."
         },
         {
           title: "E-commerce Order Intelligence",
-          description: "A Noon seller was manually reconciling orders, inventory, and shipping across multiple channels. We built a unified dashboard with automated inventory alerts and profit tracking."
+          description: "Reconciling orders, inventory and shipping across marketplaces by hand is error-prone. A unified dashboard can consolidate them, with automated stock alerts and per-order margin tracking."
         },
         {
           title: "Hospitality Guest Experience AI",
-          description: "A Dubai hotel group needed 24/7 concierge service in multiple languages. We deployed an AI concierge on WhatsApp handling bookings, recommendations, and requests in Arabic, English, and Hindi."
+          description: "Guests expect an answer at any hour, in their own language. An AI concierge on WhatsApp can handle bookings, recommendations and requests in Arabic, English and Hindi, and pass complex cases to the front desk."
         },
         {
           title: "PropTech Viewing Automation",
-          description: "A real estate agency was coordinating hundreds of property viewings manually. We built an automated scheduling system that syncs with agent calendars, sends confirmations, and handles rescheduling—cutting coordination time by 80%."
+          description: "Coordinating property viewings by phone does not scale. An automated scheduler can sync with agent calendars, send confirmations, and handle rescheduling without a coordinator in the middle."
         },
         {
           title: "Multi-emirate Operations Dashboard",
-          description: "A retail chain with locations across Dubai, Abu Dhabi, and Sharjah had no unified view of performance. We built a real-time dashboard showing sales, inventory, and foot traffic by location."
+          description: "A retail chain across several emirates often has no single view of performance. A real-time dashboard can show sales, inventory and foot traffic by location, side by side."
         }
       ],
       whyRaanzlrTitle: "Why UAE Companies Choose Raanzlr",
       whyRaanzlr: [
         "We understand the UAE's multicultural business environment",
-        "Experience with free zone and mainland regulatory requirements",
+        "Designed with free zone and mainland regulatory requirements in mind",
         "Multilingual engineering—not just English with translations",
         "Dubai/Abu Dhabi timezone support and rapid response times",
         "Integration expertise with UAE-specific platforms and payment systems",
         "Track record with both scale-ups and established enterprises"
       ],
-      faqTitle: "Common Questions from UAE Clients",
+      faqTitle: "Common Questions About AI Automation in the UAE",
       faqs: [
         {
           q: "Do you work with companies in Dubai and Abu Dhabi?",
-          a: "Yes, we work with companies across all seven emirates, though most of our clients are based in Dubai and Abu Dhabi. We operate entirely remotely but can meet in person when needed for discovery sessions or stakeholder presentations."
+          a: "Yes, we work with companies across all seven emirates, though most demand comes from Dubai and Abu Dhabi. We operate entirely remotely but can meet in person when needed for discovery sessions or stakeholder presentations."
         },
         {
           q: "Can your systems handle multiple languages simultaneously?",
-          a: "Absolutely. This is one of our core strengths. Our AI agents can detect language automatically and respond appropriately in Arabic, English, Hindi, or Urdu. We've built systems for UAE clients serving customers in all four languages."
+          a: "Absolutely. This is one of our core strengths. Our AI agents can detect language automatically and respond appropriately in Arabic, English, Hindi, or Urdu. We build systems that serve customers in all four languages."
         },
         {
           q: "Do you understand UAE regulatory requirements?",
@@ -389,7 +389,7 @@ export const MARKET_DETAILS = [
         },
         {
           q: "Can you integrate with UAE payment systems?",
-          a: "Yes, we've integrated with Network International (N-Genius), Tabby (BNPL), Spotii, Tamara, and major card processors. We can connect your systems to both local and international payment gateways."
+          a: "Raanzlr can support integrations with payment, CRM, and business platforms — including local and international processors — where the platform exposes a documented API. Feasibility and scope are confirmed during discovery."
         },
         {
           q: "What's your typical project timeline?",
@@ -497,7 +497,7 @@ export const MARKET_DETAILS = [
       ],
       whyRaanzlrTitle: "لماذا تختار الشركات الإماراتية Raanzlr؟",
       whyRaanzlr: [
-        "خبرة في تطوير حلول رقمية تناسب طبيعة السوق الإماراتي",
+        "تطوير حلول رقمية تناسب طبيعة السوق الإماراتي",
         "حلول تدعم العمل بلغات متعددة لتلبية احتياجات الشركات الدولية",
         "تكامل مرن مع الأنظمة والمنصات المستخدمة داخل المؤسسات",
         "تطوير برمجيات مخصصة تتوافق مع طبيعة كل نشاط",
@@ -553,12 +553,12 @@ export const MARKET_DETAILS = [
       whyTitle: "Why Qatar is the Right Market for Intelligent Automation",
       whyParagraphs: [
         "Qatar may be small in size, but its ambitions are global. The country's focus on knowledge economy, education excellence, and world-class services creates unique opportunities for technology that enhances human capabilities rather than just replacing them.",
-        "We've seen Qatari businesses face specific challenges: maintaining service quality at scale, coordinating operations across growing business units, and meeting the expectations of an international customer base. The hospitality sector needs multilingual guest services. Educational institutions need intelligent administrative systems. Government entities need efficient citizen service platforms.",
+        "Qatari businesses commonly face specific challenges: maintaining service quality at scale, coordinating operations across growing business units, and meeting the expectations of an international customer base. The hospitality sector needs multilingual guest services. Educational institutions need intelligent administrative systems. Government entities need efficient citizen service platforms.",
         "Our approach recognizes Qatar's distinct business culture: quality matters more than speed, relationships drive decisions, and solutions must work seamlessly in both Arabic and English. We build systems that respect these values while delivering measurable improvements in efficiency and customer experience."
       ],
       keyAdvantages: [
         "Understanding of Qatar's business culture and decision-making style",
-        "Experience with hospitality, education, and professional services sectors",
+        "Designed with hospitality, education, and professional services sectors in mind",
         "Bilingual AI systems designed for Qatar's international environment",
         "Doha timezone support and local market knowledge",
         "Integration with regional and international platforms",
@@ -603,44 +603,44 @@ export const MARKET_DETAILS = [
         "Events & Entertainment",
         "Retail & Trading"
       ],
-      useCasesTitle: "Real Projects for Qatari Organizations",
-      useCasesIntro: "Here's how Qatar businesses are using our solutions:",
+      useCasesTitle: "How Qatari Organisations Can Use AI Automation",
+      useCasesIntro: "Common ways Qatar organisations can use AI and automation, shown as illustrative patterns:",
       useCases: [
         {
           title: "Hotel Group Guest Experience Platform",
-          description: "A Doha hotel group needed unified guest management across properties. We built a system handling reservations, preferences, and loyalty programs with AI-powered personalization—improving repeat bookings by 35%."
+          description: "Guest data split across properties makes repeat business hard to earn. A unified system can hold reservations, preferences and loyalty in one place, with personalisation driven from that history."
         },
         {
           title: "Educational Institution Admin Automation",
-          description: "A Qatar university was processing admissions, registrations, and records manually. We automated workflows reducing admin time by 60% and enabling staff to focus on student support."
+          description: "Admissions, registration and records handled manually absorb staff time that students need. Those workflows can be automated end to end, with exceptions routed to a person."
         },
         {
           title: "Construction Project Management System",
-          description: "A major Qatari contractor needed real-time visibility into dozens of projects. We built a custom dashboard tracking progress, budgets, materials, and workforce—preventing delays and cost overruns."
+          description: "Running dozens of construction projects without live data invites delays and cost overruns. A custom dashboard can track progress, budget, materials and workforce per project as the data arrives."
         },
         {
           title: "Professional Services Client Portal",
-          description: "A Doha consulting firm wanted clients to access reports, track projects, and communicate securely. We built a branded portal that improved client satisfaction and reduced email overload."
+          description: "Consulting clients ask for status by email because they have nowhere else to look. A branded portal can give them reports, project status and secure messaging in one place."
         },
         {
           title: "Event Coordination Automation",
-          description: "An events company was coordinating venues, vendors, and clients through spreadsheets. We built an automated system managing bookings, contracts, and communications—handling 3x more events with the same team."
+          description: "Coordinating venues, vendors and clients through spreadsheets breaks down as volume grows. Bookings, contracts and communications can run through one automated system instead."
         },
         {
           title: "Healthcare Appointment Intelligence",
-          description: "A network of clinics in Qatar had no-show rates of 25%. We deployed an AI reminder system via SMS and WhatsApp in Arabic and English—cutting no-shows to under 8%."
+          description: "No-shows waste clinical capacity. An automated reminder sequence over SMS and WhatsApp, in Arabic and English, can confirm or release each appointment ahead of time."
         }
       ],
       whyRaanzlrTitle: "Why Qatari Organizations Choose Raanzlr",
       whyRaanzlr: [
         "We respect Qatar's emphasis on quality and thoroughness",
         "Bilingual engineering that works naturally in Arabic and English",
-        "Experience with Qatar's professional services and hospitality sectors",
+        "Designed with Qatar's professional services and hospitality sectors in mind",
         "Understanding of both private sector and government requirements",
         "Long-term partnership approach, not transactional project work",
         "Doha timezone availability for meetings and support"
       ],
-      faqTitle: "Questions from Qatar Clients",
+      faqTitle: "Common Questions About AI Automation in Qatar",
       faqs: [
         {
           q: "Do you work with organizations in Doha and Qatar?",
@@ -762,7 +762,7 @@ export const MARKET_DETAILS = [
       whyRaanzlrTitle: "لماذا تختار المؤسسات القطرية Raanzlr؟",
       whyRaanzlr: [
         "فهم لطبيعة بيئة الأعمال واحتياجات المؤسسات في قطر",
-        "خبرة في تطوير حلول ذكاء اصطناعي وبرمجيات مخصصة",
+        "تطوير حلول ذكاء اصطناعي وبرمجيات مخصصة",
         "دعم كامل للغة العربية والإنجليزية في جميع الأنظمة",
         "تكامل مرن مع الأنظمة والمنصات الحالية",
         "التزام بأعلى معايير الجودة وأمن البيانات",
@@ -810,7 +810,7 @@ export const MARKET_DETAILS = [
       name: "Kuwait",
       region: "GCC",
       cities: "Kuwait City, Al Ahmadi, Hawalli",
-      metaDescription: "AI automation and custom software for Kuwait businesses. From Kuwait City to Al Ahmadi, we help companies automate operations and scale with intelligent systems.",
+      metaDescription: "AI automation and custom software development for Kuwaiti businesses. Arabic-first agents, workflow automation and platforms, delivered remotely.",
       keywords: "AI automation Kuwait, software development Kuwait City, business automation Kuwait, AI solutions KW, custom software Kuwait",
       heroTitle: "AI Automation & Custom Software Development for Kuwait",
       heroDescription: "Kuwait's financial services sector, trading companies, and growing tech ecosystem present unique opportunities for intelligent automation. Companies across Kuwait City and beyond are looking for ways to digitize operations, reduce manual work, and compete regionally. We help Kuwaiti businesses build AI-powered systems that streamline workflows, automate customer engagement, and deliver operational intelligence.",
@@ -824,7 +824,7 @@ export const MARKET_DETAILS = [
         "Arabic and English bilingual AI systems",
         "Understanding of Kuwaiti business culture and decision-making",
         "Kuwait City timezone support for meetings and communication",
-        "Experience with GCC regulatory environments",
+        "Designed with GCC regulatory environments in mind",
         "Integration with local and international platforms"
       ],
       servicesTitle: "Services for Kuwaiti Businesses",
@@ -867,7 +867,7 @@ export const MARKET_DETAILS = [
         "Education & Training",
         "Startups & SMEs"
       ],
-      useCasesTitle: "How Kuwaiti Businesses Could Use AI & Automation",
+      useCasesTitle: "How Kuwaiti Businesses Can Use AI Automation",
       useCasesIntro: "Here are realistic scenarios showing how automation and AI could solve common problems for Kuwaiti companies:",
       useCases: [
         {
@@ -899,12 +899,12 @@ export const MARKET_DETAILS = [
       whyRaanzlr: [
         "We understand Kuwaiti business culture and the importance of relationships",
         "Bilingual engineering—systems that work naturally in Arabic and English",
-        "Experience with GCC markets and regional business practices",
+        "Built around GCC markets and regional business practices",
         "Kuwait City timezone availability for calls and ongoing support",
         "Focus on practical ROI, not technology for technology's sake",
         "Transparent communication in Arabic and English throughout the project"
       ],
-      faqTitle: "Common Questions from Kuwaiti Clients",
+      faqTitle: "Common Questions About AI Automation in Kuwait",
       faqs: [
         {
           q: "Do you work with companies in Kuwait remotely?",
@@ -1073,7 +1073,7 @@ export const MARKET_DETAILS = [
     heroImage: "/markets/bahrain.webp",
     en: {
       name: "Bahrain", region: "GCC", cities: "Manama, Muharraq, Riffa",
-      metaDescription: "AI automation and custom software for Bahrain businesses. We help financial services, technology, logistics, and growing companies build practical digital operations.",
+      metaDescription: "AI automation and custom software development for businesses in Bahrain. Arabic-first systems, delivered remotely across the Gulf.",
       keywords: "AI automation Bahrain, software development Manama, Bahrain fintech software, business automation Bahrain, custom software GCC",
       heroTitle: "AI Automation & Custom Software Development for Bahrain",
       heroDescription: "Bahrain combines an established financial-services sector with active technology, logistics, manufacturing, and tourism industries. Raanzlr helps organisations turn that operating complexity into clear, connected workflows through AI automation and custom software built around their teams.",
@@ -1087,7 +1087,7 @@ export const MARKET_DETAILS = [
       useCasesTitle: "Practical Use Cases for Bahrain Teams", useCasesIntro: "Examples of how connected systems can support day-to-day operations:",
       useCases: [{ title: "Client Onboarding Workflows", description: "Collect requested information through a structured portal, route it to the right reviewer, and keep the client informed of the next step." }, { title: "Service Request Triage", description: "Classify incoming email, web, and messaging requests, create a case, and assign it using agreed service rules." }, { title: "Management Reporting", description: "Replace manual report assembly with dashboards that draw from approved operational sources on a defined schedule." }, { title: "Sales Pipeline Coordination", description: "Connect lead forms, CRM records, task assignment, and follow-up reminders so opportunities do not disappear between teams." }, { title: "Document Approval Flows", description: "Route contracts, purchase requests, or internal forms to the appropriate approvers with status visibility and records." }, { title: "Knowledge Assistants", description: "Give staff a controlled way to find answers in approved policies and internal guidance, with escalation when an answer is uncertain." }],
       whyRaanzlrTitle: "Why Bahrain Teams Choose Raanzlr", whyRaanzlr: ["Arabic and English delivery from discovery through launch", "Systems designed around real operating workflows", "Incremental delivery that reduces implementation risk", "Integration expertise across modern business tools", "Clear documentation and handover for internal teams", "A practical partnership focused on useful outcomes"],
-      faqTitle: "Common Questions from Bahrain Clients",
+      faqTitle: "Common Questions About AI Automation in Bahrain",
       faqs: [{ q: "Do you work with teams in Bahrain remotely?", a: "Yes. We run discovery, design, delivery, and support remotely, with structured workshops and regular checkpoints suited to Bahrain business hours." }, { q: "Can you build Arabic and English interfaces?", a: "Yes. We plan language, right-to-left layouts, content, and user journeys from the start rather than treating Arabic as a late translation." }, { q: "Can you connect our current systems?", a: "Often, yes. We first review the available APIs, data ownership, and operational constraints, then recommend the safest integration approach." }, { q: "Do you provide legal or regulatory advice?", a: "No. We can design around requirements supplied by your legal, compliance, and security teams, who remain the right advisers for those decisions." }, { q: "How do you start a project?", a: "We begin with a focused discovery session to understand the process, users, data, and success criteria before proposing scope and phases." }, { q: "Can we begin with one workflow?", a: "Yes. A focused workflow or dashboard is often the best way to validate value before extending the platform." }],
       ctaTitle: "Build More Connected Operations in Bahrain", ctaDescription: "Talk with Raanzlr about a practical AI, automation, or software initiative shaped around your Bahrain team's real work."
     },
@@ -1105,7 +1105,7 @@ export const MARKET_DETAILS = [
       industriesTitle: "القطاعات التي نخدمها في البحرين", industries: ["الخدمات المالية والتقنية المالية", "تقنية المعلومات والخدمات الرقمية", "اللوجستيات والتجارة", "التصنيع", "الخدمات المهنية", "التجزئة والتجارة الإلكترونية", "الرعاية الصحية", "السياحة والضيافة"],
       useCasesTitle: "كيف يمكن للأتمتة أن تدعم الشركات في البحرين؟", useCasesIntro: "",
       useCases: [{ title: "تنظيم إجراءات استقبال العملاء", description: "استقبال البيانات من نموذج أو بريد إلكتروني أو قناة تواصل، ثم توجيهها تلقائياً إلى الفريق المختص مع متابعة حالة الطلب حتى اكتماله." }, { title: "إدارة طلبات الدعم", description: "تجميع الطلبات الواردة من مختلف القنوات، وتصنيفها، وتوزيعها على الموظفين المناسبين وفق قواعد عمل واضحة." }, { title: "التقارير الإدارية", description: "جمع البيانات من الأنظمة المختلفة وإعداد لوحات معلومات مباشرة بدلاً من الاعتماد على التقارير اليدوية المتكررة." }, { title: "متابعة دورة المبيعات", description: "ربط نماذج الموقع، وأنظمة CRM، ورسائل المتابعة، وتوزيع العملاء المحتملين لضمان عدم فقدان أي فرصة." }, { title: "أتمتة الموافقات", description: "إدارة مسارات اعتماد العقود أو طلبات الشراء أو النماذج الداخلية مع تسجيل جميع الإجراءات وإشعار الأطراف المعنية." }, { title: "مساعد معرفة داخلي", description: "توفير مساعد ذكي يساعد الموظفين على الوصول بسرعة إلى السياسات والإجراءات والوثائق الداخلية مع تحويل الحالات غير الواضحة إلى المختصين." }],
-      whyRaanzlrTitle: "لماذا تختار الشركات في البحرين Raanzlr؟", whyRaanzlr: ["حلول تُصمم بما يتوافق مع طريقة عمل فريقك", "تطوير يدعم العربية والإنجليزية منذ البداية", "تنفيذ تدريجي يقلل أثر التغيير على العمليات", "خبرة في ربط الأنظمة الحديثة والأنظمة القائمة", "توثيق واضح يسهل تسليم المشروع وتشغيله", "شراكة تركز على تحسين العمليات وتحقيق نتائج قابلة للقياس"],
+      whyRaanzlrTitle: "لماذا تختار الشركات في البحرين Raanzlr؟", whyRaanzlr: ["حلول تُصمم بما يتوافق مع طريقة عمل فريقك", "تطوير يدعم العربية والإنجليزية منذ البداية", "تنفيذ تدريجي يقلل أثر التغيير على العمليات", "ربط الأنظمة الحديثة بالأنظمة القائمة", "توثيق واضح يسهل تسليم المشروع وتشغيله", "شراكة تركز على تحسين العمليات وتحقيق نتائج قابلة للقياس"],
       faqTitle: "الأسئلة الشائعة",
       faqs: [{ q: "هل يمكن تنفيذ المشاريع بالكامل عن بُعد؟", a: "نعم. ندير جميع مراحل المشروع، من جلسات الاستكشاف وحتى الإطلاق والدعم، عبر اجتماعات منظمة وأدوات تعاون تتيح التواصل المستمر مع فريقك." }, { q: "هل تدعم حلولكم العربية والإنجليزية؟", a: "نعم. نصمم الواجهات وتجربة الاستخدام لتعمل باللغتين بصورة طبيعية، مع مراعاة اتجاه الكتابة وتجربة المستخدم منذ بداية المشروع." }, { q: "هل يمكن ربط الأنظمة الحالية؟", a: "في معظم الحالات نعم. نبدأ بمراجعة الأنظمة المستخدمة وطرق تبادل البيانات بينها، ثم نقترح أسلوب التكامل الأنسب بما يتوافق مع احتياجات العمل." }, { q: "هل تقدمون استشارات قانونية أو تنظيمية؟", a: "لا. نحن مسؤولون عن تصميم وتنفيذ الحلول التقنية، بينما تعتمد المتطلبات القانونية والتنظيمية على الجهات المختصة داخل مؤسستكم أو مستشاريكم القانونيين." }, { q: "كيف تبدأ المشاريع؟", a: "تبدأ بجلسة استكشاف لفهم أهداف المشروع، والإجراءات الحالية، والتحديات التي تواجه الفريق، ثم نقدم تصوراً واضحاً للنطاق، وخطة التنفيذ، والجدول الزمني." }, { q: "هل يمكن البدء بمشروع صغير ثم التوسع لاحقاً؟", a: "بالتأكيد. يفضل كثير من عملائنا البدء بأتمتة إجراء واحد أو تطوير نظام محدد، ثم التوسع تدريجياً بعد التأكد من تحقيق النتائج المرجوة." }],
       ctaTitle: "هل ترغب في تطوير عمليات شركتك في البحرين؟", ctaDescription: "إذا كنت تبحث عن طريقة أكثر كفاءة لإدارة العمليات، أو ربط الأنظمة، أو الاستفادة من الذكاء الاصطناعي في أعمالك، يسعدنا مناقشة احتياجاتك واقتراح الحل الأنسب لفريقك."
@@ -1123,7 +1123,7 @@ export const MARKET_DETAILS = [
       services: [{ title: "Operational Automation", description: "Automate requests, approvals, notifications, and recurring updates across operational teams." }, { title: "Custom Platforms", description: "Create tailored portals and applications for customers, partners, field teams, or internal operations." }, { title: "AI Service Assistants", description: "Deploy assistants that handle routine enquiries and direct people to the appropriate team or next step." }, { title: "Logistics & Workflow Systems", description: "Coordinate tasks, documents, statuses, and handoffs across supply and service operations." }, { title: "Dashboards & Data Products", description: "Turn approved data into useful operational views without relying on manual report consolidation." }, { title: "API & System Integration", description: "Connect core business applications so information moves with the work." }],
       industriesTitle: "Industries We Serve in Oman", industries: ["Logistics & Transportation", "Manufacturing", "Tourism & Hospitality", "ICT & Digital Services", "Renewable Energy", "Healthcare", "Education & Training", "Professional Services"],
       useCasesTitle: "Use Cases for Omani Organisations", useCasesIntro: "Practical starting points for improving everyday operations:", useCases: [{ title: "Service Operations Portal", description: "Give customers and internal teams one place to submit requests, follow progress, and receive updates." }, { title: "Multi-site Task Coordination", description: "Assign tasks across sites, track completion, and surface exceptions for the teams responsible." }, { title: "Supplier Document Workflows", description: "Standardise the intake, review, and approval of supplier documents with clear ownership and status." }, { title: "Visitor and Booking Management", description: "Coordinate enquiries, bookings, confirmations, and follow-up for tourism or service operations." }, { title: "Operational Performance Dashboard", description: "Combine selected data from existing systems into a shared view of agreed operating measures." }, { title: "Internal Knowledge Assistant", description: "Help staff locate approved procedures and service information while preserving review and escalation paths." }],
-      whyRaanzlrTitle: "Why Omani Teams Choose Raanzlr", whyRaanzlr: ["Arabic-first product thinking with professional English delivery", "Systems that account for real handoffs and teams", "Modular work that can grow with priorities", "Integration before unnecessary replacement", "Practical documentation and training support", "A delivery approach focused on usability"], faqTitle: "Common Questions from Oman Clients",
+      whyRaanzlrTitle: "Why Omani Teams Choose Raanzlr", whyRaanzlr: ["Arabic-first product thinking with professional English delivery", "Systems that account for real handoffs and teams", "Modular work that can grow with priorities", "Integration before unnecessary replacement", "Practical documentation and training support", "A delivery approach focused on usability"], faqTitle: "Common Questions About AI Automation in Oman",
       faqs: [{ q: "Do you serve organisations across Oman?", a: "Yes. We work remotely with teams in Muscat and across Oman through workshops, shared planning, and regular delivery reviews." }, { q: "Can a solution support Arabic and English?", a: "Yes. We build bilingual experiences with suitable right-to-left behaviour, content, and interface design." }, { q: "Can you work with our existing ERP or CRM?", a: "We assess the systems, available interfaces, and data requirements first, then design an integration plan suited to the project." }, { q: "Do you build for industrial and logistics teams?", a: "Yes. We can build operational workflows, portals, dashboards, and integrations for the processes your teams define." }, { q: "What happens during discovery?", a: "We document the current process, users, data sources, constraints, and priorities, then propose a focused delivery path." }, { q: "Can implementation be phased?", a: "Yes. Phased delivery lets you validate a useful capability with users before extending it to further processes." }], ctaTitle: "Move Oman Operations Forward with Practical Technology", ctaDescription: "Explore an AI, automation, or custom software initiative that gives your Omani team clearer, more connected ways to work."
     },
     ar: {
@@ -1134,7 +1134,7 @@ export const MARKET_DETAILS = [
       services: [{ title: "أتمتة العمليات", description: "أتمتة الطلبات، والموافقات، والإشعارات، والإجراءات المتكررة بين الأقسام بما يقلل الوقت المستغرق في الأعمال اليومية." }, { title: "تطوير البرمجيات المخصصة", description: "بناء منصات داخلية، وبوابات للعملاء والشركاء، وتطبيقات مصممة وفق احتياجات المؤسسة وطبيعة أعمالها." }, { title: "مساعدو الذكاء الاصطناعي", description: "مساعدون ذكيون للإجابة عن الاستفسارات المتكررة، وتوجيه المستخدمين، وتحويل الحالات التي تحتاج إلى تدخل بشري." }, { title: "أنظمة إدارة العمليات", description: "تنظيم المهام، والمستندات، وسير العمل بين الفرق المختلفة بما يضمن وضوح المسؤوليات ومتابعة التنفيذ." }, { title: "لوحات البيانات", description: "تجميع البيانات من مصادر متعددة في لوحة معلومات واحدة تساعد الإدارة على متابعة الأداء واتخاذ القرارات بسرعة." }, { title: "تكامل الأنظمة", description: "ربط أنظمة الأعمال المختلفة عبر واجهات برمجة التطبيقات (APIs) لضمان انتقال البيانات بسلاسة بين التطبيقات." }],
       industriesTitle: "القطاعات التي نخدمها في عُمان", industries: ["اللوجستيات والنقل", "التصنيع", "السياحة والضيافة", "تقنية المعلومات والخدمات الرقمية", "الطاقة المتجددة", "الرعاية الصحية", "التعليم والتدريب", "الخدمات المهنية"],
       useCasesTitle: "كيف يمكن للأتمتة أن تدعم المؤسسات في عُمان؟", useCasesIntro: "", useCases: [{ title: "بوابة موحدة للخدمات", description: "توفير منصة واحدة يستقبل من خلالها العملاء أو الفرق الداخلية الطلبات، مع إمكانية متابعة حالة كل طلب حتى اكتماله." }, { title: "تنسيق العمل بين المواقع", description: "إدارة توزيع المهام بين الفروع أو المواقع المختلفة، ومتابعة التنفيذ، وإبراز الحالات التي تحتاج إلى تدخل سريع." }, { title: "إدارة مستندات الموردين", description: "تنظيم استقبال مستندات الموردين، ومراجعتها، واعتمادها، مع تتبع واضح لجميع مراحل العمل." }, { title: "إدارة الحجوزات والخدمات", description: "تنظيم طلبات الحجز والاستفسارات ورسائل المتابعة للقطاعات التي تعتمد على تقديم الخدمات أو استقبال العملاء." }, { title: "لوحة معلومات تشغيلية", description: "جمع البيانات من الأنظمة المختلفة في لوحة موحدة تعرض مؤشرات الأداء بصورة مباشرة وموثوقة." }, { title: "مساعد معرفة داخلي", description: "تمكين الموظفين من الوصول بسرعة إلى السياسات والإجراءات والوثائق الداخلية مع إمكانية تحويل الحالات غير الواضحة إلى المختصين." }],
-      whyRaanzlrTitle: "لماذا تختار المؤسسات في عُمان Raanzlr؟", whyRaanzlr: ["حلول تُبنى بما يتوافق مع طريقة عمل المؤسسة", "دعم كامل للعربية والإنجليزية في الواجهات وتجربة الاستخدام", "تنفيذ تدريجي يقلل أثر التغيير على فرق العمل", "خبرة في تكامل الأنظمة والمنصات المختلفة", "توثيق واضح يسهل تشغيل النظام وتطويره مستقبلاً", "تركيز على بناء حلول عملية قابلة للتوسع"], faqTitle: "الأسئلة الشائعة",
+      whyRaanzlrTitle: "لماذا تختار المؤسسات في عُمان Raanzlr؟", whyRaanzlr: ["حلول تُبنى بما يتوافق مع طريقة عمل المؤسسة", "دعم كامل للعربية والإنجليزية في الواجهات وتجربة الاستخدام", "تنفيذ تدريجي يقلل أثر التغيير على فرق العمل", "تكامل الأنظمة والمنصات المختلفة", "توثيق واضح يسهل تشغيل النظام وتطويره مستقبلاً", "تركيز على بناء حلول عملية قابلة للتوسع"], faqTitle: "الأسئلة الشائعة",
       faqs: [{ q: "هل تعملون مع مؤسسات في مختلف مناطق عُمان؟", a: "نعم. ندير جميع مراحل المشروع عن بُعد من خلال ورش عمل واجتماعات دورية وأدوات تعاون تتيح تنفيذ المشاريع بكفاءة أينما كان فريقك." }, { q: "هل تدعم حلولكم العربية والإنجليزية؟", a: "نعم. نصمم الواجهات وتجربة الاستخدام لتعمل باللغتين بصورة طبيعية، مع مراعاة اتجاه الكتابة وتجربة المستخدم منذ بداية المشروع." }, { q: "هل يمكن ربط الحلول بالأنظمة الحالية؟", a: "في معظم الحالات نعم. نراجع الأنظمة المستخدمة وطرق تبادل البيانات بينها، ثم نقترح أسلوب التكامل الذي يحقق أفضل نتيجة للمشروع." }, { q: "هل تطورون حلولاً لقطاعات مثل الصناعة أو اللوجستيات؟", a: "نعم. يمكن تصميم أنظمة ولوحات معلومات وتكاملات وأتمتة تتوافق مع الإجراءات والمتطلبات الخاصة بكل مؤسسة." }, { q: "ماذا تتضمن مرحلة الاستكشاف؟", a: "تشمل فهم سير العمل الحالي، والأنظمة المستخدمة، ومصادر البيانات، والتحديات، ثم إعداد تصور واضح لنطاق المشروع وخطة التنفيذ." }, { q: "هل يمكن تنفيذ المشروع على مراحل؟", a: "بالتأكيد. نوصي غالباً بالبدء بجزء محدد يحقق قيمة مباشرة، ثم التوسع تدريجياً وفق احتياجات المؤسسة ونتائج المرحلة الأولى." }], ctaTitle: "طوّر عمليات مؤسستك في عُمان", ctaDescription: "إذا كنت تبحث عن طريقة أكثر كفاءة لإدارة العمليات، أو ربط الأنظمة، أو الاستفادة من الذكاء الاصطناعي في أعمالك، يسعدنا مناقشة احتياجاتك واقتراح الحل الأنسب لفريقك."
     }
   },
@@ -1143,17 +1143,17 @@ export const MARKET_DETAILS = [
   {
     slug: "syria", flag: "🇸🇾", code: "SY", heroImage: "/markets/syria.webp",
     en: {
-      name: "Syria", region: "Levant", cities: "Damascus, Aleppo, Homs, and distributed teams", metaDescription: "Practical software, AI automation, and operational systems for Syrian organisations, teams, and diaspora-led initiatives focused on continuity and service delivery.", keywords: "software development Syria, AI automation Syria, Syrian business operations, Arabic software teams, operational transformation Syria", heroTitle: "Practical Digital Systems for Syrian Organisations and Teams", heroDescription: "Syria's operating environment calls for careful, adaptable technology work. Raanzlr supports organisations, distributed teams, and diaspora-led initiatives with software and automation that strengthen continuity, organise work, and improve access to reliable operational information.",
+      name: "Syria", region: "Levant", cities: "Damascus, Aleppo, Homs, and distributed teams", metaDescription: "AI automation and custom software development for organisations operating in Syria. Arabic-first systems built for constrained infrastructure.", keywords: "software development Syria, AI automation Syria, Syrian business operations, Arabic software teams, operational transformation Syria", heroTitle: "Practical Digital Systems for Syrian Organisations and Teams", heroDescription: "Syria's operating environment calls for careful, adaptable technology work. Raanzlr supports organisations, distributed teams, and diaspora-led initiatives with software and automation that strengthen continuity, organise work, and improve access to reliable operational information.",
       whyTitle: "Technology for Continuity, Coordination, and Practical Progress", whyParagraphs: ["Syria has experienced profound disruption to infrastructure, services, institutions, and livelihoods. Useful digital work must start with the realities of teams and communities, not assumptions about a uniform market or operating environment.", "Organisations may need to coordinate distributed staff, maintain service records, manage requests, or preserve institutional knowledge despite changing conditions. Focused systems can make responsibilities and information clearer while retaining human judgement.", "We begin by understanding users, access constraints, data sensitivity, and the operating process. We do not make claims about legal, financial, security, or regulatory outcomes; those require appropriate local and specialist advice."], keyAdvantages: ["Arabic-native user experiences", "Workflows for distributed teams", "Modular systems that can evolve", "Clear data ownership and access design", "Human review in sensitive processes"], servicesTitle: "Services for Syrian Organisations and Teams",
       services: [{ title: "Operational Workflow Design", description: "Document and improve how requests, cases, tasks, and approvals move through a team." }, { title: "Custom Internal Tools", description: "Build focused systems for programmes, operations, records, and team coordination." }, { title: "Knowledge & Document Systems", description: "Organise approved guidance and documents so teams can find, update, and review information." }, { title: "Service Request Portals", description: "Create structured intake and follow-up experiences for users, partners, or internal departments." }, { title: "Reporting Dashboards", description: "Provide a clear view of selected operational data with appropriate roles and review steps." }, { title: "Automation & Integrations", description: "Reduce repetitive handoffs between approved tools while retaining visibility and human control." }], industriesTitle: "Organisations and Sectors We Support", industries: ["Civil Society Organisations", "Education & Training", "Healthcare Service Operations", "Professional Services", "Humanitarian and Development Programmes", "Social Enterprises", "Distributed Business Teams", "Diaspora-led Initiatives"],
-      useCasesTitle: "Practical Use Cases for Syrian Contexts", useCasesIntro: "These examples focus on operational support rather than promises about external conditions:", useCases: [{ title: "Distributed Team Coordination", description: "Create a shared task and update space so teams across locations can see ownership, progress, and open issues." }, { title: "Programme Case Management", description: "Structure intake, status tracking, notes, and review for programme or service cases according to your operating policy." }, { title: "Training Operations", description: "Manage participant records, schedules, learning materials, and follow-up in one controlled workflow." }, { title: "Document and Policy Library", description: "Give authorised staff a current source for approved procedures, templates, and versioned documents." }, { title: "Partner Request Management", description: "Capture partner requests consistently, route them to the right owner, and maintain a transparent response history." }, { title: "Operational Reporting", description: "Bring selected data into simple dashboards that help leadership identify workload, bottlenecks, and follow-up needs." }], whyRaanzlrTitle: "Why Teams Choose Raanzlr for Practical Transformation", whyRaanzlr: ["Arabic-first product and content design", "Careful treatment of data sensitivity and access", "Small, useful releases over speculative programmes", "Systems that support people rather than replace judgement", "Clear documentation for continuity", "Collaboration suited to distributed stakeholders"], faqTitle: "Common Questions from Syrian Organisations",
+      useCasesTitle: "Practical Use Cases for Syrian Contexts", useCasesIntro: "These examples focus on operational support rather than promises about external conditions:", useCases: [{ title: "Distributed Team Coordination", description: "Create a shared task and update space so teams across locations can see ownership, progress, and open issues." }, { title: "Programme Case Management", description: "Structure intake, status tracking, notes, and review for programme or service cases according to your operating policy." }, { title: "Training Operations", description: "Manage participant records, schedules, learning materials, and follow-up in one controlled workflow." }, { title: "Document and Policy Library", description: "Give authorised staff a current source for approved procedures, templates, and versioned documents." }, { title: "Partner Request Management", description: "Capture partner requests consistently, route them to the right owner, and maintain a transparent response history." }, { title: "Operational Reporting", description: "Bring selected data into simple dashboards that help leadership identify workload, bottlenecks, and follow-up needs." }], whyRaanzlrTitle: "Why Teams Choose Raanzlr for Practical Transformation", whyRaanzlr: ["Arabic-first product and content design", "Careful treatment of data sensitivity and access", "Small, useful releases over speculative programmes", "Systems that support people rather than replace judgement", "Clear documentation for continuity", "Collaboration suited to distributed stakeholders"], faqTitle: "Common Questions About AI & Software Work in Syrian Contexts",
       faqs: [{ q: "Who can you work with in relation to Syria?", a: "We may work with organisations, distributed teams, and diaspora-led initiatives following a project review and with due regard to applicable legal requirements, sanctions, and trade controls. This is not legal advice." }, { q: "Do you make regulatory or security guarantees?", a: "No. We do not provide legal, financial, regulatory, or security assurances. Relevant specialists should review your specific context." }, { q: "Can a system support teams in different locations?", a: "Yes. We can design role-based workflows, shared records, notifications, and reporting around the access conditions your organisation identifies." }, { q: "How do you approach sensitive data?", a: "We identify what data is needed, who should access it, how long it should be retained, and which safeguards your organisation requires." }, { q: "Can we start with a small internal process?", a: "Yes. A focused workflow, document system, or reporting need is often a responsible starting point." }, { q: "Will the interface work in Arabic?", a: "Yes. Arabic content and right-to-left interface behaviour are planned as part of the product, alongside required additional languages." }], ctaTitle: "Build a More Resilient Way of Working", ctaDescription: "Discuss a carefully scoped software or automation initiative that supports your team's continuity, coordination, and day-to-day delivery."
     },
     ar: {
       name: "سوريا", region: "بلاد الشام", cities: "دمشق • حلب • حمص • والفرق الموزعة", metaDescription: "برمجيات عملية وأتمتة وذكاء اصطناعي للمؤسسات والفرق المرتبطة بسوريا، تركز على استمرارية الأعمال وتنظيم العمليات وتقديم الخدمات.", keywords: "تطوير برمجيات سوريا، أتمتة الذكاء الاصطناعي سوريا، عمليات المؤسسات السورية، برمجيات عربية للفرق، تحول تشغيلي سوريا", heroTitle: "أنظمة رقمية عملية للمؤسسات والفرق المرتبطة بسوريا", heroDescription: "تتطلب بيئة العمل في سوريا تعاملاً تقنياً حذراً وقابلاً للتكيف. تدعم Raanzlr المؤسسات والفرق الموزعة والمبادرات التي يقودها سوريون في المهجر بأنظمة برمجية وأتمتة تعزز استمرارية العمل وتنظم الإجراءات وتحسن الوصول إلى معلومات تشغيلية موثوقة.",
       whyTitle: "تقنية لاستمرارية العمل والتنسيق والتقدم العملي", whyParagraphs: ["تأثرت البنية التحتية والخدمات والمؤسسات وسبل العيش في سوريا باضطرابات عميقة. لذلك يبدأ العمل الرقمي المفيد من واقع الفرق والمجتمعات، لا من افتراض وجود سوق أو بيئة تشغيلية واحدة.", "قد تحتاج المؤسسات إلى تنسيق فرق موزعة أو حفظ سجلات الخدمات أو إدارة الطلبات أو صون المعرفة المؤسسية مع تغير الظروف. ويمكن للأنظمة المركزة أن توضح المسؤوليات والمعلومات مع الإبقاء على التقدير البشري.", "نبدأ بفهم المستخدمين وقيود الوصول وحساسية البيانات وسير العمل. ولا نقدم وعوداً قانونية أو مالية أو أمنية أو تنظيمية، فهذه تتطلب مشورة محلية ومتخصصة مناسبة."], keyAdvantages: ["تجارب مستخدم تبدأ من العربية", "إجراءات ملائمة للفرق الموزعة", "أنظمة مرنة تنمو مع الاحتياجات", "وضوح في ملكية البيانات والصلاحيات", "مراجعة بشرية في الإجراءات الحساسة"], servicesTitle: "خدماتنا للمؤسسات والفرق المرتبطة بسوريا",
       services: [{ title: "تصميم إجراءات التشغيل", description: "توثيق وتحسين انتقال الطلبات والحالات والمهام والموافقات داخل الفريق." }, { title: "أدوات داخلية مخصصة", description: "بناء أنظمة مركزة للبرامج والعمليات والسجلات وتنسيق الفرق." }, { title: "أنظمة المعرفة والمستندات", description: "تنظيم الإرشادات والمستندات المعتمدة كي تتمكن الفرق من العثور عليها وتحديثها ومراجعتها." }, { title: "بوابات طلب الخدمات", description: "إنشاء مسارات منظمة لاستقبال الطلبات ومتابعتها للمستخدمين أو الشركاء أو الإدارات الداخلية." }, { title: "لوحات التقارير", description: "تقديم رؤية واضحة لبيانات تشغيلية مختارة مع صلاحيات وخطوات مراجعة مناسبة." }, { title: "الأتمتة والتكامل", description: "تقليل نقاط التسليم المتكررة بين الأدوات المعتمدة مع الحفاظ على الرؤية والتحكم البشري." }], industriesTitle: "المؤسسات والقطاعات التي ندعمها", industries: ["منظمات المجتمع المدني", "التعليم والتدريب", "عمليات خدمات الرعاية الصحية", "الخدمات المهنية", "برامج العمل الإنساني والتنمية", "المشروعات الاجتماعية", "فرق الأعمال الموزعة", "مبادرات يقودها سوريون في المهجر"],
-      useCasesTitle: "حالات استخدام عملية في السياق السوري", useCasesIntro: "تركز هذه الأمثلة على دعم العمليات، لا على وعود تتعلق بالظروف الخارجية:", useCases: [{ title: "تنسيق الفرق الموزعة", description: "إنشاء مساحة مشتركة للمهام والتحديثات كي ترى الفرق العاملة من مواقع مختلفة المسؤوليات والتقدم والمسائل المفتوحة." }, { title: "إدارة حالات البرامج", description: "تنظيم الاستقبال وتتبع الحالة والملاحظات والمراجعة لحالات البرامج أو الخدمات وفق سياسة عملكم." }, { title: "عمليات التدريب", description: "إدارة سجلات المشاركين والجداول والمواد التعليمية والمتابعة ضمن إجراء مضبوط." }, { title: "مكتبة المستندات والسياسات", description: "منح الموظفين المخولين مصدراً حديثاً للإجراءات والنماذج والمستندات ذات الإصدارات الواضحة." }, { title: "إدارة طلبات الشركاء", description: "تسجيل طلبات الشركاء بصورة موحدة وتوجيهها للمالك المناسب والحفاظ على سجل استجابة واضح." }, { title: "التقارير التشغيلية", description: "جمع بيانات مختارة في لوحات بسيطة تساعد الإدارة على ملاحظة عبء العمل ونقاط التعثر واحتياجات المتابعة." }], whyRaanzlrTitle: "لماذا تختار الفرق Raanzlr للتحول العملي؟", whyRaanzlr: ["تصميم للمنتج والمحتوى يبدأ من العربية", "تعامل حذر مع حساسية البيانات والصلاحيات", "إصدارات صغيرة ومفيدة بدلاً من برامج افتراضية", "أنظمة تدعم البشر ولا تستبدل تقديرهم", "توثيق واضح للتسليم والاستمرارية", "تعاون مناسب لأصحاب المصلحة الموزعين"], faqTitle: "أسئلة شائعة من المؤسسات المرتبطة بسوريا",
+      useCasesTitle: "حالات استخدام عملية في السياق السوري", useCasesIntro: "تركز هذه الأمثلة على دعم العمليات، لا على وعود تتعلق بالظروف الخارجية:", useCases: [{ title: "تنسيق الفرق الموزعة", description: "إنشاء مساحة مشتركة للمهام والتحديثات كي ترى الفرق العاملة من مواقع مختلفة المسؤوليات والتقدم والمسائل المفتوحة." }, { title: "إدارة حالات البرامج", description: "تنظيم الاستقبال وتتبع الحالة والملاحظات والمراجعة لحالات البرامج أو الخدمات وفق سياسة عملكم." }, { title: "عمليات التدريب", description: "إدارة سجلات المشاركين والجداول والمواد التعليمية والمتابعة ضمن إجراء مضبوط." }, { title: "مكتبة المستندات والسياسات", description: "منح الموظفين المخولين مصدراً حديثاً للإجراءات والنماذج والمستندات ذات الإصدارات الواضحة." }, { title: "إدارة طلبات الشركاء", description: "تسجيل طلبات الشركاء بصورة موحدة وتوجيهها للمالك المناسب والحفاظ على سجل استجابة واضح." }, { title: "التقارير التشغيلية", description: "جمع بيانات مختارة في لوحات بسيطة تساعد الإدارة على ملاحظة عبء العمل ونقاط التعثر واحتياجات المتابعة." }], whyRaanzlrTitle: "لماذا تختار الفرق Raanzlr للتحول العملي؟", whyRaanzlr: ["تصميم للمنتج والمحتوى يبدأ من العربية", "تعامل حذر مع حساسية البيانات والصلاحيات", "إصدارات صغيرة ومفيدة بدلاً من برامج افتراضية", "أنظمة تدعم البشر ولا تستبدل تقديرهم", "توثيق واضح للتسليم والاستمرارية", "تعاون مناسب لأصحاب المصلحة الموزعين"], faqTitle: "أسئلة شائعة عن أعمال الذكاء الاصطناعي والبرمجيات في السياق السوري",
       faqs: [{ q: "مع من يمكنكم العمل في ما يتعلق بسوريا؟", a: "قد نعمل مع المؤسسات والفرق الموزعة والمبادرات التي يقودها سوريون في المهجر، بعد مراجعة المشروع ومع مراعاة المتطلبات القانونية والعقوبات والضوابط التجارية السارية. لا يعد ذلك استشارة قانونية." }, { q: "هل تقدمون ضمانات تنظيمية أو أمنية؟", a: "لا. لا نقدم ضمانات قانونية أو مالية أو تنظيمية أو أمنية. ينبغي مراجعة متطلبات السياق المحدد مع المختصين المناسبين." }, { q: "هل يدعم النظام فرقاً في مواقع مختلفة؟", a: "نعم. يمكننا تصميم إجراءات بحسب الصلاحيات وسجلات مشتركة وإشعارات وتقارير ضمن ظروف الوصول التي تحددها مؤسستكم." }, { q: "كيف تتعاملون مع البيانات الحساسة؟", a: "نحدد البيانات اللازمة ومن يحق له الوصول إليها ومدة الاحتفاظ بها والضوابط التي تتطلبها مؤسستكم." }, { q: "هل يمكن البدء بإجراء داخلي صغير؟", a: "نعم. يكون سير عمل محدود النطاق أو نظام مستندات أو حاجة تقريرية بداية مسؤولة في كثير من الحالات." }, { q: "هل تعمل الواجهة بالعربية؟", a: "نعم. نخطط للمحتوى العربي واتجاه الواجهة من اليمين إلى اليسار كجزء من المنتج، إلى جانب أي لغات أخرى مطلوبة." }], ctaTitle: "هل تبحثون عن أنظمة تدعم استمرارية العمل؟", ctaDescription: "إذا كنتم تديرون مؤسسة أو فريقاً يحتاج إلى أنظمة أكثر وضوحاً وتنسيقاً، يسعدنا مناقشة احتياجاتكم وتصميم حل يناسب واقع عملكم وظروفه."
     }
   },
@@ -1162,17 +1162,17 @@ export const MARKET_DETAILS = [
   {
     slug: "turkey", flag: "🇹🇷", code: "TR", heroImage: "/markets/turkey.webp",
     en: {
-      name: "Türkiye", region: "Europe & Asia", cities: "Istanbul, Ankara, Izmir, Bursa", metaDescription: "AI automation and custom software for businesses in Türkiye. We build multilingual systems for technology, manufacturing, logistics, services, and growing teams.", keywords: "AI automation Türkiye, software development Istanbul, Turkish AI systems, business automation Turkey, custom software Türkiye", heroTitle: "AI Automation & Custom Software Development for Türkiye", heroDescription: "Türkiye combines a large domestic market, regional connectivity, and active industries spanning ICT, manufacturing, logistics, financial services, tourism, and startups. Raanzlr builds multilingual systems that help teams simplify operations and serve customers consistently.",
+      name: "Türkiye", region: "Europe & Asia", cities: "Istanbul, Ankara, Izmir, Bursa", metaDescription: "AI automation and custom software development for companies in Türkiye. Turkish, Arabic and English support, delivered remotely.", keywords: "AI automation Türkiye, software development Istanbul, Turkish AI systems, business automation Turkey, custom software Türkiye", heroTitle: "AI Automation & Custom Software Development for Türkiye", heroDescription: "Türkiye combines a large domestic market, regional connectivity, and active industries spanning ICT, manufacturing, logistics, financial services, tourism, and startups. Raanzlr builds multilingual systems that help teams simplify operations and serve customers consistently.",
       whyTitle: "Why Türkiye Businesses Are Building Smarter Operations", whyParagraphs: ["Türkiye's Investment Office identifies ICT, automotive, machinery, logistics, financial investments and startups, life sciences, energy, and tourism as important sectors. These organisations commonly work across suppliers, locations, channels, and customer segments.", "That complexity makes disconnected processes costly in time and attention. Better workflow design, shared operational data, and useful customer tools can reduce friction without removing teams from important decisions.", "We identify an achievable first improvement, build it around the languages and systems your team uses, and create a foundation that can be extended when it proves useful."], keyAdvantages: ["Turkish, Arabic, and English experiences where needed", "Cross-border product and workflow design", "Integration for multi-system operations", "Practical tools for service and industrial teams", "Focused, staged delivery"], servicesTitle: "Services for Businesses in Türkiye",
       services: [{ title: "AI Workflow Automation", description: "Automate routine coordination, data movement, notifications, and task routing across business systems." }, { title: "Custom Software Development", description: "Build tailored operational platforms, client portals, and internal applications." }, { title: "Multilingual Customer Systems", description: "Design support and intake experiences for Turkish-speaking and international audiences." }, { title: "Operations Dashboards", description: "Give teams useful visibility into agreed operational data and service performance." }, { title: "Integration Engineering", description: "Connect CRM, ERP, e-commerce, communications, and approved business tools." }, { title: "AI Assistants", description: "Create controlled assistants for internal knowledge, service triage, and routine requests." }], industriesTitle: "Industries We Serve in Türkiye", industries: ["ICT & Digital Services", "Manufacturing", "Logistics & Transportation", "Financial Services & Startups", "Tourism & Hospitality", "Retail & E-commerce", "Professional Services", "Education & Training"],
-      useCasesTitle: "Use Cases for Türkiye Businesses", useCasesIntro: "Examples of systems that can reduce operational friction:", useCases: [{ title: "Multi-language Lead Intake", description: "Capture enquiries in the relevant language, create structured records, and route them to the appropriate team." }, { title: "Factory and Field Task Tracking", description: "Coordinate routine tasks, exceptions, and handoffs between operational teams." }, { title: "Order Operations Dashboard", description: "Bring selected order, inventory, and service data together for timely operational visibility." }, { title: "Partner Portal", description: "Give distributors, suppliers, or clients a controlled place to submit information and track requests." }, { title: "Customer Service Triage", description: "Classify support requests, suggest approved answers for routine cases, and escalate exceptions." }, { title: "Approval Workflow Automation", description: "Route internal requests through agreed review steps and retain an accessible status and decision record." }], whyRaanzlrTitle: "Why Türkiye Teams Choose Raanzlr", whyRaanzlr: ["Multilingual product experiences built deliberately", "A process-first approach to automation", "Practical integrations across business systems", "Clear scope and staged delivery", "User-centred internal and customer tools", "Cross-cultural communication for regional teams"], faqTitle: "Common Questions from Türkiye Clients",
+      useCasesTitle: "Use Cases for Türkiye Businesses", useCasesIntro: "Examples of systems that can reduce operational friction:", useCases: [{ title: "Multi-language Lead Intake", description: "Capture enquiries in the relevant language, create structured records, and route them to the appropriate team." }, { title: "Factory and Field Task Tracking", description: "Coordinate routine tasks, exceptions, and handoffs between operational teams." }, { title: "Order Operations Dashboard", description: "Bring selected order, inventory, and service data together for timely operational visibility." }, { title: "Partner Portal", description: "Give distributors, suppliers, or clients a controlled place to submit information and track requests." }, { title: "Customer Service Triage", description: "Classify support requests, suggest approved answers for routine cases, and escalate exceptions." }, { title: "Approval Workflow Automation", description: "Route internal requests through agreed review steps and retain an accessible status and decision record." }], whyRaanzlrTitle: "Why Türkiye Teams Choose Raanzlr", whyRaanzlr: ["Multilingual product experiences built deliberately", "A process-first approach to automation", "Practical integrations across business systems", "Clear scope and staged delivery", "User-centred internal and customer tools", "Cross-cultural communication for regional teams"], faqTitle: "Common Questions About AI Automation in Türkiye",
       faqs: [{ q: "Do you work with companies across Türkiye?", a: "Yes. We work remotely with teams across Türkiye through structured discovery, collaborative delivery, and regular project reviews." }, { q: "Can you support Turkish-language systems?", a: "Yes. We can design Turkish-language experiences and add Arabic or English where users require it." }, { q: "Can you connect our existing tools?", a: "We review the technical interfaces, data, and process requirements before defining a practical integration scope." }, { q: "Do you serve manufacturers and logistics companies?", a: "Yes. We build workflow, task, reporting, portal, and integration solutions around defined operational processes." }, { q: "Do you provide legal compliance advice?", a: "No. We can implement requirements provided by your legal and compliance advisers, who remain responsible for legal guidance." }, { q: "How do we begin?", a: "We start with a discovery conversation to define the process, users, constraints, and a useful first outcome." }], ctaTitle: "Build Connected, Multilingual Operations in Türkiye", ctaDescription: "Discuss an AI, automation, or custom software initiative that supports your Türkiye team's next operational improvement."
     },
     ar: {
       name: "تركيا", region: "أوروبا وآسيا", cities: "إسطنبول • أنقرة • إزمير • بورصة", metaDescription: "حلول الذكاء الاصطناعي وتطوير البرمجيات للشركات في تركيا. نبني أنظمة متعددة اللغات للتقنية والتصنيع واللوجستيات والخدمات والفرق المتنامية.", keywords: "أتمتة الذكاء الاصطناعي تركيا، تطوير برمجيات إسطنبول، أنظمة ذكاء اصطناعي تركية، أتمتة الأعمال تركيا، برمجيات مخصصة تركيا", heroTitle: "حلول الذكاء الاصطناعي وتطوير البرمجيات للشركات في تركيا", heroDescription: "تجمع تركيا بين سوق محلية واسعة وموقع يربط مناطق متعددة وقطاعات نشطة تشمل التقنية والتصنيع واللوجستيات والخدمات المالية والسياحة والشركات الناشئة. تبني Raanzlr أنظمة متعددة اللغات تساعد الفرق على تبسيط العمليات وخدمة العملاء باتساق أكبر.",
       whyTitle: "لماذا تبني الشركات في تركيا عمليات أكثر ذكاءً؟", whyParagraphs: ["تشمل القطاعات التي تبرزها جهة الاستثمار في تركيا تقنية المعلومات والاتصالات والسيارات والآلات واللوجستيات والنقل والاستثمارات المالية والشركات الناشئة وعلوم الحياة والطاقة والسياحة. وغالباً ما تعمل المؤسسات فيها عبر موردين ومواقع وقنوات متعددة.", "يجعل هذا التعقيد الإجراءات المنفصلة مكلفة في الوقت والانتباه. ويساعد تصميم سير العمل الأفضل والبيانات التشغيلية المشتركة وأدوات العملاء المفيدة على تقليل الاحتكاك من دون إبعاد الفرق عن القرارات المهمة.", "نحدد تحسناً أولياً قابلاً للتنفيذ، ونبنيه وفق اللغات والأنظمة التي يستخدمها فريقكم، ثم نؤسس قاعدة يمكن توسيعها عند ثبوت فائدتها."], keyAdvantages: ["تجارب بالتركية والعربية والإنجليزية عند الحاجة", "تصميم للعمل العابر للحدود", "تكاملات لعمليات متعددة الأنظمة", "أدوات عملية لفرق الخدمات والصناعة", "تنفيذ يبدأ بحالة استخدام محددة"], servicesTitle: "خدماتنا للشركات في تركيا",
       services: [{ title: "أتمتة سير العمل بالذكاء الاصطناعي", description: "أتمتة التنسيق المتكرر وانتقال البيانات والإشعارات وتوجيه المهام بين أنظمة الأعمال." }, { title: "تطوير البرمجيات المخصصة", description: "بناء منصات تشغيلية وبوابات للعملاء وتطبيقات داخلية مصممة حسب الاحتياج." }, { title: "أنظمة عملاء متعددة اللغات", description: "تصميم تجارب للدعم واستقبال الطلبات للعملاء الناطقين بالتركية والعملاء الدوليين." }, { title: "لوحات العمليات", description: "منح الفرق رؤية مفيدة للبيانات التشغيلية المتفق عليها وأداء الخدمة." }, { title: "هندسة التكامل", description: "ربط CRM وERP والتجارة الإلكترونية والاتصالات وأدوات الأعمال المعتمدة." }, { title: "مساعدو الذكاء الاصطناعي", description: "إنشاء مساعدين مضبوطين للمعرفة الداخلية وفرز الخدمة والطلبات الروتينية." }], industriesTitle: "القطاعات التي نخدمها في تركيا", industries: ["تقنية المعلومات والخدمات الرقمية", "التصنيع", "اللوجستيات والنقل", "الخدمات المالية والشركات الناشئة", "السياحة والضيافة", "التجزئة والتجارة الإلكترونية", "الخدمات المهنية", "التعليم والتدريب"],
-      useCasesTitle: "حالات استخدام للشركات في تركيا", useCasesIntro: "أمثلة على أنظمة تقلل الاحتكاك في العمليات:", useCases: [{ title: "استقبال العملاء المحتملين بلغات متعددة", description: "استقبال الاستفسارات باللغة المناسبة وإنشاء سجلات منظمة وتوجيهها إلى الفريق المناسب." }, { title: "تتبع مهام المصنع والفرق الميدانية", description: "تنسيق المهام الروتينية والحالات الاستثنائية ونقاط التسليم بين فرق التشغيل." }, { title: "لوحة عمليات الطلبات", description: "جمع بيانات مختارة عن الطلبات والمخزون والخدمة لرؤية حديثة للعمليات." }, { title: "بوابة للشركاء", description: "توفير مساحة مضبوطة للموزعين أو الموردين أو العملاء لتقديم المعلومات ومتابعة الطلبات." }, { title: "فرز خدمة العملاء", description: "تصنيف طلبات الدعم واقتراح إجابات معتمدة للحالات الروتينية وتصعيد الاستثناءات." }, { title: "أتمتة مسارات الموافقة", description: "توجيه الطلبات الداخلية عبر خطوات مراجعة متفق عليها مع سجل واضح للحالة والقرار." }], whyRaanzlrTitle: "لماذا تختار فرق تركيا Raanzlr؟", whyRaanzlr: ["تجارب متعددة اللغات مصممة عن قصد", "منهج يبدأ من الإجراء قبل الأتمتة", "تكاملات عملية بين أنظمة الأعمال", "نطاق واضح وتنفيذ على مراحل", "أدوات تركز على المستخدم", "تواصل يفهم الفرق الإقليمية"], faqTitle: "أسئلة شائعة من عملائنا في تركيا",
+      useCasesTitle: "حالات استخدام للشركات في تركيا", useCasesIntro: "أمثلة على أنظمة تقلل الاحتكاك في العمليات:", useCases: [{ title: "استقبال العملاء المحتملين بلغات متعددة", description: "استقبال الاستفسارات باللغة المناسبة وإنشاء سجلات منظمة وتوجيهها إلى الفريق المناسب." }, { title: "تتبع مهام المصنع والفرق الميدانية", description: "تنسيق المهام الروتينية والحالات الاستثنائية ونقاط التسليم بين فرق التشغيل." }, { title: "لوحة عمليات الطلبات", description: "جمع بيانات مختارة عن الطلبات والمخزون والخدمة لرؤية حديثة للعمليات." }, { title: "بوابة للشركاء", description: "توفير مساحة مضبوطة للموزعين أو الموردين أو العملاء لتقديم المعلومات ومتابعة الطلبات." }, { title: "فرز خدمة العملاء", description: "تصنيف طلبات الدعم واقتراح إجابات معتمدة للحالات الروتينية وتصعيد الاستثناءات." }, { title: "أتمتة مسارات الموافقة", description: "توجيه الطلبات الداخلية عبر خطوات مراجعة متفق عليها مع سجل واضح للحالة والقرار." }], whyRaanzlrTitle: "لماذا تختار فرق تركيا Raanzlr؟", whyRaanzlr: ["تجارب متعددة اللغات مصممة عن قصد", "منهج يبدأ من الإجراء قبل الأتمتة", "تكاملات عملية بين أنظمة الأعمال", "نطاق واضح وتنفيذ على مراحل", "أدوات تركز على المستخدم", "تواصل يفهم الفرق الإقليمية"], faqTitle: "أسئلة شائعة عن أتمتة الذكاء الاصطناعي في تركيا",
       faqs: [{ q: "هل تعملون مع شركات في جميع أنحاء تركيا؟", a: "نعم. نعمل عن بعد مع فرق في أنحاء تركيا عبر استكشاف منظم وتنفيذ تشاركي ومراجعات منتظمة." }, { q: "هل تدعمون الأنظمة باللغة التركية؟", a: "نعم. يمكننا تصميم تجارب باللغة التركية وإضافة العربية أو الإنجليزية حين يتطلب المستخدمون ذلك." }, { q: "هل يمكن ربط أدواتنا الحالية؟", a: "نراجع الواجهات التقنية والبيانات ومتطلبات الإجراء قبل تحديد نطاق تكامل عملي." }, { q: "هل تخدمون شركات التصنيع واللوجستيات؟", a: "نعم. نبني حلول الإجراءات والمهام والتقارير والبوابات والتكامل حول عملياتكم." }, { q: "هل تقدمون استشارات امتثال قانوني؟", a: "لا. يمكننا تنفيذ المتطلبات التي يقدمها مستشاروكم القانونيون والامتثال، لكنهم مسؤولون عن الإرشاد القانوني." }, { q: "كيف نبدأ؟", a: "نبدأ بمحادثة استكشافية لتحديد الإجراء والمستخدمين والقيود والنتيجة الأولى المفيدة." }], ctaTitle: "ابنوا عمليات مترابطة ومتعددة اللغات في تركيا", ctaDescription: "ناقشوا مبادرة في الذكاء الاصطناعي أو الأتمتة أو البرمجيات المخصصة تدعم التحسين التشغيلي التالي لفريقكم في تركيا."
     }
   },
@@ -1181,18 +1181,315 @@ export const MARKET_DETAILS = [
   {
     slug: "europe", flag: "🇪🇺", code: "EU", heroImage: "/markets/europe.webp",
     en: {
-      name: "Europe", region: "Europe", cities: "Multi-market and multilingual delivery", metaDescription: "AI automation and custom software for organisations operating across European markets. We build multilingual, privacy-conscious systems for connected teams and services.", keywords: "AI automation Europe, custom software European markets, multilingual software, GDPR-conscious product design, cross-border operations", heroTitle: "AI Automation & Custom Software for European Markets", heroDescription: "Europe is a region of connected but distinct markets, languages, operating practices, and legal frameworks. Raanzlr helps organisations build practical multilingual software and automation that supports teams, customers, and cross-border operations without treating the region as a single country.",
+      name: "Europe", region: "Europe", cities: "Multi-market and multilingual delivery", metaDescription: "AI automation and custom software for European teams working across multiple markets and languages. Delivered remotely, bilingual by default.", keywords: "AI automation Europe, custom software European markets, multilingual software, GDPR-conscious product design, cross-border operations", heroTitle: "AI Automation & Custom Software for European Markets", heroDescription: "Europe is a region of connected but distinct markets, languages, operating practices, and legal frameworks. Raanzlr helps organisations build practical multilingual software and automation that supports teams, customers, and cross-border operations without treating the region as a single country.",
       whyTitle: "Why European Operations Need Context-Aware Systems", whyParagraphs: ["European organisations often serve multiple markets, languages, and teams through shared platforms. A useful system must handle local content and operating differences while keeping core processes understandable and maintainable.", "The GDPR regulates the processing of personal data in the EU and EEA where it applies. Product design can support privacy-conscious practices through data minimisation, access controls, clear records, and review with the organisation's own legal advisers; it does not by itself establish legal compliance.", "We begin with users, data flows, and operational decisions. From there, we build a focused improvement that can work across markets and be extended without losing clarity for local teams."], keyAdvantages: ["Multilingual product and workflow design", "Cross-market operating models", "Privacy-conscious technical choices", "Integration for distributed business systems", "Clear separation of global and local processes"], servicesTitle: "Services for European Market Operations",
       services: [{ title: "Multilingual Product Development", description: "Build customer and employee systems designed for language, content, and regional workflow needs." }, { title: "AI Workflow Automation", description: "Automate repeatable coordination while preserving review points for people and local teams." }, { title: "Custom Operations Platforms", description: "Create portals, internal tools, and service systems that support multiple markets." }, { title: "Data & Reporting Systems", description: "Provide shared operational visibility with role-aware access to selected data." }, { title: "Integration Engineering", description: "Connect CRM, ERP, support, communications, and approved local or global tools." }, { title: "Privacy-Conscious Design", description: "Implement technical patterns that support your privacy and governance requirements, alongside specialist review." }], industriesTitle: "Industries We Serve Across Europe", industries: ["Professional Services", "SaaS & Technology", "Manufacturing", "Logistics & Trade", "Retail & E-commerce", "Financial Services", "Healthcare Operations", "Education & Training"],
-      useCasesTitle: "Use Cases for Multi-Market European Teams", useCasesIntro: "Examples of practical systems for regional operations:", useCases: [{ title: "Multilingual Customer Intake", description: "Provide consistent forms and service journeys while routing requests to the right language or market team." }, { title: "Regional Operations Hub", description: "Give distributed teams a shared view of tasks, service levels, and exceptions while retaining local ownership." }, { title: "Privacy-Aware Data Workflows", description: "Design collection, access, retention, and review steps around requirements defined by your organisation and advisers." }, { title: "Partner and Supplier Portal", description: "Offer a controlled place for regional partners to submit documents, track requests, and access current information." }, { title: "Cross-System Reporting", description: "Combine selected data from approved systems into operating views without manual spreadsheet consolidation." }, { title: "Internal Knowledge Assistant", description: "Help employees find approved, market-relevant guidance and route uncertain requests to an owner." }], whyRaanzlrTitle: "Why European Teams Choose Raanzlr", whyRaanzlr: ["Europe treated as a multi-market region, not one country", "Multilingual design planned from the start", "Practical privacy-conscious engineering", "Clear scope across global and local needs", "Integration expertise for distributed operations", "Collaborative delivery with internal and external advisers"], faqTitle: "Common Questions from European Clients",
+      useCasesTitle: "Use Cases for Multi-Market European Teams", useCasesIntro: "Examples of practical systems for regional operations:", useCases: [{ title: "Multilingual Customer Intake", description: "Provide consistent forms and service journeys while routing requests to the right language or market team." }, { title: "Regional Operations Hub", description: "Give distributed teams a shared view of tasks, service levels, and exceptions while retaining local ownership." }, { title: "Privacy-Aware Data Workflows", description: "Design collection, access, retention, and review steps around requirements defined by your organisation and advisers." }, { title: "Partner and Supplier Portal", description: "Offer a controlled place for regional partners to submit documents, track requests, and access current information." }, { title: "Cross-System Reporting", description: "Combine selected data from approved systems into operating views without manual spreadsheet consolidation." }, { title: "Internal Knowledge Assistant", description: "Help employees find approved, market-relevant guidance and route uncertain requests to an owner." }], whyRaanzlrTitle: "Why European Teams Choose Raanzlr", whyRaanzlr: ["Europe treated as a multi-market region, not one country", "Multilingual design planned from the start", "Practical privacy-conscious engineering", "Clear scope across global and local needs", "Integration expertise for distributed operations", "Collaborative delivery with internal and external advisers"], faqTitle: "Common Questions About AI Automation in Europe",
       faqs: [{ q: "Do you work across multiple European countries?", a: "Yes. We work with distributed teams and plan language, local workflow, and stakeholder needs as part of discovery." }, { q: "Can you build multilingual systems?", a: "Yes. We design language structure, content workflows, interfaces, and support processes around the audiences you serve." }, { q: "Are your products GDPR compliant?", a: "Compliance depends on the full context of processing, governance, and legal assessment. We can build privacy-conscious technical controls, while your legal and privacy advisers determine compliance." }, { q: "Can you integrate with our existing platforms?", a: "We assess APIs, data flows, ownership, and security requirements before defining an integration approach." }, { q: "Can one system support global and local teams?", a: "Yes. We can design shared foundations with local roles, content, permissions, and process variations where needed." }, { q: "How do projects start?", a: "We start with discovery to understand users, markets, data, dependencies, and the most useful first delivery." }], ctaTitle: "Build for Europe Without Losing Local Context", ctaDescription: "Discuss an AI, automation, or custom software initiative designed for the languages, teams, and operating realities of your European markets."
     },
     ar: {
       name: "أوروبا", region: "أوروبا", cities: "تنفيذ متعدد الأسواق واللغات", metaDescription: "حلول الذكاء الاصطناعي وتطوير البرمجيات للمؤسسات العاملة في الأسواق الأوروبية. نبني أنظمة متعددة اللغات تراعي الخصوصية للفرق والخدمات المترابطة.", keywords: "أتمتة الذكاء الاصطناعي أوروبا، برمجيات مخصصة للأسواق الأوروبية، برمجيات متعددة اللغات، تصميم يراعي GDPR، عمليات عابرة للحدود", heroTitle: "حلول الذكاء الاصطناعي والبرمجيات المخصصة للأسواق الأوروبية", heroDescription: "أوروبا منطقة تضم أسواقاً ولغات وممارسات تشغيلية وأطراً قانونية مترابطة لكنها مختلفة. تساعد Raanzlr المؤسسات على بناء برمجيات وأتمتة متعددة اللغات تدعم الفرق والعملاء والعمليات العابرة للحدود، دون التعامل مع المنطقة باعتبارها دولة واحدة.",
       whyTitle: "لماذا تحتاج العمليات الأوروبية إلى أنظمة تراعي السياق؟", whyParagraphs: ["تخدم المؤسسات الأوروبية غالباً أسواقاً ولغات وفرقاً متعددة عبر منصات مشتركة. ويجب أن يستوعب النظام المفيد اختلاف المحتوى والإجراءات المحلية مع الحفاظ على عمليات أساسية مفهومة وقابلة للصيانة.", "تنظم اللائحة العامة لحماية البيانات (GDPR) معالجة البيانات الشخصية في الاتحاد الأوروبي والمنطقة الاقتصادية الأوروبية في الحالات التي تنطبق فيها. ويمكن للتصميم التقني أن يدعم ممارسات تراعي الخصوصية، مثل تقليل البيانات والصلاحيات والسجلات الواضحة، لكنه لا يثبت الامتثال القانوني بذاته.", "نبدأ بالمستخدمين وتدفقات البيانات والقرارات التشغيلية. ثم نبني تحسناً مركزاً يمكن أن يعمل عبر الأسواق ويتوسع دون فقدان الوضوح لدى الفرق المحلية."], keyAdvantages: ["تصميم منتجات وإجراءات متعددة اللغات", "نماذج تشغيل عبر أسواق متعددة", "اختيارات تقنية تراعي الخصوصية", "تكامل للأنظمة الموزعة", "فصل واضح بين العمليات العامة والمحلية"], servicesTitle: "خدماتنا للعمليات في الأسواق الأوروبية",
       services: [{ title: "تطوير منتجات متعددة اللغات", description: "بناء أنظمة للعملاء والموظفين تراعي اللغة والمحتوى واحتياجات الإجراءات الإقليمية." }, { title: "أتمتة سير العمل بالذكاء الاصطناعي", description: "أتمتة التنسيق المتكرر مع الحفاظ على نقاط مراجعة للموظفين والفرق المحلية." }, { title: "منصات عمليات مخصصة", description: "إنشاء بوابات وأدوات داخلية وأنظمة خدمات تدعم أسواقاً متعددة." }, { title: "أنظمة البيانات والتقارير", description: "تقديم رؤية تشغيلية مشتركة مع صلاحيات مناسبة للوصول إلى البيانات المختارة." }, { title: "هندسة التكامل", description: "ربط CRM وERP والدعم والاتصالات والأدوات المحلية أو العالمية المعتمدة." }, { title: "تصميم يراعي الخصوصية", description: "تطبيق أنماط تقنية تدعم متطلبات الخصوصية والحوكمة لديكم، إلى جانب المراجعة المتخصصة." }], industriesTitle: "القطاعات التي نخدمها في أوروبا", industries: ["الخدمات المهنية", "البرمجيات كخدمة والتقنية", "التصنيع", "اللوجستيات والتجارة", "التجزئة والتجارة الإلكترونية", "الخدمات المالية", "عمليات الرعاية الصحية", "التعليم والتدريب"],
-      useCasesTitle: "حالات استخدام للفرق الأوروبية متعددة الأسواق", useCasesIntro: "أمثلة على أنظمة عملية للعمليات الإقليمية:", useCases: [{ title: "استقبال العملاء بلغات متعددة", description: "تقديم نماذج وتجارب خدمة متسقة مع توجيه الطلبات إلى فريق اللغة أو السوق المناسب." }, { title: "مركز عمليات إقليمي", description: "منح الفرق الموزعة رؤية مشتركة للمهام ومستويات الخدمة والاستثناءات مع الحفاظ على الملكية المحلية." }, { title: "إجراءات بيانات تراعي الخصوصية", description: "تصميم خطوات الجمع والوصول والاحتفاظ والمراجعة وفق المتطلبات التي تحددها مؤسستكم ومستشاروكم." }, { title: "بوابة للشركاء والموردين", description: "توفير مكان مضبوط للشركاء الإقليميين لتقديم المستندات ومتابعة الطلبات والوصول إلى المعلومات الحديثة." }, { title: "تقارير بين الأنظمة", description: "جمع بيانات مختارة من الأنظمة المعتمدة في رؤى تشغيلية دون تجميع يدوي لجداول البيانات." }, { title: "مساعد معرفة داخلي", description: "مساعدة الموظفين في الوصول إلى إرشادات معتمدة وملائمة للسوق وتوجيه الطلبات غير الواضحة إلى المسؤول." }], whyRaanzlrTitle: "لماذا تختار الفرق الأوروبية Raanzlr؟", whyRaanzlr: ["التعامل مع أوروبا كمنطقة متعددة الأسواق لا كدولة واحدة", "تخطيط التعدد اللغوي منذ البداية", "هندسة عملية تراعي الخصوصية", "نطاق واضح للاحتياجات العامة والمحلية", "خبرة تكامل للعمليات الموزعة", "تنفيذ تشاركي مع الفرق والمستشارين"], faqTitle: "أسئلة شائعة من عملائنا في أوروبا",
+      useCasesTitle: "حالات استخدام للفرق الأوروبية متعددة الأسواق", useCasesIntro: "أمثلة على أنظمة عملية للعمليات الإقليمية:", useCases: [{ title: "استقبال العملاء بلغات متعددة", description: "تقديم نماذج وتجارب خدمة متسقة مع توجيه الطلبات إلى فريق اللغة أو السوق المناسب." }, { title: "مركز عمليات إقليمي", description: "منح الفرق الموزعة رؤية مشتركة للمهام ومستويات الخدمة والاستثناءات مع الحفاظ على الملكية المحلية." }, { title: "إجراءات بيانات تراعي الخصوصية", description: "تصميم خطوات الجمع والوصول والاحتفاظ والمراجعة وفق المتطلبات التي تحددها مؤسستكم ومستشاروكم." }, { title: "بوابة للشركاء والموردين", description: "توفير مكان مضبوط للشركاء الإقليميين لتقديم المستندات ومتابعة الطلبات والوصول إلى المعلومات الحديثة." }, { title: "تقارير بين الأنظمة", description: "جمع بيانات مختارة من الأنظمة المعتمدة في رؤى تشغيلية دون تجميع يدوي لجداول البيانات." }, { title: "مساعد معرفة داخلي", description: "مساعدة الموظفين في الوصول إلى إرشادات معتمدة وملائمة للسوق وتوجيه الطلبات غير الواضحة إلى المسؤول." }], whyRaanzlrTitle: "لماذا تختار الفرق الأوروبية Raanzlr؟", whyRaanzlr: ["التعامل مع أوروبا كمنطقة متعددة الأسواق لا كدولة واحدة", "تخطيط التعدد اللغوي منذ البداية", "هندسة عملية تراعي الخصوصية", "نطاق واضح للاحتياجات العامة والمحلية", "خبرة تكامل للعمليات الموزعة", "تنفيذ تشاركي مع الفرق والمستشارين"], faqTitle: "أسئلة شائعة عن أتمتة الذكاء الاصطناعي في أوروبا",
       faqs: [{ q: "هل تعملون في دول أوروبية متعددة؟", a: "نعم. نعمل مع فرق موزعة ونخطط للغة والإجراءات المحلية واحتياجات أصحاب المصلحة ضمن مرحلة الاستكشاف." }, { q: "هل تبنون أنظمة متعددة اللغات؟", a: "نعم. نصمم بنية اللغة وإجراءات المحتوى والواجهات والدعم وفق الجماهير التي تخدمونها." }, { q: "هل منتجاتكم متوافقة مع GDPR؟", a: "يعتمد الامتثال على سياق المعالجة والحوكمة والتقييم القانوني كاملاً. نبني ضوابط تقنية تراعي الخصوصية، بينما يحدد مستشاروكم القانونيون والخصوصية الامتثال." }, { q: "هل يمكنكم ربط منصاتنا الحالية؟", a: "نقيّم واجهات API وتدفقات البيانات والملكية ومتطلبات الأمان قبل تحديد أسلوب التكامل." }, { q: "هل يدعم نظام واحد الفرق العامة والمحلية؟", a: "نعم. يمكننا تصميم أسس مشتركة مع أدوار ومحتوى وصلاحيات واختلافات إجرائية محلية عند الحاجة." }, { q: "كيف تبدأ المشاريع؟", a: "نبدأ بالاكتشاف لفهم المستخدمين والأسواق والبيانات والاعتمادات وأفضل تسليم أولي مفيد." }], ctaTitle: "ابنوا لأوروبا مع الحفاظ على السياق المحلي", ctaDescription: "ناقشوا مبادرة في الذكاء الاصطناعي أو الأتمتة أو البرمجيات المخصصة مصممة للغات والفرق وواقع التشغيل في أسواقكم الأوروبية."
     }
+  },
+
+  // UNITED STATES — target market for remote services. Raanzlr has no US branch
+  // office and no delivered US client work; every string here is a service
+  // offer or capability statement, never past experience. `heroImage: ""` on
+  // purpose — no dedicated photo yet; MarketDetail guards the <img>.
+  {
+    slug: "united-states",
+    flag: "🇺🇸",
+    code: "US",
+    heroImage: "",
+    en: {
+      name: "United States",
+      region: "North America",
+      cities: "Remote delivery, US-wide",
+      seoTitle: "AI Automation & Custom Software in the United States — Raanzlr",
+      metaDescription: "Remote AI automation and custom software services for US businesses, from Raanzlr — a Wyoming-registered company. AI agents, workflow automation, dashboards, integrations.",
+      keywords: "AI automation company United States, AI automation services USA, custom software development US, workflow automation US business, AI agents for US companies",
+      heroTitle: "AI Automation & Custom Software for US Businesses",
+      heroDescription: "Raanzlr provides remote AI automation and custom software services for companies in the United States — AI agents, workflow automation, dashboards, API integrations, and full custom applications. Raanzlr is registered in Casper, Wyoming, and every engagement runs remotely: discovery, build, launch, and support. No office visit, and no in-house AI hire to make first.",
+      answerBlock: {
+        q: "How can US companies use AI automation?",
+        a: "US companies use AI automation to remove repetitive work from operations, support, and back-office teams: AI agents that answer customers and qualify leads, workflows that move data between a CRM, billing, and support tools, and dashboards that replace manual reporting. Raanzlr provides these systems as a remote service — scoped, built, and supported online.",
+      },
+      whyTitle: "When a Remote AI Automation Partner Makes Sense for US Companies",
+      whyParagraphs: [
+        "Hiring in-house for AI and automation is slow and expensive. A mid-level ML or integration engineer in most US metros is a six-figure commitment before a single workflow ships, and the work is often project-shaped rather than a permanent role. A remote partner lets a team get the system built without adding headcount for it.",
+        "Most operational friction in a US business is not a missing tool — it is the gaps between the tools already in use. Leads sit in a form nobody routes, finance re-keys the same numbers into a spreadsheet, support answers the same question a hundred times a week. Automation and AI agents close those gaps directly.",
+        "Raanzlr's delivery model is built for how a distributed US team already operates: written scope, shared docs, calls scheduled to your time zone, and sprint delivery with a working demo every week. Contracting and invoicing run through the US-registered entity.",
+      ],
+      keyAdvantages: [
+        "US-registered company (Casper, Wyoming) — straightforward contracting and invoicing",
+        "Calls scheduled to overlap your US business hours",
+        "Fixed, written scope per project — no open-ended retainer required",
+        "AI agents and interfaces built for English first, with Spanish or Arabic where your customers need it",
+        "Designed to integrate with the tools US teams commonly use — HubSpot, Salesforce, Zendesk, Stripe, QuickBooks, Snowflake, and custom APIs",
+        "No lock-in: you own the code, the infrastructure, and the accounts",
+      ],
+      servicesTitle: "What Raanzlr Offers US Businesses",
+      services: [
+        { title: "AI Agents & Chatbots", description: "Agents on your website, WhatsApp, or help desk that answer questions, qualify leads, and book meetings against real availability, then hand off to a person when they should." },
+        { title: "Workflow Automation", description: "Business process automation that routes work, moves data between systems, runs approvals, and handles scheduled jobs — built on n8n, Make, or custom pipelines." },
+        { title: "Custom Software & Web Apps", description: "Full-stack web platforms and internal tools built to your process instead of forcing your process into off-the-shelf software." },
+        { title: "Dashboards & Data Systems", description: "Operations and executive dashboards, plus the data pipelines behind them, so reporting stops being a manual weekly job." },
+        { title: "API & Systems Integration", description: "Connecting your CRM, billing, support, and data warehouse through their APIs so records stay in sync without re-keying." },
+        { title: "Custom AI", description: "Retrieval-augmented generation over your own documents, internal copilots, and bespoke model work where a general chatbot is not enough." },
+      ],
+      industriesTitle: "US Industries Raanzlr Builds For",
+      industries: ["Healthcare & practice operations", "Real estate & property management", "Logistics & supply chain", "Retail & e-commerce", "Professional & financial services", "SaaS & technology", "Home & field services", "Nonprofits & associations"],
+      useCasesTitle: "AI Automation & Custom Software Use Cases for US Companies",
+      useCasesIntro: "Common operational problems and the kind of system that addresses each. These are illustrative patterns to show what is possible — not descriptions of delivered projects.",
+      useCases: [
+        { title: "Inbound lead routing", description: "Web-form and inbound-call leads can be captured, enriched, scored, and routed to the right rep in seconds, with follow-up reminders, instead of sitting in an inbox overnight." },
+        { title: "Tier-1 customer support", description: "An AI agent can resolve the repeat questions — order status, account changes, policy questions — in English and Spanish, around the clock, and escalate the rest with full context." },
+        { title: "Back-office data entry", description: "Invoices, applications, and intake forms can be read, validated, and written into the system of record automatically, with a human review step only for exceptions." },
+        { title: "Cross-tool reporting", description: "Data from a CRM, billing, and support tools can be pulled into one dashboard with the numbers leadership actually asks for, refreshed automatically." },
+        { title: "Approval workflows", description: "Purchase requests, discounts, contract changes, and time off can move through defined approval steps with a full audit trail and automatic reminders." },
+        { title: "Internal knowledge assistant", description: "Staff can ask a question in plain English and get an answer grounded in current policies, SOPs, and product docs, with a source link and uncertain cases routed to an owner." },
+      ],
+      whyRaanzlrTitle: "How Raanzlr Works With US Teams",
+      whyRaanzlr: [
+        "A US-registered company — contracting, invoicing, and payment work the way your finance team expects",
+        "A defined remote delivery method: discovery, written scope, sprint build, launch, support window",
+        "Weekly working demos, not status decks",
+        "Honest build-vs-buy advice — we say when off-the-shelf software is the better call",
+        "Documentation and a handover so your team can run and extend what we build",
+        "Clear scope limits — we say what we do not do",
+      ],
+      faqTitle: "Common Questions About Raanzlr's US Services",
+      faqs: [
+        { q: "Does Raanzlr have an office in the United States?", a: "Raanzlr is registered in Casper, Wyoming, and delivers its services to US companies entirely remotely. There is no branch office to visit and no on-site team. Discovery, development, launch, and support all run through calls, shared docs, and sprint demos. When a project genuinely needs an in-person session, that is arranged separately." },
+        { q: "How does remote delivery work?", a: "Every engagement follows the same path: a discovery call to understand the problem, a written scope with timeline and price, a build in one-to-two week sprints with a working demo at the end of each, a launch, and a support window afterward. Calls are scheduled to overlap your business hours." },
+        { q: "How much does AI automation cost?", a: "It is scoped per project rather than sold as a fixed package. A single automation or AI agent is a smaller engagement; a custom platform or a multi-system integration is larger. After the discovery call you get a written scope with a fixed price and milestones, so there is no open-ended meter running." },
+        { q: "How long does a project take?", a: "A focused automation or a single AI agent is typically a few weeks. A custom dashboard or internal tool is usually one to two months. A full platform is longer and is broken into staged releases so you see working software early. Exact timelines come with the written scope." },
+        { q: "Can Raanzlr integrate with the tools we already use?", a: "Yes. Raanzlr can connect to CRMs (HubSpot, Salesforce, Pipedrive), support tools (Zendesk, Intercom, Front), billing (Stripe, QuickBooks, Chargebee), data warehouses (Snowflake, BigQuery), and any system with a documented API. The integration approach is assessed during discovery before scope is fixed." },
+        { q: "Who owns the code and the accounts?", a: "You do. Work is delivered into your repositories, your cloud accounts, and your third-party services. There is no proprietary platform you have to keep paying Raanzlr to use, and no lock-in that stops another team from taking over later." },
+      ],
+      ctaTitle: "Start a Conversation About Your US Operation",
+      ctaDescription: "Tell Raanzlr the process that is costing your team the most time. You will get an honest read on whether automation, a custom build, or a smaller fix is the right move — and a written scope if it is a fit.",
+    },
+    ar: {
+      name: "الولايات المتحدة",
+      region: "أمريكا الشمالية",
+      cities: "تنفيذ عن بُعد في جميع الولايات",
+      seoTitle: "خدمات أتمتة الذكاء الاصطناعي والبرمجيات المخصصة في الولايات المتحدة — Raanzlr",
+      metaDescription: "خدمات أتمتة الذكاء الاصطناعي والبرمجيات المخصصة عن بُعد لشركات الولايات المتحدة، من راانزلر، وهي شركة مسجّلة في وايومنغ. وكلاء ذكاء اصطناعي وأتمتة عمليات ولوحات بيانات وتكاملات.",
+      keywords: "أتمتة الذكاء الاصطناعي الولايات المتحدة، خدمات أتمتة الذكاء الاصطناعي أمريكا، تطوير برمجيات مخصصة الولايات المتحدة، أتمتة سير العمل، وكلاء ذكاء اصطناعي للشركات الأمريكية",
+      heroTitle: "أتمتة الذكاء الاصطناعي والبرمجيات المخصصة لشركات الولايات المتحدة",
+      heroDescription: "تقدّم راانزلر خدمات أتمتة الذكاء الاصطناعي والبرمجيات المخصصة عن بُعد للشركات في الولايات المتحدة — وكلاء ذكاء اصطناعي، وأتمتة سير العمل، ولوحات بيانات، وتكاملات API، وتطبيقات مخصصة كاملة. راانزلر مسجّلة في كاسبر بولاية وايومنغ، وكل مشروع يُنفَّذ عن بُعد: الاكتشاف، والبناء، والإطلاق، والدعم — دون زيارة مكتب أو توظيف فريق ذكاء اصطناعي داخلي أولاً.",
+      answerBlock: {
+        q: "كيف يمكن للشركات الأمريكية استخدام أتمتة الذكاء الاصطناعي؟",
+        a: "تستخدم الشركات الأمريكية أتمتة الذكاء الاصطناعي لإزالة العمل المتكرر من فرق العمليات والدعم والمهام المكتبية: وكلاء ذكاء اصطناعي يجيبون العملاء ويؤهّلون العملاء المحتملين، وتدفقات عمل تنقل البيانات بين نظام إدارة العلاقات والفوترة وأدوات الدعم، ولوحات بيانات تحلّ محل التقارير اليدوية. تقدّم راانزلر هذه الأنظمة كخدمة عن بُعد — تحديد نطاق وبناء ودعم عبر الإنترنت.",
+      },
+      whyTitle: "متى يكون شريك أتمتة الذكاء الاصطناعي عن بُعد الخيار المناسب للشركات الأمريكية؟",
+      whyParagraphs: [
+        "التوظيف الداخلي لخبرات الذكاء الاصطناعي والأتمتة بطيء ومكلف. راتب مهندس تعلّم آلي أو تكامل بمستوى متوسط في معظم المدن الأمريكية التزام بستة أرقام قبل إطلاق أي تدفق عمل، والعمل غالباً بحجم مشروع لا وظيفة دائمة. الشريك عن بُعد يتيح للفريق بناء النظام دون إضافة موظف له.",
+        "معظم الاحتكاك التشغيلي في الشركات الأمريكية ليس أداة ناقصة، بل الفجوات بين الأدوات المستخدمة أصلاً. عملاء محتملون في نموذج لا يوجّهه أحد، وفريق مالية يعيد إدخال الأرقام نفسها في جدول بيانات، ودعم يجيب السؤال نفسه مئة مرة أسبوعياً. الأتمتة ووكلاء الذكاء الاصطناعي يسدّون هذه الفجوات مباشرة.",
+        "نموذج التنفيذ في راانزلر مبني على طريقة عمل الفرق الأمريكية الموزّعة: نطاق مكتوب، ومستندات مشتركة، ومكالمات تُجدوَل ضمن منطقتكم الزمنية، وتسليم على دفعات مع عرض عملي كل أسبوع. التعاقد والفوترة عبر الكيان المسجّل في الولايات المتحدة.",
+      ],
+      keyAdvantages: [
+        "شركة مسجّلة في الولايات المتحدة (كاسبر، وايومنغ) — تعاقد وفوترة مباشرة",
+        "مكالمات تُجدوَل بما يتوافق مع ساعات عملكم في الولايات المتحدة",
+        "نطاق مكتوب وثابت لكل مشروع — دون عقد احتجاز مفتوح",
+        "وكلاء ذكاء اصطناعي وواجهات بالإنجليزية أولاً، مع الإسبانية أو العربية عند حاجة عملائكم",
+        "مصمّمة للتكامل مع الأدوات الشائعة لدى الفرق الأمريكية — HubSpot وSalesforce وZendesk وStripe وQuickBooks وSnowflake وواجهات API مخصصة",
+        "دون احتكار: تملكون الشيفرة والبنية التحتية والحسابات",
+      ],
+      servicesTitle: "ما تقدّمه راانزلر لشركات الولايات المتحدة",
+      services: [
+        { title: "وكلاء ومحادثات الذكاء الاصطناعي", description: "وكلاء على موقعكم أو واتساب أو مكتب الدعم يجيبون الأسئلة ويؤهّلون العملاء المحتملين ويحجزون المواعيد وفق التوافر الفعلي، ثم يحوّلون إلى شخص عند الحاجة." },
+        { title: "أتمتة سير العمل", description: "أتمتة العمليات التي توجّه العمل وتنقل البيانات بين الأنظمة وتدير الموافقات والمهام المجدولة — على n8n أو Make أو مسارات مخصصة." },
+        { title: "برمجيات مخصصة وتطبيقات ويب", description: "منصات ويب وأدوات داخلية كاملة تُبنى وفق عمليتكم بدل إجبار عمليتكم على برمجيات جاهزة." },
+        { title: "لوحات البيانات وأنظمة البيانات", description: "لوحات تشغيلية وتنفيذية مع مسارات البيانات خلفها، حتى تتوقف التقارير عن كونها مهمة يدوية أسبوعية." },
+        { title: "تكامل الأنظمة وواجهات API", description: "ربط نظام إدارة العلاقات والفوترة والدعم ومستودع البيانات عبر واجهاتها البرمجية حتى تبقى السجلات متزامنة دون إعادة إدخال." },
+        { title: "ذكاء اصطناعي مخصص", description: "توليد معزّز بالاسترجاع على مستنداتكم الخاصة، ومساعدون داخليون، وعمل نماذج مخصص حين لا تكفي محادثة عامة." },
+      ],
+      industriesTitle: "قطاعات أمريكية تبني لها راانزلر",
+      industries: ["عمليات الرعاية الصحية والعيادات", "العقارات وإدارة الممتلكات", "اللوجستيات وسلاسل الإمداد", "التجزئة والتجارة الإلكترونية", "الخدمات المهنية والمالية", "البرمجيات كخدمة والتقنية", "الخدمات المنزلية والميدانية", "المنظمات غير الربحية والجمعيات"],
+      useCasesTitle: "حالات استخدام أتمتة الذكاء الاصطناعي والبرمجيات المخصصة للشركات الأمريكية",
+      useCasesIntro: "مشكلات تشغيلية شائعة ونوع النظام الذي يعالج كلاً منها. هذه أنماط توضيحية لبيان ما هو ممكن — وليست وصفاً لمشاريع مُنفَّذة.",
+      useCases: [
+        { title: "توجيه العملاء المحتملين الواردين", description: "يمكن التقاط العملاء المحتملين من النماذج والمكالمات وإثراؤهم وتقييمهم وتوجيههم إلى المندوب المناسب خلال ثوانٍ، مع تذكيرات متابعة، بدل بقائهم في صندوق وارد." },
+        { title: "دعم العملاء من المستوى الأول", description: "يمكن لوكيل ذكاء اصطناعي حلّ الأسئلة المتكررة — حالة الطلب، تغييرات الحساب، أسئلة السياسات — بالإنجليزية والإسبانية على مدار الساعة، وتصعيد الباقي مع سياق كامل." },
+        { title: "الإدخال المكتبي للبيانات", description: "يمكن قراءة الفواتير والطلبات ونماذج الاستقبال والتحقق منها وكتابتها في نظام السجلات تلقائياً، مع خطوة مراجعة بشرية للاستثناءات فقط." },
+        { title: "تقارير عبر الأدوات", description: "يمكن جمع البيانات من نظام إدارة العلاقات والفوترة وأدوات الدعم في لوحة واحدة بالأرقام التي تطلبها الإدارة فعلاً، محدّثة تلقائياً." },
+        { title: "تدفقات الموافقات", description: "يمكن لطلبات الشراء والخصومات وتغييرات العقود والإجازات أن تمرّ عبر خطوات موافقة محددة مع سجل تدقيق كامل وتذكيرات تلقائية." },
+        { title: "مساعد المعرفة الداخلي", description: "يمكن للموظفين طرح سؤال بلغة بسيطة والحصول على إجابة مستندة إلى السياسات والإجراءات ووثائق المنتج الحالية، مع رابط للمصدر وتوجيه الحالات غير المؤكدة إلى مسؤول." },
+      ],
+      whyRaanzlrTitle: "كيف تعمل راانزلر مع الفرق الأمريكية",
+      whyRaanzlr: [
+        "شركة مسجّلة في الولايات المتحدة — التعاقد والفوترة والدفع بالطريقة التي يتوقعها فريقكم المالي",
+        "طريقة تنفيذ عن بُعد محددة: اكتشاف، نطاق مكتوب، بناء على دفعات، إطلاق، فترة دعم",
+        "عروض عملية أسبوعية، لا شرائح حالة",
+        "نصيحة صريحة بين البناء والشراء — نقول متى تكون البرمجيات الجاهزة الخيار الأفضل",
+        "توثيق وتسليم يمكّن فريقكم من تشغيل ما نبنيه وتوسيعه",
+        "حدود نطاق واضحة — نقول ما لا نفعله",
+      ],
+      faqTitle: "أسئلة شائعة عن خدمات راانزلر في الولايات المتحدة",
+      faqs: [
+        { q: "هل لدى راانزلر مكتب في الولايات المتحدة؟", a: "راانزلر مسجّلة في كاسبر بولاية وايومنغ، وتقدّم خدماتها للشركات الأمريكية عن بُعد بالكامل. لا يوجد فرع لزيارته ولا فريق ميداني. الاكتشاف والتطوير والإطلاق والدعم تتم عبر المكالمات والمستندات المشتركة وعروض الدفعات. وعند حاجة مشروع فعلية لجلسة حضورية، يُرتَّب لها بشكل منفصل." },
+        { q: "كيف يعمل التنفيذ عن بُعد؟", a: "كل مشروع يتبع المسار نفسه: مكالمة اكتشاف لفهم المشكلة، ثم نطاق مكتوب بجدول زمني وسعر، ثم بناء على دفعات من أسبوع إلى أسبوعين مع عرض عملي في نهاية كل دفعة، ثم إطلاق، ثم فترة دعم. تُجدوَل المكالمات بما يتوافق مع ساعات عملكم." },
+        { q: "كم تكلفة أتمتة الذكاء الاصطناعي؟", a: "تُحدَّد لكل مشروع لا كباقة ثابتة. أتمتة واحدة أو وكيل واحد مشروع أصغر؛ منصة مخصصة أو تكامل متعدد الأنظمة أكبر. بعد مكالمة الاكتشاف تحصلون على نطاق مكتوب بسعر ثابت ومراحل، دون عدّاد مفتوح." },
+        { q: "كم يستغرق المشروع؟", a: "أتمتة مركزة أو وكيل واحد عادةً بضعة أسابيع. لوحة بيانات أو أداة داخلية مخصصة عادةً شهراً إلى شهرين. المنصة الكاملة أطول وتُقسَّم إلى إصدارات متدرجة لترون برمجيات عاملة مبكراً. المواعيد الدقيقة ترد مع النطاق المكتوب." },
+        { q: "هل يمكن لراانزلر التكامل مع الأدوات التي نستخدمها؟", a: "نعم. يمكن لراانزلر الربط مع أنظمة إدارة العلاقات (HubSpot وSalesforce وPipedrive) وأدوات الدعم (Zendesk وIntercom وFront) والفوترة (Stripe وQuickBooks وChargebee) ومستودعات البيانات (Snowflake وBigQuery) وأي نظام له واجهة برمجية موثّقة. يُقيَّم أسلوب التكامل أثناء الاكتشاف قبل تثبيت النطاق." },
+        { q: "من يملك الشيفرة والحسابات؟", a: "أنتم. يُسلَّم العمل إلى مستودعاتكم وحسابات السحابة لديكم وخدماتكم الخارجية. لا توجد منصة خاصة عليكم الاستمرار بالدفع لراانزلر لاستخدامها، ولا احتكار يمنع فريقاً آخر من متابعة العمل لاحقاً." },
+      ],
+      ctaTitle: "ابدأ محادثة حول عملياتك في الولايات المتحدة",
+      ctaDescription: "أخبر راانزلر عن العملية التي تكلّف فريقك أكبر وقت. ستحصل على رأي صريح حول ما إذا كانت الأتمتة أو بناء مخصص أو حل أصغر هو الخيار الصحيح — ونطاق مكتوب إن كان مناسباً.",
+    },
+  },
+
+  // CANADA — target market for remote services. Raanzlr has NO Canadian entity,
+  // office, or staff, and no delivered Canadian client work. Every string is a
+  // service offer or capability statement.
+  {
+    slug: "canada",
+    flag: "🇨🇦",
+    code: "CA",
+    heroImage: "",
+    en: {
+      name: "Canada",
+      region: "North America",
+      cities: "Remote delivery, Canada-wide",
+      seoTitle: "AI Automation & Custom Software Services in Canada — Raanzlr",
+      metaDescription: "Remote AI automation and custom software services available for Canadian businesses. AI agents, workflow automation, dashboards, integrations. Raanzlr has no Canadian office.",
+      keywords: "AI automation Canada, custom software development Canada, workflow automation Canadian business, AI agents Canada, AI automation company Canada",
+      heroTitle: "AI Automation & Custom Software for Canadian Businesses",
+      heroDescription: "Raanzlr's remote AI automation and custom software services are available for Canadian companies — AI agents, workflow automation, dashboards, API integrations, and custom applications. Raanzlr is a US-registered company with no office in Canada; it delivers to Canadian teams entirely online, through remote discovery, development, launch, and support, in English and Arabic.",
+      answerBlock: {
+        q: "How can Canadian companies use AI automation?",
+        a: "Canadian companies use AI automation to cut manual work in operations, customer support, and finance: AI agents that handle routine customer questions, workflows that connect a CRM, billing, and support tools, and dashboards that replace spreadsheet reporting. Raanzlr offers these systems as a remote service for Canadian teams, with data-handling choices — including where data is stored — decided with the client.",
+      },
+      whyTitle: "When a Remote Software Partner Makes Sense for Canadian Companies",
+      whyParagraphs: [
+        "Senior developer and ML hiring in Toronto, Vancouver, and Montreal is competitive and expensive, and much of the automation work a growing company needs is project-shaped rather than a permanent role. A remote partner delivers the system without adding a hire that has to be kept busy afterward.",
+        "The highest-value automation in most businesses sits in the gaps between existing systems — a CRM that does not talk to the billing tool, a support inbox handling the same questions all day, finance rebuilding the same report every week. Those are direct, well-bounded automation projects.",
+        "Raanzlr's delivery model is built for how a distributed Canadian team already operates: written scope, shared documents, calls in your time zone, and sprint delivery. Data-handling decisions, including storage location and access, are made with you during discovery rather than assumed.",
+      ],
+      keyAdvantages: [
+        "Remote delivery across all Canadian time zones — calls scheduled to your working hours",
+        "Data-handling and storage-location decisions made with you, with PIPEDA-aware technical controls (not legal advice)",
+        "Fixed, written scope per project",
+        "English-first AI agents and interfaces, with French or Arabic where your users need it — Raanzlr builds the bilingual system and integrates French content and review provided by the client",
+        "Designed to integrate with the tools Canadian teams commonly use — Salesforce, HubSpot, Zendesk, Stripe, QuickBooks, and custom APIs",
+        "No lock-in: you own the code, infrastructure, and accounts",
+      ],
+      servicesTitle: "What Raanzlr Offers Canadian Businesses",
+      services: [
+        { title: "AI Agents & Chatbots", description: "Agents on your website, WhatsApp, or help desk that answer questions, qualify leads, and book meetings against real availability, then hand off to a person when they should." },
+        { title: "Workflow Automation", description: "Business process automation that routes work, moves data between systems, runs approvals, and handles scheduled jobs — built on n8n, Make, or custom pipelines." },
+        { title: "Custom Software & Web Apps", description: "Full-stack web platforms and internal tools built to your process instead of forcing your process into off-the-shelf software." },
+        { title: "Dashboards & Data Systems", description: "Operations and executive dashboards, plus the data pipelines behind them, so reporting stops being a manual weekly job." },
+        { title: "API & Systems Integration", description: "Connecting your CRM, billing, support, and data warehouse through their APIs so records stay in sync without re-keying." },
+        { title: "Custom AI", description: "Retrieval-augmented generation over your own documents, internal copilots, and bespoke model work where a general chatbot is not enough." },
+      ],
+      industriesTitle: "Canadian Industries Raanzlr Builds For",
+      industries: ["Healthcare & clinic operations", "Real estate & property management", "Logistics & distribution", "Retail & e-commerce", "Professional & financial services", "SaaS & technology", "Construction & trades", "Nonprofits & member organizations"],
+      useCasesTitle: "AI Automation & Custom Software Use Cases for Canadian Companies",
+      useCasesIntro: "Common operational problems and the kind of system that addresses each. Illustrative patterns showing what is possible — not delivered projects.",
+      useCases: [
+        { title: "Inbound lead routing", description: "Web-form and inbound-call leads can be captured, enriched, scored, and routed to the right rep in seconds, with follow-up reminders, instead of sitting in an inbox overnight." },
+        { title: "Tier-1 customer support", description: "An AI agent can resolve the repeat questions — order status, account changes, policy questions — in English and French, around the clock, and escalate the rest with full context." },
+        { title: "Back-office data entry", description: "Invoices, applications, and intake forms can be read, validated, and written into the system of record automatically, with a human review step only for exceptions." },
+        { title: "Cross-tool reporting", description: "Data from a CRM, billing, and support tools can be pulled into one dashboard with the numbers leadership asks for, and the dashboard can flag where each source system stores its data." },
+        { title: "Approval workflows", description: "Purchase requests, discounts, contract changes, and time off can move through defined approval steps with a full audit trail and automatic reminders." },
+        { title: "Internal knowledge assistant", description: "Staff can ask a question in plain English and get an answer grounded in current policies, SOPs, and product docs, with a source link and uncertain cases routed to an owner." },
+      ],
+      whyRaanzlrTitle: "How Raanzlr Works With Canadian Teams",
+      whyRaanzlr: [
+        "Clear about what it is: a US-registered company delivering to Canada remotely, no Canadian office",
+        "Data-handling and residency decided with you during discovery",
+        "A defined remote delivery method: discovery, written scope, sprint build, launch, support",
+        "Weekly working demos",
+        "Honest build-vs-buy advice",
+        "Full documentation and handover; you own everything",
+      ],
+      faqTitle: "Common Questions About Raanzlr's Canada Services",
+      faqs: [
+        { q: "Does Raanzlr have an office in Canada?", a: "No. Raanzlr is registered in Casper, Wyoming, USA, and has no office or staff in Canada. Its services are delivered to Canadian companies entirely remotely — discovery, development, launch, and support run through scheduled calls, shared documents, and sprint demos. Contracts are with the US entity." },
+        { q: "Where would our data be stored?", a: "That is decided with you during discovery. Raanzlr can deploy to a Canadian region of a major cloud provider, keep data within specific systems, and build PIPEDA-aware access controls. Raanzlr provides the technical implementation; your legal or privacy advisers determine compliance." },
+        { q: "How does remote delivery work across Canadian time zones?", a: "Calls are scheduled to your working hours, whether the team is in Halifax or Vancouver. Between calls, work happens in shared documents and a project tracker, with a working demo at the end of each one-to-two week sprint, so progress is visible without a standing meeting." },
+        { q: "How are projects priced and invoiced?", a: "Each project is scoped individually and quoted with a fixed price and milestones after the discovery call. Payment terms are set out in that written scope." },
+        { q: "Can Raanzlr build bilingual (English/French) systems?", a: "Yes. Interfaces, content structure, and AI agents can be built to operate in both English and French. Raanzlr builds the bilingual system and integrates French content and review provided by the client; it does not claim in-house French copywriting or native French content services." },
+        { q: "Who owns the code and accounts?", a: "You do. Everything is delivered into your repositories, your cloud accounts, and your third-party services. There is no Raanzlr platform you have to keep paying for, and another team can take over the work at any time." },
+      ],
+      ctaTitle: "Start a Conversation About Your Canadian Operation",
+      ctaDescription: "Tell Raanzlr which process is costing your team the most time. You will get an honest assessment of whether automation, a custom build, or a smaller fix fits — plus a written scope and data-handling plan if it does.",
+    },
+    ar: {
+      name: "كندا",
+      region: "أمريكا الشمالية",
+      cities: "تنفيذ عن بُعد في جميع أنحاء كندا",
+      seoTitle: "خدمات أتمتة الذكاء الاصطناعي والبرمجيات المخصصة في كندا — Raanzlr",
+      metaDescription: "خدمات أتمتة الذكاء الاصطناعي والبرمجيات المخصصة عن بُعد، متاحة للشركات الكندية. وكلاء ذكاء اصطناعي وأتمتة عمليات ولوحات بيانات وتكاملات. لا يوجد لراانزلر مكتب في كندا.",
+      keywords: "أتمتة الذكاء الاصطناعي كندا، تطوير برمجيات مخصصة كندا، أتمتة سير العمل للشركات الكندية، وكلاء ذكاء اصطناعي كندا، شركة أتمتة ذكاء اصطناعي كندا",
+      heroTitle: "أتمتة الذكاء الاصطناعي والبرمجيات المخصصة للشركات الكندية",
+      heroDescription: "خدمات راانزلر لأتمتة الذكاء الاصطناعي والبرمجيات المخصصة عن بُعد متاحة للشركات الكندية — وكلاء ذكاء اصطناعي، وأتمتة سير العمل، ولوحات بيانات، وتكاملات API، وتطبيقات مخصصة. راانزلر شركة مسجّلة في الولايات المتحدة وليس لها مكتب في كندا، والتسليم للفرق الكندية بالكامل عبر الإنترنت — اكتشافاً وبناءً وإطلاقاً ودعماً، بالإنجليزية والعربية.",
+      answerBlock: {
+        q: "كيف يمكن للشركات الكندية استخدام أتمتة الذكاء الاصطناعي؟",
+        a: "تستخدم الشركات الكندية أتمتة الذكاء الاصطناعي لتقليل العمل اليدوي في العمليات ودعم العملاء والمالية: وكلاء ذكاء اصطناعي يتولّون أسئلة العملاء الروتينية، وتدفقات عمل تربط نظام إدارة العلاقات والفوترة وأدوات الدعم، ولوحات بيانات تحلّ محل تقارير جداول البيانات. تقدّم راانزلر هذه الأنظمة كخدمة عن بُعد للفرق الكندية، مع تحديد خيارات التعامل مع البيانات — بما فيها مكان تخزينها — مع العميل.",
+      },
+      whyTitle: "متى يكون شريك البرمجيات عن بُعد الخيار المناسب للشركات الكندية؟",
+      whyParagraphs: [
+        "توظيف المطورين وخبراء التعلّم الآلي في تورنتو وفانكوفر ومونتريال تنافسي ومكلف، وكثير من عمل الأتمتة الذي تحتاجه شركة نامية بحجم مشروع لا وظيفة دائمة. الشريك عن بُعد يسلّم النظام دون إضافة موظف يجب إبقاؤه مشغولاً بعد ذلك.",
+        "أعلى قيمة للأتمتة في معظم الشركات تقع في الفجوات بين الأنظمة القائمة — نظام إدارة علاقات لا يتحدث مع أداة الفوترة، وصندوق دعم يعالج الأسئلة نفسها طوال اليوم، وفريق مالية يعيد بناء التقرير نفسه كل أسبوع. هذه مشاريع أتمتة مباشرة ومحددة النطاق.",
+        "نموذج التنفيذ في راانزلر مبني على طريقة عمل الفرق الكندية الموزّعة: نطاق مكتوب، ومستندات مشتركة، ومكالمات ضمن منطقتكم الزمنية، وتسليم على دفعات. قرارات التعامل مع البيانات، بما فيها مكان التخزين والوصول، تُتَّخذ معكم أثناء الاكتشاف لا بالافتراض.",
+      ],
+      keyAdvantages: [
+        "تنفيذ عن بُعد عبر جميع المناطق الزمنية الكندية — مكالمات تُجدوَل وفق ساعات عملكم",
+        "قرارات التعامل مع البيانات ومكان تخزينها تُتَّخذ معكم، مع ضوابط تقنية تراعي قانون PIPEDA (ليست استشارة قانونية)",
+        "نطاق مكتوب وثابت لكل مشروع",
+        "وكلاء ذكاء اصطناعي وواجهات بالإنجليزية أولاً، مع الفرنسية أو العربية عند حاجة مستخدميكم — تبني راانزلر النظام ثنائي اللغة وتدمج المحتوى والمراجعة الفرنسية التي يوفّرها العميل",
+        "مصمّمة للتكامل مع الأدوات الشائعة لدى الفرق الكندية — Salesforce وHubSpot وZendesk وStripe وQuickBooks وواجهات API مخصصة",
+        "دون احتكار: تملكون الشيفرة والبنية التحتية والحسابات",
+      ],
+      servicesTitle: "ما تقدّمه راانزلر للشركات الكندية",
+      services: [
+        { title: "وكلاء ومحادثات الذكاء الاصطناعي", description: "وكلاء على موقعكم أو واتساب أو مكتب الدعم يجيبون الأسئلة ويؤهّلون العملاء المحتملين ويحجزون المواعيد وفق التوافر الفعلي، ثم يحوّلون إلى شخص عند الحاجة." },
+        { title: "أتمتة سير العمل", description: "أتمتة العمليات التي توجّه العمل وتنقل البيانات بين الأنظمة وتدير الموافقات والمهام المجدولة — على n8n أو Make أو مسارات مخصصة." },
+        { title: "برمجيات مخصصة وتطبيقات ويب", description: "منصات ويب وأدوات داخلية كاملة تُبنى وفق عمليتكم بدل إجبار عمليتكم على برمجيات جاهزة." },
+        { title: "لوحات البيانات وأنظمة البيانات", description: "لوحات تشغيلية وتنفيذية مع مسارات البيانات خلفها، حتى تتوقف التقارير عن كونها مهمة يدوية أسبوعية." },
+        { title: "تكامل الأنظمة وواجهات API", description: "ربط نظام إدارة العلاقات والفوترة والدعم ومستودع البيانات عبر واجهاتها البرمجية حتى تبقى السجلات متزامنة دون إعادة إدخال." },
+        { title: "ذكاء اصطناعي مخصص", description: "توليد معزّز بالاسترجاع على مستنداتكم الخاصة، ومساعدون داخليون، وعمل نماذج مخصص حين لا تكفي محادثة عامة." },
+      ],
+      industriesTitle: "قطاعات كندية تبني لها راانزلر",
+      industries: ["عمليات الرعاية الصحية والعيادات", "العقارات وإدارة الممتلكات", "اللوجستيات والتوزيع", "التجزئة والتجارة الإلكترونية", "الخدمات المهنية والمالية", "البرمجيات كخدمة والتقنية", "الإنشاءات والحرف", "المنظمات غير الربحية ومنظمات الأعضاء"],
+      useCasesTitle: "حالات استخدام أتمتة الذكاء الاصطناعي والبرمجيات المخصصة للشركات الكندية",
+      useCasesIntro: "مشكلات تشغيلية شائعة ونوع النظام الذي يعالج كلاً منها. أنماط توضيحية لبيان ما هو ممكن — وليست مشاريع مُنفَّذة.",
+      useCases: [
+        { title: "توجيه العملاء المحتملين الواردين", description: "يمكن التقاط العملاء المحتملين من النماذج والمكالمات وإثراؤهم وتقييمهم وتوجيههم إلى المندوب المناسب خلال ثوانٍ، مع تذكيرات متابعة، بدل بقائهم في صندوق وارد." },
+        { title: "دعم العملاء من المستوى الأول", description: "يمكن لوكيل ذكاء اصطناعي حلّ الأسئلة المتكررة — حالة الطلب، تغييرات الحساب، أسئلة السياسات — بالإنجليزية والفرنسية على مدار الساعة، وتصعيد الباقي مع سياق كامل." },
+        { title: "الإدخال المكتبي للبيانات", description: "يمكن قراءة الفواتير والطلبات ونماذج الاستقبال والتحقق منها وكتابتها في نظام السجلات تلقائياً، مع خطوة مراجعة بشرية للاستثناءات فقط." },
+        { title: "تقارير عبر الأدوات", description: "يمكن جمع البيانات من نظام إدارة العلاقات والفوترة وأدوات الدعم في لوحة واحدة بالأرقام التي تطلبها الإدارة، ويمكن للوحة أن تبيّن أين يخزّن كل نظام مصدر بياناته." },
+        { title: "تدفقات الموافقات", description: "يمكن لطلبات الشراء والخصومات وتغييرات العقود والإجازات أن تمرّ عبر خطوات موافقة محددة مع سجل تدقيق كامل وتذكيرات تلقائية." },
+        { title: "مساعد المعرفة الداخلي", description: "يمكن للموظفين طرح سؤال بلغة بسيطة والحصول على إجابة مستندة إلى السياسات والإجراءات ووثائق المنتج الحالية، مع رابط للمصدر وتوجيه الحالات غير المؤكدة إلى مسؤول." },
+      ],
+      whyRaanzlrTitle: "كيف تعمل راانزلر مع الفرق الكندية",
+      whyRaanzlr: [
+        "واضحة بشأن ماهيتها: شركة مسجّلة في الولايات المتحدة تسلّم إلى كندا عن بُعد، دون مكتب كندي",
+        "التعامل مع البيانات ومكان تخزينها يُحدَّد معكم أثناء الاكتشاف",
+        "طريقة تنفيذ عن بُعد محددة: اكتشاف، نطاق مكتوب، بناء على دفعات، إطلاق، دعم",
+        "عروض عملية أسبوعية",
+        "نصيحة صريحة بين البناء والشراء",
+        "توثيق وتسليم كاملان؛ تملكون كل شيء",
+      ],
+      faqTitle: "أسئلة شائعة عن خدمات راانزلر في كندا",
+      faqs: [
+        { q: "هل لدى راانزلر مكتب في كندا؟", a: "لا. راانزلر مسجّلة في كاسبر بولاية وايومنغ الأمريكية، وليس لها مكتب أو موظفون في كندا. تُقدَّم خدماتها للشركات الكندية عن بُعد بالكامل — الاكتشاف والتطوير والإطلاق والدعم عبر مكالمات مجدولة ومستندات مشتركة وعروض دفعات. التعاقد مع الكيان الأمريكي." },
+        { q: "أين ستُخزَّن بياناتنا؟", a: "يُحدَّد ذلك معكم أثناء الاكتشاف. يمكن لراانزلر النشر في منطقة كندية لدى مزوّد سحابي كبير، وإبقاء البيانات ضمن أنظمة محددة، وبناء ضوابط وصول تراعي قانون PIPEDA. تقدّم راانزلر التنفيذ التقني؛ ومستشاروكم القانونيون أو مستشارو الخصوصية يحدّدون الامتثال." },
+        { q: "كيف يعمل التنفيذ عن بُعد عبر المناطق الزمنية الكندية؟", a: "تُجدوَل المكالمات وفق ساعات عملكم، سواء كان الفريق في هاليفاكس أو فانكوفر. بين المكالمات يجري العمل في مستندات مشتركة ولوحة متابعة، مع عرض عملي في نهاية كل دفعة من أسبوع إلى أسبوعين، فيبقى التقدّم مرئياً دون اجتماع دائم." },
+        { q: "كيف تُسعَّر المشاريع وتُفوتَر؟", a: "يُحدَّد نطاق كل مشروع على حدة ويُسعَّر بسعر ثابت ومراحل بعد مكالمة الاكتشاف. شروط الدفع تُبيَّن في ذلك النطاق المكتوب." },
+        { q: "هل يمكن لراانزلر بناء أنظمة ثنائية اللغة (إنجليزي/فرنسي)؟", a: "نعم. يمكن بناء الواجهات وبنية المحتوى ووكلاء الذكاء الاصطناعي للعمل بالإنجليزية والفرنسية معاً. تبني راانزلر النظام ثنائي اللغة وتدمج المحتوى والمراجعة الفرنسية التي يوفّرها العميل؛ ولا تدّعي كتابة محتوى فرنسي داخلي أو خدمات محتوى فرنسي أصلي." },
+        { q: "من يملك الشيفرة والحسابات؟", a: "أنتم. يُسلَّم كل شيء إلى مستودعاتكم وحسابات السحابة لديكم وخدماتكم الخارجية. لا توجد منصة لراانزلر عليكم الاستمرار بالدفع لها، ويمكن لفريق آخر متابعة العمل في أي وقت." },
+      ],
+      ctaTitle: "ابدأ محادثة حول عملياتك في كندا",
+      ctaDescription: "أخبر راانزلر عن العملية التي تكلّف فريقك أكبر وقت. ستحصل على تقييم صريح لما إذا كانت الأتمتة أو بناء مخصص أو حل أصغر مناسباً — مع نطاق مكتوب وخطة للتعامل مع البيانات إن كان مناسباً.",
+    },
   },
 ];

@@ -12,6 +12,8 @@ import PulseDivider from "../components/PulseDivider";
 import MagneticButton from "../components/MagneticButton";
 import Heartbeat from "../components/Heartbeat";
 import SEO from "../components/SEO";
+import AnswerBlock from "../components/AnswerBlock";
+import { marketServiceSchema, faqPageSchema, MARKET_COUNTRY_CODES } from "../lib/pageSchema";
 import FlagImage from "../components/FlagImage";
 import { MARKET_DETAILS } from "../data/markets";
 
@@ -27,28 +29,70 @@ export default function MarketDetail() {
 
   const content = isAr ? market.ar : market.en;
 
+  // Answer-first block for AEO — only the markets that define one (currently the
+  // North America pages). `in` narrows the union so no shared type is needed.
+  const answerBlock =
+    "answerBlock" in content
+      ? (content.answerBlock as { q: string; a: string })
+      : null;
+
+  // Most markets take the generic "<name> — Market — Raanzlr" title; the North
+  // America records ship a purpose-written `seoTitle` for commercial intent.
+  const enTitle =
+    "seoTitle" in market.en
+      ? (market.en.seoTitle as string)
+      : `${market.en.name} — Market — Raanzlr`;
+  const arTitle =
+    "seoTitle" in market.ar
+      ? (market.ar.seoTitle as string)
+      : `${market.ar.name} — سوق — Raanzlr`;
+
   return (
     <div className="relative">
       <SEO
-        title={`${market.en.name} — Market — Raanzlr`}
-        titleAr={`${market.ar.name} — سوق — Raanzlr`}
+        title={enTitle}
+        titleAr={arTitle}
         description={market.en.metaDescription}
         descriptionAr={market.ar.metaDescription}
-        keywords={market.en.keywords}
-        keywordsAr={market.ar.keywords}
         path={`/markets/${slug}`}
+        /* A page-level Service node carrying this market's own areaServed.
+           Without it the only areaServed on the page was the site-wide
+           Organization list, identical across all ten market pages, so nothing
+           in the markup identified which market the page was about. */
+        schema={[
+          marketServiceSchema({
+            locale: isAr ? "ar" : "en",
+            path: `/markets/${slug}`,
+            serviceName: isAr
+              ? `الذكاء الاصطناعي والأتمتة وتطوير البرمجيات — ${market.ar.name}`
+              : `AI automation & custom software development — ${market.en.name}`,
+            description: isAr ? market.ar.metaDescription : market.en.metaDescription,
+            countryCode: MARKET_COUNTRY_CODES[slug ?? ""] ?? null,
+            areaName: isAr ? market.ar.name : market.en.name,
+          }),
+          /* The FAQ block below is rendered in the DOM; mirror it as a FAQPage
+             node so the answers are visible to answer engines. */
+          ...(content.faqs?.length
+            ? [faqPageSchema(isAr ? "ar" : "en", `/markets/${slug}`, content.faqs)]
+            : []),
+        ]}
       />
 
       {/* Hero Section */}
       <section className="relative min-h-[70vh] flex items-center overflow-hidden pt-28 sm:pt-32">
         <div className="absolute inset-0">
-          <img
-            src={market.heroImage}
-            alt={content.name}
-            loading="eager"
-            fetchPriority="high"
-            className="w-full h-full object-cover opacity-40"
-          />
+          {/* Some markets ship without a hero photo — the grid + noise + glow
+              layers below still read as a designed hero, so guard the <img>
+              rather than request a missing file. */}
+          {market.heroImage && (
+            <img
+              src={market.heroImage}
+              alt={content.name}
+              loading="eager"
+              fetchPriority="high"
+              className="w-full h-full object-cover opacity-40"
+            />
+          )}
           <div className="absolute inset-0 bg-gradient-to-b from-background/25 via-background/50 to-background dark:from-background/70 dark:via-background/85" />
         </div>
         <div className="absolute inset-0 bg-grid opacity-30" />
@@ -128,7 +172,7 @@ export default function MarketDetail() {
             transition={{ duration: 0.6, delay: 0.55 }}
             className="mt-10 flex flex-wrap gap-4"
           >
-            <MagneticButton to="/contact">
+            <MagneticButton to="/contact" ctaLocation="market_hero">
               {isAr ? "تواصل معنا" : "Get Started"}
             </MagneticButton>
             <MagneticButton to="/contact" variant="ghost">
@@ -147,6 +191,14 @@ export default function MarketDetail() {
       </section>
 
       <PulseDivider />
+
+      {answerBlock && (
+        <section className="relative py-14 sm:py-16">
+          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+            <AnswerBlock question={answerBlock.q} answer={answerBlock.a} />
+          </div>
+        </section>
+      )}
 
       {/* Why This Market */}
       <section className="relative py-20 sm:py-24">

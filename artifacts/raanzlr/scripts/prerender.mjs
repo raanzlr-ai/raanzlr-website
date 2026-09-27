@@ -55,7 +55,34 @@ const absolute = (locale, path) => `${SITE}/${locale}${path === "/" ? "" : path}
 // Sitemaps
 // ---------------------------------------------------------------------------
 
-function buildSitemap(locale, routes, lastmod, locales) {
+/**
+ * Per-URL <lastmod>.
+ *
+ * Every URL used to carry the same build date, which told search engines that
+ * the privacy policy and a June article changed on the same day — a signal with
+ * no information in it. Article and archive URLs now report the content's own
+ * modification time; everything else falls back to the build date.
+ */
+function makeLastmodFor(posts, buildDate) {
+  const byArticlePath = new Map();
+  let newestArticle = null;
+  for (const post of posts) {
+    const stamp = (post.updatedAt || post.date || "").slice(0, 10);
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(stamp)) continue;
+    byArticlePath.set(`/insights/${post.slug}`, stamp);
+    if (!newestArticle || stamp > newestArticle) newestArticle = stamp;
+  }
+  return (path) => {
+    if (byArticlePath.has(path)) return byArticlePath.get(path);
+    // The archive and its pages are as fresh as the newest article on them.
+    if (path === "/insights" || path.startsWith("/insights/page/")) {
+      return newestArticle || buildDate;
+    }
+    return buildDate;
+  };
+}
+
+function buildSitemap(locale, routes, lastmodFor, locales) {
   const urls = routes
     .map((route) => {
       const alternates = [...locales, "x-default"].map((alt) => {
@@ -66,7 +93,7 @@ function buildSitemap(locale, routes, lastmod, locales) {
         "  <url>",
         `    <loc>${xmlEscape(absolute(locale, route.path))}</loc>`,
         ...alternates,
-        `    <lastmod>${lastmod}</lastmod>`,
+        `    <lastmod>${lastmodFor(route.path)}</lastmod>`,
         `    <changefreq>${route.changefreq}</changefreq>`,
         `    <priority>${route.priority.toFixed(1)}</priority>`,
         "  </url>",
@@ -114,7 +141,8 @@ function postsPayload(posts) {
 }
 
 async function main() {
-  const { render, ROUTES, LOCALES, localeUrl, loadPosts, makeRoutes } = await import(SSR_ENTRY);
+  const { render, ROUTES, LOCALES, localeUrl, loadPosts, makeRoutes, relatedPosts } =
+    await import(SSR_ENTRY);
 
   // Read the live posts once, before rendering anything.
   let posts = [];
@@ -159,12 +187,16 @@ async function main() {
    */
   const payloadFor = (path) => {
     if (!posts.length) return "";
-    if (path === "/insights") return postsPayload(posts);
+    // The archive and every one of its paginated pages need the whole list so
+    // the hydrated grid matches the prerendered markup exactly.
+    if (path === "/insights" || path.startsWith("/insights/page/")) return postsPayload(posts);
     if (!path.startsWith("/insights/")) return "";
     const slug = path.slice("/insights/".length);
     const post = posts.find((p) => p.slug === slug);
     if (!post) return "";
-    return postsPayload([post, ...posts.filter((p) => p.slug !== slug).slice(0, 3)]);
+    // Same neighbour selection the client uses, so the hydrated "read next"
+    // cards match the prerendered ones exactly.
+    return postsPayload([post, ...relatedPosts(posts, slug, 3)]);
   };
 
   const titles = new Map();
@@ -214,11 +246,12 @@ async function main() {
     written++;
   }
 
-  const lastmod = (process.env.SOURCE_DATE || new Date().toISOString()).slice(0, 10);
+  const buildDate = (process.env.SOURCE_DATE || new Date().toISOString()).slice(0, 10);
+  const lastmodFor = makeLastmodFor(posts, buildDate);
   for (const locale of LOCALES) {
-    writeFile(`sitemap-${locale}.xml`, buildSitemap(locale, routes, lastmod, LOCALES));
+    writeFile(`sitemap-${locale}.xml`, buildSitemap(locale, routes, lastmodFor, LOCALES));
   }
-  writeFile("sitemap.xml", buildSitemapIndex(lastmod));
+  writeFile("sitemap.xml", buildSitemapIndex(buildDate));
 
   console.log(
     `prerender: ${written} HTML files (${routes.length} routes x ${LOCALES.length} locales + 404) ` +

@@ -74,6 +74,9 @@ function AppContent() {
             <Route path="/case-studies" element={<CaseStudies />} />
             <Route path="/case-studies/:slug" element={<CaseStudyDetail />} />
             <Route path="/insights" element={<Insights />} />
+            {/* Declared before the :slug route so /insights/page/2 is an
+                archive page, never an article slug. */}
+            <Route path="/insights/page/:page" element={<Insights />} />
             <Route path="/insights/:slug" element={<InsightPost />} />
             <Route path="/markets" element={<Markets />} />
             <Route path="/markets/:slug" element={<MarketDetail />} />
@@ -98,6 +101,9 @@ function AppContent() {
             <Route path="/en/case-studies" element={<CaseStudies />} />
             <Route path="/en/case-studies/:slug" element={<CaseStudyDetail />} />
             <Route path="/en/insights" element={<Insights />} />
+            {/* Declared before the :slug route so /insights/page/2 is an
+                archive page, never an article slug. */}
+            <Route path="/en/insights/page/:page" element={<Insights />} />
             <Route path="/en/insights/:slug" element={<InsightPost />} />
             <Route path="/en/markets" element={<Markets />} />
             <Route path="/en/markets/:slug" element={<MarketDetail />} />
@@ -117,6 +123,9 @@ function AppContent() {
             <Route path="/ar/case-studies" element={<CaseStudies />} />
             <Route path="/ar/case-studies/:slug" element={<CaseStudyDetail />} />
             <Route path="/ar/insights" element={<Insights />} />
+            {/* Declared before the :slug route so /insights/page/2 is an
+                archive page, never an article slug. */}
+            <Route path="/ar/insights/page/:page" element={<Insights />} />
             <Route path="/ar/insights/:slug" element={<InsightPost />} />
             <Route path="/ar/markets" element={<Markets />} />
             <Route path="/ar/markets/:slug" element={<MarketDetail />} />

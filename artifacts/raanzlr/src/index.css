@@ -206,6 +206,12 @@
 .light .shimmer-layer { background: linear-gradient(110deg, transparent 30%, rgba(0,180,210,0.08) 50%, transparent 70%); }
 
 /* ── ANIMATIONS ────────────────────────────────────── */
+/* Message entrance for the hero agent console. */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}
+
 @keyframes slow-spin {
   from { transform: rotate(0deg); }
   to   { transform: rotate(360deg); }

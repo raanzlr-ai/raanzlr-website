@@ -41,17 +41,17 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
       heroDescription: "Transform your financial institution with intelligent automation that enhances compliance, detects fraud in real-time, and delivers exceptional customer experiences. Built for the regulatory landscape of Saudi Arabia, UAE, and the wider GCC region.",
       overviewTitle: "Banking on Intelligence",
       overviewParagraphs: [
-        "The GCC financial sector is at a pivotal moment. With 73% of banking tasks impacted by generative AI and early adopters seeing 22-30% productivity improvements, the question isn't whether to adopt AI—it's how quickly you can deploy it effectively.",
+        "The GCC financial sector is moving quickly on digital service. Banks and finance teams are looking at generative AI for customer service, onboarding checks, and internal operations, and the open question is how to deploy it safely under local regulation.",
         "From SAMA's Open Banking Framework to CBUAE's AI guidelines, regulators across the region are not just permitting AI adoption—they're actively encouraging it. Banks that master AI-driven compliance monitoring, fraud detection, and customer engagement will define the next era of financial services in the Middle East.",
-        "Our solutions are purpose-built for GCC banks: Arabic-first chatbots that understand Gulf dialects, KYC automation compliant with PDPL and UAE data laws, and fraud detection systems trained on regional transaction patterns."
+        "Our solutions are purpose-built for GCC banks: Arabic-first chatbots that understand Gulf dialects, KYC automation compliant with PDPL and UAE data laws, and fraud detection systems tuned to regional transaction patterns."
       ],
       keyAdvantages: [
-        "85% faster KYC processing from days to minutes",
-        "60% reduction in fraud losses with real-time ML detection",
-        "40% lower support costs through intelligent Arabic chatbots",
-        "99.9% compliance accuracy with automated monitoring",
+        "KYC automation that turns document checks and screening into a reviewable workflow",
+        "Real-time fraud-signal detection that flags transactions for analyst review",
+        "Arabic-first chatbots that handle routine support questions and hand off complex ones",
+        "Automated compliance monitoring with an audit trail for every decision",
         "Data residency compliance for Saudi PDPL and UAE regulations",
-        "Native WhatsApp integration for 90%+ customer reach"
+        "WhatsApp integration for customers who already use it to reach their bank"
       ],
       servicesTitle: "AI Solutions for Modern Banking",
       services: [
@@ -61,7 +61,7 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
         },
         {
           title: "Real-Time Fraud Detection",
-          description: "Machine learning models analyzing thousands of transactions per second, flagging anomalies with 99.5% accuracy and drastically reducing false positives."
+          description: "Machine learning models that monitor transactions at scale and flag anomalies for review, with thresholds tuned to keep false positives low."
         },
         {
           title: "Multilingual Banking Chatbots",
@@ -85,7 +85,7 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
       useCases: [
         {
           title: "Digital Account Opening",
-          description: "AI-powered KYC processes documents, validates identity against government databases, screens for sanctions, and approves accounts in under 5 minutes—all while maintaining full regulatory compliance."
+          description: "AI-powered KYC processes documents, validates identity against approved data sources, screens for sanctions, and routes each case for approval, all while keeping a full regulatory audit trail."
         },
         {
           title: "AML Transaction Monitoring",
@@ -93,7 +93,7 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
         },
         {
           title: "WhatsApp Banking Assistant",
-          description: "Arabic-first chatbot handling balance inquiries, transaction history, loan applications, and card services via WhatsApp—the dominant messaging platform across the GCC with 90%+ penetration."
+          description: "Arabic-first chatbot for balance inquiries, transaction history, loan applications, and card services via WhatsApp, the dominant messaging platform across the GCC."
         },
         {
           title: "Fraud Prevention for Digital Channels",
@@ -109,11 +109,11 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
         "Arabic-first AI with native Gulf dialect support, not English models retrofitted for Arabic",
         "Deep regulatory knowledge: SAMA Open Banking, PDPL, CBUAE AI guidelines, FATF compliance",
         "Data residency architecture compliant with Saudi and UAE in-country storage mandates",
-        "Proven integration expertise with legacy core banking platforms without full replacement",
+        "API-first integration with legacy core banking platforms, without full replacement",
         "Same-timezone delivery teams across MENA for real-time collaboration",
         "Explainable AI models that meet regulator transparency requirements for credit and compliance decisions"
       ],
-      faqTitle: "Frequently Asked Questions",
+      faqTitle: "What do GCC banks ask before adopting AI?",
       faqs: [
         {
           q: "How do we ensure AI credit decisions are explainable to regulators?",
@@ -121,11 +121,11 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
         },
         {
           q: "Can AI integrate with our 15-year-old core banking system?",
-          a: "Yes. We use an API-first middleware approach that layers AI capabilities on top of legacy platforms like Temenos, Oracle FLEXCUBE, and Finacle without requiring core system replacement. Most integrations are production-ready within 8-12 weeks."
+          a: "Yes. We use an API-first middleware approach that layers AI capabilities on top of legacy platforms like Temenos, Oracle FLEXCUBE, and Finacle without requiring core system replacement. Timelines depend on scope, the state of the source systems, and approval cycles; we give a dated estimate after a technical audit."
         },
         {
           q: "How does your AI handle Arabic dialects—Gulf Arabic vs. Modern Standard Arabic?",
-          a: "Our models are fine-tuned on GCC-specific datasets including Saudi, Emirati, and Kuwaiti dialects. We achieve 95%+ accuracy on colloquial banking queries, far exceeding generic Arabic NLP tools."
+          a: "Our models are fine-tuned on GCC-specific datasets including Saudi, Emirati, and Kuwaiti dialects. They are tuned for colloquial banking vocabulary rather than relying on a generic Arabic NLP model."
         },
         {
           q: "How do we comply with Saudi PDPL and UAE data protection laws?",
@@ -133,8 +133,8 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
         }
       ],
       ctaTitle: "Ready to Transform Your Financial Services?",
-      ctaDescription: "Join the GCC banks already leveraging AI to reduce costs, enhance compliance, and deliver exceptional customer experiences.",
-      metaDescription: "AI & automation solutions for GCC banks: intelligent KYC, fraud detection, Arabic chatbots, and compliance automation. SAMA and CBUAE compliant. Built for Saudi Arabia, UAE, and the Middle East.",
+      ctaDescription: "Talk to us about how AI could help your bank reduce manual work, strengthen compliance, and improve the customer experience.",
+      metaDescription: "AI and automation for GCC banks and fintechs: KYC, fraud detection, Arabic chatbots and compliance workflows. Built for Saudi Arabia and the wider Gulf.",
       keywords: "AI banking GCC, Saudi Arabia fintech AI, UAE banking automation, SAMA compliance AI, KYC automation Middle East, fraud detection Arabic, Islamic banking AI, CBUAE digital banking"
     },
     ar: {
@@ -143,17 +143,17 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
       heroDescription: "حوّل مؤسستك المالية بالأتمتة الذكية التي تعزز الامتثال، وتكتشف الاحتيال في الوقت الفعلي، وتقدم تجارب عملاء استثنائية. مصممة خصيصاً للبيئة التنظيمية في السعودية والإمارات ودول الخليج.",
       overviewTitle: "الخدمات المصرفية بالذكاء",
       overviewParagraphs: [
-        "القطاع المالي الخليجي يقف اليوم أمام مرحلة تحول حقيقية. فمع إمكانية تطبيق الذكاء الاصطناعي التوليدي على 73% من المهام المصرفية، وتحقيق المؤسسات التي بدأت التبني مبكراً زيادات في الإنتاجية تتراوح بين 22 و30%، لم يعد السؤال ما إذا كان الذكاء الاصطناعي سيصبح جزءاً من العمل المصرفي، بل كيف يمكن توظيفه بسرعة وكفاءة وبما يتوافق مع المتطلبات التنظيمية.",
+        "يشهد القطاع المالي الخليجي تحولاً رقمياً متسارعاً. وتدرس البنوك والمؤسسات المالية الذكاء الاصطناعي التوليدي في خدمة العملاء وفحوصات التعريف وعمليات التشغيل الداخلية، والسؤال هو كيف يُطبَّق بأمان وبما يتوافق مع التنظيمات المحلية.",
         "وتواكب الجهات التنظيمية في المنطقة هذا التحول بشكل واضح. فمن إطار الخدمات المصرفية المفتوحة الذي أطلقه البنك المركزي السعودي (ساما)، إلى التوجيهات الصادرة عن مصرف الإمارات العربية المتحدة المركزي بشأن الذكاء الاصطناعي، أصبح تبني هذه التقنيات جزءاً من مستقبل القطاع المالي، وليس مجرد مبادرة تقنية. والمؤسسات التي تنجح في دمج الذكاء الاصطناعي ضمن الامتثال، ومكافحة الاحتيال، وخدمة العملاء، ستكون الأكثر قدرة على المنافسة خلال السنوات المقبلة.",
-        "صممنا حلولنا بما يتناسب مع احتياجات المؤسسات المالية في الخليج، بدءاً من مساعدين ذكيين يفهمون العربية ولهجات الخليج، مروراً بأتمتة إجراءات اعرف عميلك (KYC) بما يتوافق مع نظام حماية البيانات الشخصية السعودي وتشريعات حماية البيانات الإماراتية، وصولاً إلى أنظمة كشف احتيال مدربة على أنماط المعاملات والسلوك المالي في المنطقة."
+        "صممنا حلولنا بما يتناسب مع احتياجات المؤسسات المالية في الخليج، بدءاً من مساعدين ذكيين يفهمون العربية ولهجات الخليج، مروراً بأتمتة إجراءات اعرف عميلك (KYC) بما يتوافق مع نظام حماية البيانات الشخصية السعودي وتشريعات حماية البيانات الإماراتية، وصولاً إلى أنظمة كشف احتيال مضبوطة على أنماط المعاملات والسلوك المالي في المنطقة."
       ],
       keyAdvantages: [
-        "تسريع إجراءات اعرف عميلك (KYC) بنسبة تصل إلى 85% وتحويلها من أيام إلى دقائق",
-        "تقليل خسائر الاحتيال بنسبة تصل إلى 60% عبر أنظمة كشف فورية مدعومة بالتعلم الآلي",
-        "خفض تكاليف خدمة العملاء بنسبة تصل إلى 40% من خلال مساعدين ذكيين باللغة العربية",
-        "تحقيق دقة امتثال تصل إلى 99.9% عبر المراقبة الآلية للعمليات",
+        "أتمتة إجراءات اعرف عميلك (KYC) بحيث تتحول فحوصات المستندات والتدقيق إلى مسار عمل قابل للمراجعة",
+        "كشف إشارات الاحتيال فورياً وتنبيه المحللين لمراجعة المعاملات المشبوهة",
+        "مساعدون ذكيون بالعربية يتولون أسئلة الدعم الروتينية ويحيلون الحالات المعقدة إلى فريقكم",
+        "مراقبة امتثال آلية مع سجل تدقيق لكل قرار",
         "بنية متوافقة مع متطلبات إقامة البيانات في السعودية والإمارات",
-        "تكامل مباشر مع واتساب للوصول إلى أكثر من 90% من العملاء في المنطقة"
+        "تكامل مع واتساب للعملاء الذين يستخدمونه أصلاً للتواصل مع البنك"
       ],
       servicesTitle: "حلول الذكاء الاصطناعي للخدمات المصرفية الحديثة",
       services: [
@@ -163,7 +163,7 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
         },
         {
           title: "كشف الاحتيال في الوقت الفعلي",
-          description: "نماذج تعلم آلي تراقب آلاف المعاملات في الثانية، وتكتشف الأنماط غير الطبيعية بدقة عالية، مع تقليل الإنذارات الخاطئة وتحسين سرعة الاستجابة."
+          description: "نماذج تعلم آلي تراقب المعاملات على نطاق واسع وتكتشف الأنماط غير الطبيعية لمراجعتها، مع حدود مضبوطة لتقليل الإنذارات الخاطئة وتحسين سرعة الاستجابة."
         },
         {
           title: "روبوتات دردشة مصرفية متعددة اللغات",
@@ -215,7 +215,7 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
         "فرق عمل تعمل ضمن التوقيت الإقليمي لضمان سرعة التنفيذ والدعم",
         "نماذج ذكاء اصطناعي قابلة للتفسير تلبي متطلبات الشفافية في قرارات الائتمان والامتثال"
       ],
-      faqTitle: "الأسئلة الشائعة",
+      faqTitle: "ما الذي تسأل عنه البنوك الخليجية قبل اعتماد الذكاء الاصطناعي؟",
       faqs: [
         {
           q: "كيف نضمن أن تكون قرارات الائتمان قابلة للتفسير للجهات التنظيمية؟",
@@ -223,11 +223,11 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
         },
         {
           q: "هل يمكن دمج حلولكم مع نظام مصرفي مضى على تشغيله أكثر من 15 عاماً؟",
-          a: "نعم. نعتمد على طبقات تكامل تعتمد على واجهات البرمجة (API) لربط حلول الذكاء الاصطناعي بمنصات مثل Temenos وOracle FLEXCUBE وFinacle دون الحاجة إلى استبدال النظام، ويمكن تنفيذ معظم المشاريع خلال 8 إلى 12 أسبوعاً."
+          a: "نعم. نعتمد على طبقات تكامل تعتمد على واجهات البرمجة (API) لربط حلول الذكاء الاصطناعي بمنصات مثل Temenos وOracle FLEXCUBE وFinacle دون الحاجة إلى استبدال النظام، وتُحدَّد مدة التنفيذ بعد تدقيق تقني حسب النطاق."
         },
         {
           q: "كيف تتعامل نماذجكم مع اللهجات الخليجية؟",
-          a: "تم تدريب نماذجنا على بيانات لغوية خاصة بدول الخليج تشمل اللهجات السعودية والإماراتية والكويتية، مما يحقق دقة تتجاوز 95% في فهم الاستفسارات المصرفية اليومية."
+          a: "نعتمد على نماذج لغوية عامة ونضبط التعليمات والاسترجاع ومجموعات الاختبار للهجات الخليجية (السعودية والإماراتية والكويتية). تُقاس الدقة على محادثاتكم الفعلية خلال مرحلة تجريبية، ولا نفترضها مسبقاً."
         },
         {
           q: "كيف نضمن الامتثال لنظام حماية البيانات الشخصية السعودي وقوانين حماية البيانات الإماراتية؟",
@@ -235,7 +235,7 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
         }
       ],
       ctaTitle: "هل أنت مستعد لتحويل خدماتك المالية؟",
-      ctaDescription: "انضم إلى المؤسسات المالية في الخليج التي توظف الذكاء الاصطناعي لخفض التكاليف، وتعزيز الامتثال، والارتقاء بتجربة العملاء.",
+      ctaDescription: "تحدث إلينا عن كيف يمكن للذكاء الاصطناعي أن يساعد مؤسستك المالية على تقليل العمل اليدوي وتعزيز الامتثال وتحسين تجربة العملاء.",
       metaDescription: "حلول الذكاء الاصطناعي والأتمتة لبنوك الخليج: KYC ذكي، كشف الاحتيال، روبوتات دردشة عربية، وأتمتة الامتثال. متوافق مع ساما والمصرف المركزي الإماراتي. مصمم للسعودية والإمارات والشرق الأوسط.",
       keywords: "الذكاء الاصطناعي المصرفي الخليج، الذكاء الاصطناعي للتكنولوجيا المالية السعودية، أتمتة البنوك الإماراتية، امتثال ساما بالذكاء الاصطناعي، أتمتة KYC الشرق الأوسط، كشف الاحتيال بالعربية، الذكاء الاصطناعي للبنوك الإسلامية"
     }
@@ -252,15 +252,15 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
       overviewParagraphs: [
         "The GCC retail sector is experiencing explosive growth, with e-commerce penetration accelerating rapidly post-COVID. Saudi Arabia and UAE lead the region with sophisticated omnichannel strategies, WhatsApp commerce, and AI-driven customer engagement becoming the new standard.",
         "From Saudi Vision 2030's push to diversify retail beyond traditional malls to UAE's position as the Middle East's e-commerce hub, governments are investing heavily in digital retail infrastructure. Retailers that master AI-powered recommendation engines, inventory forecasting, and conversational commerce will capture the region's increasingly digital-first consumers.",
-        "Our solutions are built for GCC retail realities: Arabic-first shopping assistants on WhatsApp, inventory AI trained on regional demand patterns including Ramadan spikes, and payment integrations with local gateways. We bridge the gap between global retail best practices and Middle Eastern consumer expectations."
+        "Our solutions are built for GCC retail realities: Arabic-first shopping assistants on WhatsApp, inventory AI tuned to regional demand patterns including Ramadan spikes, and payment integrations with local gateways. We bridge the gap between global retail best practices and Middle Eastern consumer expectations."
       ],
       keyAdvantages: [
-        "25-35% increase in average order value through AI recommendations",
-        "40-50% reduction in inventory holding costs with demand forecasting",
-        "60-70% of customer inquiries resolved by AI assistants",
-        "30-40% improvement in delivery route efficiency",
+        "AI product recommendations that surface relevant items in Arabic and English",
+        "Demand forecasting to support inventory planning around seasonal peaks",
+        "AI assistants that answer routine customer inquiries and hand the rest to your team",
+        "Route and delivery planning that accounts for local conditions",
         "Native Arabic and English support for bilingual customer base",
-        "WhatsApp commerce integration reaching 90%+ of GCC consumers"
+        "WhatsApp commerce integration for the channel GCC consumers already use"
       ],
       servicesTitle: "AI Solutions for Modern Retail",
       services: [
@@ -270,7 +270,7 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
         },
         {
           title: "Intelligent Inventory Forecasting",
-          description: "Machine learning models predicting demand based on seasonality (Ramadan, Eid, summer travel), weather patterns, and regional events—reducing stockouts and overstock by 40-50%."
+          description: "Machine learning models that forecast demand from seasonality (Ramadan, Eid, summer travel), weather patterns, and regional events, to support stock planning."
         },
         {
           title: "WhatsApp Shopping Assistant",
@@ -278,7 +278,7 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
         },
         {
           title: "Automated Order Tracking",
-          description: "AI-powered systems providing real-time shipment updates, delivery predictions, and proactive issue resolution—reducing customer service load by 60%."
+          description: "AI-powered systems that provide real-time shipment updates, delivery predictions, and proactive issue notifications."
         },
         {
           title: "Dynamic Pricing Optimization",
@@ -294,7 +294,7 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
       useCases: [
         {
           title: "WhatsApp Order & Support Bot",
-          description: "Arabic-English bilingual chatbot handling product discovery, cart management, order placement, and post-purchase support via WhatsApp—the preferred channel for 90%+ of GCC consumers. Processes thousands of conversations daily."
+          description: "Arabic-English bilingual chatbot handling product discovery, cart management, order placement, and post-purchase support via WhatsApp, a widely used channel across the GCC."
         },
         {
           title: "Ramadan Demand Forecasting",
@@ -310,7 +310,7 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
         },
         {
           title: "Delivery Route Optimization",
-          description: "AI logistics algorithms optimizing last-mile delivery across sprawling GCC cities, accounting for prayer times, traffic patterns, and customer time preferences—reducing delivery costs by 30%."
+          description: "AI logistics algorithms that plan last-mile delivery across large GCC cities, accounting for prayer times, traffic patterns, and customer time preferences."
         }
       ],
       whyRaanzlrTitle: "Why GCC Retailers Choose Raanzlr",
@@ -322,19 +322,19 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
         "Same-timezone delivery teams understanding local consumer behavior and preferences",
         "Data residency compliance for Saudi PDPL and UAE e-commerce regulations"
       ],
-      faqTitle: "Frequently Asked Questions",
+      faqTitle: "What do GCC retailers ask before adopting AI?",
       faqs: [
         {
           q: "How does your AI handle Arabic product descriptions and customer queries?",
-          a: "Our models are trained on millions of GCC e-commerce transactions including Arabic product catalogs, customer reviews, and support conversations. We achieve 95%+ accuracy on colloquial shopping queries in both Gulf Arabic and Modern Standard Arabic."
+          a: "Raanzlr builds on general-purpose language models and tunes prompts, retrieval, and test sets for Gulf and Modern Standard Arabic shopping vocabulary. Accuracy is measured on your own product catalogue and conversations during a pilot, not assumed in advance."
         },
         {
           q: "Can the system integrate with our existing e-commerce platform (Shopify, WooCommerce, Magento, Salla)?",
-          a: "Yes. We provide pre-built connectors for major platforms plus custom API integration for regional solutions like Zid, Salla, and Expand Cart. Most integrations are live within 2-4 weeks."
+          a: "Yes. We can build connectors for major platforms plus custom API integration for regional solutions like Zid, Salla, and Expand Cart. Timing depends on the platform and the scope, and is set after discovery."
         },
         {
-          q: "How does AI handle Ramadan demand spikes that are 3-5x normal volume?",
-          a: "Our forecasting models are explicitly trained on GCC seasonal patterns including Ramadan, Eid, National Day, and DSF. The system learns multi-year patterns and adjusts inventory recommendations 4-6 weeks before peak periods."
+          q: "How does AI handle Ramadan demand spikes?",
+          a: "Forecasting is configured around GCC seasonal patterns including Ramadan, Eid, National Day, and DSF. The system learns from your multi-year sales history and can recommend inventory adjustments ahead of peak periods, with the lead time set by your data."
         },
         {
           q: "Does the WhatsApp bot support payment processing and order confirmation?",
@@ -342,8 +342,8 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
         }
       ],
       ctaTitle: "Ready to Transform Your Retail Operations?",
-      ctaDescription: "Join the GCC retailers already leveraging AI to increase sales, reduce costs, and deliver exceptional customer experiences.",
-      metaDescription: "AI & automation for GCC retail and e-commerce: personalized recommendations, inventory forecasting, WhatsApp shopping bots, and delivery optimization. Built for Saudi Arabia, UAE, and the Middle East market.",
+      ctaDescription: "Talk to us about how AI could help your retail business sell more, reduce manual work, and improve the customer experience.",
+      metaDescription: "AI and automation for GCC retail and e-commerce: Arabic support agents, inventory and order intelligence, and personalisation across web and WhatsApp.",
       keywords: "AI retail GCC, Saudi Arabia e-commerce automation, UAE retail AI, WhatsApp shopping bot, Arabic product recommendations, Ramadan inventory forecasting, MENA e-commerce AI, Salla Zid integration"
     },
     ar: {
@@ -357,12 +357,12 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
         "صممنا حلولنا لتواكب احتياجات تجارة التجزئة في الخليج، بدءاً من مساعدين ذكيين باللغة العربية يعملون عبر واتساب، مروراً بأنظمة توقع الطلب التي تراعي المواسم الإقليمية مثل رمضان والأعياد، وصولاً إلى التكامل مع بوابات الدفع والمنصات المحلية."
       ],
       keyAdvantages: [
-        "زيادة متوسط قيمة الطلب بنسبة تتراوح بين 25% و35% عبر توصيات المنتجات المدعومة بالذكاء الاصطناعي",
-        "خفض تكاليف الاحتفاظ بالمخزون بنسبة تتراوح بين 40% و50% من خلال التنبؤ الدقيق بالطلب",
-        "معالجة ما بين 60% و70% من استفسارات العملاء باستخدام مساعدين ذكيين",
-        "تحسين كفاءة عمليات التسليم بنسبة تتراوح بين 30% و40%",
+        "توصيات منتجات مدعومة بالذكاء الاصطناعي تعرض العناصر المناسبة بالعربية والإنجليزية",
+        "تنبؤ بالطلب لدعم تخطيط المخزون في مواسم الذروة",
+        "مساعدون ذكيون يجيبون عن استفسارات العملاء الروتينية ويحيلون الباقي إلى فريقكم",
+        "تخطيط مسارات التسليم بما يراعي الظروف المحلية",
         "دعم كامل للعربية والإنجليزية لتقديم تجربة موحدة لجميع العملاء",
-        "تكامل مباشر مع واتساب للوصول إلى أكثر من 90% من مستهلكي الخليج"
+        "تكامل مع تجارة واتساب، القناة التي يستخدمها مستهلكو الخليج أصلاً"
       ],
       servicesTitle: "حلول الذكاء الاصطناعي لتجارة التجزئة الحديثة",
       services: [
@@ -424,19 +424,19 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
         "فرق تنفيذ تعمل ضمن المنطقة الزمنية نفسها وتفهم طبيعة السوق الخليجي",
         "بنية متوافقة مع متطلبات حماية البيانات في السعودية والإمارات"
       ],
-      faqTitle: "الأسئلة الشائعة",
+      faqTitle: "ما الذي تسأل عنه شركات التجزئة الخليجية قبل اعتماد الذكاء الاصطناعي؟",
       faqs: [
         {
           q: "كيف يتعامل الذكاء الاصطناعي مع أوصاف المنتجات العربية واستفسارات العملاء؟",
-          a: "تم تدريب نماذجنا على ملايين المعاملات التجارية في الخليج، بما في ذلك كتالوجات المنتجات العربية، ومراجعات العملاء، ومحادثات الدعم. نحقق دقة تزيد عن 95% في فهم استفسارات التسوق بالعربية الفصحى واللهجات الخليجية."
+          a: "نعتمد على نماذج لغوية عامة ونضبط التعليمات والاسترجاع ومجموعات الاختبار لمفردات التسوق بالعربية الفصحى واللهجات الخليجية، ونقيس الدقة على كتالوج منتجاتكم ومحادثاتكم الفعلية خلال مرحلة تجريبية."
         },
         {
           q: "هل يمكن دمج الحلول مع منصات التجارة الإلكترونية الحالية مثل Shopify وWooCommerce وMagento وسلة؟",
-          a: "نعم. نوفر موصلات جاهزة للمنصات الرئيسية، بالإضافة إلى تكامل مخصص عبر واجهات برمجية للمنصات المحلية مثل زد وسلة وإكسباند كارت. معظم عمليات التكامل تكتمل خلال 2 إلى 4 أسابيع."
+          a: "نعم. نوفر موصلات جاهزة للمنصات الرئيسية، بالإضافة إلى تكامل مخصص عبر واجهات برمجية للمنصات المحلية مثل زد وسلة وإكسباند كارت. تُحدَّد مدة التكامل بعد مراجعة منصتكم."
         },
         {
           q: "كيف يتعامل النظام مع الارتفاع الكبير في الطلب خلال شهر رمضان؟",
-          a: "نماذج التنبؤ لدينا مدربة خصيصاً على الأنماط الموسمية في الخليج، بما في ذلك رمضان والأعياد والمناسبات الوطنية ومهرجان دبي للتسوق. يتعلم النظام من بيانات عدة سنوات ويبدأ في تعديل توصيات المخزون قبل 4 إلى 6 أسابيع من ذروة الطلب."
+          a: "يُضبط النظام على الأنماط الموسمية في الخليج، بما في ذلك رمضان والأعياد والمناسبات الوطنية ومهرجان دبي للتسوق. يتعلم من بيانات مبيعاتكم لعدة سنوات ويمكنه اقتراح تعديلات المخزون قبل مواسم الذروة، ويعتمد وقت الاستباق على بياناتكم."
         },
         {
           q: "هل يدعم مساعد واتساب الدفع الإلكتروني وتأكيد الطلبات؟",
@@ -444,7 +444,7 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
         }
       ],
       ctaTitle: "هل أنت مستعد لتطوير أعمال التجزئة بالذكاء الاصطناعي؟",
-      ctaDescription: "انضم إلى شركات التجزئة في الخليج التي تستفيد اليوم من الذكاء الاصطناعي لزيادة المبيعات، وتحسين الكفاءة التشغيلية، وتقديم تجربة تسوق أكثر تميزاً.",
+      ctaDescription: "تحدث إلينا عن كيف يمكن للذكاء الاصطناعي أن يساعد متجرك على زيادة المبيعات وتقليل العمل اليدوي وتحسين تجربة التسوق.",
       metaDescription: "الذكاء الاصطناعي والأتمتة للتجزئة والتجارة الإلكترونية في الخليج: توصيات مخصصة، التنبؤ بالمخزون، روبوتات تسوق واتساب، وتحسين التسليم. مصمم لسوق السعودية والإمارات والشرق الأوسط.",
       keywords: "الذكاء الاصطناعي للتجزئة الخليج، أتمتة التجارة الإلكترونية السعودية، الذكاء الاصطناعي للتجزئة الإماراتي، روبوت تسوق واتساب، توصيات المنتجات العربية، التنبؤ بمخزون رمضان، الذكاء الاصطناعي للتجارة الإلكترونية في الشرق الأوسط، تكامل سلة زد"
     }
@@ -459,27 +459,27 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
       heroDescription: "Transform patient care with intelligent automation that streamlines operations, improves outcomes, and ensures regulatory compliance. Built for the healthcare landscape of Saudi Arabia, UAE, and the wider GCC region.",
       overviewTitle: "Healing Through Intelligence",
       overviewParagraphs: [
-        "The GCC healthcare sector is experiencing unprecedented digital transformation. With 83% of healthcare executives piloting generative AI and 70% of healthcare tasks ready for automation or augmentation, the future of medicine in the Middle East is being rewritten.",
-        "From Saudi Vision 2030's USD 6.4 billion healthcare digitization investment to UAE's AI Strategy 2031 targeting healthcare as a priority sector, governments across the region are driving rapid AI adoption. Hospitals and clinics that master AI-powered patient intake, scheduling, and clinical decision support will deliver better care at lower cost.",
+        "The GCC healthcare sector is going through rapid digital transformation. Health providers are looking at AI for patient intake, scheduling, documentation, and decision support, with clinicians staying in charge of every clinical decision.",
+        "Regional health strategies such as Saudi Vision 2030 and the UAE's AI Strategy 2031 are pushing digital and AI adoption. Hospitals and clinics that get patient intake, scheduling, and clinical decision support right can give patients a smoother experience.",
         "Our solutions are designed for GCC healthcare providers: Arabic-first chatbots that schedule appointments via WhatsApp, AI triage systems compliant with PDPL and UAE health data laws, and medical record summarization that handles both Arabic and English documentation seamlessly."
       ],
       keyAdvantages: [
-        "80-90% reduction in patient registration time",
-        "20-35% decrease in appointment no-shows through AI reminders",
-        "30-50% faster medical record review with AI summarization",
-        "40-60% reduction in call center volume",
+        "Faster patient registration through chatbot-based pre-screening and intake",
+        "Fewer missed appointments through AI reminders on WhatsApp",
+        "AI summarization to speed up medical record review, with clinician sign-off",
+        "Lower call-center load by answering routine questions automatically",
         "Full compliance with Saudi PDPL and UAE health data regulations",
-        "Native WhatsApp integration reaching 90%+ of patients"
+        "WhatsApp integration for patients who already use it"
       ],
       servicesTitle: "AI Solutions for Modern Healthcare",
       services: [
         {
           title: "Intelligent Patient Intake",
-          description: "AI-powered triage chatbots collecting symptom history, insurance information, and demographics before clinical encounters, reducing check-in time from 15-25 minutes to 2-3 minutes."
+          description: "AI-powered triage chatbots that collect symptom history, insurance information, and demographics before clinical encounters, to shorten check-in."
         },
         {
           title: "Smart Appointment Scheduling",
-          description: "WhatsApp-based AI assistants handling appointment booking, rescheduling, and reminders in Arabic and English, reducing no-show rates by 20-35% through intelligent engagement."
+          description: "WhatsApp-based AI assistants handling appointment booking, rescheduling, and reminders in Arabic and English."
         },
         {
           title: "Medical Record Summarization",
@@ -487,7 +487,7 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
         },
         {
           title: "Clinical Decision Support",
-          description: "AI systems analyzing patient data against clinical guidelines, flagging drug interactions, missed diagnoses, and deterioration risks, reducing diagnostic errors by 15-30%."
+          description: "AI systems that compare patient data against clinical guidelines and flag potential drug interactions, missed diagnoses, and deterioration risks for clinician review. Decision support only; the clinician decides."
         },
         {
           title: "Telemedicine AI Enhancement",
@@ -503,23 +503,23 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
       useCases: [
         {
           title: "WhatsApp Patient Registration",
-          description: "AI chatbot collects patient information, verifies insurance, and completes pre-screening before visits—cutting registration time by 85% and freeing front-desk staff for complex cases."
+          description: "AI chatbot collects patient information, verifies insurance, and completes pre-screening before visits, so front-desk staff can focus on complex cases."
         },
         {
           title: "Emergency Department AI Triage",
-          description: "Rapid patient stratification by acuity using AI analysis of symptoms and vitals, reducing clinician triage time from 10-15 minutes to 2-3 minutes while maintaining clinical accuracy."
+          description: "AI-assisted patient stratification by acuity from symptoms and vitals, supporting (not replacing) clinician triage."
         },
         {
           title: "Multilingual Medical Assistant",
-          description: "AI system answering patient questions about medications, lab results, and treatment plans in Arabic, English, and Urdu—handling 70% of routine inquiries without human intervention."
+          description: "AI system answering patient questions about medications, lab results, and treatment plans in Arabic, English, and Urdu, escalating anything clinical to a human."
         },
         {
           title: "Chronic Disease Management Automation",
-          description: "AI-driven remote monitoring for diabetic and hypertensive patients with automated alerts, medication reminders, and lifestyle coaching—reducing hospital readmissions significantly. Critical for GCC where diabetes prevalence reaches 16-19%."
+          description: "AI-driven remote monitoring for diabetic and hypertensive patients with automated alerts, medication reminders, and lifestyle coaching. Chronic conditions such as diabetes are a major health burden in the GCC."
         },
         {
           title: "Pharmacy Prescription Verification",
-          description: "AI analyzing prescriptions in real-time to flag dosing errors, drug interactions, and contraindications before dispensing, reducing medication errors by up to 30%."
+          description: "AI that reviews prescriptions in real time to flag possible dosing errors, drug interactions, and contraindications before dispensing, for pharmacist review."
         }
       ],
       whyRaanzlrTitle: "Why GCC Healthcare Providers Choose Raanzlr",
@@ -527,11 +527,11 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
         "Arabic-first AI with medical terminology support for Gulf dialects and Modern Standard Arabic",
         "Deep healthcare compliance knowledge: PDPL, UAE Health Data Law, SFDA SaMD regulations",
         "Experience integrating with regional health information exchanges: Nphies, Malaffi, Nabidh",
-        "Proven HIS/EMR integration with Epic, Cerner, Oracle Health, and local platforms",
+        "Integration with HIS/EMR platforms such as Epic, Cerner, Oracle Health, and local systems, scoped per project through HL7 FHIR and APIs",
         "Same-timezone delivery teams across MENA understanding local healthcare workflows",
         "HIPAA-equivalent security architecture meeting GCC data residency requirements"
       ],
-      faqTitle: "Frequently Asked Questions",
+      faqTitle: "What do GCC healthcare providers ask before adopting AI?",
       faqs: [
         {
           q: "How do we integrate AI with our existing HIS/EMR system?",
@@ -539,7 +539,7 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
         },
         {
           q: "Does your AI support Arabic medical terminology and Gulf dialects?",
-          a: "Yes. Our models are trained on GCC-specific medical datasets including Arabic clinical notes, Gulf dialect patient communication, and bilingual medical terminology. We achieve 90%+ accuracy on colloquial health queries."
+          a: "Raanzlr builds on general-purpose language models and tunes prompts, retrieval, and terminology lists for Arabic clinical notes, Gulf dialect patient communication, and bilingual medical terminology. Quality is checked against your own material during a pilot, and clinical output is always reviewed by a clinician."
         },
         {
           q: "Is the solution compliant with Saudi PDPL and UAE health data laws?",
@@ -551,8 +551,8 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
         }
       ],
       ctaTitle: "Ready to Transform Your Healthcare Delivery?",
-      ctaDescription: "Join the GCC hospitals and clinics already leveraging AI to improve patient outcomes, reduce costs, and enhance operational efficiency.",
-      metaDescription: "AI & automation for GCC healthcare: patient intake, appointment scheduling, medical record summarization, and clinical decision support. PDPL compliant. Built for Saudi Arabia, UAE, and the Middle East.",
+      ctaDescription: "Talk to us about how AI could help your hospital or clinic reduce administrative work and support your clinical teams.",
+      metaDescription: "AI and automation for GCC healthcare: Arabic patient communication, appointment and reminder workflows, records access and clinical document processing.",
       keywords: "AI healthcare GCC, Saudi Arabia hospital automation, UAE medical AI, PDPL healthcare compliance, telemedicine AI Middle East, Arabic medical chatbot, patient scheduling automation, Nphies Malaffi Nabidh integration"
     },
     ar: {
@@ -561,23 +561,23 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
       heroDescription: "ارتقِ بخدمات الرعاية الصحية من خلال حلول ذكاء اصطناعي تبسّط العمليات، وتحسن تجربة المرضى، وترفع جودة الرعاية، مع الالتزام الكامل بالمتطلبات التنظيمية في السعودية والإمارات ودول الخليج.",
       overviewTitle: "الشفاء من خلال الذكاء",
       overviewParagraphs: [
-        "يشهد قطاع الرعاية الصحية في الخليج تحولاً رقمياً متسارعاً. ومع تجربة 83% من قادة القطاع للذكاء الاصطناعي التوليدي، وإمكانية أتمتة أو دعم نحو 70% من المهام الصحية، أصبح الذكاء الاصطناعي أحد أهم محركات تطوير الخدمات الطبية في المنطقة.",
+        "يشهد قطاع الرعاية الصحية في الخليج تحولاً رقمياً متسارعاً. وتدرس الجهات الصحية الذكاء الاصطناعي في استقبال المرضى والجدولة والتوثيق ودعم القرار، مع بقاء القرار السريري بيد الطبيب.",
         "وتعكس المبادرات الحكومية هذا التوجه بوضوح، بدءاً من استثمارات رؤية السعودية 2030 في رقمنة القطاع الصحي، وصولاً إلى استراتيجية الإمارات للذكاء الاصطناعي 2031 التي تضع الرعاية الصحية ضمن القطاعات ذات الأولوية. ومع هذا الزخم، بات تبني حلول الذكاء الاصطناعي جزءاً أساسياً من مستقبل تقديم الرعاية الصحية في الخليج.",
         "طوّرنا حلولنا لتلائم احتياجات المستشفيات والعيادات ومقدمي الخدمات الصحية في المنطقة، بدءاً من مساعدين ذكيين باللغة العربية لإدارة المواعيد عبر واتساب، وصولاً إلى أنظمة فرز طبي وأتمتة للعمليات تتوافق مع نظام حماية البيانات الشخصية السعودي وتشريعات البيانات الصحية في الإمارات."
       ],
       keyAdvantages: [
-        "تقليل وقت تسجيل المرضى بنسبة تتراوح بين 80 و90%",
-        "خفض معدلات عدم حضور المواعيد بنسبة تتراوح بين 20 و35% عبر التذكيرات الذكية",
-        "تسريع مراجعة السجلات الطبية بنسبة تتراوح بين 30 و50% باستخدام التلخيص الآلي",
-        "تقليل حجم مكالمات مراكز الاتصال بنسبة تتراوح بين 40 و60%",
+        "تسريع تسجيل المرضى عبر الاستقبال والفرز الأولي بمساعد محادثة",
+        "تقليل الغياب عن المواعيد عبر تذكيرات ذكية على واتساب",
+        "تلخيص آلي يساعد على مراجعة السجلات الطبية بسرعة مع اعتماد الطبيب",
+        "تخفيف الضغط على مراكز الاتصال بالرد التلقائي على الأسئلة الروتينية",
         "توافق كامل مع نظام حماية البيانات السعودي وأنظمة البيانات الصحية الإماراتية",
-        "تكامل مباشر مع واتساب للوصول إلى أكثر من 90% من المرضى"
+        "تكامل مع واتساب للمرضى الذين يستخدمونه أصلاً"
       ],
       servicesTitle: "حلول الذكاء الاصطناعي للرعاية الصحية الحديثة",
       services: [
         {
           title: "استقبال المرضى الذكي",
-          description: "مساعدون افتراضيون يجمعون بيانات المرضى، ويسجلون الأعراض، ويتحققون من معلومات التأمين قبل الزيارة، مما يقلل زمن إجراءات الاستقبال من 15–25 دقيقة إلى دقيقتين أو ثلاث دقائق."
+          description: "مساعدون افتراضيون يجمعون بيانات المرضى، ويسجلون الأعراض، ويتحققون من معلومات التأمين قبل الزيارة، لاختصار إجراءات الاستقبال."
         },
         {
           title: "جدولة المواعيد الذكية",
@@ -605,11 +605,11 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
       useCases: [
         {
           title: "تسجيل المرضى عبر واتساب",
-          description: "مساعد ذكي يجمع بيانات المريض، ويتحقق من معلومات التأمين، ويستكمل إجراءات ما قبل الزيارة، مما يقلل زمن التسجيل بنسبة تصل إلى 85%."
+          description: "مساعد ذكي يجمع بيانات المريض، ويتحقق من معلومات التأمين، ويستكمل إجراءات ما قبل الزيارة، ليتفرغ موظفو الاستقبال للحالات الأكثر تعقيداً."
         },
         {
           title: "الفرز الذكي في أقسام الطوارئ",
-          description: "تحليل الأعراض والعلامات الحيوية لتحديد أولوية الحالات بسرعة، مما يقلص وقت الفرز الأولي من 10–15 دقيقة إلى دقيقتين أو ثلاث دقائق."
+          description: "تحليل الأعراض والعلامات الحيوية لتصنيف الحالات حسب الأولوية، دعماً لفرز الطبيب وليس بديلاً عنه."
         },
         {
           title: "مساعد طبي متعدد اللغات",
@@ -633,15 +633,15 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
         "فرق تنفيذ تعمل ضمن المنطقة الزمنية للشرق الأوسط وتفهم طبيعة سير العمل في المؤسسات الصحية الخليجية",
         "بنية أمنية عالية تدعم حماية البيانات الصحية ومتطلبات إقامة البيانات داخل المنطقة"
       ],
-      faqTitle: "الأسئلة الشائعة",
+      faqTitle: "ما الذي تسأل عنه الجهات الصحية الخليجية قبل اعتماد الذكاء الاصطناعي؟",
       faqs: [
         {
           q: "كيف يتم دمج حلول الذكاء الاصطناعي مع نظام HIS أو EMR الحالي؟",
-          a: "نعتمد على معايير HL7 FHIR وواجهات برمجية حديثة لربط حلول الذكاء الاصطناعي بالأنظمة الصحية المختلفة، مع إنجاز معظم مشاريع التكامل خلال فترة تتراوح بين 6 و10 أسابيع."
+          a: "نعتمد على معايير HL7 FHIR وواجهات برمجية حديثة لربط حلول الذكاء الاصطناعي بالأنظمة الصحية المختلفة، وتُحدَّد مدة التكامل بعد مراجعة الأنظمة القائمة."
         },
         {
           q: "هل تدعم نماذجكم المصطلحات الطبية العربية واللهجات الخليجية؟",
-          a: "نعم. تم تدريب نماذجنا على بيانات طبية خاصة بالمنطقة، تشمل السجلات والمصطلحات الطبية العربية واللهجات الخليجية، مما يوفر مستوى عالياً من الدقة في فهم استفسارات المرضى."
+          a: "نعتمد على نماذج لغوية عامة ونضبط التعليمات والاسترجاع وقوائم المصطلحات للسجلات الطبية العربية واللهجات الخليجية والمصطلحات الطبية ثنائية اللغة. تُراجع الجودة على موادكم خلال مرحلة تجريبية، ويراجع الطبيب كل مخرجات سريرية."
         },
         {
           q: "هل تتوافق الحلول مع نظام حماية البيانات السعودي وقوانين البيانات الصحية الإماراتية؟",
@@ -653,7 +653,7 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
         }
       ],
       ctaTitle: "هل أنت مستعد لتحويل خدمات الرعاية الصحية؟",
-      ctaDescription: "انضم إلى المؤسسات الصحية في الخليج التي توظف الذكاء الاصطناعي لتحسين نتائج المرضى، وتعزيز الكفاءة التشغيلية، وخفض التكاليف.",
+      ctaDescription: "تحدث إلينا عن كيف يمكن للذكاء الاصطناعي أن يساعد منشأتك الصحية على تقليل العمل الإداري ودعم فرقها السريرية.",
       metaDescription: "الذكاء الاصطناعي والأتمتة للرعاية الصحية في الخليج: استقبال المرضى، جدولة المواعيد، تلخيص السجلات الطبية، ودعم القرار السريري. متوافق مع نظام حماية البيانات. مصمم للسعودية والإمارات.",
       keywords: "الذكاء الاصطناعي للرعاية الصحية الخليج، أتمتة المستشفيات السعودية، الذكاء الاصطناعي الطبي الإماراتي، امتثال نظام حماية البيانات للرعاية الصحية، الذكاء الاصطناعي للطب عن بُعد الشرق الأوسط، روبوت دردشة طبي عربي، تكامل Nphies Malaffi Nabidh"
     }
@@ -668,15 +668,15 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
       heroDescription: "Transform learning experiences with intelligent automation that personalizes education, reduces teacher burden, and improves student outcomes. Built for the education landscape of Saudi Arabia, UAE, and the wider GCC region.",
       overviewTitle: "Learning Through Intelligence",
       overviewParagraphs: [
-        "The GCC education sector is undergoing rapid digital transformation. With global AI in education projected to grow from USD 2.21B (2024) to USD 5.82B (2030) at 17.5% CAGR, and Saudi Arabia ranking among top nations for generative AI adoption in education, the classroom of tomorrow is being built today.",
+        "The GCC education sector is going through rapid digital transformation. Governments and institutions are investing in AI for teaching, assessment, and student support, and the need for Arabic-first educational technology is clear.",
         "From Saudi Vision 2030's Human Capital Development Program targeting education quality improvements to UAE's mandatory AI curriculum across all K-12 grades, governments are investing billions in education digitization. Institutions that master adaptive learning, AI tutoring, and automated grading will deliver better outcomes at scale.",
-        "Our solutions are designed for GCC education providers: Arabic-English bilingual AI tutors, adaptive learning platforms trained on regional curricula, and automated grading systems handling both languages—addressing the critical need for Arabic-first educational technology."
+        "Our solutions are designed for GCC education providers: Arabic-English bilingual AI tutors, adaptive learning platforms tuned to regional curricula, and automated grading systems handling both languages—addressing the critical need for Arabic-first educational technology."
       ],
       keyAdvantages: [
-        "40-60% reduction in instructor time spent on routine grading",
-        "30-50% improvement in student engagement with adaptive learning",
+        "Automated first-pass grading of routine assignments, with teacher review",
+        "Adaptive learning that adjusts to each student's progress",
         "24/7 AI tutoring support in Arabic and English",
-        "Early warning systems reducing dropout rates by 20-35%",
+        "Early-warning signals that flag students at risk of disengaging",
         "Full support for both Arabic Fusha and Gulf dialects",
         "Integration with LMS platforms (Blackboard, Moodle, Madrasati)"
       ],
@@ -688,11 +688,11 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
         },
         {
           title: "AI Arabic Tutoring Bot",
-          description: "WhatsApp and web chatbot answering student questions in Arabic Fusha and colloquial Gulf dialects—deployed by regional EdTech platforms for exam preparation and homework help."
+          description: "WhatsApp and web chatbot that answers student questions in Arabic Fusha and colloquial Gulf dialects, for exam preparation and homework help."
         },
         {
           title: "Automated Essay Grading",
-          description: "NLP-based systems grading short-answer and essay responses in both Arabic and English using customizable rubrics—reducing faculty workload by 40-60% on routine assessments."
+          description: "NLP-based systems that grade short-answer and essay responses in Arabic and English using customizable rubrics, to cut routine marking work."
         },
         {
           title: "Early Warning Systems",
@@ -708,11 +708,11 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
         }
       ],
       useCasesTitle: "Real-World Applications",
-      useCasesIntro: "How GCC universities, K-12 schools, and online academies are deploying AI to transform education:",
+      useCasesIntro: "Where AI can help GCC universities, K-12 schools, and online academies:",
       useCases: [
         {
           title: "Adaptive Learning for STEM Courses",
-          description: "Platform adjusts difficulty and topic sequence per student's real-time performance in mathematics, physics, and computer science—deployed at Saudi universities to reduce failure rates in foundational courses."
+          description: "Platform that adjusts difficulty and topic sequence to each student's performance in subjects like mathematics, physics, and computer science."
         },
         {
           title: "WhatsApp Homework Helper",
@@ -724,7 +724,7 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
         },
         {
           title: "Student Retention Analytics",
-          description: "ML models predicting at-risk students based on LMS activity, assignment completion, and attendance patterns—enabling proactive intervention before students disengage. Critical for reducing GCC's 30-50% online course dropout rates."
+          description: "ML models that predict at-risk students from LMS activity, assignment completion, and attendance patterns, so staff can step in before students disengage. Online course dropout is a widely recognized challenge."
         },
         {
           title: "Bilingual Content Generation",
@@ -740,11 +740,11 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
         "Same-timezone delivery teams understanding local education challenges and workflows",
         "Support for both Modern Standard Arabic and Gulf dialects in conversational AI"
       ],
-      faqTitle: "Frequently Asked Questions",
+      faqTitle: "What do GCC schools and universities ask before adopting AI?",
       faqs: [
         {
           q: "Can the AI tutor understand and respond accurately in Arabic—including Gulf dialect?",
-          a: "Yes. Our models are trained on millions of Arabic educational conversations including Modern Standard Arabic and Gulf dialects. We achieve 90%+ accuracy on colloquial student questions, far exceeding generic Arabic NLP tools."
+          a: "Raanzlr builds on general-purpose language models and tunes prompts, retrieval, and test sets for Modern Standard Arabic and Gulf dialects as students actually phrase questions. Accuracy is measured on your own conversations during a pilot rather than assumed."
         },
         {
           q: "How does the system handle academic integrity—will students use it to cheat?",
@@ -760,8 +760,8 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
         }
       ],
       ctaTitle: "Ready to Transform Your Educational Delivery?",
-      ctaDescription: "Join the GCC schools and universities already leveraging AI to improve learning outcomes, reduce costs, and scale quality education.",
-      metaDescription: "AI & automation for GCC education: adaptive learning, Arabic AI tutoring, automated grading, and early warning systems. Built for Saudi Arabia, UAE, and Middle East schools and universities.",
+      ctaDescription: "Talk to us about how AI could help your school or university support learners and reduce routine workload.",
+      metaDescription: "AI and automation for GCC education: Arabic student support agents, admissions and registration workflows, and administrative automation for institutions.",
       keywords: "AI education GCC, Saudi Arabia EdTech, UAE adaptive learning, Arabic AI tutor, automated grading Arabic, Madrasati integration, PDPL education compliance, Saudi Vision 2030 education"
     },
     ar: {
@@ -770,15 +770,15 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
       heroDescription: "حوّل تجارب التعلم بالأتمتة الذكية التي تخصص التعليم، وتقلل عبء المعلم، وتحسن نتائج الطلاب. مصممة خصيصاً للمشهد التعليمي في السعودية والإمارات ودول الخليج.",
       overviewTitle: "التعلم من خلال الذكاء",
       overviewParagraphs: [
-        "يشهد قطاع التعليم الخليجي تحولاً رقمياً سريعاً. مع توقعات نمو الذكاء الاصطناعي العالمي في التعليم من 2.21 مليار دولار (2024) إلى 5.82 مليار دولار (2030) بمعدل نمو سنوي 17.5%، واحتلال السعودية مرتبة بين أفضل الدول في تبني الذكاء الاصطناعي التوليدي في التعليم، يتم بناء الفصل الدراسي للغد اليوم.",
-        "من برنامج تطوير رأس المال البشري لرؤية السعودية 2030 الذي يستهدف تحسينات جودة التعليم إلى منهج الذكاء الاصطناعي الإلزامي في الإمارات عبر جميع صفوف K-12، تستثمر الحكومات مليارات في رقمنة التعليم.",
-        "حلولنا مصممة لمقدمي التعليم في الخليج: مدرسو ذكاء اصطناعي ثنائيو اللغة عربي-إنجليزي، ومنصات تعلم تكيفي مدربة على المناهج الإقليمية، وأنظمة تصحيح آلي تتعامل مع كلا اللغتين."
+        "يشهد قطاع التعليم الخليجي تحولاً رقمياً سريعاً. وتستثمر الحكومات والمؤسسات في الذكاء الاصطناعي للتدريس والتقييم ودعم الطلاب، وتبرز الحاجة إلى تقنيات تعليمية عربية أولاً.",
+        "من برنامج تطوير رأس المال البشري لرؤية السعودية 2030 الذي يستهدف تحسينات جودة التعليم إلى منهج الذكاء الاصطناعي الإلزامي في الإمارات عبر جميع صفوف K-12، تستثمر الحكومات في رقمنة التعليم.",
+        "حلولنا مصممة لمقدمي التعليم في الخليج: مدرسو ذكاء اصطناعي ثنائيو اللغة عربي-إنجليزي، ومنصات تعلم تكيفي مضبوطة على المناهج الإقليمية، وأنظمة تصحيح آلي تتعامل مع كلا اللغتين."
       ],
       keyAdvantages: [
-        "تخفيض 40-60% في وقت المدرس المستغرق في التصحيح الروتيني",
-        "تحسين 30-50% في مشاركة الطلاب مع التعلم التكيفي",
+        "تصحيح أولي آلي للواجبات الروتينية مع مراجعة المدرس",
+        "تعلم تكيفي يتكيف مع تقدم كل طالب",
         "دعم توجيه بالذكاء الاصطناعي على مدار الساعة بالعربية والإنجليزية",
-        "أنظمة إنذار مبكر تقلل معدلات التسرب بنسبة 20-35%",
+        "إشارات إنذار مبكر تكشف الطلاب المعرضين لخطر الانقطاع",
         "دعم كامل للعربية الفصحى واللهجات الخليجية",
         "التكامل مع منصات LMS (Blackboard، Moodle، مدرستي)"
       ],
@@ -794,7 +794,7 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
         },
         {
           title: "التصحيح الآلي للمقالات",
-          description: "أنظمة قائمة على البرمجة اللغوية العصبية تصحح الإجابات القصيرة والمقالات بالعربية والإنجليزية باستخدام معايير قابلة للتخصيص، مما يقلل عبء العمل على الأساتذة بنسبة 40-60%."
+          description: "أنظمة قائمة على معالجة اللغة الطبيعية تصحح الإجابات القصيرة والمقالات بالعربية والإنجليزية باستخدام معايير قابلة للتخصيص، لتخفيف عبء التصحيح الروتيني على الأساتذة."
         },
         {
           title: "أنظمة الإنذار المبكر",
@@ -810,7 +810,7 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
         }
       ],
       useCasesTitle: "التطبيقات الواقعية",
-      useCasesIntro: "كيف تنشر جامعات الخليج ومدارس K-12 والأكاديميات عبر الإنترنت الذكاء الاصطناعي لتحويل التعليم:",
+      useCasesIntro: "أين يمكن للذكاء الاصطناعي أن يفيد جامعات الخليج ومدارس K-12 والأكاديميات عبر الإنترنت:",
       useCases: [
         {
           title: "التعلم التكيفي لدورات STEM",
@@ -826,7 +826,7 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
         },
         {
           title: "تحليلات الاحتفاظ بالطلاب",
-          description: "نماذج تعلم آلي تتنبأ بالطلاب المعرضين للخطر بناءً على نشاط LMS وإكمال الواجبات، مما يتيح التدخل الاستباقي. حاسم لتقليل معدلات التسرب من الدورات عبر الإنترنت في الخليج 30-50%."
+          description: "نماذج تعلم آلي تتنبأ بالطلاب المعرضين للخطر بناءً على نشاط LMS وإكمال الواجبات والحضور، مما يتيح التدخل الاستباقي قبل أن ينقطع الطالب."
         },
         {
           title: "إنشاء محتوى ثنائي اللغة",
@@ -842,11 +842,11 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
         "فرق تسليم بنفس المنطقة الزمنية تفهم تحديات التعليم المحلي وسير العمل",
         "دعم لكل من العربية الفصحى الحديثة واللهجات الخليجية في الذكاء الاصطناعي المحادثة"
       ],
-      faqTitle: "الأسئلة الشائعة",
+      faqTitle: "ما الذي تسأل عنه المدارس والجامعات الخليجية قبل اعتماد الذكاء الاصطناعي؟",
       faqs: [
         {
           q: "هل يمكن للمدرس بالذكاء الاصطناعي الفهم والرد بدقة بالعربية، بما في ذلك اللهجة الخليجية؟",
-          a: "نعم. نماذجنا مدربة على ملايين المحادثات التعليمية العربية. نحقق دقة أكثر من 90% في أسئلة الطلاب العامية، متفوقين بكثير على أدوات البرمجة اللغوية العصبية العربية العامة."
+          a: "نعتمد على نماذج لغوية عامة ونضبط التعليمات والاسترجاع للعربية الفصحى واللهجات الخليجية كما يصوغ الطلاب أسئلتهم، ونقيس الدقة على محادثاتكم الفعلية خلال مرحلة تجريبية."
         },
         {
           q: "كيف يتعامل النظام مع النزاهة الأكاديمية، هل سيستخدمه الطلاب للغش؟",
@@ -862,7 +862,7 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
         }
       ],
       ctaTitle: "هل أنت مستعد لتحويل تقديم التعليم؟",
-      ctaDescription: "انضم إلى مدارس وجامعات الخليج التي تستفيد بالفعل من الذكاء الاصطناعي لتحسين نتائج التعلم وتقليل التكاليف وتوسيع نطاق التعليم الجيد.",
+      ctaDescription: "تحدث إلينا عن كيف يمكن للذكاء الاصطناعي أن يساعد مدرستك أو جامعتك على دعم المتعلمين وتخفيف العبء الروتيني.",
       metaDescription: "الذكاء الاصطناعي والأتمتة للتعليم في الخليج: التعلم التكيفي، التوجيه بالذكاء الاصطناعي بالعربية، التصحيح الآلي، وأنظمة الإنذار المبكر. مصمم لمدارس وجامعات السعودية والإمارات والشرق الأوسط.",
       keywords: "الذكاء الاصطناعي للتعليم الخليج، التكنولوجيا التعليمية السعودية، التعلم التكيفي الإماراتي، مدرس ذكاء اصطناعي عربي، التصحيح الآلي بالعربية، تكامل مدرستي، امتثال نظام حماية البيانات التعليم، تعليم رؤية السعودية 2030"
     }
@@ -877,15 +877,15 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
       heroDescription: "Transform your supply chain operations with intelligent automation that optimizes routes, predicts demand, and ensures on-time delivery. Built for the logistics landscape of Saudi Arabia, UAE, and the wider GCC region.",
       overviewTitle: "Supply Chain Intelligence",
       overviewParagraphs: [
-        "The GCC logistics sector is critical to regional trade, with UAE and Saudi Arabia serving as major hubs connecting Asia, Europe, and Africa. As e-commerce explodes and Saudi Vision 2030's National Industrial Development and Logistics Program (NIDLP) invests USD 427B+ in infrastructure, AI-driven optimization becomes essential for competitiveness.",
-        "From Dubai's position as the world's 4th largest re-export hub to Saudi Arabia's ambitious goal of becoming a global logistics gateway, governments are modernizing ports, airports, and inland infrastructure. Companies that master AI-powered route optimization, predictive maintenance, and demand forecasting will capture the region's logistics boom.",
-        "Our solutions are built for GCC logistics realities: real-time shipment tracking bots on WhatsApp, AI models trained on regional traffic patterns including prayer times, and supplier communication automation in Arabic and English—addressing the operational complexities of Middle Eastern supply chains."
+        "The GCC logistics sector is critical to regional trade, with the UAE and Saudi Arabia serving as major hubs connecting Asia, Europe, and Africa. As e-commerce grows and Saudi Vision 2030's National Industrial Development and Logistics Program (NIDLP) invests in infrastructure, AI-driven optimization becomes more important for competitiveness.",
+        "Dubai's role as a re-export hub and Saudi Arabia's goal of becoming a global logistics gateway are driving modernization of ports, airports, and inland infrastructure. Companies that adopt AI-powered route optimization, predictive maintenance, and demand forecasting are better placed to use that growth.",
+        "Our solutions are built for GCC logistics realities: real-time shipment tracking bots on WhatsApp, AI models tuned to regional traffic patterns including prayer times, and supplier communication automation in Arabic and English—addressing the operational complexities of Middle Eastern supply chains."
       ],
       keyAdvantages: [
-        "25-30% reduction in delivery times through AI route optimization",
-        "40-50% decrease in unplanned downtime with predictive maintenance",
-        "30-35% improvement in inventory turnover with demand forecasting",
-        "50-60% reduction in manual tracking inquiries via automation",
+        "AI route optimization that plans deliveries around traffic, time windows, and local conditions",
+        "Predictive maintenance that flags likely vehicle faults before they cause breakdowns",
+        "Demand forecasting to support inventory positioning across warehouses",
+        "Automated shipment-tracking replies that cut manual status inquiries",
         "Real-time visibility across multi-modal transport (air, sea, land)",
         "Native Arabic and English support for regional supplier networks"
       ],
@@ -893,7 +893,7 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
       services: [
         {
           title: "Real-Time Shipment Tracking Bots",
-          description: "WhatsApp and web chatbots providing instant shipment updates, ETA predictions, and exception alerts in Arabic and English—handling thousands of tracking inquiries without human intervention."
+          description: "WhatsApp and web chatbots providing shipment updates, ETA predictions, and exception alerts in Arabic and English, so routine tracking inquiries do not need a human."
         },
         {
           title: "Predictive Maintenance AI",
@@ -901,15 +901,15 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
         },
         {
           title: "Route Optimization Algorithms",
-          description: "AI analyzing traffic patterns, delivery windows, prayer times, and fuel costs to generate optimal routes—reducing delivery times by 25-30% and fuel consumption by 15-20% across GCC cities."
+          description: "AI analyzing traffic patterns, delivery windows, prayer times, and fuel costs to generate efficient routes across GCC cities."
         },
         {
           title: "Automated Supplier Communication",
-          description: "AI systems managing purchase orders, delivery confirmations, and exception handling with suppliers in Arabic and English—reducing procurement team workload by 40-50%."
+          description: "AI systems managing purchase orders, delivery confirmations, and exception handling with suppliers in Arabic and English, easing the load on procurement teams."
         },
         {
           title: "Demand Forecasting & Inventory Optimization",
-          description: "Machine learning models predicting seasonal demand spikes (Ramadan, Eid, summer travel) and optimizing stock levels across warehouses—reducing inventory holding costs by 30-40%."
+          description: "Machine learning models forecasting seasonal demand spikes (Ramadan, Eid, summer travel) and supporting stock-level planning across warehouses."
         },
         {
           title: "Customs & Documentation Automation",
@@ -921,15 +921,15 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
       useCases: [
         {
           title: "WhatsApp Shipment Tracker",
-          description: "Arabic-English bilingual bot answering customer tracking inquiries, providing ETAs, and sending proactive delay alerts—processing 10,000+ conversations daily for major GCC logistics operators without human agents."
+          description: "Arabic-English bilingual bot answering customer tracking inquiries, providing ETAs, and sending proactive delay alerts, so routine questions do not need a human agent."
         },
         {
           title: "Fleet Predictive Maintenance",
-          description: "IoT sensors on delivery trucks feeding AI models that predict engine, transmission, and brake failures weeks before occurrence—reducing fleet downtime by 40-50% and extending vehicle life."
+          description: "IoT sensors on delivery trucks feeding AI models that flag likely engine, transmission, and brake faults ahead of failure, so maintenance can be planned."
         },
         {
           title: "Last-Mile Route Optimization",
-          description: "AI algorithms planning daily delivery routes across Dubai, Riyadh, and Doha accounting for traffic, customer time preferences, and prayer times—cutting delivery times and fuel costs by 25-30%."
+          description: "AI algorithms planning daily delivery routes across Dubai, Riyadh, and Doha that account for traffic, customer time preferences, and prayer times."
         },
         {
           title: "Supplier Lead Time Prediction",
@@ -937,40 +937,40 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
         },
         {
           title: "Warehouse Inventory Automation",
-          description: "Computer vision and robotics systems tracking inventory movement, detecting picking errors, and optimizing storage layouts—increasing warehouse throughput by 35-40% and accuracy to 99.5%+."
+          description: "Computer vision and robotics systems tracking inventory movement, detecting picking errors, and supporting better storage layouts."
         }
       ],
       whyRaanzlrTitle: "Why GCC Logistics Companies Choose Raanzlr",
       whyRaanzlr: [
         "Deep understanding of GCC logistics complexities: multi-lingual documentation, regional traffic patterns, prayer time scheduling",
-        "WhatsApp-native customer communication reaching 90%+ of recipients instantly",
+        "WhatsApp-native customer communication, so recipients get updates on the channel they already use",
         "Integration expertise with regional platforms: Aramex, Fetchr, Smsa Express, local last-mile providers",
         "Experience with Gulf customs and port systems including Dubai Customs, Saudi Customs, Bahrain Trade Net",
         "Same-timezone delivery teams understanding local logistics workflows and challenges",
         "Data residency compliance for sensitive supply chain information"
       ],
-      faqTitle: "Frequently Asked Questions",
+      faqTitle: "What do GCC logistics companies ask before adopting AI?",
       faqs: [
         {
           q: "Can the route optimization AI account for prayer times and traffic patterns specific to GCC cities?",
-          a: "Absolutely. Our algorithms are explicitly trained on GCC traffic data including prayer time effects (30-40% traffic reduction during prayers), weekend patterns (Friday-Saturday in UAE vs Thursday-Friday in Saudi), and cultural events like Ramadan that alter traffic flows."
+          a: "Yes. Route planning can be configured around GCC conditions, including prayer-time effects on traffic, weekend patterns (Friday-Saturday in the UAE vs Thursday-Friday in Saudi Arabia), and events like Ramadan that change traffic flows. Parameters are set with your operations team and checked against your own data."
         },
         {
           q: "How does predictive maintenance work—do we need new sensors on our fleet?",
-          a: "We can work with existing telematics systems or recommend cost-effective IoT sensor kits. The AI analyzes engine diagnostics, vibration patterns, oil quality, and historical maintenance data to predict failures 2-4 weeks ahead with 85%+ accuracy."
+          a: "We can work with existing telematics systems or recommend cost-effective IoT sensor kits. The AI analyzes engine diagnostics, vibration patterns, oil quality, and historical maintenance data to flag likely failures weeks ahead, with the confidence threshold tuned to your tolerance for false alarms."
         },
         {
           q: "Does the WhatsApp bot support multiple languages for our diverse customer base?",
           a: "Yes. Our bots handle Arabic (MSA and Gulf dialects), English, Urdu, and Tagalog—the four most common languages across GCC customer bases. Customers can switch languages mid-conversation seamlessly."
         },
         {
-          q: "Can AI help us handle Ramadan demand spikes that are 2-3x normal volume?",
-          a: "Absolutely. Our demand forecasting models are trained on multi-year GCC seasonal patterns including Ramadan, Eid, National Days, and Dubai Shopping Festival. The system recommends inventory positioning and fleet capacity adjustments 4-6 weeks before peak periods."
+          q: "Can AI help us handle Ramadan demand spikes?",
+          a: "Yes. Demand forecasting can be configured around multi-year GCC seasonal patterns including Ramadan, Eid, National Days, and Dubai Shopping Festival, and used to plan inventory positioning and fleet capacity ahead of peak periods. The lead time depends on your data."
         }
       ],
       ctaTitle: "Ready to Transform Your Supply Chain?",
-      ctaDescription: "Join the GCC logistics companies already leveraging AI to reduce costs, improve delivery times, and enhance customer satisfaction.",
-      metaDescription: "AI & automation for GCC logistics and supply chain: route optimization, predictive maintenance, real-time tracking, and demand forecasting. Built for Saudi Arabia, UAE, and Middle East freight and delivery operations.",
+      ctaDescription: "Tell us how your logistics operation runs today, and we will suggest where AI could help with costs, delivery visibility, and customer communication.",
+      metaDescription: "AI and automation for GCC logistics: shipment visibility dashboards, Arabic customer updates, document processing and exception handling in the supply chain.",
       keywords: "AI logistics GCC, Saudi Arabia supply chain automation, UAE freight AI, route optimization Middle East, predictive maintenance fleet, WhatsApp shipment tracking, NIDLP logistics, Dubai Customs automation"
     },
     ar: {
@@ -985,8 +985,8 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
         "وتُصمم جميع الحلول بما يتوافق مع طبيعة السوق الخليجي، مع دعم كامل للعربية والإنجليزية، ومراعاة أنماط الحركة المحلية وسير العمل الإقليمي."
       ],
       keyAdvantages: [
-        "تقليل زمن التسليم بنسبة تتراوح بين 25 و30% عبر تحسين المسارات بشكل مستمر",
-        "خفض الأعطال غير المخطط لها بنسبة تصل إلى 50% باستخدام الصيانة التنبؤية",
+        "تحسين المسارات بشكل مستمر لتقليل زمن التسليم",
+        "صيانة تنبؤية ترصد الأعطال المحتملة قبل وقوعها لتقليل التوقف غير المخطط",
         "تحسين دقة التخطيط للمخزون وتقليل الهدر بالاعتماد على توقعات الطلب",
         "تقليل استفسارات العملاء المتعلقة بالشحن بفضل التتبع الآلي والإشعارات الفورية",
         "متابعة لحظية لجميع مراحل النقل البري والبحري والجوي من لوحة واحدة",
@@ -1052,7 +1052,7 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
         "فرق هندسية تتولى التنفيذ والتطوير والدعم مباشرة",
         "تركيز على النتائج التشغيلية القابلة للقياس، وليس مجرد تنفيذ تقني"
       ],
-      faqTitle: "الأسئلة الشائعة",
+      faqTitle: "ما الذي تسأل عنه شركات اللوجستيات الخليجية قبل اعتماد الذكاء الاصطناعي؟",
       faqs: [
         {
           q: "هل يمكن لتحسين المسار بالذكاء الاصطناعي مراعاة أوقات الصلاة وأنماط المرور الخاصة بمدن الخليج؟",
@@ -1060,14 +1060,14 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
         },
         {
           q: "كيف تعمل الصيانة التنبؤية، هل نحتاج إلى مستشعرات جديدة على أسطولنا؟",
-          a: "في الغالب لا. يعمل النظام مع أجهزة التتبع الموجودة في أسطولك، وإن احتجت لمزيد من الدقة نوصي بمستشعرات إضافية بتكلفة معقولة. يراقب الحل مؤشرات تشغيل المركبة مثل حالة المحرك والاهتزاز وجودة الزيت، ويتوقع الأعطال قبل وقوعها بأسبوعين إلى أربعة أسابيع بدقة تتجاوز 85%."
+          a: "في الغالب لا. يعمل النظام مع أجهزة التتبع الموجودة في أسطولك، وإن احتجت لمزيد من الدقة نوصي بمستشعرات إضافية بتكلفة معقولة. يراقب الحل مؤشرات تشغيل المركبة مثل حالة المحرك والاهتزاز وجودة الزيت، ويرصد مؤشرات الأعطال المحتملة قبل وقوعها ليتيح جدولة الصيانة مسبقاً، ويعتمد مدى الاستباق ودقته على جودة بيانات أسطولكم."
         },
         {
           q: "هل يدعم روبوت واتساب لغات متعددة لقاعدة عملائنا المتنوعة؟",
           a: "نعم. يتعامل النظام مع العربية الفصحى واللهجات الخليجية والإنجليزية، إضافة إلى لغات أخرى شائعة بين العملاء مثل الأوردو والتغالوغ. ويستطيع العميل تغيير اللغة أثناء المحادثة دون أي انقطاع."
         },
         {
-          q: "هل يمكن للذكاء الاصطناعي مساعدتنا في التعامل مع ارتفاعات الطلب في رمضان التي تبلغ 2-3 أضعاف الحجم العادي؟",
+          q: "هل يمكن للذكاء الاصطناعي مساعدتنا في التعامل مع ارتفاعات الطلب في رمضان؟",
           a: "نعم. يتعلم النظام من بيانات المواسم السابقة مثل رمضان والعيد والمناسبات المحلية، ويتوقع ارتفاع الطلب مبكراً، ثم يقترح مستويات المخزون وسعة الأسطول المناسبة قبل موعد الذروة بأربعة إلى ستة أسابيع."
         }
       ],
@@ -1087,16 +1087,16 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
       heroDescription: "Transform guest experiences with intelligent automation that personalizes service, optimizes operations, and maximizes revenue. Built for the booming tourism landscape of Saudi Arabia, UAE, and the wider GCC region.",
       overviewTitle: "Hospitality Intelligence Reimagined",
       overviewParagraphs: [
-        "The GCC hospitality sector is experiencing explosive growth. Saudi Vision 2030 targets 150 million annual visitors (up from 100M in 2023) with over USD 1 trillion invested in tourism megaprojects like NEOM, Red Sea Global, and Diriyah. Dubai aims for 25 million visitors annually by 2025, cementing its position as a global tourism powerhouse.",
-        "With 75%+ of hotel guests now expecting digital check-in/out options and travelers demanding hyper-personalized experiences, AI-powered hospitality is no longer optional—it's essential. Hotels that master AI concierge services, dynamic pricing, and sentiment analysis will capture the premium segment of GCC's tourism boom.",
-        "Our solutions are built for regional hospitality realities: multilingual AI concierges fluent in Arabic, English, Urdu, and Chinese; dynamic pricing trained on Hajj/Umrah seasonality and regional events; and review sentiment analysis across Arabic and English—addressing the operational complexities of Middle Eastern hotels and resorts."
+        "The GCC hospitality sector is growing fast. Saudi Vision 2030 tourism megaprojects such as NEOM, Red Sea Global, and Diriyah, and Dubai's visitor-growth targets, are raising expectations for digital, personalized guest experiences.",
+        "Guests increasingly expect digital check-in and check-out and personalized service, so AI-powered hospitality is becoming a practical need. Hotels that adopt AI concierge services, dynamic pricing, and sentiment analysis can serve the premium segment of the GCC tourism market better.",
+        "Our solutions are built for regional hospitality realities: multilingual AI concierges fluent in Arabic, English, Urdu, and Chinese; dynamic pricing configured around Hajj/Umrah seasonality and regional events; and review sentiment analysis across Arabic and English—addressing the operational complexities of Middle Eastern hotels and resorts."
       ],
       keyAdvantages: [
-        "30-50% reduction in front-desk workload with AI concierge",
-        "5-15% increase in RevPAR through dynamic pricing",
-        "40-60% faster review response with sentiment analysis",
-        "20-25% reduction in housekeeping labor waste",
-        "Support for 20+ languages including Arabic, English, Chinese, Urdu",
+        "AI concierge that handles routine guest requests and eases front-desk workload",
+        "Dynamic pricing to support revenue management (RevPAR)",
+        "Faster responses to guest reviews through sentiment analysis",
+        "Housekeeping scheduling that reduces wasted labor",
+        "Multilingual support including Arabic, English, Chinese, and Urdu",
         "Integration with major PMS (Opera, Amadeus, Hotelogix)"
       ],
       servicesTitle: "AI Solutions for Modern Hospitality",
@@ -1107,7 +1107,7 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
         },
         {
           title: "Dynamic Revenue Management",
-          description: "AI analyzing competitor pricing, demand forecasts, Hajj/Umrah calendar, Dubai Shopping Festival, and local events to automatically adjust room rates in real-time—increasing RevPAR by 5-15%."
+          description: "AI analyzing competitor pricing, demand forecasts, the Hajj/Umrah calendar, Dubai Shopping Festival, and local events to recommend or automatically adjust room rates."
         },
         {
           title: "Review Sentiment Dashboard",
@@ -1119,7 +1119,7 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
         },
         {
           title: "Predictive Housekeeping Scheduler",
-          description: "Using check-in/check-out patterns and guest requests to optimize daily room assignments and cleaning sequences—reducing labor hours by 20-25% while maintaining service quality."
+          description: "Using check-in/check-out patterns and guest requests to plan daily room assignments and cleaning sequences, cutting wasted labor while maintaining service quality."
         },
         {
           title: "Guest Preference AI",
@@ -1131,7 +1131,7 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
       useCases: [
         {
           title: "Multilingual WhatsApp Concierge",
-          description: "AI handling guest inquiries about WiFi, checkout, halal dining, prayer direction, spa bookings, and local attractions in Arabic, English, Urdu, and Chinese—processing thousands of conversations daily for luxury hotels across Dubai, Riyadh, and Mecca without overwhelming staff."
+          description: "AI handling guest inquiries about WiFi, checkout, halal dining, prayer direction, spa bookings, and local attractions in Arabic, English, Urdu, and Chinese, so routine requests do not overwhelm staff."
         },
         {
           title: "Hajj/Umrah Dynamic Pricing",
@@ -1159,15 +1159,15 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
         "Same-timezone support teams understanding local hospitality standards and guest expectations",
         "Data residency compliance for guest information under Saudi PDPL and UAE regulations"
       ],
-      faqTitle: "Frequently Asked Questions",
+      faqTitle: "What do GCC hotels ask before adopting AI?",
       faqs: [
         {
           q: "Can the AI concierge respond in Arabic (Fusha and Gulf dialect) and handle Islamic etiquette questions like prayer direction and halal dining?",
-          a: "Absolutely. Our models are trained on millions of GCC hospitality conversations including requests for prayer direction (Qibla), halal restaurant recommendations, prayer time schedules, and culturally appropriate local attractions. We achieve 95%+ accuracy on region-specific queries."
+          a: "Yes. The concierge can be configured for requests such as prayer direction (Qibla), halal restaurant recommendations, prayer time schedules, and culturally appropriate local attractions, using a curated knowledge base for your property."
         },
         {
           q: "How does the system connect to our PMS (Opera, Amadeus, Hotelogix) and OTA channels?",
-          a: "We provide pre-built connectors for major PMS platforms and OTA channels (Booking.com, Expedia, Agoda). Integration typically takes 2-4 weeks with bidirectional data flow for reservations, guest profiles, and revenue management."
+          a: "We can integrate with major PMS platforms and OTA channels (Booking.com, Expedia, Agoda). Integration timing is set after discovery, with bidirectional data flow for reservations, guest profiles, and revenue management."
         },
         {
           q: "Can the AI detect a negative review spike and alert management before it affects our rating?",
@@ -1175,12 +1175,12 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
         },
         {
           q: "What's the ROI timeline—when will reduced front-desk calls and upsell revenue cover the implementation cost?",
-          a: "Most GCC hotels see ROI within 6-9 months. A 200-room property typically deflects 40-60% of front-desk inquiries to AI (saving 2-3 FTE), increases upsell conversion by 15-20%, and improves RevPAR by 5-10%—generating USD 150-300K annual benefit."
+          a: "Payback depends on property size, current front-desk volume, and how much of it can be automated, so we do not quote a fixed period. During discovery we baseline your current call volume, upsell conversion, and RevPAR, agree on the metrics that matter, and measure against them after launch."
         }
       ],
       ctaTitle: "Ready to Transform Your Guest Experience?",
-      ctaDescription: "Join the GCC hotels and resorts already leveraging AI to increase revenue, reduce costs, and deliver exceptional hospitality.",
-      metaDescription: "AI & automation for GCC hospitality and tourism: multilingual AI concierge, dynamic pricing, review sentiment analysis, and smart reservations. Built for Saudi Arabia, UAE, and Middle East hotels and resorts.",
+      ctaDescription: "Talk to us about how AI could help your hotel or resort improve service, reduce manual work, and support revenue.",
+      metaDescription: "AI and automation for GCC hospitality: multilingual guest agents on WhatsApp, booking and concierge workflows, and unified guest data across properties.",
       keywords: "AI hospitality GCC, Saudi Arabia hotel automation, UAE tourism AI, multilingual concierge, dynamic pricing hotels, Hajj Umrah hotel AI, Arabic review analysis, Opera PMS integration"
     },
     ar: {
@@ -1194,7 +1194,7 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
         "لهذا نبني حلولاً تساعد الفنادق والمنتجعات على أتمتة الخدمات اليومية، وتحسين إدارة الحجوزات، وتحليل آراء الضيوف، وتخصيص التجربة لكل نزيل، مع تكامل كامل مع أنظمة إدارة الفنادق والمنصات المستخدمة في المنطقة."
       ],
       keyAdvantages: [
-        "تقليل الضغط على فرق الاستقبال وخدمة الضيوف بنسبة تصل إلى 50%",
+        "تخفيف الضغط على فرق الاستقبال وخدمة الضيوف عبر مساعد ذكي يتولى الطلبات الروتينية",
         "زيادة الإيرادات عبر التسعير الديناميكي وإدارة أفضل للإشغال",
         "متابعة آراء النزلاء وتحليلها فورياً لتحسين جودة الخدمة",
         "تحسين كفاءة عمليات التدبير المنزلي وتقليل الوقت الضائع",
@@ -1261,7 +1261,7 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
         "تنفيذ ومتابعة مباشرة من فريق هندسي متخصص",
         "حلول قابلة للتوسع مع نمو الفندق أو المجموعة الفندقية"
       ],
-      faqTitle: "الأسئلة الشائعة",
+      faqTitle: "ما الذي تسأل عنه الفنادق الخليجية قبل اعتماد الذكاء الاصطناعي؟",
       faqs: [
         {
           q: "هل يمكن لكونسيرج الذكاء الاصطناعي الرد بالعربية (الفصحى واللهجة الخليجية) والتعامل مع أسئلة الآداب الإسلامية؟",
@@ -1269,7 +1269,7 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
         },
         {
           q: "كيف يتصل النظام بـ PMS (Opera، Amadeus، Hotelogix) وقنوات OTA؟",
-          a: "يرتبط الحل مباشرة مع أشهر أنظمة إدارة الفنادق مثل Opera وAmadeus وHotelogix، ومع قنوات الحجز مثل Booking.com وExpedia وAgoda. يكتمل الربط عادةً خلال 2-4 أسابيع، وتتزامن بيانات الحجوزات وملفات الضيوف في الاتجاهين تلقائياً."
+          a: "يرتبط الحل مباشرة مع أشهر أنظمة إدارة الفنادق مثل Opera وAmadeus وHotelogix، ومع قنوات الحجز مثل Booking.com وExpedia وAgoda. تُحدَّد مدة الربط بعد مراجعة أنظمتكم، وتتزامن بيانات الحجوزات وملفات الضيوف في الاتجاهين تلقائياً."
         },
         {
           q: "هل يمكن للذكاء الاصطناعي اكتشاف ارتفاع المراجعات السلبية وتنبيه الإدارة قبل أن يؤثر على التصنيف؟",
@@ -1277,7 +1277,7 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
         },
         {
           q: "ما هو الجدول الزمني لعائد الاستثمار؟ متى ستغطي المكالمات المخفضة وإيرادات البيع الإضافي تكلفة التنفيذ؟",
-          a: "يحقق معظم الفنادق في الخليج عائد الاستثمار خلال 6-9 أشهر. فالفندق الذي يضم 200 غرفة يحوّل عادةً ما بين 40 و60% من استفسارات الاستقبال إلى النظام، ويرفع مبيعات الترقيات والخدمات الإضافية بنسبة تتراوح بين 15 و20%."
+          a: "يعتمد عائد الاستثمار على حجم الفندق وحجم الاتصالات الحالية ومدى إمكانية أتمتتها، لذلك لا نحدد مدة ثابتة. نقيس في مرحلة الاكتشاف حجم المكالمات الحالي وتحويل المبيعات الإضافية وRevPAR، ونتفق على المؤشرات، ثم نقيس بعد الإطلاق."
         }
       ],
       ctaTitle: "هل ترغب في تقديم تجربة ضيافة تترك أثراً لدى كل ضيف؟",
@@ -1296,15 +1296,15 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
       heroDescription: "Transform your legal practice with intelligent automation that accelerates document review, streamlines client intake, and ensures compliance. Built for the evolving legal landscape of Saudi Arabia, UAE, and the wider GCC region.",
       overviewTitle: "Legal Intelligence Reimagined",
       overviewParagraphs: [
-        "The GCC legal sector is experiencing rapid digital transformation. With global legal tech projected to grow from USD 25.28B (2024) to USD 119.22B (2033) at 18.7% CAGR, and Saudi Vision 2030 driving major legal reforms including new commercial courts and investment tribunals, AI adoption is accelerating across law firms.",
-        "UAE's DIFC hosts 120+ leading international law firms, while Saudi Arabia has overhauled its legal system with new Companies Law (2022), PDPL (2023), and Investment Law creating massive compliance documentation demand. Firms that master AI-powered contract analysis, legal research, and client intake automation will capture premium work.",
+        "The GCC legal sector is going through rapid digital change. Saudi Vision 2030 is driving major legal reforms, including new commercial courts and investment tribunals, and law firms are looking at AI for document-heavy work.",
+        "The UAE's DIFC hosts many international law firms, while Saudi Arabia has overhauled its legal framework with a new Companies Law (2022), PDPL (2023), and Investment Law, creating heavy compliance documentation demand. Firms that adopt AI-powered contract analysis, legal research, and client intake automation can take on more work with the same team.",
         "Our solutions are built for GCC legal realities: Arabic-English bilingual contract analysis, legal research across Saudi Royal Decrees and UAE Federal Laws, client intake bots handling inquiries in Arabic and English, and compliance monitoring for rapidly changing GCC regulations."
       ],
       keyAdvantages: [
-        "60-80% reduction in due diligence document review time",
-        "70-90% faster legal research across GCC court decisions",
-        "50-60% reduction in client intake administrative work",
-        "40-50% decrease in billing disputes with automated time tracking",
+        "AI-assisted first-pass review of due diligence documents, with lawyer sign-off",
+        "Legal research across GCC court decisions and regulations, with sources shown",
+        "Client intake automation that cuts administrative work",
+        "Automated time tracking that produces clearer, itemized invoices",
         "Native Arabic and English support for bilingual contracts",
         "Integration with regional case management systems"
       ],
@@ -1312,7 +1312,7 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
       services: [
         {
           title: "Arabic Contract Analysis AI",
-          description: "AI reviewing Arabic and English commercial contracts, flagging unusual clauses, missing provisions, and risk areas—used during M&A due diligence in KSA real estate and corporate transactions reducing review time by 60-80%."
+          description: "AI reviewing Arabic and English commercial contracts, flagging unusual clauses, missing provisions, and risk areas for lawyer review, useful in M&A due diligence and corporate or real estate transactions."
         },
         {
           title: "Legal Research Assistant",
@@ -1328,11 +1328,11 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
         },
         {
           title: "Automated Billing & Time Tracker",
-          description: "Logs attorney activity (calls, documents reviewed, meetings, emails) automatically and generates itemized invoices in Arabic with VAT compliance—reducing billing disputes by 40-50%."
+          description: "Logs attorney activity (calls, documents reviewed, meetings, emails) automatically and generates itemized invoices in Arabic with VAT support, giving clients a clear record."
         },
         {
           title: "Due Diligence Automation",
-          description: "AI processing thousands of Arabic/English documents during M&A, real estate transactions, or IPOs—extracting key terms, flagging issues, and creating summary reports in days vs. weeks."
+          description: "AI that processes large volumes of Arabic and English documents during M&A, real estate transactions, or IPOs, extracting key terms, flagging issues, and drafting summary reports for lawyer review."
         }
       ],
       useCasesTitle: "Real-World Applications",
@@ -1352,7 +1352,7 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
         },
         {
           title: "PDPL Compliance Monitoring",
-          description: "AI tracks changes to Saudi PDPL regulations, UAE data protection law updates, and industry guidance—alerting corporate clients when new obligations arise and auto-drafting compliance update memos."
+          description: "AI that tracks changes to Saudi PDPL regulations, UAE data protection law updates, and industry guidance, alerting corporate clients when new obligations arise and drafting compliance update memos for lawyer review."
         },
         {
           title: "Arabic Contract Drafting Assistant",
@@ -1362,17 +1362,17 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
       whyRaanzlrTitle: "Why GCC Law Firms Choose Raanzlr",
       whyRaanzlr: [
         "True bilingual AI: Handles Arabic legal language including Quranic legal phrasing and Saudi/UAE legal terminology",
-        "Deep GCC legal knowledge: Trained on Saudi Royal Decrees, UAE Federal Laws, DIFC/ADGM precedents",
+        "GCC legal focus: retrieval configured over the Saudi Royal Decrees, UAE Federal Laws, and DIFC/ADGM materials you supply or approve",
         "Compliance-first architecture: PDPL, UAE data protection law, and attorney-client privilege safeguards built-in",
         "Experience with regional legal systems: Saudi Sharia-influenced law, UAE civil law, DIFC common law",
         "Same-timezone delivery teams understanding local legal practice and court systems",
         "Data residency compliance for sensitive client matter information"
       ],
-      faqTitle: "Frequently Asked Questions",
+      faqTitle: "What do GCC law firms ask before adopting AI?",
       faqs: [
         {
           q: "How accurately does the AI read and interpret Arabic legal language—can it handle Quranic or archaic legal phrasing?",
-          a: "Our models are trained on millions of Arabic legal documents including Saudi Royal Decrees, UAE Federal Laws, and court judgments. We achieve 90%+ accuracy on formal Arabic legal text including traditional Islamic legal terminology. For highly specialized Quranic interpretation, we recommend human review."
+          a: "Raanzlr builds on general-purpose language models and grounds them in the legal documents you approve, such as Royal Decrees, Federal Laws, and court judgments, using retrieval so answers show their source. Formal Arabic legal terminology is tested during a pilot. For highly specialized Quranic interpretation, we recommend human review."
         },
         {
           q: "Is the system compliant with Saudi PDPL and DIFC data protection requirements for client confidentiality?",
@@ -1380,16 +1380,16 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
         },
         {
           q: "Can it draft contracts under Saudi law specifically—not just adapt English-law templates?",
-          a: "Yes. Our system is trained on thousands of Saudi commercial contracts and Royal Decree templates. It generates contracts following Saudi legal frameworks including Sharia-compliant provisions, Arabic-first formatting, and references to applicable Saudi regulations."
+          a: "Yes. The system can draft contracts from templates you provide, following Saudi legal frameworks including Sharia-compliant provisions, Arabic-first formatting, and references to applicable Saudi regulations. A lawyer reviews every draft."
         },
         {
           q: "How does the AI stay updated with new KSA and UAE legislation as it's passed?",
-          a: "We monitor Official Gazettes, government portals (Saudi Tadawul, UAE MOJ), and legal databases in real-time. When new laws are published, our system ingests them within 24-48 hours and updates contract templates and legal research databases automatically. Clients receive change notifications."
+          a: "The system can monitor Official Gazettes, government portals (such as Saudi Tadawul and UAE MOJ), and legal databases. When new laws are published, it can ingest them, flag which contract templates and research entries are affected, and notify your team. The monitoring scope and update cadence are agreed during setup, and a lawyer approves every change."
         }
       ],
       ctaTitle: "Ready to Transform Your Legal Practice?",
-      ctaDescription: "Join the GCC law firms already leveraging AI to reduce costs, accelerate delivery, and provide better client service.",
-      metaDescription: "AI & automation for GCC legal and professional services: contract analysis, legal research, client intake, and compliance monitoring. Built for Saudi Arabia, UAE, and Middle East law firms.",
+      ctaDescription: "Talk to us about how AI could help your law firm handle document-heavy work faster, with your lawyers reviewing every output.",
+      metaDescription: "AI and automation for GCC legal teams: retrieval across Arabic legal documents, contract review support, and matter and document workflow automation.",
       keywords: "AI legal GCC, Saudi Arabia law firm automation, UAE legal tech, Arabic contract analysis, PDPL compliance AI, DIFC legal research, Saudi Royal Decree search, legal AI Middle East"
     },
     ar: {
@@ -1403,7 +1403,7 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
         "سواء كنت تدير مكتب محاماة، أو إدارة قانونية داخل شركة، أو تقدم خدمات استشارية، فإن حلولنا تساعدك على إنجاز العمل بسرعة أكبر، وتقليل الأخطاء، وتحسين تجربة العملاء دون المساس بسرية البيانات أو جودة المخرجات."
       ],
       keyAdvantages: [
-        "تقليل وقت مراجعة العقود والوثائق القانونية بنسبة تصل إلى 80%",
+        "تسريع المراجعة الأولية للعقود والوثائق القانونية مع بقاء القرار النهائي بيد المحامي",
         "تسريع البحث القانوني والوصول إلى الأنظمة واللوائح ذات الصلة خلال ثوانٍ",
         "أتمتة استقبال العملاء وجمع المعلومات الأولية قبل الاستشارة",
         "تحسين دقة إعداد الفواتير وتتبع ساعات العمل تلقائياً",
@@ -1434,7 +1434,7 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
         },
         {
           title: "أتمتة العناية اللازمة (Due Diligence)",
-          description: "حلل آلاف المستندات القانونية خلال صفقات الاستحواذ والاستثمار والعقارات، واستخرج البنود المهمة والمخاطر المحتملة في وقت قياسي."
+          description: "حلل كميات كبيرة من المستندات القانونية خلال صفقات الاستحواذ والاستثمار والعقارات، واستخرج البنود المهمة والمخاطر المحتملة لمراجعة المحامي."
         }
       ],
       useCasesTitle: "كيف تستفيد المكاتب القانونية من الذكاء الاصطناعي؟",
@@ -1442,7 +1442,7 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
       useCases: [
         {
           title: "تسريع عمليات العناية الواجبة",
-          description: "تحليل آلاف الصفحات من العقود والوثائق القانونية واستخراج المخاطر والبنود المهمة خلال أيام بدلاً من أسابيع."
+          description: "تحليل كميات كبيرة من العقود والوثائق القانونية واستخراج المخاطر والبنود المهمة لمراجعة المحامي."
         },
         {
           title: "البحث القانوني الذكي",
@@ -1470,11 +1470,11 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
         "إمكانية التكامل مع الأنظمة القانونية وأنظمة إدارة القضايا",
         "فريق متخصص يفهم طبيعة العمل القانوني ومتطلبات التحول الرقمي"
       ],
-      faqTitle: "الأسئلة الشائعة",
+      faqTitle: "ما الذي تسأل عنه مكاتب المحاماة الخليجية قبل اعتماد الذكاء الاصطناعي؟",
       faqs: [
         {
           q: "ما مدى دقة الذكاء الاصطناعي في تحليل النصوص القانونية العربية؟",
-          a: "يعتمد النظام على نماذج متقدمة مدربة على محتوى قانوني عربي وإنجليزي، مما يمكنه من فهم العقود والأنظمة والمصطلحات القانونية بدقة عالية، مع بقاء المراجعة النهائية بيد المحامي."
+          a: "يعتمد النظام على نماذج لغوية متقدمة تُربط بالمستندات القانونية العربية والإنجليزية التي تعتمدونها، مما يساعد على فهم العقود والأنظمة والمصطلحات القانونية، مع بقاء المراجعة النهائية بيد المحامي."
         },
         {
           q: "كيف يتم الحفاظ على سرية بيانات العملاء؟",
@@ -1505,23 +1505,23 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
       heroDescription: "Accelerate your industrial operations with AI-powered quality control, predictive maintenance, and production optimization. Built for Saudi Vision 2030's NIDLP and UAE's Operation 300Bn manufacturing strategies.",
       overviewTitle: "Smart Manufacturing for the Middle East",
       overviewParagraphs: [
-        "The GCC manufacturing sector is undergoing its most significant transformation in decades. Saudi Vision 2030 targets raising manufacturing's GDP contribution from 11% to 15% with USD 427B+ in industrial investments through the National Industrial Development and Logistics Program (NIDLP). The UAE's Operation 300Bn aims to triple manufacturing output to AED 300B by 2031 across 13 priority sectors.",
-        "From SABIC's petrochemical complexes to Ras Al Khair's smart industrial zones, global AI in manufacturing is projected to grow from USD 4.6B (2023) to USD 20.8B (2028) at 35.2% CAGR. Computer vision quality inspection now achieves 90%+ defect detection rates, while predictive maintenance reduces unplanned downtime by 25-50%.",
-        "Our solutions are engineered for GCC industrial realities: computer vision systems that work with existing production line cameras, predictive maintenance platforms with Arabic-language operator interfaces, and energy optimization AI trained on regional consumption patterns and subsidy structures."
+        "The GCC manufacturing sector is going through its most significant transformation in decades. Saudi Vision 2030 aims to grow manufacturing's contribution to the economy through the National Industrial Development and Logistics Program (NIDLP), and the UAE's Operation 300Bn targets a much larger industrial sector by 2031 across priority sectors.",
+        "From SABIC's petrochemical complexes to Ras Al Khair's smart industrial zones, AI is spreading through manufacturing. Computer vision quality inspection and predictive maintenance are two of the most established uses, and both depend on good data from the line.",
+        "Our solutions are engineered for GCC industrial realities: computer vision systems that work with existing production line cameras, predictive maintenance platforms with Arabic-language operator interfaces, and energy optimization AI tuned to regional consumption patterns and subsidy structures."
       ],
       keyAdvantages: [
-        "90%+ defect detection accuracy vs. human inspection",
-        "25-50% reduction in unplanned equipment downtime",
-        "10-20% decrease in industrial energy consumption",
-        "15-30% extended equipment lifespan through predictive care",
-        "30-40% faster production changeovers with AI scheduling",
+        "Computer-vision quality inspection that supports human inspectors",
+        "Predictive maintenance that flags likely equipment faults before they cause downtime",
+        "Energy monitoring and optimization for industrial loads",
+        "Condition-based care that helps extend equipment life",
+        "AI scheduling that supports faster production changeovers",
         "Arabic-language interfaces for factory floor operators"
       ],
       servicesTitle: "AI Solutions for Modern Manufacturing",
       services: [
         {
           title: "Computer Vision Quality Control",
-          description: "AI-powered visual inspection systems operating at production line speed, detecting surface defects, dimensional variations, and assembly errors that human inspectors miss—deployed across steel, aluminum, food, and packaging industries."
+          description: "AI-powered visual inspection systems operating at production line speed, detecting surface defects, dimensional variations, and assembly errors, for steel, aluminum, food, and packaging lines."
         },
         {
           title: "Predictive Maintenance Platform",
@@ -1549,7 +1549,7 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
       useCases: [
         {
           title: "Automated Defect Detection in Steel Production",
-          description: "High-speed cameras with computer vision AI inspect steel coil surfaces at 100% inspection rate—detecting scratches, pitting, and coating defects in real-time. Deployed at Saudi steel facilities, reducing customer complaints by 75% and waste by 30%."
+          description: "High-speed cameras with computer vision AI inspecting steel coil surfaces continuously, detecting scratches, pitting, and coating defects in real time."
         },
         {
           title: "Predictive Maintenance for CNC Machining",
@@ -1557,11 +1557,11 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
         },
         {
           title: "Smart Production Scheduling",
-          description: "AI analyzes multi-week order pipeline, machine capacity constraints, raw material delivery schedules, and labor shift patterns to generate optimal production sequences—reducing changeover time by 35% and increasing OEE (Overall Equipment Effectiveness) from 65% to 82%."
+          description: "AI analyzes the multi-week order pipeline, machine capacity constraints, raw material delivery schedules, and labor shift patterns to generate production sequences that cut changeovers and support higher OEE (Overall Equipment Effectiveness)."
         },
         {
           title: "Industrial Energy Optimization",
-          description: "AI monitors chiller plants, compressor arrays, and furnace loads across a petrochemical complex in real-time. System automatically adjusts temperature setpoints, sequencing, and load distribution—achieving 15% energy cost reduction (USD 2.3M annual savings) without compromising product specifications."
+          description: "AI monitors chiller plants, compressor arrays, and furnace loads across a petrochemical complex in real time, adjusting temperature setpoints, sequencing, and load distribution to cut energy use without compromising product specifications."
         },
         {
           title: "Supply Chain Disruption Prevention",
@@ -1573,15 +1573,15 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
         "Legacy equipment integration: Works with existing production line cameras and PLC systems without full replacement",
         "Arabic-language operator interfaces: Dashboards, alerts, and maintenance instructions in Arabic for local workforce",
         "GCC energy subsidy awareness: Optimization models calibrated for regional energy pricing and subsidy structures",
-        "NIDLP and Operation 300Bn alignment: Deep understanding of Saudi and UAE industrial development strategies",
+        "Alignment with NIDLP and Operation 300Bn: designed around Saudi and UAE industrial development priorities",
         "Experience with regional manufacturers: SABIC, ADNOC, ALBA, Saudi steel and aluminum producers",
         "Sharia-compliant financing models: Compatible with Islamic financing structures for capital equipment investments"
       ],
-      faqTitle: "Frequently Asked Questions",
+      faqTitle: "What do GCC manufacturers ask before adopting AI?",
       faqs: [
         {
           q: "Can the computer vision system work on our existing production line cameras, or do we need new hardware?",
-          a: "In most cases, we can integrate with existing industrial cameras (2MP+ resolution). For high-speed lines (>100 units/min) or microscopic defect detection, we may recommend camera upgrades. We conduct a free technical assessment of your current setup before proposing any hardware changes."
+          a: "In most cases, we can integrate with existing industrial cameras (2MP+ resolution). For high-speed lines (>100 units/min) or microscopic defect detection, we may recommend camera upgrades. We review your current setup before proposing any hardware changes."
         },
         {
           q: "How long does it take to train the AI model on our specific products and defect types—and who does that work?",
@@ -1593,12 +1593,12 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
         },
         {
           q: "How do we prove ROI to leadership—what's a realistic timeline to see measurable downtime reduction?",
-          a: "Typical ROI timeline for predictive maintenance is 6-12 months. We establish baseline metrics (Mean Time Between Failures, unplanned downtime hours, emergency repair costs) pre-deployment, then track improvements monthly. Most clients see 15-25% downtime reduction within 6 months, with full 25-50% improvement by month 12 as models learn equipment-specific failure patterns."
+          a: "Payback depends on your current downtime and maintenance costs, so we do not quote a fixed timeline. Before deployment we establish baseline metrics (Mean Time Between Failures, unplanned downtime hours, emergency repair costs), then track them monthly so you can see what changes as models learn equipment-specific failure patterns."
         }
       ],
       ctaTitle: "Ready to Transform Your Manufacturing Operations?",
-      ctaDescription: "Join the GCC manufacturers already leveraging Industry 4.0 AI to reduce costs, improve quality, and accelerate Saudi Vision 2030 and UAE Operation 300Bn goals.",
-      metaDescription: "Industry 4.0 AI solutions for GCC manufacturing: computer vision quality control, predictive maintenance, production scheduling, and energy optimization. Built for Saudi NIDLP and UAE Operation 300Bn strategies.",
+      ctaDescription: "Talk to us about how AI and Industry 4.0 tools could help your plant improve quality, reduce downtime, and support Saudi Vision 2030 and UAE Operation 300Bn goals.",
+      metaDescription: "AI and automation for GCC manufacturing: production dashboards, ERP and CRM integration, maintenance signals and Arabic-first operational reporting.",
       keywords: "AI manufacturing GCC, Saudi Arabia Industry 4.0, UAE smart factory, NIDLP industrial AI, computer vision quality control, predictive maintenance Middle East, SABIC AI automation, Saudi Vision 2030 manufacturing"
     },
     ar: {
@@ -1679,7 +1679,7 @@ export const INDUSTRY_DETAILS: IndustryDetail[] = [
         "حلول قابلة للتوسع بما يتناسب مع حجم المصنع وخطط النمو المستقبلية",
         "التزام بأفضل ممارسات أمن البيانات واستمرارية التشغيل"
       ],
-      faqTitle: "الأسئلة الشائعة",
+      faqTitle: "ما الذي تسأل عنه المصنّعون الخليجيون قبل اعتماد الذكاء الاصطناعي؟",
       faqs: [
         {
           q: "هل يمكن دمج الحلول مع المعدات الموجودة حالياً في المصنع؟",

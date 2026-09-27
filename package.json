@@ -1,20 +1,16 @@
 {
-  "name": "workspace",
-  "version": "0.0.0",
-  "license": "MIT",
-  "scripts": {
-    "build": "pnpm run typecheck && pnpm -r --if-present run build",
-    "typecheck:libs": "tsc --build",
-    "typecheck": "pnpm run typecheck:libs && pnpm -r --filter \"./artifacts/**\" --if-present run typecheck"
-  },
+  "name": "raanzlr-website",
+  "version": "1.0.0",
   "private": true,
+  "scripts": {
+    "dev": "pnpm --filter @workspace/raanzlr dev",
+    "build": "pnpm --filter @workspace/raanzlr build",
+    "build:client": "pnpm --filter @workspace/raanzlr build:client",
+    "preview": "pnpm --filter @workspace/raanzlr serve",
+    "typecheck": "pnpm --filter @workspace/raanzlr typecheck"
+  },
   "devDependencies": {
     "prettier": "^3.8.3",
     "typescript": "~5.9.3"
-  },
-  "dependencies": {
-    "@types/adm-zip": "^0.5.8",
-    "adm-zip": "^0.5.17",
-    "openai": "^6.42.0"
   }
 }

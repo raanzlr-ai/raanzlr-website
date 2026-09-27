@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useLang } from "../contexts/LanguageContext";
+import { trackCta } from "../lib/analytics";
 import LanguageToggle from "./LanguageToggle";
 import ThemeToggle from "./ThemeToggle";
 
@@ -21,7 +22,7 @@ const NAV_LABELS: Record<string, { en: string; ar: string }> = {
   services: { en: "Services", ar: "الخدمات" },
   industries: { en: "Industries", ar: "القطاعات" },
   markets: { en: "Markets", ar: "الأسواق" },
-  "case-studies": { en: "Case Studies", ar: "دراسات الحالة" },
+  "case-studies": { en: "Solution Scenarios", ar: "سيناريوهات الحلول" },
   insights: { en: "Insights", ar: "المدونة" },
   about: { en: "About", ar: "من نحن" },
 };
@@ -93,6 +94,7 @@ export default function Navbar() {
               <LanguageToggle className="hidden sm:flex" />
               <Link
                 to={localizedPath("/contact")}
+                onClick={() => trackCta(isAr ? "تواصل" : "Contact", "navbar")}
                 className="hidden sm:inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 px-4 py-2 text-xs font-bold text-[#050505] shadow-[0_0_16px_rgba(0,240,255,0.3)] hover:shadow-[0_0_24px_rgba(0,240,255,0.5)] transition-shadow"
               >
                 {isAr ? "تواصل" : "Contact"}
@@ -138,6 +140,7 @@ export default function Navbar() {
                 <LanguageToggle />
                 <Link
                   to={localizedPath("/contact")}
+                onClick={() => trackCta(isAr ? "تواصل" : "Contact", "navbar")}
                   className="inline-flex rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 px-4 py-2 text-sm font-bold text-[#050505]"
                 >
                   {isAr ? "تواصل معنا" : "Contact Us"}

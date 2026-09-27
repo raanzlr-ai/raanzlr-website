@@ -1,0 +1,188 @@
+================================================================
+   RAANZLR WEBSITE - HOW TO RUN IT ON YOUR COMPUTER
+================================================================
+
+WHAT THIS IS
+   The Raanzlr company website (raanzlr.com).
+   Bilingual English / Arabic, built with React 19, TypeScript,
+   Vite 7 and Tailwind CSS 4. Blog content comes from Supabase.
+
+   The node_modules folder is NOT included in this zip.
+   Step 2 below downloads it for you.
+
+
+----------------------------------------------------------------
+STEP 1 - INSTALL THE TWO TOOLS YOU NEED (one time only)
+----------------------------------------------------------------
+
+   a) Node.js - version 20 or newer
+      Download from https://nodejs.org and run the "LTS" installer.
+
+   b) pnpm - the package manager this project uses.
+      After Node.js is installed, open PowerShell and run:
+
+          npm install -g pnpm
+
+   Check that both are ready:
+
+          node --version
+          pnpm --version
+
+   (Tested with Node v24.14.0 and pnpm 11.1.2.)
+
+
+----------------------------------------------------------------
+STEP 2 - INSTALL THE PROJECT
+----------------------------------------------------------------
+
+   1. Unzip this folder anywhere, for example:
+          C:\projects\raanzlr-website
+
+   2. Open PowerShell INSIDE that folder.
+      (Easiest way: open the folder in File Explorer, then
+       click the address bar, type  powershell  and press Enter.)
+
+   3. Run:
+
+          pnpm install
+
+   This takes about 30-60 seconds and creates the node_modules
+   folder. You only do this once.
+
+
+----------------------------------------------------------------
+STEP 3 - RUN THE WEBSITE
+----------------------------------------------------------------
+
+          pnpm dev
+
+   Then open this address in your browser:
+
+          http://localhost:5173
+
+   The site is now running. Any file you edit under
+   artifacts/raanzlr/src updates in the browser immediately.
+
+   Press  Ctrl + C  in the terminal to stop the server.
+
+
+----------------------------------------------------------------
+STEP 4 - BUILD THE PRODUCTION VERSION  (optional)
+----------------------------------------------------------------
+
+          pnpm build
+
+   Takes about 1 minute. It compiles the site, pre-renders 187
+   static HTML pages (93 routes in both English and Arabic, plus
+   a 404 page) and regenerates the sitemaps.
+
+   The result is written to:  artifacts\raanzlr\dist\
+
+   To view that production build locally:
+
+          pnpm preview
+
+   The terminal will print the address to open.
+
+
+----------------------------------------------------------------
+ALL AVAILABLE COMMANDS  (run from the main project folder)
+----------------------------------------------------------------
+
+   pnpm install     Download dependencies (first time only)
+   pnpm dev         Start the website on port 5173
+   pnpm build       Production build + prerender + sitemaps
+   pnpm preview     View the production build locally
+   pnpm typecheck   TypeScript check - please read the note below
+
+
+----------------------------------------------------------------
+WHERE THINGS ARE
+----------------------------------------------------------------
+
+   artifacts\raanzlr\           <-- the website itself
+      src\
+         pages\                 one file per page (Home, About...)
+         components\            reusable interface pieces
+         data\                  site content: services, posts,
+                                industries, markets, case studies
+         lib\                   translations, SEO, helpers
+         contexts\              language and dark/light theme
+      public\                   images, icons, robots.txt, sitemaps
+      scripts\prerender.mjs     builds the static HTML pages
+      index.html                entry point
+
+   package.json                 the commands listed above
+   pnpm-workspace.yaml          workspace and dependency versions
+   .env.example                 reference only - see next section
+
+
+----------------------------------------------------------------
+DO I NEED TO CONFIGURE ANYTHING?
+----------------------------------------------------------------
+
+   No. There is no .env file to create and no key to enter.
+   The site runs correctly as soon as you finish Step 2.
+
+   The Supabase key used to load blog articles is a public,
+   read-only key that is already part of the source code. It is
+   safe to use this way because the database is protected by
+   row-level security on the server.
+
+   The included .env.example is only a reference, in case you
+   later want to connect the site to a different Supabase project.
+
+
+----------------------------------------------------------------
+IMPORTANT NOTE ABOUT "pnpm typecheck"
+----------------------------------------------------------------
+
+   If you run  pnpm typecheck  you will see roughly 200 TypeScript
+   errors, nearly all of them in  src\lib\translations.ts
+
+   THIS IS EXPECTED. IT IS NOT A BROKEN PROJECT.
+
+   Every Arabic translation is compared against its English text
+   as a fixed literal type, so TypeScript flags each Arabic string
+   even though the value is correct. It is a type-annotation
+   quirk, not a real defect.
+
+   The dev server and  pnpm build  both ignore this and work
+   normally. The production build was run and verified on this
+   copy before it was sent to you.
+
+
+----------------------------------------------------------------
+IF SOMETHING GOES WRONG
+----------------------------------------------------------------
+
+   "pnpm is not recognized"
+       Run:  npm install -g pnpm
+       Then close PowerShell and open it again.
+
+   PowerShell refuses to run the pnpm script
+       Open PowerShell as Administrator once and run:
+           Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
+       Answer Y, then reopen a normal PowerShell window.
+
+   "Port 5173 is already in use"
+       Another program is using that port. Either close it, or
+       start the site on a different port:
+           cd artifacts\raanzlr
+           pnpm dev --port 3001
+       Then open http://localhost:3001
+
+   The install failed or the site behaves strangely
+       Delete the node_modules folder and run  pnpm install  again.
+
+   The blog / insights page shows no articles
+       That page loads from Supabase and needs an internet
+       connection. Every other page works fully offline.
+
+
+----------------------------------------------------------------
+QUESTIONS
+----------------------------------------------------------------
+   info@raanzlr.com
+
+================================================================

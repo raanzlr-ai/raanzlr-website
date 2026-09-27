@@ -8,6 +8,7 @@ import { Reveal, Stagger, StaggerItem } from "../components/Reveal";
 import PulseDivider from "../components/PulseDivider";
 import MagneticButton from "../components/MagneticButton";
 import SEO from "../components/SEO";
+import { toIsoDateTime } from "../lib/date";
 import { CASES } from "../data/cases";
 
 export default function CaseStudyDetail() {
@@ -26,12 +27,11 @@ export default function CaseStudyDetail() {
         titleAr={`${study.title.ar} | Raanzlr`}
         description={study.desc.en}
         descriptionAr={study.desc.ar}
-        keywords={`${study.industry?.en || ''} case study, AI automation case study GCC, ${study.tag?.en || ''}`}
-        keywordsAr={`دراسة حالة ${study.industry?.ar || ''}، أتمتة بالذكاء الاصطناعي الخليج، ${study.tag?.ar || ''}`}
         path={`/case-studies/${study.slug}`}
         type="article"
+        pageType="Article"
         article={{
-          publishedTime: `${study.date}T00:00:00Z`,
+          publishedTime: toIsoDateTime(study.date),
           author: "Raanzlr",
           section: study.industry?.en || "Technology",
           tags: study.tag ? [study.tag.en] : [],
@@ -141,7 +141,7 @@ export default function CaseStudyDetail() {
               <Reveal delay={0.15}>
                 <div className="rounded-2xl border border-foreground/10 bg-foreground/[0.02] p-6">
                   <p className="text-xs font-mono-accent uppercase tracking-[0.22em] text-foreground/40 mb-4">
-                    {isAr ? "// نتائج القياس" : "// Measured Outcomes"}
+                    {isAr ? "// النتائج المتوقعة" : "// Projected Outcomes"}
                   </p>
                   <div className="space-y-4">
                     {study.metrics.map((m, i) => (
@@ -153,6 +153,14 @@ export default function CaseStudyDetail() {
                       </div>
                     ))}
                   </div>
+                  {/* These figures are modelled for an illustrative scenario, not
+                      measured on a delivered project. Saying so on the page is
+                      the difference between an honest example and implied proof. */}
+                  <p className="mt-5 border-t border-foreground/8 pt-4 text-xs leading-relaxed text-foreground/45">
+                    {isAr
+                      ? "هذه أرقام تقديرية لسيناريو توضيحي، وليست نتائج مقاسة من مشروع منفَّذ لعميل."
+                      : "These are projected figures for an illustrative scenario, not measured results from a delivered client project."}
+                  </p>
                 </div>
               </Reveal>
 

@@ -23,6 +23,7 @@ import type { Post } from "./lib/posts";
 // Re-exported so the prerenderer and the sitemap generator read the route list
 // straight out of the SSR bundle instead of maintaining their own copy.
 export { ROUTES, ROUTE_PATHS, LOCALES, localeUrl, makeRoutes } from "./routes";
+export { relatedPosts } from "./lib/insightsPaging";
 export type { RouteMeta, Locale } from "./routes";
 
 /**

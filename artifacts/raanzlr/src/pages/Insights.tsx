@@ -1,11 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Clock, BookOpen, X, CheckCircle } from "lucide-react";
+import { useParams } from "react-router-dom";
 import { Link } from "../components/LocalizedLink";
 import { useLang } from "../contexts/LanguageContext";
 import { Reveal, Stagger, StaggerItem } from "../components/Reveal";
 import PulseDivider from "../components/PulseDivider";
 import SEO from "../components/SEO";
+import { itemListSchema } from "../lib/pageSchema";
+import { trackNewsletterSubscribe } from "../lib/analytics";
+import {
+  PER_PAGE,
+  heroPost,
+  pageCount,
+  clampPage,
+  pageSlice,
+  archivePath,
+} from "../lib/insightsPaging";
 import { POSTS } from "../data/posts";
 import { Post, fromStaticPost, fetchAllPosts, primedPosts } from "../lib/posts";
 import Turnstile from "../components/Turnstile";
@@ -84,6 +95,10 @@ function SubscribeModal({ open, onClose, isAr }: SubscribeModalProps) {
 
       if (res.status === 201 || res.status === 200) {
         setSuccess(true);
+        // Conversion signal. The subscriber email is deliberately not sent.
+        // `lang` here is the subscriber's newsletter preference, not the site
+        // locale — let pageContext() derive the locale from the URL instead.
+        trackNewsletterSubscribe("insights_subscribe_modal");
         // TODO: Email notification sending is handled by n8n workflow
         // Set up Supabase webhook → n8n → email service (SendGrid/Resend) for automatic notifications
         setTimeout(() => {
@@ -284,7 +299,7 @@ function SubscribeModal({ open, onClose, isAr }: SubscribeModalProps) {
 // Insights page
 // ---------------------------------------------------------------------------
 export default function Insights() {
-  const { isAr } = useLang();
+  const { isAr, t } = useLang();
 
   // Start from the build-time Supabase payload when it is present, so the first
   // paint already shows the real articles instead of the static seed that then
@@ -292,7 +307,12 @@ export default function Insights() {
   const [apiPosts, setApiPosts] = useState<Post[]>(() => primedPosts() ?? []);
   const [postsLoaded, setPostsLoaded] = useState(() => primedPosts() !== null);
   const [showSubscribe, setShowSubscribe] = useState(false);
-  const [page, setPage] = useState(1);
+
+  // Paging lives in the URL, not in component state. `/insights` is page 1 and
+  // `/insights/page/N` is every page after it, so each one is a real,
+  // prerendered, linkable document a crawler can reach without running JS.
+  const { page: pageParam } = useParams<{ page?: string }>();
+  const page = pageParam ? Number.parseInt(pageParam, 10) : 1;
 
   const staticPosts = POSTS.map(fromStaticPost);
 
@@ -309,23 +329,56 @@ export default function Insights() {
     ? apiPosts
     : [...staticPosts];
 
-  const featured = allPosts.find(p => p.featured);
-  const rest = allPosts.filter(p => !p.featured);
-
-  const PER_PAGE = 10;
-  const totalPages = Math.max(1, Math.ceil(rest.length / PER_PAGE));
-  const pageSafe = Math.min(Math.max(1, page), totalPages);
-  const pagePosts = rest.slice((pageSafe - 1) * PER_PAGE, pageSafe * PER_PAGE);
-  const goToPage = (n: number) => {
-    setPage(n);
-    if (typeof window !== "undefined") window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+  // Only the hero post is lifted out of the grid. Any other post flagged
+  // `featured` stays in the list so it keeps an internal link — hoisting all of
+  // them used to leave the extras reachable from nowhere on the site.
+  const featured = heroPost(allPosts);
+  const totalPages = pageCount(allPosts);
+  const pageSafe = clampPage(page, allPosts);
+  const pagePosts = pageSlice(allPosts, pageSafe);
 
   const fmt = (d: string) => new Date(d).toLocaleDateString(isAr ? "ar-SA" : "en-US", { year: "numeric", month: "long", day: "numeric" });
 
+  // Every post actually rendered on this page: the hero (page 1 only —
+  // archivePosts()/pageSlice() already exclude it from pagePosts) plus the
+  // paged grid. Reflects what's on THIS page, matching the prev/next pair
+  // below rather than the whole archive.
+  const onPagePosts = pageSafe === 1 && featured ? [featured, ...pagePosts] : pagePosts;
+
   return (
     <div className="relative">
-      <SEO pageKey="insights" path="/insights" />
+      <SEO
+        pageKey="insights"
+        path={archivePath(pageSafe)}
+        pageType="Blog"
+        schema={itemListSchema(
+          isAr ? "ar" : "en",
+          archivePath(pageSafe),
+          onPagePosts.map((p) => ({
+            name: isAr ? p.title.ar : p.title.en,
+            path: `/insights/${p.slug}`,
+          })),
+          isAr ? "مقالات Raanzlr" : "Raanzlr Insights articles",
+        )}
+        /* Page 2+ gets its own title/description so the prerenderer's
+           duplicate-title guard passes and the SERP entry is honest. */
+        title={pageSafe > 1 ? `Insights — Page ${pageSafe} of ${totalPages} · Raanzlr` : undefined}
+        titleAr={pageSafe > 1 ? `المدونة — صفحة ${pageSafe} من ${totalPages} · Raanzlr` : undefined}
+        /* Page 2+ needs its own description; five archive pages sharing page
+           one's copy was the site's only duplicate-description case. */
+        description={
+          pageSafe > 1
+            ? `Page ${pageSafe} of ${totalPages} in the Raanzlr archive: articles on AI agents, Arabic NLP, workflow automation and software delivery in the GCC and Türkiye.`
+            : undefined
+        }
+        descriptionAr={
+          pageSafe > 1
+            ? `الصفحة ${pageSafe} من ${totalPages} في أرشيف Raanzlr: مقالات عن وكلاء الذكاء الاصطناعي ومعالجة اللغة العربية وأتمتة العمليات وتطوير البرمجيات في الخليج وتركيا.`
+            : undefined
+        }
+        prevPath={pageSafe > 1 ? archivePath(pageSafe - 1) : undefined}
+        nextPath={pageSafe < totalPages ? archivePath(pageSafe + 1) : undefined}
+      />
 
       <SubscribeModal open={showSubscribe} onClose={() => setShowSubscribe(false)} isAr={isAr} />
 
@@ -361,7 +414,7 @@ export default function Insights() {
               <Link to={`/insights/${featured.slug}`} className="group relative overflow-hidden rounded-3xl border border-foreground/10 bg-foreground/[0.02] hover:border-cyan-400/20 transition-colors block">
                 <div className="grid lg:grid-cols-2">
                   <div className="relative h-64 lg:h-auto overflow-hidden">
-                    <img src={featured.image} alt={isAr ? featured.title.ar : featured.title.en} className="w-full h-full object-cover opacity-100 group-hover:scale-105 transition-all duration-700" />
+                    <img src={featured.image} alt={isAr ? featured.title.ar : featured.title.en} className="w-full h-full object-cover opacity-100 group-hover:scale-105 transition-all duration-700"  loading="lazy" decoding="async" />
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent to-background/60 dark:to-background/80 lg:bg-gradient-to-b hidden dark:block" />
                   </div>
                   <div className="p-8 sm:p-10 flex flex-col justify-center">
@@ -398,7 +451,7 @@ export default function Insights() {
               <StaggerItem key={post.slug}>
                 <Link to={`/insights/${post.slug}`} className="group relative overflow-hidden rounded-2xl border border-foreground/10 bg-foreground/[0.02] hover:border-cyan-400/25 transition-colors h-full flex flex-col block">
                   <div className="relative h-44 overflow-hidden">
-                    <img src={post.image} alt={isAr ? post.title.ar : post.title.en} className="w-full h-full object-cover opacity-100 group-hover:scale-105 transition-all duration-500" />
+                    <img src={post.image} alt={isAr ? post.title.ar : post.title.en} className="w-full h-full object-cover opacity-100 group-hover:scale-105 transition-all duration-500"  loading="lazy" decoding="async" />
                     <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background hidden dark:block" />
                     <div className="absolute top-3 left-3 rtl:left-auto rtl:right-3">
                       <span className="text-[10px] font-mono-accent uppercase tracking-[0.15em] px-2.5 py-1 rounded-full border border-cyan-400/35 text-cyan-300 bg-cyan-400/10">
@@ -423,39 +476,46 @@ export default function Insights() {
           </Stagger>
 
           {totalPages > 1 && (
-            <div className="mt-14 flex flex-wrap items-center justify-center gap-2">
-              <button
-                type="button"
-                onClick={() => goToPage(pageSafe - 1)}
-                disabled={pageSafe === 1}
-                className="inline-flex items-center gap-1.5 rounded-lg border border-foreground/10 bg-foreground/[0.03] px-3.5 py-2 text-xs font-mono-accent uppercase tracking-[0.15em] text-foreground/60 hover:border-cyan-400/40 hover:text-cyan-300 transition-colors disabled:opacity-30 disabled:pointer-events-none"
-              >
-                <ArrowRight className="h-3.5 w-3.5 rotate-180 rtl:rotate-0" /> {isAr ? "السابق" : "Prev"}
-              </button>
+            <nav
+              className="mt-14 flex flex-wrap items-center justify-center gap-2"
+              aria-label={isAr ? "تصفح الصفحات" : "Insights pagination"}
+            >
+              {/* Real anchors, not buttons: pages 2+ were previously reachable
+                  only by clicking a state-only control, so 37 articles had no
+                  crawlable path from anywhere on the site. */}
+              {pageSafe > 1 && (
+                <Link
+                  to={archivePath(pageSafe - 1)}
+                  rel="prev"
+                  className="inline-flex items-center gap-1.5 rounded-lg border border-foreground/10 bg-foreground/[0.03] px-3.5 py-2 text-xs font-mono-accent uppercase tracking-[0.15em] text-foreground/60 hover:border-cyan-400/40 hover:text-cyan-300 transition-colors"
+                >
+                  <ArrowRight className="h-3.5 w-3.5 rotate-180 rtl:rotate-0" /> {isAr ? "السابق" : "Prev"}
+                </Link>
+              )}
               {Array.from({ length: totalPages }, (_, i) => i + 1).map((n) => (
-                <button
+                <Link
                   key={n}
-                  type="button"
-                  onClick={() => goToPage(n)}
+                  to={archivePath(n)}
                   aria-current={n === pageSafe ? "page" : undefined}
-                  className={`h-9 min-w-9 rounded-lg border px-3 text-xs font-mono-accent transition-colors ${
+                  className={`inline-flex h-9 min-w-9 items-center justify-center rounded-lg border px-3 text-xs font-mono-accent transition-colors ${
                     n === pageSafe
                       ? "border-cyan-400/50 bg-cyan-400/10 text-cyan-200"
                       : "border-foreground/10 bg-foreground/[0.03] text-foreground/55 hover:border-cyan-400/30 hover:text-cyan-300"
                   }`}
                 >
                   {n}
-                </button>
+                </Link>
               ))}
-              <button
-                type="button"
-                onClick={() => goToPage(pageSafe + 1)}
-                disabled={pageSafe === totalPages}
-                className="inline-flex items-center gap-1.5 rounded-lg border border-foreground/10 bg-foreground/[0.03] px-3.5 py-2 text-xs font-mono-accent uppercase tracking-[0.15em] text-foreground/60 hover:border-cyan-400/40 hover:text-cyan-300 transition-colors disabled:opacity-30 disabled:pointer-events-none"
-              >
-                {isAr ? "التالي" : "Next"} <ArrowRight className="h-3.5 w-3.5 rtl:rotate-180" />
-              </button>
-            </div>
+              {pageSafe < totalPages && (
+                <Link
+                  to={archivePath(pageSafe + 1)}
+                  rel="next"
+                  className="inline-flex items-center gap-1.5 rounded-lg border border-foreground/10 bg-foreground/[0.03] px-3.5 py-2 text-xs font-mono-accent uppercase tracking-[0.15em] text-foreground/60 hover:border-cyan-400/40 hover:text-cyan-300 transition-colors"
+                >
+                  {isAr ? "التالي" : "Next"} <ArrowRight className="h-3.5 w-3.5 rtl:rotate-180" />
+                </Link>
+              )}
+            </nav>
           )}
 
           <Reveal delay={0.3}>

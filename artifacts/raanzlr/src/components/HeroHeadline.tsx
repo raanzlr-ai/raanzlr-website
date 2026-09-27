@@ -43,7 +43,26 @@ const SEP = " ";
 
 type Phase = "typing" | "hold" | "deleting";
 
-export default function HeroHeadline({ isAr }: { isAr: boolean }) {
+/**
+ * `size` controls the type scale only.
+ *
+ * "display" is the original full-bleed hero scale. "compact" is used on the
+ * homepage, where the agent console below the headline is the thing the
+ * visitor is meant to look at — an oversized headline there pushes the console
+ * under the fold and reserves four lines of empty space while typing.
+ */
+export default function HeroHeadline({
+  isAr,
+  size = "display",
+}: {
+  isAr: boolean;
+  size?: "display" | "compact";
+}) {
+  const scale =
+    size === "compact"
+      ? "text-3xl sm:text-4xl lg:text-5xl"
+      : "text-4xl sm:text-5xl md:text-6xl lg:text-7xl";
+
   const phrases = isAr ? PHRASES_AR : PHRASES_EN;
   const reduce = useReducedMotion();
 
@@ -117,7 +136,7 @@ export default function HeroHeadline({ isAr }: { isAr: boolean }) {
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7, delay: 0.1 }}
-      className="mt-6"
+      className={size === "compact" ? "mt-3" : "mt-6"}
     >
       {/*
         Every phrase is rendered invisibly into the same grid cell, so the
@@ -130,7 +149,7 @@ export default function HeroHeadline({ isAr }: { isAr: boolean }) {
           <span
             key={i}
             aria-hidden
-            className="invisible col-start-1 row-start-1 font-display font-bold leading-[1.1] tracking-tighter text-4xl sm:text-5xl md:text-6xl lg:text-7xl"
+            className={`invisible col-start-1 row-start-1 font-display font-bold leading-[1.1] tracking-tighter ${scale}`}
           >
             {p.lead}
             {SEP}
@@ -139,7 +158,7 @@ export default function HeroHeadline({ isAr }: { isAr: boolean }) {
             <span className="mx-1 inline-block w-[3px] sm:w-[4px]" />
           </span>
         ))}
-        <h1 className="col-start-1 row-start-1 font-display font-bold leading-[1.1] tracking-tighter text-4xl sm:text-5xl md:text-6xl lg:text-7xl">
+        <h1 className={`col-start-1 row-start-1 font-display font-bold leading-[1.1] tracking-tighter ${scale}`}>
           {/* Full phrase for crawlers and screen readers — the animated spans below are aria-hidden. */}
           <span className="sr-only">{full}</span>
           <span aria-hidden className="text-chrome">

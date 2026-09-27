@@ -7,37 +7,93 @@
   "redirects": [
     {
       "source": "/:path*",
-      "has": [{ "type": "host", "value": "www.raanzlr.com" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "www.raanzlr.com"
+        }
+      ],
       "destination": "https://raanzlr.com/:path*",
       "permanent": true
     },
     {
       "source": "/",
-      "has": [{ "type": "header", "key": "accept-language", "value": "^ar.*" }],
+      "has": [
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^ar.*"
+        }
+      ],
       "destination": "/ar",
       "permanent": false
     },
     { "source": "/", "destination": "/en", "permanent": false },
-
     { "source": "/book-a-call", "destination": "/en/contact", "permanent": true },
     { "source": "/en/book-a-call", "destination": "/en/contact", "permanent": true },
     { "source": "/ar/book-a-call", "destination": "/ar/contact", "permanent": true },
-
-    {
-      "source": "/:section(services|industries|markets|case-studies|insights|about|contact|faq|privacy-policy|terms-of-service)",
-      "destination": "/en/:section",
-      "permanent": true
-    },
-    {
-      "source": "/:section(services|industries|markets|case-studies|insights)/:slug([^./]+)",
-      "destination": "/en/:section/:slug",
-      "permanent": true
-    }
+    { "source": "/:section(services|industries|markets|case-studies|insights|about|contact|faq|privacy-policy|terms-of-service)", "destination": "/en/:section", "permanent": true },
+    { "source": "/:section(services|industries|markets|case-studies|insights)/:slug([^./]+)", "destination": "/en/:section/:slug", "permanent": true },
+    { "source": "/en/insights/ai-automation-gcc-2026-test", "destination": "/en/insights", "permanent": true },
+    { "source": "/ar/insights/ai-automation-gcc-2026-test", "destination": "/ar/insights", "permanent": true },
+    { "source": "/en/insights/arabic-ai-copilots-gcc-government-services-20260701", "destination": "/en/insights/saudi-2026-ai-agents-government-services-20260706", "permanent": true },
+    { "source": "/ar/insights/arabic-ai-copilots-gcc-government-services-20260701", "destination": "/ar/insights/saudi-2026-ai-agents-government-services-20260706", "permanent": true },
+    { "source": "/en/insights/saudi-arabias-arabic-first-ai-agents-government-enterprises-20260702", "destination": "/en/insights/saudi-2026-ai-agents-government-services-20260706", "permanent": true },
+    { "source": "/ar/insights/saudi-arabias-arabic-first-ai-agents-government-enterprises-20260702", "destination": "/ar/insights/saudi-2026-ai-agents-government-services-20260706", "permanent": true },
+    { "source": "/en/insights/arabic-first-ai-copilots-gcc-government-services-20260705", "destination": "/en/insights/saudi-2026-ai-agents-government-services-20260706", "permanent": true },
+    { "source": "/ar/insights/arabic-first-ai-copilots-gcc-government-services-20260705", "destination": "/ar/insights/saudi-2026-ai-agents-government-services-20260706", "permanent": true },
+    { "source": "/en/insights/gcc-governments-arabic-ai-assistants-20260706", "destination": "/en/insights/saudi-2026-ai-agents-government-services-20260706", "permanent": true },
+    { "source": "/ar/insights/gcc-governments-arabic-ai-assistants-20260706", "destination": "/ar/insights/saudi-2026-ai-agents-government-services-20260706", "permanent": true },
+    { "source": "/en/insights/rise-arabic-first-ai-copilots-gcc-post-2026-20260630", "destination": "/en/insights/saudi-arabia-arabic-first-ai-agents-services-20260701", "permanent": true },
+    { "source": "/ar/insights/rise-arabic-first-ai-copilots-gcc-post-2026-20260630", "destination": "/ar/insights/saudi-arabia-arabic-first-ai-agents-services-20260701", "permanent": true },
+    { "source": "/en/insights/saudi-arabia-arabic-first-ai-agents-government-enterprises-20260702", "destination": "/en/insights/saudi-arabia-arabic-first-ai-agents-services-20260701", "permanent": true },
+    { "source": "/ar/insights/saudi-arabia-arabic-first-ai-agents-government-enterprises-20260702", "destination": "/ar/insights/saudi-arabia-arabic-first-ai-agents-services-20260701", "permanent": true },
+    { "source": "/en/insights/arabic-first-ai-agents-gcc-customer-service-20260630", "destination": "/en/insights/arabic-ai-agents-gcc-ecommerce-customer-service-20260702", "permanent": true },
+    { "source": "/ar/insights/arabic-first-ai-agents-gcc-customer-service-20260630", "destination": "/ar/insights/arabic-ai-agents-gcc-ecommerce-customer-service-20260702", "permanent": true },
+    { "source": "/en/insights/arabic-first-ai-sales-agents-gcc-ecommerce-whatsapp-20260705", "destination": "/en/insights/arabic-ai-agents-gcc-ecommerce-customer-service-20260702", "permanent": true },
+    { "source": "/ar/insights/arabic-first-ai-sales-agents-gcc-ecommerce-whatsapp-20260705", "destination": "/ar/insights/arabic-ai-agents-gcc-ecommerce-customer-service-20260702", "permanent": true },
+    { "source": "/en/insights/saudi-arabia-generative-ai-cloud-llm-infrastructure-gcc-20260701", "destination": "/en/insights/saudi-arabias-arabic-first-genai-cloud-gcc-enterprises-20260702", "permanent": true },
+    { "source": "/ar/insights/saudi-arabia-generative-ai-cloud-llm-infrastructure-gcc-20260701", "destination": "/ar/insights/saudi-arabias-arabic-first-genai-cloud-gcc-enterprises-20260702", "permanent": true },
+    { "source": "/en/insights/saudi-arabia-genai-cloud-enterprise-transformation-20260703", "destination": "/en/insights/saudi-arabias-arabic-first-genai-cloud-gcc-enterprises-20260702", "permanent": true },
+    { "source": "/ar/insights/saudi-arabia-genai-cloud-enterprise-transformation-20260703", "destination": "/ar/insights/saudi-arabias-arabic-first-genai-cloud-gcc-enterprises-20260702", "permanent": true },
+    { "source": "/en/insights/saudi-new-ai-cloud-zones-gcc-enterprise-impact-20260703", "destination": "/en/insights/saudi-arabias-arabic-first-genai-cloud-gcc-enterprises-20260702", "permanent": true },
+    { "source": "/ar/insights/saudi-new-ai-cloud-zones-gcc-enterprise-impact-20260703", "destination": "/ar/insights/saudi-arabias-arabic-first-genai-cloud-gcc-enterprises-20260702", "permanent": true },
+    { "source": "/en/insights/saudi-arabia-arabic-first-llms-vision-2030-20260702", "destination": "/en/insights/saudi-arabias-specialized-arabic-ai-models-20260701", "permanent": true },
+    { "source": "/ar/insights/saudi-arabia-arabic-first-llms-vision-2030-20260702", "destination": "/ar/insights/saudi-arabias-specialized-arabic-ai-models-20260701", "permanent": true },
+    { "source": "/en/insights/saudi-arabia-ai-agent-startups-local-data-innovation-20260703", "destination": "/en/insights/saudi-arabias-specialized-arabic-ai-models-20260701", "permanent": true },
+    { "source": "/ar/insights/saudi-arabia-ai-agent-startups-local-data-innovation-20260703", "destination": "/ar/insights/saudi-arabias-specialized-arabic-ai-models-20260701", "permanent": true },
+    { "source": "/en/insights/saudi-arabia-arabic-first-generative-ai-startups-20260705", "destination": "/en/insights/saudi-arabias-specialized-arabic-ai-models-20260701", "permanent": true },
+    { "source": "/ar/insights/saudi-arabia-arabic-first-generative-ai-startups-20260705", "destination": "/ar/insights/saudi-arabias-specialized-arabic-ai-models-20260701", "permanent": true },
+    { "source": "/en/insights/saudi-ai-startups-revolutionizing-energy-smart-cities-20260701", "destination": "/en/insights/saudi-arabia-vertical-ai-agents-logistics-energy-retail-20260701", "permanent": true },
+    { "source": "/ar/insights/saudi-ai-startups-revolutionizing-energy-smart-cities-20260701", "destination": "/ar/insights/saudi-arabia-vertical-ai-agents-logistics-energy-retail-20260701", "permanent": true },
+    { "source": "/en/insights/rise-vertical-ai-saas-gulf-family-businesses-20260702", "destination": "/en/insights/saudi-arabia-vertical-ai-agents-logistics-energy-retail-20260701", "permanent": true },
+    { "source": "/ar/insights/rise-vertical-ai-saas-gulf-family-businesses-20260702", "destination": "/ar/insights/saudi-arabia-vertical-ai-agents-logistics-energy-retail-20260701", "permanent": true },
+    { "source": "/en/insights/saudi-arabia-ai-agents-logistics-industrial-supply-20260704", "destination": "/en/insights/saudi-arabia-vertical-ai-agents-logistics-energy-retail-20260701", "permanent": true },
+    { "source": "/ar/insights/saudi-arabia-ai-agents-logistics-industrial-supply-20260704", "destination": "/ar/insights/saudi-arabia-vertical-ai-agents-logistics-energy-retail-20260701", "permanent": true },
+    { "source": "/en/insights/arabic-ai-agents-gcc-financial-services-20260705", "destination": "/en/insights/saudi-arabia-vertical-ai-agents-logistics-energy-retail-20260701", "permanent": true },
+    { "source": "/ar/insights/arabic-ai-agents-gcc-financial-services-20260705", "destination": "/ar/insights/saudi-arabia-vertical-ai-agents-logistics-energy-retail-20260701", "permanent": true },
+    { "source": "/en/insights/saudi-arabia-ai-agent-sandboxes-enterprise-workflows-20260630", "destination": "/en/insights/saudi-ai-sandboxes-vision-2030-enterprise-impact-20260625", "permanent": true },
+    { "source": "/ar/insights/saudi-arabia-ai-agent-sandboxes-enterprise-workflows-20260630", "destination": "/ar/insights/saudi-ai-sandboxes-vision-2030-enterprise-impact-20260625", "permanent": true },
+    { "source": "/en/insights/saudi-arabia-ai-data-governance-frameworks-20260703", "destination": "/en/insights/saudi-arabia-new-ai-policies-genai-2026-2027-20260703", "permanent": true },
+    { "source": "/ar/insights/saudi-arabia-ai-data-governance-frameworks-20260703", "destination": "/ar/insights/saudi-arabia-new-ai-policies-genai-2026-2027-20260703", "permanent": true },
+    { "source": "/en/insights/saudi-arabia-national-ai-agent-platforms-enterprise-20260703", "destination": "/en/insights/saudi-arabia-new-ai-policies-genai-2026-2027-20260703", "permanent": true },
+    { "source": "/ar/insights/saudi-arabia-national-ai-agent-platforms-enterprise-20260703", "destination": "/ar/insights/saudi-arabia-new-ai-policies-genai-2026-2027-20260703", "permanent": true },
+    { "source": "/insights/page/:page", "destination": "/en/insights/page/:page", "permanent": true },
+    { "source": "/index.html", "destination": "/en", "permanent": true }
   ],
   "rewrites": [
-    { "source": "/admin", "destination": "/index.html" },
-    { "source": "/:lang(en|ar)/admin", "destination": "/index.html" },
-    { "source": "/:lang(en|ar)/insights/:slug", "destination": "/index.html" }
+    {
+      "source": "/admin",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/:lang(en|ar)/admin",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/:lang(en|ar)/insights/:slug",
+      "destination": "/index.html"
+    }
   ],
   "headers": [
     {
@@ -70,63 +126,114 @@
     {
       "source": "/assets/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
       ]
     },
     {
       "source": "/.well-known/api-catalog",
       "headers": [
-        { "key": "Content-Type", "value": "application/linkset+json" },
-        { "key": "Access-Control-Allow-Origin", "value": "*" }
+        {
+          "key": "Content-Type",
+          "value": "application/linkset+json"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        }
       ]
     },
     {
       "source": "/.well-known/agent-skills/index.json",
       "headers": [
-        { "key": "Content-Type", "value": "application/json" },
-        { "key": "Access-Control-Allow-Origin", "value": "*" }
+        {
+          "key": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        }
       ]
     },
     {
       "source": "/.well-known/mcp/server-card.json",
       "headers": [
-        { "key": "Content-Type", "value": "application/json" },
-        { "key": "Access-Control-Allow-Origin", "value": "*" }
+        {
+          "key": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        }
       ]
     },
     {
       "source": "/.well-known/oauth-protected-resource",
       "headers": [
-        { "key": "Content-Type", "value": "application/json" },
-        { "key": "Access-Control-Allow-Origin", "value": "*" }
+        {
+          "key": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        }
       ]
     },
     {
       "source": "/.well-known/oauth-authorization-server",
       "headers": [
-        { "key": "Content-Type", "value": "application/json" },
-        { "key": "Access-Control-Allow-Origin", "value": "*" }
+        {
+          "key": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        }
       ]
     },
     {
       "source": "/auth.md",
       "headers": [
-        { "key": "Content-Type", "value": "text/markdown; charset=utf-8" },
-        { "key": "Access-Control-Allow-Origin", "value": "*" }
+        {
+          "key": "Content-Type",
+          "value": "text/markdown; charset=utf-8"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        }
       ]
     },
     {
       "source": "/.well-known/agent-skills/(.*).md",
       "headers": [
-        { "key": "Content-Type", "value": "text/markdown; charset=utf-8" },
-        { "key": "Access-Control-Allow-Origin", "value": "*" }
+        {
+          "key": "Content-Type",
+          "value": "text/markdown; charset=utf-8"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        }
       ]
     },
     {
       "source": "/(sitemap|sitemap-en|sitemap-ar).xml",
       "headers": [
-        { "key": "Content-Type", "value": "application/xml; charset=utf-8" },
-        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+        {
+          "key": "Content-Type",
+          "value": "application/xml; charset=utf-8"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
       ]
     }
   ]

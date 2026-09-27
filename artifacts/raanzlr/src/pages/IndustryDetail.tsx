@@ -9,6 +9,7 @@ import PulseDivider from "../components/PulseDivider";
 import MagneticButton from "../components/MagneticButton";
 import Heartbeat from "../components/Heartbeat";
 import SEO from "../components/SEO";
+import { industryServiceSchema, faqPageSchema } from "../lib/pageSchema";
 import { INDUSTRY_DETAILS } from "../data/industriesData";
 
 export default function IndustryDetail() {
@@ -30,9 +31,20 @@ export default function IndustryDetail() {
         titleAr={`${industry.ar.name} — قطاع — Raanzlr`}
         description={industry.en.metaDescription}
         descriptionAr={industry.ar.metaDescription}
-        keywords={industry.en.keywords}
-        keywordsAr={industry.ar.keywords}
         path={`/industries/${slug}`}
+        schema={[
+          industryServiceSchema({
+            locale: isAr ? "ar" : "en",
+            path: `/industries/${slug}`,
+            industryName: isAr ? industry.ar.name : industry.en.name,
+            description: isAr ? industry.ar.metaDescription : industry.en.metaDescription,
+          }),
+          /* The FAQ block below is rendered in the DOM; mirror it as a FAQPage
+             node so the answers are visible to answer engines. */
+          ...(content.faqs?.length
+            ? [faqPageSchema(isAr ? "ar" : "en", `/industries/${slug}`, content.faqs)]
+            : []),
+        ]}
       />
 
       {/* Hero Section */}
@@ -67,7 +79,7 @@ export default function IndustryDetail() {
           </motion.p>
 
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.55 }} className="mt-10 flex flex-wrap gap-4">
-            <MagneticButton to="/contact">{isAr ? "تواصل معنا" : "Get Started"}</MagneticButton>
+            <MagneticButton to="/contact" ctaLocation="industry_hero">{isAr ? "تواصل معنا" : "Get Started"}</MagneticButton>
             <MagneticButton to="/services" variant="ghost">{isAr ? "استعرض الخدمات" : "View Services"}</MagneticButton>
           </motion.div>
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1, delay: 0.7 }} className="mt-10">
@@ -253,7 +265,7 @@ export default function IndustryDetail() {
                 </h3>
                 <p className="mt-4 text-foreground/60 max-w-xl mx-auto">{content.ctaDescription}</p>
                 <div className="mt-8 flex justify-center gap-4 flex-wrap">
-                  <MagneticButton to="/contact">{isAr ? "تواصل معنا الآن" : "Contact Us Now"}</MagneticButton>
+                  <MagneticButton to="/contact" ctaLocation="industry_footer_cta">{isAr ? "تواصل معنا الآن" : "Contact Us Now"}</MagneticButton>
                 </div>
               </div>
             </div>

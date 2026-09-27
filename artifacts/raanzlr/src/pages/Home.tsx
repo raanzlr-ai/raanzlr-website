@@ -1,15 +1,17 @@
-import React, { useRef, useState } from "react";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { Bot, Workflow, Globe2, Smartphone, Sparkles, PlugZap, PenTool, ShieldCheck, Clock, TrendingUp, Award, Languages, ArrowRight, ChevronDown } from "lucide-react";
+import React, { useId, useState } from "react";
+import { motion } from "framer-motion";
+import { Bot, Workflow, Globe2, Smartphone, Sparkles, PlugZap, LayoutDashboard, PenTool, ShieldCheck, Clock, TrendingUp, Award, Languages, ArrowRight, ChevronDown } from "lucide-react";
 import { Link } from "../components/LocalizedLink";
 import { useLang } from "../contexts/LanguageContext";
 import ParticlesHero from "../components/ParticlesHero";
 import HeroHeadline from "../components/HeroHeadline";
+import AgentConsole from "../components/AgentConsole";
 import MagneticButton from "../components/MagneticButton";
 import { Reveal, Stagger, StaggerItem } from "../components/Reveal";
 import PulseDivider from "../components/PulseDivider";
 import Heartbeat from "../components/Heartbeat";
 import SEO from "../components/SEO";
+import AnswerBlock from "../components/AnswerBlock";
 
 const featureIcons = [Clock, TrendingUp, Award, Languages];
 const serviceIcons: Record<string, React.ElementType> = {
@@ -19,101 +21,50 @@ const serviceIcons: Record<string, React.ElementType> = {
   "mobile-apps": Smartphone,
   "custom-ai": Sparkles,
   "crm-integration": PlugZap,
+  "dashboards": LayoutDashboard,
   "ui-ux": PenTool,
   "consulting": ShieldCheck,
 };
 
-const HeroLogoStage = () => {
-  const ref = useRef<HTMLDivElement>(null);
-  const mx = useMotionValue(0);
-  const my = useMotionValue(0);
-  const rx = useSpring(useTransform(my, [-0.5, 0.5], [10, -10]), { stiffness: 150, damping: 18 });
-  const ry = useSpring(useTransform(mx, [-0.5, 0.5], [-12, 12]), { stiffness: 150, damping: 18 });
-
-  const handleMove = (e: React.MouseEvent) => {
-    if (!ref.current) return;
-    const r = ref.current.getBoundingClientRect();
-    mx.set((e.clientX - (r.left + r.width / 2)) / r.width);
-    my.set((e.clientY - (r.top + r.height / 2)) / r.height);
-  };
-  const handleLeave = () => { mx.set(0); my.set(0); };
-
-  return (
-    <motion.div
-      ref={ref}
-      onMouseMove={handleMove}
-      onMouseLeave={handleLeave}
-      style={{ rotateX: rx, rotateY: ry, transformPerspective: 1200 }}
-      className="relative aspect-square w-full max-w-[560px] mx-auto rounded-[36px] border border-foreground/10 bg-gradient-to-b from-foreground/[0.04] to-transparent overflow-hidden"
-    >
-      <div className="absolute inset-0 opacity-60 pointer-events-none">
-        <div className="absolute inset-0 slow-spin" style={{ background: "conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(0,240,255,0.55) 45deg, transparent 90deg, transparent 180deg, rgba(37,99,235,0.45) 225deg, transparent 270deg)", filter: "blur(40px)" }} />
-      </div>
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-6 rounded-full border border-cyan-400/20" />
-        <div className="absolute inset-16 rounded-full border border-blue-400/15" />
-        <div className="absolute inset-28 rounded-full border border-foreground/10" />
-      </div>
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div
-          initial={{ y: "-110%" }}
-          animate={{ y: "120%" }}
-          transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
-          className="absolute inset-x-0 h-32"
-          style={{ background: "linear-gradient(180deg, transparent, rgba(0,240,255,0.12), transparent)", filter: "blur(6px)" }}
-        />
-      </div>
-      <div className="absolute inset-0 flex items-center justify-center">
-        <motion.img
-          src="/Raanzlr-280-dark.webp"
-          srcSet="/Raanzlr-280-dark.webp 280w, /Raanzlr-dark.webp 560w"
-          sizes="(min-width: 640px) 280px, 45vw"
-          alt="Raanzlr — AI automation, web apps and software engineering"
-          className="h-[50%] w-[50%] object-contain floaty drop-shadow-[0_0_60px_rgba(0,240,255,0.55)] dark:hidden"
-          initial={{ opacity: 0, scale: 0.85 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, delay: 0.3 }}
-        />
-        <motion.img
-          src="/Raanzlr-280.webp"
-          srcSet="/Raanzlr-280.webp 280w, /Raanzlr.webp 560w"
-          sizes="(min-width: 640px) 280px, 45vw"
-          alt=""
-          aria-hidden="true"
-          className="h-[50%] w-[50%] object-contain floaty drop-shadow-[0_0_60px_rgba(0,240,255,0.55)] hidden dark:block"
-          initial={{ opacity: 0, scale: 0.85 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, delay: 0.3 }}
-        />
-      </div>
-      <div className="absolute left-0 right-0 bottom-12">
-        <Heartbeat className="w-full h-16" />
-      </div>
-      {[["top-3 left-3", "border-t border-l"], ["top-3 right-3", "border-t border-r"], ["bottom-3 left-3", "border-b border-l"], ["bottom-3 right-3", "border-b border-r"]].map(([pos, b], i) => (
-        <span key={i} className={`absolute ${pos} h-5 w-5 ${b} border-cyan-400/40`} />
-      ))}
-      <div className="absolute inset-x-0 bottom-4 text-center text-[10px] font-mono-accent tracking-[0.32em] text-foreground/40 uppercase">signal · 01 · global</div>
-    </motion.div>
-  );
-};
-
+/**
+ * Homepage FAQ accordion.
+ *
+ * The answer is always in the DOM and collapsed with CSS, never conditionally
+ * rendered. Rendering it only when `open` meant the prerendered homepage
+ * shipped five commercial questions with no answer text at all — invisible to
+ * crawlers and to answer engines, on the most-linked page on the site.
+ *
+ * `grid-template-rows` animates from 0fr to 1fr, which collapses the row
+ * without needing a measured pixel height, and `visibility` keeps the collapsed
+ * copy out of the tab order and out of a screen reader's buffer.
+ */
 function HomeFAQItem({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false);
+  const answerId = useId();
   return (
     <div className={`rounded-xl border transition-colors overflow-hidden ${open ? "border-cyan-400/30 bg-cyan-400/[0.03]" : "border-foreground/8 bg-foreground/[0.02] hover:border-foreground/15"}`}>
       <button
         type="button"
         onClick={() => setOpen(!open)}
+        aria-expanded={open}
+        aria-controls={answerId}
         className="w-full flex items-center justify-between gap-4 p-5 text-left rtl:text-right"
       >
         <span className="text-sm font-medium text-foreground">{q}</span>
         <ChevronDown className={`h-4 w-4 text-foreground/40 shrink-0 transition-transform duration-200 ${open ? "rotate-180 text-cyan-300" : ""}`} />
       </button>
-      {open && (
-        <div className="px-5 pb-5">
-          <p className="text-sm text-foreground/60 leading-relaxed">{a}</p>
+      <div
+        id={answerId}
+        className="grid transition-[grid-template-rows] duration-200 ease-out motion-reduce:transition-none"
+        style={{
+          gridTemplateRows: open ? "1fr" : "0fr",
+          visibility: open ? "visible" : "hidden",
+        }}
+      >
+        <div className="overflow-hidden">
+          <p className="px-5 pb-5 text-sm text-foreground/60 leading-relaxed">{a}</p>
         </div>
-      )}
+      </div>
     </div>
   );
 }
@@ -126,7 +77,7 @@ export default function Home() {
       <SEO pageKey="home" path="/" />
 
       {/* HERO */}
-      <section className="relative min-h-[100vh] flex items-center overflow-hidden bg-background">
+      <section className="relative overflow-hidden bg-background">
         {/* Background layers - lowest */}
         <div className="absolute inset-0 bg-grid z-0" />
         <div className="absolute inset-0 bg-radial-fade z-0" />
@@ -140,40 +91,51 @@ export default function Home() {
         
         <div className="noise absolute inset-0 z-[8]" />
 
-        <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 w-full py-32 md:py-36">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-6 items-center">
-            <div className="lg:col-span-6">
-              <HeroHeadline isAr={isAr} />
+        <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 w-full py-28 md:py-32">
+          {/* Head row: the claim on one side, the actions on the other. The
+              console below is the proof, so the headline block stays short. */}
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(300px,380px)] lg:items-end lg:gap-14">
+            <div>
+              <span className="font-mono-accent text-xs uppercase tracking-[0.2em] text-foreground/45">
+                {isAr ? "// عرض مباشر" : "// live demo"}
+              </span>
+              <div className="mt-3">
+                <HeroHeadline isAr={isAr} size="compact" />
+              </div>
               <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.25 }}
                 className="mt-7 max-w-xl text-base md:text-lg leading-relaxed text-foreground/65">
                 {t.home.heroSub}
               </motion.p>
-              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }}
-                className="mt-10 flex flex-wrap items-center gap-3 sm:gap-4">
-                <MagneticButton to="/contact" testId="hero-cta-getstarted">
+              <div className="mt-7 hidden flex-wrap items-center gap-x-3 gap-y-2 font-mono-accent text-xs uppercase tracking-[0.22em] text-foreground/50 sm:flex">
+                {t.home.heroChips.map((c, i) => (
+                  <React.Fragment key={i}>
+                    <span>{c}</span>
+                    {i < t.home.heroChips.length - 1 && <span className="text-cyan-400/70">·</span>}
+                  </React.Fragment>
+                ))}
+              </div>
+            </div>
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }}
+              className="flex flex-col gap-5 lg:items-end">
+              <div className="flex flex-wrap items-center gap-3 sm:gap-4">
+                <MagneticButton to="/contact" testId="hero-cta-getstarted" ctaLocation="home_hero">
                   {isAr ? "احصل على استشارة مجانية" : t.cta.getStarted} <ArrowRight className="h-4 w-4 rtl:rotate-180" />
                 </MagneticButton>
                 <MagneticButton to="/services" variant="ghost" testId="hero-cta-services">
                   {t.cta.learnMore}
                 </MagneticButton>
-              </motion.div>
-              <div className="mt-14 hidden sm:flex flex-wrap items-center gap-3 text-foreground/50 font-mono-accent text-xs uppercase tracking-[0.28em]">
-                {t.home.heroChips.map((c, i) => (
-                  <React.Fragment key={i}>
-                    <span>{c}</span>
-                    {i < t.home.heroChips.length - 1 && <span className="opacity-50">·</span>}
-                  </React.Fragment>
-                ))}
               </div>
-            </div>
-            <div className="lg:col-span-6 relative">
-              <HeroLogoStage />
-            </div>
+            </motion.div>
           </div>
-        </div>
-        <div className="absolute bottom-6 inset-x-0 hidden md:flex justify-center">
-          <div className="h-10 w-6 rounded-full border border-foreground/15 flex items-start justify-center p-1">
-            <div className="h-2 w-1 rounded-full bg-cyan-300 animate-bounce" />
+
+          <p className="mt-10 max-w-2xl text-sm leading-relaxed text-foreground/55">
+            {isAr
+              ? "بدل أن نصف ما يفعله وكلاؤنا، إليك واحداً وهو يعمل. اختر سيناريو وتابع المحادثة وسجل التنفيذ جنباً إلى جنب."
+              : "Instead of describing what our agents do, here is one working. Pick a scenario and watch the conversation and the execution trace side by side."}
+          </p>
+
+          <div className="mt-5">
+            <AgentConsole />
           </div>
         </div>
       </section>
@@ -263,6 +225,40 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Answer-first block for AEO */}
+      <section className="relative py-16 sm:py-20">
+        <div className="mx-auto max-w-5xl px-6 lg:px-8">
+          <AnswerBlock
+            question={
+              isAr
+                ? "ما الفرق بين أتمتة الذكاء الاصطناعي والبرمجيات المخصصة؟"
+                : "What is the difference between AI automation and custom software?"
+            }
+            answer={
+              isAr
+                ? "البرمجيات المخصصة تطبيق يُبنى وفق عملية الشركة نفسها — بوابة أو لوحة بيانات أو أداة داخلية — حيث يكون المنطق محدداً ومتوقعاً. أتمتة الذكاء الاصطناعي تضيف نماذج ذكاء اصطناعي لمعالجة الخطوات غير المتوقعة تماماً: فهم رسالة، أو تصنيف طلب، أو استخراج بيانات من مستند. ومعظم المشاريع الفعلية تستخدم الاثنين — البرمجيات المخصصة للبنية، والذكاء الاصطناعي للتقدير."
+                : "Custom software is an application built to a business's own process — a portal, dashboard, or internal tool — where the logic is defined and predictable. AI automation adds AI models to handle steps that are not fully predictable: understanding a message, classifying a request, extracting data from a document. Most real projects use both — custom software for structure, AI for judgement."
+            }
+          >
+            <p>
+              {isAr ? "تقدّم راانزلر الاثنين كخدمة عن بُعد. " : "Raanzlr offers both as a remote service. "}
+              <Link to="/services" className="text-cyan-300 hover:underline">
+                {isAr ? "استعرض الخدمات" : "Explore services"}
+              </Link>
+              {isAr ? "، أو اطّلع على الخدمات المتاحة لـ" : ", or see what's available for "}
+              <Link to="/markets/united-states" className="text-cyan-300 hover:underline">
+                {isAr ? "الشركات الأمريكية" : "US"}
+              </Link>
+              {isAr ? " و" : " and "}
+              <Link to="/markets/canada" className="text-cyan-300 hover:underline">
+                {isAr ? "الشركات الكندية" : "Canadian businesses"}
+              </Link>
+              .
+            </p>
+          </AnswerBlock>
+        </div>
+      </section>
+
       {/* FAQ PREVIEW */}
       <section className="relative py-16 sm:py-20 overflow-hidden">
         {/* Particles Background */}
@@ -326,8 +322,8 @@ export default function Home() {
                 </h3>
                 <p className="mt-4 text-foreground/60 max-w-xl mx-auto">{t.services.customEngagementDesc}</p>
                 <div className="mt-8 flex justify-center gap-4 flex-wrap">
-                  <MagneticButton to="/contact">{t.cta.getStarted}</MagneticButton>
-                  <MagneticButton to="/contact" variant="ghost">{t.cta.contactUs}</MagneticButton>
+                  <MagneticButton to="/contact" ctaLocation="home_footer_cta">{t.cta.getStarted}</MagneticButton>
+                  <MagneticButton to="/contact" variant="ghost" ctaLocation="home_footer_cta">{t.cta.contactUs}</MagneticButton>
                 </div>
               </div>
             </div>
