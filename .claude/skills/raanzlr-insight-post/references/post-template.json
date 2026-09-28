@@ -74,7 +74,9 @@
     {
       "heading": { "en": "Single-series chart example", "ar": "مثال رسم بسلسلة واحدة" },
       "body": { "en": "Text.", "ar": "نص." },
-      "image": "section-diagram.png",
+      "image": "https://<higgsfield result_url>.png",
+      "video": "https://<higgsfield result_url>.mp4",
+      "aiGenerated": true,
       "imageCaption": { "en": "What the image shows.", "ar": "ما تعرضه الصورة." },
       "chart": {
         "type": "line",

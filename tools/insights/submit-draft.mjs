@@ -16,7 +16,15 @@ import { dirname, extname, join, resolve } from "node:path";
 import { homedir } from "node:os";
 import { checkPost } from "./check-post.mjs";
 
-const MIME = { ".png": "image/png", ".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".webp": "image/webp", ".svg": "image/svg+xml" };
+const MIME = {
+  ".png": "image/png",
+  ".jpg": "image/jpeg",
+  ".jpeg": "image/jpeg",
+  ".webp": "image/webp",
+  ".gif": "image/gif",
+  ".mp4": "video/mp4",
+  ".webm": "video/webm",
+};
 
 function credentials() {
   if (process.env.RAANZLR_DRAFT_ENDPOINT && process.env.RAANZLR_DRAFT_TOKEN) {
@@ -67,8 +75,24 @@ const base = dirname(resolve(file));
 const payload = {
   ...post,
   image: inline(post.image, base),
-  sections: post.sections.map((s) => (s.image ? { ...s, image: inline(s.image, base) } : s)),
+  sections: post.sections.map((s) => ({
+    ...s,
+    ...(s.image ? { image: inline(s.image, base) } : {}),
+    ...(s.video ? { video: inline(s.video, base) } : {}),
+  })),
 };
+
+// The edge function drops very large request bodies mid-upload. Inline only
+// small local files (rendered covers); pass generated or licensed media as
+// https URLs and the endpoint downloads them itself.
+const bytes = Buffer.byteLength(JSON.stringify(payload));
+if (bytes > 3 * 1024 * 1024) {
+  console.error(
+    `\nPayload is ${(bytes / 1024 / 1024).toFixed(1)} MB. Reference large images and clips by their https URL ` +
+      `(e.g. the Higgsfield result_url) instead of a local path; the endpoint copies them into Storage.`,
+  );
+  process.exit(1);
+}
 
 if (flag === "--dry-run") {
   console.log(`\nDry run OK: ${post.slug} would be sent as a draft (${JSON.stringify(payload).length} bytes).`);

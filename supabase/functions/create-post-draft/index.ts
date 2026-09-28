@@ -19,15 +19,16 @@ import { createClient } from "npm:@supabase/supabase-js@2";
 const SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;
 const SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
 const SITE_URL = Deno.env.get("SITE_URL") ?? "https://raanzlr.com";
-const BUCKET = "blog-images";
 const SLUG_RE = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
-const MAX_IMAGE_BYTES = 8 * 1024 * 1024;
-const IMAGE_TYPES: Record<string, string> = {
-  "image/png": "png",
-  "image/jpeg": "jpg",
-  "image/webp": "webp",
-  "image/gif": "gif",
-  "image/svg+xml": "svg",
+// Images and clips live in separate public buckets, each with its own type and
+// size limits (enforced by Storage as well as here).
+const MEDIA_TYPES: Record<string, { ext: string; bucket: string; maxBytes: number }> = {
+  "image/png": { ext: "png", bucket: "blog-images", maxBytes: 8 * 1024 * 1024 },
+  "image/jpeg": { ext: "jpg", bucket: "blog-images", maxBytes: 8 * 1024 * 1024 },
+  "image/webp": { ext: "webp", bucket: "blog-images", maxBytes: 8 * 1024 * 1024 },
+  "image/gif": { ext: "gif", bucket: "blog-images", maxBytes: 8 * 1024 * 1024 },
+  "video/mp4": { ext: "mp4", bucket: "blog-videos", maxBytes: 45 * 1024 * 1024 },
+  "video/webm": { ext: "webm", bucket: "blog-videos", maxBytes: 45 * 1024 * 1024 },
 };
 
 type Bi = { en: string; ar: string };
@@ -73,9 +74,13 @@ function validate(p: any): string[] {
     p.sections.forEach((s: any, i: number) => {
       if (!isBi(s?.heading)) problems.push(`sections[${i}].heading needs en + ar`);
       if (!isBi(s?.body)) problems.push(`sections[${i}].body needs en + ar`);
-      if (s?.image != null && !isText(s.image)) problems.push(`sections[${i}].image must be a URL when present`);
-      if (s?.image && !s?.imageCredit && !/^data:/.test(s.image) && !s.image.startsWith(`${SUPABASE_URL}/storage/`)) {
-        problems.push(`sections[${i}].imageCredit is required for a remote image (who made it, and a link)`);
+      for (const field of ["image", "video"]) {
+        const src = s?.[field];
+        if (src != null && !isText(src)) problems.push(`sections[${i}].${field} must be a URL when present`);
+        // Third-party media must say whose it is; media generated for this post needn't.
+        if (src && !s.imageCredit && !s.aiGenerated && !/^data:/.test(src) && !src.startsWith(`${SUPABASE_URL}/storage/`)) {
+          problems.push(`sections[${i}].${field} is remote: add imageCredit {label, url}, or aiGenerated: true if it was generated for this post`);
+        }
       }
     });
   }
@@ -137,9 +142,9 @@ Deno.serve(async (req) => {
     return json({ error: "that slug is a published post; the automation only writes drafts — choose a new slug" }, 409);
   }
 
-  // Copy an image into our bucket and return its public URL. Already-ours URLs pass through.
+  // Copy an image or clip into our storage and return its public URL. Already-ours URLs pass through.
   let stored = 0;
-  const ownPrefix = `${SUPABASE_URL}/storage/v1/object/public/${BUCKET}/`;
+  const ownPrefix = `${SUPABASE_URL}/storage/v1/object/public/`;
   async function keep(source: string, name: string): Promise<string> {
     if (source.startsWith(ownPrefix)) return source;
     let bytes: Uint8Array;
@@ -150,19 +155,19 @@ Deno.serve(async (req) => {
       bytes = Uint8Array.from(atob(data[2]), (c) => c.charCodeAt(0));
     } else {
       if (!/^https:\/\//.test(source)) throw new Error(`${name}: only https or data: URLs are accepted`);
-      const res = await fetch(source, { signal: AbortSignal.timeout(20_000) });
+      const res = await fetch(source, { signal: AbortSignal.timeout(60_000) });
       if (!res.ok) throw new Error(`${name}: download failed (${res.status})`);
       type = (res.headers.get("content-type") ?? "").split(";")[0].trim();
       bytes = new Uint8Array(await res.arrayBuffer());
     }
-    const ext = IMAGE_TYPES[type];
-    if (!ext) throw new Error(`${name}: unsupported image type "${type}"`);
-    if (bytes.byteLength > MAX_IMAGE_BYTES) throw new Error(`${name}: larger than 8 MB`);
-    const path = `posts/${post.slug}/${name}.${ext}`;
-    const { error } = await db.storage.from(BUCKET).upload(path, bytes, { contentType: type, upsert: true });
+    const kind = MEDIA_TYPES[type];
+    if (!kind) throw new Error(`${name}: unsupported media type "${type}"`);
+    if (bytes.byteLength > kind.maxBytes) throw new Error(`${name}: larger than ${kind.maxBytes / 1024 / 1024} MB`);
+    const path = `posts/${post.slug}/${name}.${kind.ext}`;
+    const { error } = await db.storage.from(kind.bucket).upload(path, bytes, { contentType: type, upsert: true });
     if (error) throw new Error(`${name}: upload failed (${error.message})`);
     stored++;
-    return `${ownPrefix}${path}`;
+    return `${ownPrefix}${kind.bucket}/${path}`;
   }
 
   let image: string;
@@ -171,10 +176,13 @@ Deno.serve(async (req) => {
     image = await keep(post.image, "cover");
     sections = [];
     for (const [i, s] of post.sections.entries()) {
-      sections.push(s.image ? { ...s, image: await keep(s.image, `section-${i + 1}`) } : s);
+      const next = { ...s };
+      if (s.image) next.image = await keep(s.image, `section-${i + 1}`);
+      if (s.video) next.video = await keep(s.video, `section-${i + 1}-clip`);
+      sections.push(next);
     }
   } catch (e) {
-    return json({ error: `image handling failed: ${(e as Error).message}` }, 422);
+    return json({ error: `media handling failed: ${(e as Error).message}` }, 422);
   }
 
   const row = {

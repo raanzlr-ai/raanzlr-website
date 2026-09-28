@@ -57,9 +57,16 @@ export interface PostTable {
 export interface PostSection {
   heading: { en: string; ar: string };
   image?: string;
+  /**
+   * Optional short silent clip (mp4/webm) shown in place of `image`, which then
+   * serves as its poster frame. Plays muted and looped, like an animated figure.
+   */
+  video?: string;
   imageCaption?: { en: string; ar: string };
   /** Required whenever the image is not Raanzlr's own (a vendor chart, a press photo). */
   imageCredit?: { label: string; url?: string };
+  /** Media made for this post with an AI generator (e.g. Higgsfield); needs no third-party credit. */
+  aiGenerated?: boolean;
   body: { en: string; ar: string };
   /** Optional interactive chart (recharts: bar/line/area/pie). */
   chart?: PostChartSpec;

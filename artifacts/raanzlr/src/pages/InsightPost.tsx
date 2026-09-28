@@ -561,15 +561,29 @@ export default function InsightPost() {
                     <div className="absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-cyan-400/30 via-cyan-400/10 to-transparent hidden sm:block" />
                     
                     {/* Optional Section Image */}
-                    {section.image && (
+                    {(section.image || section.video) && (
                       <figure className="mb-8">
                         <div className="rounded-xl overflow-hidden border border-cyan-400/20">
-                          <img
-                            src={section.image}
-                            alt={(isAr ? section.imageCaption?.ar : section.imageCaption?.en) || (isAr ? section.heading.ar : section.heading.en)}
-                            loading="lazy"
-                            className="w-full h-auto"
-                          />
+                          {section.video ? (
+                            <video
+                              src={section.video}
+                              poster={section.image || undefined}
+                              autoPlay
+                              muted
+                              loop
+                              playsInline
+                              preload="metadata"
+                              aria-label={(isAr ? section.imageCaption?.ar : section.imageCaption?.en) || (isAr ? section.heading.ar : section.heading.en)}
+                              className="w-full h-auto"
+                            />
+                          ) : (
+                            <img
+                              src={section.image}
+                              alt={(isAr ? section.imageCaption?.ar : section.imageCaption?.en) || (isAr ? section.heading.ar : section.heading.en)}
+                              loading="lazy"
+                              className="w-full h-auto"
+                            />
+                          )}
                         </div>
                         {(section.imageCaption || section.imageCredit) && (
                           <figcaption className="mt-2.5 text-xs text-foreground/45 leading-relaxed">

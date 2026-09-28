@@ -109,10 +109,15 @@ export async function checkPost(post, { online = true } = {}) {
       }
       if ((s.table.rows?.en?.length ?? 0) !== (s.table.rows?.ar?.length ?? 0)) errors.push(`sections[${i}].table: en and ar row counts differ`);
     }
-    if (s.image && !s.image.startsWith("data:") && !/^\.{0,2}\//.test(s.image) && !s.imageCredit) {
-      errors.push(`sections[${i}] uses a remote image without imageCredit`);
+    for (const field of ["image", "video"]) {
+      if (s[field] && /^https?:\/\//.test(s[field]) && !s.imageCredit && !s.aiGenerated) {
+        errors.push(`sections[${i}].${field} is remote: add imageCredit {label, url} (licensed media) or aiGenerated: true (made for this post)`);
+      }
     }
   });
+  if (!sections.some((s) => s.image || s.video)) {
+    warnings.push("no section image or clip; add at least one visual that explains something (not decoration)");
+  }
 
   // Internal links (Appendix A §8.2: 2+ services, 1+ market), per locale.
   const known = online ? await sitemapPaths() : null;

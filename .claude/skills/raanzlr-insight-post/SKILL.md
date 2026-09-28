@@ -32,15 +32,21 @@ plus the owner's direction. When they conflict, the handoff's honesty rules win.
    address Casper, Wyoming is the only confirmed one.
 4. **Never publish, never edit a published post, never commit drafts to git**
    (the repo is public). Drafts live in `~/.raanzlr/drafts/<slug>/`.
-5. **No paid generation without the owner's OK** (see Visuals).
+5. **Paid Higgsfield generation is approved** as the fallback when the unlimited models are refused (see Visuals); keep it to about two images and at most one short clip per post.
 
 ## 1. Pick the topic
 
 The topic must connect to a Raanzlr **service** and at least one **market**,
-and ideally an **industry**. Two lanes:
+and ideally an **industry**. The owner wants **one new draft every day**
+(scheduled task `raanzlr-daily-insight-draft`). Daily volume is only safe if
+every draft is genuinely useful: Google's scaled-content policy targets many
+near-identical pages, so never write two posts that answer the same question,
+and never pad a thin topic to hit the length. Two lanes, alternating:
 
 - **Commercial backlog** (default, roughly 4 of every 5 posts): the 30-title
   calendar in `docs/HANDOFF.md` Appendix A §8.3. Take the next unwritten one.
+  When it runs out, write new commercial pieces in the same clusters (a
+  service × industry or service × market question a buyer actually asks).
 - **News + connect** (owner's request): something genuinely new in the last
   ~30 days that a business buyer should understand, such as a new frontier
   model release (e.g. a new Claude, GPT or Gemini), compared for business use
@@ -124,25 +130,55 @@ Field reference and a complete example: `references/post-template.json`.
   AI Models, or an industry name) so the Insights hub stays tidy.
 - **Date:** leave `published_at` unset; the reviewer picks date and time in /admin.
 
-## 5. Visuals
+## 5. Visuals (owner's direction, 2026-09-28: every post gets Higgsfield media)
 
-- **Cover (required):** a Raanzlr system schematic, free and on-brand:
-  write a spec (`inputs` = the things compared or the data sources, `hub` = the
-  business layer that ties them together, `outputs` = business outcomes, never
-  numbers) and render it:
-  `node tools/insights/cover.mjs cover-spec.json cover.png`
-- **Data visuals:** charts and tables, rebuilt from the sourced numbers. Do
-  **not** screenshot or re-host images from benchmark sites or vendors; recreate
-  the data and link the source instead (copyright, and it keeps every number
-  checkable).
-- **Section images (optional):** another cover-style schematic, or a Higgsfield
-  image. Higgsfield: `generate_image_batch` with `use_unlim: true` only, so it
-  can never spend credits silently. As of 2026-09-28 the connected account
-  reports "unlimited not supported" for every image model, so skip it unless the
-  owner has approved credits. Prompt style: navy #060B14 ground, single cyan
-  #27D8FF accent, engineering-schematic look, no text, no logos, no people.
-- A third-party image is allowed only when its licence permits reuse (e.g. a
-  vendor press kit); set `imageCredit: { label, url }` on that section.
+Every post ships with **a Higgsfield cover, at least one Higgsfield section
+image, and optionally one short clip**. Charts and tables still carry the data.
+
+**Order of models** (owner-approved; paid fallback is allowed):
+
+1. Try the owner's "365 Unlimited" models first, all with `use_unlim: true` so a
+   refusal costs nothing: `flux_2`, `gpt_image`, `seedream_v4_5`,
+   `kling_omni_image`, `nano_banana`, `seedream_v5_lite`.
+2. If they are refused ("Unlimited generations aren't supported for …", which is
+   what the connected account returned on 2026-09-28), generate with the paid
+   model **`gpt_image_2`, `use_unlim: false`**, 16:9. Defaults are 1K and low
+   quality, which already looked clean for these illustrations.
+3. **Clip (optional, one per post at most):** image-to-video from the cover with
+   `generate_video_batch`, model `kling3_0_turbo`, `use_unlim: false`,
+   `duration: 5`, `resolution: "720p"`, `aspect_ratio: "16:9"`,
+   `medias: [{ value: <cover job_id>, role: "start_image" }]`, a calm motion
+   prompt (slow push-in, light pulses along the lines, "seamless loop, no text,
+   no new objects"). It plays muted and looped as an animated figure.
+4. Poll with `jobs_wait`, then download each result and look at it before using
+   it. Regenerate once if an image has garbled text, logos, people, or looks off
+   brand; drop it rather than ship a bad visual.
+
+**Prompt style:** editorial technology illustration of the article's idea
+(not decoration), deep navy #060B14 ground, single cyan #27D8FF accent, clean
+minimal composition, "no text, no letters, no numbers, no logos, no people".
+Never depict a real company's product UI or logo, and never put figures in an
+image; numbers belong in charts with sources.
+
+**Using the media in the post:** reference Higgsfield `result_url`s directly
+(`image`, section `image`, section `video`) and set `aiGenerated: true` on those
+sections. The endpoint copies everything into Storage (`blog-images`,
+`blog-videos`). Do not pass large local files: payloads over 3 MB are refused.
+Give each visual an `imageCaption` (EN + AR) that says what it shows.
+
+**Web images:** you may find and use a real image related to the subject only
+when its licence allows reuse (Wikimedia Commons CC0 / CC BY / public domain,
+Unsplash, Pexels, or a vendor press/media kit that grants editorial use). Record
+the licence, set `imageCredit: { label: "<Author or org> / <licence>", url:
+<source page> }`, and never use an image whose licence you cannot confirm. Do
+not screenshot or re-host benchmark sites or vendor charts; rebuild the data as
+a chart or table and link the source.
+
+**Fallback cover:** if Higgsfield is unavailable entirely, render the brand
+schematic with `node tools/insights/cover.mjs cover-spec.json cover.png` (free).
+
+**Cost awareness:** each post spends credits on about two images and at most one
+5-second clip. Skip the clip when it adds nothing.
 
 ## 6. Check, submit, report
 
