@@ -13,12 +13,22 @@ import { faqPageSchema } from "../lib/pageSchema";
 import { toIsoDateTime, toIsoDateModified } from "../lib/date";
 import { relatedPosts } from "../lib/insightsPaging";
 import { POSTS } from "../data/posts";
-import { Post, PostChartSpec, fromStaticPost, fetchPost, fetchAllPosts, primedPosts } from "../lib/posts";
-import { ResponsiveContainer, BarChart, Bar, LineChart, Line, AreaChart, Area, PieChart, Pie, Cell, XAxis, YAxis, Tooltip, CartesianGrid } from "recharts";
+import { Post, PostChartSpec, PostTable, LocalizedText, ADMIN_TOKEN_KEY, fromStaticPost, fetchPost, fetchPostAsAdmin, fetchAllPosts, primedPosts } from "../lib/posts";
+import { ResponsiveContainer, BarChart, Bar, LineChart, Line, AreaChart, Area, PieChart, Pie, Cell, XAxis, YAxis, Tooltip, CartesianGrid, Legend } from "recharts";
 
-// Turns Markdown [text](url) links and bare URLs inside body text into clickable, safe anchors.
+/** Same-site links (relative, or absolute on raanzlr.com) stay in the tab; everything else opens a new one. */
+const isInternalHref = (href: string) => href.startsWith("/") || /^https:\/\/raanzlr\.com(\/|$)/.test(href);
+
+/** `**bold**` inside a plain-text run. */
+function renderBold(text: string, keyPrefix: string): React.ReactNode[] {
+  return text.split(/\*\*(.+?)\*\*/g).map((part, i) =>
+    i % 2 === 1 ? <strong key={`${keyPrefix}b${i}`} className="font-semibold text-foreground">{part}</strong> : part,
+  );
+}
+
+// Turns Markdown [text](url) links, bare URLs and **bold** inside body text into safe React nodes.
 function renderRich(text: string): React.ReactNode[] {
-  const linkRe = /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)|(https?:\/\/[^\s]+)/g;
+  const linkRe = /\[([^\]]+)\]\(((?:https?:\/\/|\/)[^\s)]+)\)|(https?:\/\/[^\s]+)/g;
   const out: React.ReactNode[] = [];
   let last = 0;
   let m: RegExpExecArray | null;
@@ -27,15 +37,14 @@ function renderRich(text: string): React.ReactNode[] {
     <a
       key={`l${k++}`}
       href={href}
-      target="_blank"
-      rel="noopener noreferrer"
+      {...(isInternalHref(href) ? {} : { target: "_blank", rel: "noopener noreferrer" })}
       className="text-cyan-300 underline decoration-cyan-400/40 underline-offset-2 hover:text-cyan-200 break-words"
     >
       {label}
     </a>
   );
   while ((m = linkRe.exec(text)) !== null) {
-    if (m.index > last) out.push(text.slice(last, m.index));
+    if (m.index > last) out.push(...renderBold(text.slice(last, m.index), `t${k++}`));
     if (m[1] && m[2]) {
       out.push(anchor(m[2], m[1]));
     } else if (m[3]) {
@@ -48,41 +57,186 @@ function renderRich(text: string): React.ReactNode[] {
     }
     last = linkRe.lastIndex;
   }
-  if (last < text.length) out.push(text.slice(last));
+  if (last < text.length) out.push(...renderBold(text.slice(last), `t${k++}`));
   return out;
 }
 
-// Renders a section body: splits into paragraphs on line breaks, keeps a drop-cap on the first
-// prose paragraph, and renders each line with clickable links (used by articles + References).
+type BodyBlock = { kind: "p" | "h3"; text: string } | { kind: "ul"; items: string[] };
+
+/** Line-based blocks: "### " is a sub-heading, runs of "- " lines are a list, anything else a paragraph. */
+function toBlocks(text: string): BodyBlock[] {
+  const blocks: BodyBlock[] = [];
+  for (const line of text.split(/\n+/).map((l) => l.trim()).filter(Boolean)) {
+    const item = line.match(/^[-•]\s+(.*)$/);
+    if (item) {
+      const prev = blocks[blocks.length - 1];
+      if (prev?.kind === "ul") prev.items.push(item[1]);
+      else blocks.push({ kind: "ul", items: [item[1]] });
+    } else if (line.startsWith("### ")) {
+      blocks.push({ kind: "h3", text: line.slice(4) });
+    } else {
+      blocks.push({ kind: "p", text: line });
+    }
+  }
+  return blocks;
+}
+
+// Renders a section body: paragraphs, "### " sub-headings and "- " lists, a drop-cap on the
+// first prose paragraph, and clickable links (used by articles + References).
 function ArticleBody({ text, dropCap }: { text: string; dropCap: boolean }) {
-  const blocks = text.split(/\n+/).map((l) => l.trim()).filter(Boolean);
+  const blocks = toBlocks(text);
+  const firstParagraph = blocks.findIndex((b) => b.kind === "p");
   return (
     <>
-      {blocks.map((block, i) => (
-        <p
-          key={i}
-          className={`text-foreground/75 leading-[1.9] text-base sm:text-lg tracking-wide [text-align:justify] ${i > 0 ? "mt-5" : ""} ${
-            dropCap && i === 0
-              ? "first-letter:text-5xl first-letter:font-bold first-letter:text-cyan-300 first-letter:float-left first-letter:me-3 first-letter:mt-1 first-letter:leading-none"
-              : ""
-          }`}
-        >
-          {renderRich(block)}
-        </p>
-      ))}
+      {blocks.map((block, i) => {
+        const spacing = i > 0 ? "mt-5" : "";
+        if (block.kind === "h3") {
+          return (
+            <h3 key={i} className={`font-display text-xl font-semibold text-foreground ${i > 0 ? "mt-8" : ""}`}>
+              {renderRich(block.text)}
+            </h3>
+          );
+        }
+        if (block.kind === "ul") {
+          return (
+            <ul key={i} className={`${spacing} space-y-2.5 ps-5 list-disc marker:text-cyan-400/70 text-foreground/75 leading-[1.8] text-base sm:text-lg`}>
+              {block.items.map((item, j) => <li key={j}>{renderRich(item)}</li>)}
+            </ul>
+          );
+        }
+        return (
+          <p
+            key={i}
+            className={`text-foreground/75 leading-[1.9] text-base sm:text-lg tracking-wide [text-align:justify] ${spacing} ${
+              dropCap && i === firstParagraph
+                ? "first-letter:text-5xl first-letter:font-bold first-letter:text-cyan-300 first-letter:float-left first-letter:me-3 first-letter:mt-1 first-letter:leading-none"
+                : ""
+            }`}
+          >
+            {renderRich(block.text)}
+          </p>
+        );
+      })}
     </>
   );
 }
 
 const CHART_COLORS = ["#00e5ff", "#3b82f6", "#8b5cf6", "#22d3ee", "#0ea5e9", "#a855f7", "#06b6d4"];
-const chartLoc = (v: PostChartSpec["title"], isAr: boolean): string => {
+const chartLoc = (v: LocalizedText | undefined, isAr: boolean): string => {
   if (!v) return "";
   if (typeof v === "string") return v;
   return (isAr ? v.ar : v.en) || v.en || v.ar || "";
 };
 
+/**
+ * Several series side by side (bar or line), e.g. three models across four
+ * benchmarks. Points come in as `{ label, values: { [series]: n } }` and are
+ * flattened to the `{ label, [series]: n }` rows recharts expects.
+ */
+function MultiSeriesChart({ chart, isAr }: { chart: PostChartSpec; isAr: boolean }) {
+  const series = (chart.series ?? []).filter(Boolean);
+  const rows = (chart.data ?? [])
+    .filter((d) => d && d.values)
+    .map((d) => ({ label: d.label, ...d.values }));
+  if (series.length === 0 || rows.length === 0) return null;
+  const title = chartLoc(chart.title, isAr);
+  const source = chartLoc(chart.source, isAr);
+  const unit = chart.unit || "";
+  const fmt = (v: number) => `${v}${unit}`;
+  const axis = { fill: "rgba(255,255,255,0.4)", fontSize: 11 } as const;
+  const grid = "rgba(255,255,255,0.06)";
+  const tip = { background: "hsl(var(--card))", border: "1px solid hsl(var(--border))", borderRadius: 12, color: "hsl(var(--foreground))", fontSize: 12 };
+  return (
+    <figure className="my-8 rounded-2xl border border-cyan-400/20 bg-foreground/[0.02] p-5 sm:p-6">
+      {title && <figcaption className="mb-4 text-sm font-mono-accent uppercase tracking-[0.14em] text-cyan-300">{title}</figcaption>}
+      <div className="h-72 sm:h-80 w-full" dir="ltr">
+        <ResponsiveContainer width="100%" height="100%">
+          {chart.type === "line" ? (
+            <LineChart data={rows} margin={{ top: 6, right: 12, left: -8, bottom: 0 }}>
+              <CartesianGrid stroke={grid} vertical={false} />
+              <XAxis dataKey="label" tick={axis} tickLine={false} axisLine={{ stroke: grid }} />
+              <YAxis tick={axis} tickLine={false} axisLine={false} tickFormatter={fmt} width={46} />
+              <Tooltip contentStyle={tip} formatter={(v: any) => fmt(Number(v))} />
+              <Legend wrapperStyle={{ fontSize: 12 }} />
+              {series.map((s, i) => (
+                <Line key={s} type="monotone" dataKey={s} stroke={CHART_COLORS[i % CHART_COLORS.length]} strokeWidth={2.5} dot={{ r: 3 }} />
+              ))}
+            </LineChart>
+          ) : (
+            <BarChart data={rows} margin={{ top: 6, right: 12, left: -8, bottom: 0 }}>
+              <CartesianGrid stroke={grid} vertical={false} />
+              <XAxis dataKey="label" tick={axis} tickLine={false} axisLine={{ stroke: grid }} />
+              <YAxis tick={axis} tickLine={false} axisLine={false} tickFormatter={fmt} width={46} />
+              <Tooltip contentStyle={tip} formatter={(v: any) => fmt(Number(v))} cursor={{ fill: "rgba(0,229,255,0.06)" }} />
+              <Legend wrapperStyle={{ fontSize: 12 }} />
+              {series.map((s, i) => (
+                <Bar key={s} dataKey={s} fill={CHART_COLORS[i % CHART_COLORS.length]} radius={[4, 4, 0, 0]} />
+              ))}
+            </BarChart>
+          )}
+        </ResponsiveContainer>
+      </div>
+      {source && <p className="mt-3 text-[11px] text-foreground/35">{isAr ? "المصدر: " : "Source: "}{renderRich(source)}</p>}
+    </figure>
+  );
+}
+
+/** Comparison table. Scrolls sideways on phones instead of squeezing the columns. */
+function PostTableView({ table, isAr }: { table: PostTable; isAr: boolean }) {
+  const columns = (isAr ? table.columns?.ar : table.columns?.en) ?? [];
+  const rows = (isAr ? table.rows?.ar : table.rows?.en) ?? [];
+  if (columns.length === 0 || rows.length === 0) return null;
+  const title = chartLoc(table.title, isAr);
+  const source = chartLoc(table.source, isAr);
+  const hl = table.highlightColumn;
+  const cellTone = (c: number) => (c === hl ? "bg-cyan-400/[0.07]" : "");
+  return (
+    <figure className="my-8">
+      {title && <figcaption className="mb-3 text-sm font-mono-accent uppercase tracking-[0.14em] text-cyan-300">{title}</figcaption>}
+      <div className="overflow-x-auto rounded-2xl border border-cyan-400/20">
+        <table className="w-full min-w-[34rem] border-collapse text-sm">
+          <thead>
+            <tr className="bg-foreground/[0.04]">
+              {columns.map((col, c) => (
+                <th
+                  key={c}
+                  scope="col"
+                  className={`px-4 py-3 text-start font-semibold text-foreground border-b border-cyan-400/20 ${c === hl ? "bg-cyan-400/[0.12] text-cyan-200" : ""}`}
+                >
+                  {col}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((row, r) => (
+              <tr key={r} className="border-b border-foreground/[0.06] last:border-0">
+                {row.map((cell, c) =>
+                  c === 0 ? (
+                    <th key={c} scope="row" className={`px-4 py-3 text-start font-medium text-foreground/90 align-top ${cellTone(c)}`}>
+                      {renderRich(cell)}
+                    </th>
+                  ) : (
+                    <td key={c} className={`px-4 py-3 text-foreground/70 align-top ${cellTone(c)}`}>
+                      {renderRich(cell)}
+                    </td>
+                  ),
+                )}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      {source && <p className="mt-3 text-[11px] text-foreground/35">{isAr ? "المصدر: " : "Source: "}{renderRich(source)}</p>}
+    </figure>
+  );
+}
+
 // Interactive, themed chart for a post section (recharts). Style varies by `chart.type`.
 function PostChart({ chart, isAr }: { chart: PostChartSpec; isAr: boolean }) {
+  if (chart?.series?.length && (chart.type === "bar" || chart.type === "line")) {
+    return <MultiSeriesChart chart={chart} isAr={isAr} />;
+  }
   const data = Array.isArray(chart?.data) ? chart.data.filter((d) => d && typeof d.value === "number") : [];
   if (data.length === 0) return null;
   const type = chart.type || "bar";
@@ -175,6 +329,9 @@ export default function InsightPost() {
   // fetch resolved is what made a stale article flash before the real one.
   const [post, setPost] = useState<Post | null | undefined>(() => seedPost(slug));
   const [others, setOthers] = useState<Post[]>(() => seedOthers(slug));
+  // "?preview" lets a signed-in admin read a draft before publishing it. Always
+  // "off" on the server and on first paint, so hydration never diverges.
+  const [preview, setPreview] = useState<"off" | "on" | "signed-out">("off");
 
   useEffect(() => {
     if (!slug) return;
@@ -184,10 +341,24 @@ export default function InsightPost() {
     setPost(seedPost(slug));
     setOthers(seedOthers(slug));
 
-    // Fetch from API (may override static)
-    fetchPost(slug).then(apiPost => {
+    const wantsPreview = new URLSearchParams(window.location.search).has("preview");
+    let adminToken: string | null = null;
+    if (wantsPreview) {
+      try {
+        adminToken = sessionStorage.getItem(ADMIN_TOKEN_KEY);
+      } catch {
+        /* storage blocked — treated as signed out */
+      }
+    }
+    setPreview(!wantsPreview ? "off" : adminToken ? "on" : "signed-out");
+
+    // Fetch from API (may override static). A preview reads drafts too.
+    (adminToken ? fetchPostAsAdmin(slug, adminToken) : fetchPost(slug)).then(apiPost => {
       if (apiPost) setPost(apiPost);
-      else if (!staticPost) setPost(null);
+      else {
+        if (adminToken) setPreview("signed-out");
+        if (!staticPost) setPost(null);
+      }
     }).catch(() => {});
 
     // Also refresh "others" from full API posts list
@@ -200,7 +371,17 @@ export default function InsightPost() {
   if (post === undefined) return (
     <div className="min-h-screen flex items-center justify-center text-foreground/40 text-sm">Loading...</div>
   );
-  if (post === null) return <Navigate to="/insights" replace />;
+  if (post === null) {
+    if (preview === "off") return <Navigate to="/insights" replace />;
+    return (
+      <div className="min-h-screen flex items-center justify-center px-6 text-center">
+        <p className="max-w-md text-sm text-foreground/60">
+          Draft preview needs an admin session. Sign in at <a href="/admin" className="text-cyan-300 underline">/admin</a> in this tab,
+          then open the preview link again.
+        </p>
+      </div>
+    );
+  }
 
   const fmt = (d: string) =>
     new Date(d).toLocaleDateString(isAr ? "ar-SA" : "en-US", {
@@ -227,6 +408,7 @@ export default function InsightPost() {
         path={`/insights/${post.slug}`}
         type="article"
         image={post.image}
+        noIndex={preview !== "off"}
         schema={faqSchema ?? undefined}
         article={{
           publishedTime: toIsoDateTime(post.date),
@@ -238,6 +420,14 @@ export default function InsightPost() {
           tags: [post.tag.en],
         }}
       />
+
+      {preview !== "off" && (
+        <div className="fixed bottom-4 inset-x-4 z-50 mx-auto max-w-xl rounded-xl border border-amber-400/40 bg-background/95 px-4 py-3 text-center text-xs text-amber-300 shadow-lg backdrop-blur">
+          {preview === "on"
+            ? "Admin preview: drafts show here before they are public. This view is not indexed."
+            : "Admin session missing or expired: sign in at /admin, then reopen the preview."}
+        </div>
+      )}
 
       {/* Hero */}
       <section className="relative min-h-[55vh] flex items-end overflow-hidden pt-28 sm:pt-32 pb-14">
@@ -318,13 +508,39 @@ export default function InsightPost() {
         </section>
       )}
 
+      {/* Table of contents — long articles only; each entry jumps to its section. */}
+      {post.sections.length >= 4 && (
+        <section className="relative pt-14 sm:pt-16">
+          <nav
+            aria-label={isAr ? "محتويات المقال" : "In this article"}
+            className="mx-auto max-w-4xl px-6 lg:px-8"
+          >
+            <div className="rounded-2xl border border-cyan-400/20 bg-foreground/[0.02] p-6 sm:p-7">
+              <p className="text-xs font-mono-accent tracking-[0.22em] text-cyan-300/90 mb-4">
+                {isAr ? "محتويات المقال" : "IN THIS ARTICLE"}
+              </p>
+              <ol className="grid gap-x-8 gap-y-2.5 sm:grid-cols-2">
+                {post.sections.map((section, i) => (
+                  <li key={i} className="flex gap-3 text-sm">
+                    <span className="font-mono-accent text-cyan-300/70 shrink-0">{String(i + 1).padStart(2, "0")}</span>
+                    <a href={`#section-${i + 1}`} className="text-foreground/70 hover:text-cyan-300 transition-colors">
+                      {isAr ? section.heading.ar : section.heading.en}
+                    </a>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </nav>
+        </section>
+      )}
+
       {/* Article Body */}
       <section className="relative py-16 sm:py-20">
         <div className="mx-auto max-w-4xl px-6 lg:px-8">
           <div className="space-y-16">
             {post.sections.map((section, i) => (
               <Reveal key={i} delay={i * 0.08}>
-                <article className="relative">
+                <article id={`section-${i + 1}`} className="relative scroll-mt-28">
                   {/* Section Number */}
                   <div className="flex items-start gap-6 mb-6">
                     <div className="flex-shrink-0 w-12 h-12 rounded-xl border border-cyan-400/30 bg-cyan-400/5 flex items-center justify-center">
@@ -346,16 +562,36 @@ export default function InsightPost() {
                     
                     {/* Optional Section Image */}
                     {section.image && (
-                      <div className="mb-8 rounded-xl overflow-hidden border border-cyan-400/20">
-                        <img 
-                          src={section.image} 
-                          alt={isAr ? section.heading.ar : section.heading.en}
-                          loading="lazy"
-                          className="w-full h-auto"
-                        />
-                      </div>
+                      <figure className="mb-8">
+                        <div className="rounded-xl overflow-hidden border border-cyan-400/20">
+                          <img
+                            src={section.image}
+                            alt={(isAr ? section.imageCaption?.ar : section.imageCaption?.en) || (isAr ? section.heading.ar : section.heading.en)}
+                            loading="lazy"
+                            className="w-full h-auto"
+                          />
+                        </div>
+                        {(section.imageCaption || section.imageCredit) && (
+                          <figcaption className="mt-2.5 text-xs text-foreground/45 leading-relaxed">
+                            {isAr ? section.imageCaption?.ar : section.imageCaption?.en}
+                            {section.imageCredit && (
+                              <span className="text-foreground/35">
+                                {section.imageCaption ? " · " : ""}
+                                {isAr ? "المصدر: " : "Credit: "}
+                                {section.imageCredit.url ? (
+                                  <a href={section.imageCredit.url} target="_blank" rel="noopener noreferrer" className="underline decoration-foreground/20 underline-offset-2 hover:text-cyan-300">
+                                    {section.imageCredit.label}
+                                  </a>
+                                ) : (
+                                  section.imageCredit.label
+                                )}
+                              </span>
+                            )}
+                          </figcaption>
+                        )}
+                      </figure>
                     )}
-                    
+
                     {/* Content with improved typography */}
                     <div className="prose prose-invert prose-lg max-w-none">
                       <ArticleBody
@@ -363,6 +599,8 @@ export default function InsightPost() {
                         dropCap={!isAr && !/references|sources|مصادر|المراجع/i.test(`${section.heading.en} ${section.heading.ar}`)}
                       />
                     </div>
+
+                    {section.table && <PostTableView table={section.table} isAr={isAr} />}
 
                     {section.chart && <PostChart chart={section.chart} isAr={isAr} />}
 

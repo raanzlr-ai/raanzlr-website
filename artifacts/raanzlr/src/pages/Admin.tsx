@@ -2,9 +2,9 @@ import React, { useState, useEffect, useCallback } from "react";
 import { Mail, FileText, Eye, EyeOff, RefreshCw, LogOut, Clock, User, Phone, Plus, Pencil, Trash2, ChevronDown, ChevronUp, X, Star, Globe, CheckCircle, AlertCircle, Users } from "lucide-react";
 import SEO from "../components/SEO";
 import ThemeToggle from "../components/ThemeToggle";
+import { ADMIN_TOKEN_KEY } from "../lib/posts";
 
 const ADMIN_EMAIL = "mohammed_okla@raanzlr.com";
-const ADMIN_TOKEN_KEY = "raanzlr_admin_token";
 
 const SUPABASE_URL = (import.meta.env.VITE_SUPABASE_URL || "https://dnpaagicskxzukeczifj.supabase.co").trim().replace(/^\uFEFF/, "");
 const SUPABASE_ANON_KEY = (import.meta.env.VITE_SUPABASE_ANON_KEY || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRucGFhZ2ljc2t4enVrZWN6aWZqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE4OTYyNzksImV4cCI6MjA5NzQ3MjI3OX0.fI0GuwGnTQU7k7HOCwTBP2q0xIjR0s9bmDl0b9SfWN0").trim().replace(/^\uFEFF/, "");
@@ -465,13 +465,49 @@ interface PostRecord {
 const autoSlug = (title: string) =>
   title.toLowerCase().replace(/[^a-z0-9\s-]/g, "").replace(/\s+/g, "-").replace(/-+/g, "-").trim();
 
+/**
+ * `published_at` is a timestamptz in Supabase but the editor works in the
+ * admin's own clock: `<input type="datetime-local">` needs "YYYY-MM-DDTHH:mm"
+ * with no zone. A bare date ("2025-03-15", old rows) is read as UTC midnight;
+ * anything unparseable falls back to now.
+ */
+function toLocalInput(value?: string): string {
+  const raw = value?.trim() ?? "";
+  const parsed = new Date(/^\d{4}-\d{2}-\d{2}$/.test(raw) ? `${raw}T00:00:00Z` : raw);
+  const d = raw && !Number.isNaN(parsed.getTime()) ? parsed : new Date();
+  const pad = (n: number) => String(n).padStart(2, "0");
+  return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
+}
+
+/** The editor's local "YYYY-MM-DDTHH:mm" back to a UTC ISO timestamp for Supabase. */
+function fromLocalInput(value: string): string {
+  const d = new Date(value);
+  return Number.isNaN(d.getTime()) ? new Date().toISOString() : d.toISOString();
+}
+
+/** Admin list label, e.g. "22 Aug 2026, 03:00" in the viewer's time zone. */
+function formatPostDate(value: string): string {
+  const d = new Date(/^\d{4}-\d{2}-\d{2}$/.test(value) ? `${value}T00:00:00Z` : value);
+  return Number.isNaN(d.getTime())
+    ? value
+    : d.toLocaleString("en-GB", { day: "numeric", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit" });
+}
+
+const ADMIN_TIME_ZONE = (() => {
+  try {
+    return Intl.DateTimeFormat().resolvedOptions().timeZone;
+  } catch {
+    return "local time";
+  }
+})();
+
 const defaultForm = (): PostForm => ({
   slug: "", title_en: "", title_ar: "",
   excerpt_en: "", excerpt_ar: "",
   tag_en: "General", tag_ar: "عام",
   image: "", author: "Raanzlr",
   published: true, featured: false,
-  published_at: new Date().toISOString().split("T")[0],
+  published_at: toLocalInput(),
   seo_title_en: "", seo_title_ar: "",
   seo_description_en: "", seo_description_ar: "",
   seo_keywords_en: "", seo_keywords_ar: "",
@@ -504,7 +540,7 @@ function recordToForm(p: PostRecord): PostForm {
     author: p.author ?? "Raanzlr",
     published: p.published !== undefined ? p.published : true,
     featured: p.featured ?? false,
-    published_at: p.published_at ?? p.date ?? new Date().toISOString().split("T")[0],
+    published_at: toLocalInput(p.published_at ?? p.date),
     seo_title_en: p.seo_title_en ?? "",
     seo_title_ar: p.seo_title_ar ?? "",
     seo_description_en: p.seo_description_en ?? "",
@@ -771,6 +807,7 @@ function PostFormView({
 
     const payload = {
       ...form,
+      published_at: fromLocalInput(form.published_at),
       sections: JSON.stringify(form.sections),
     };
 
@@ -875,13 +912,14 @@ function PostFormView({
             />
           </div>
           <div>
-            <FieldLabel>Published Date</FieldLabel>
+            <FieldLabel>Publish Date &amp; Time</FieldLabel>
             <input
-              type="date"
+              type="datetime-local"
               value={form.published_at}
               onChange={e => set("published_at", e.target.value)}
               className={inputCls + " [color-scheme:dark]"}
             />
+            <p className="mt-1.5 text-[10px] text-foreground/30">Your local time ({ADMIN_TIME_ZONE})</p>
           </div>
           <div className="flex flex-col gap-4">
             <div className="flex items-center gap-6 pt-1">
@@ -1260,7 +1298,7 @@ function PostCard({
           {tagEn && (
             <span className="text-[10px] text-cyan-300 bg-cyan-400/10 border border-cyan-400/15 rounded-full px-2 py-0.5">{tagEn}</span>
           )}
-          {date && <span className="text-[10px] text-foreground/30">{date}</span>}
+          {date && <span className="text-[10px] text-foreground/30">{formatPostDate(date)}</span>}
           {post.author && <span className="text-[10px] text-foreground/30">{post.author}</span>}
           {(post.readTime ?? post.read_time) && (
             <span className="text-[10px] text-foreground/30">{post.readTime ?? post.read_time} min read</span>
@@ -1323,6 +1361,19 @@ function PostCard({
             <Mail className="h-3 w-3" /> {sending ? "Sending…" : "Send"}
           </button>
         )}
+        {/* Same tab on purpose: the preview reads this tab's sessionStorage admin
+            token, which a new tab does not reliably inherit. */}
+        {(["en", "ar"] as const).map((lang) => (
+          <a
+            key={lang}
+            href={`/${lang}/insights/${encodeURIComponent(post.slug)}?preview=1`}
+            onClick={(e) => e.stopPropagation()}
+            className="flex items-center gap-1.5 text-xs rounded-lg px-3 py-1.5 border border-foreground/10 text-foreground/50 hover:text-cyan-300 hover:border-cyan-400/30 transition-colors"
+            title={`Preview how this post renders (${lang.toUpperCase()}), including drafts`}
+          >
+            <Eye className="h-3 w-3" /> {lang.toUpperCase()}
+          </a>
+        ))}
         <button
           onClick={async (e) => {
             e.stopPropagation();

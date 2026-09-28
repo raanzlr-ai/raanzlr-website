@@ -24,24 +24,47 @@ const REST_HEADERS = {
   Accept: "application/json",
 };
 
+/** Text in both locales, or one string shown in both. */
+export type LocalizedText = { en?: string; ar?: string } | string;
+
 export interface PostChartSpec {
   /** Chart style — the automation should vary this per post/dataset. */
   type: "bar" | "line" | "area" | "pie";
-  title?: { en?: string; ar?: string } | string;
-  /** Data points: label + numeric value. */
-  data: { label: string; value: number }[];
+  title?: LocalizedText;
+  /**
+   * Data points. Single series: `{ label, value }`. Multi-series (bar and line
+   * only, e.g. three models across four benchmarks): list the series names in
+   * `series` and give each point `values` keyed by those names.
+   */
+  data: { label: string; value?: number; values?: Record<string, number> }[];
+  series?: string[];
   /** Optional unit shown in tooltips, e.g. "$B", "%", "MW". */
   unit?: string;
   /** Optional source note rendered under the chart. */
-  source?: { en?: string; ar?: string } | string;
+  source?: LocalizedText;
+}
+
+/** A comparison table. Cells are per locale so labels can be translated. */
+export interface PostTable {
+  title?: LocalizedText;
+  columns: { en: string[]; ar: string[] };
+  rows: { en: string[][]; ar: string[][] };
+  /** Zero-based column to emphasise, e.g. the option the section recommends. */
+  highlightColumn?: number;
+  source?: LocalizedText;
 }
 
 export interface PostSection {
   heading: { en: string; ar: string };
   image?: string;
+  imageCaption?: { en: string; ar: string };
+  /** Required whenever the image is not Raanzlr's own (a vendor chart, a press photo). */
+  imageCredit?: { label: string; url?: string };
   body: { en: string; ar: string };
   /** Optional interactive chart (recharts: bar/line/area/pie). */
   chart?: PostChartSpec;
+  /** Optional comparison table, rendered after the body. */
+  table?: PostTable;
 }
 
 /** One question/answer pair, in a single locale. */
@@ -309,6 +332,28 @@ export async function fetchPost(slug: string): Promise<Post | null> {
       return recordToPost(data[0]);
     }
     return null;
+  } catch {
+    return null;
+  }
+}
+
+/** sessionStorage key holding the Admin panel's Supabase access token (1 h). */
+export const ADMIN_TOKEN_KEY = "raanzlr_admin_token";
+
+/**
+ * Fetch any post — draft or published — with an admin session. RLS lets
+ * `is_admin()` read every row, so this is what lets an editor preview a draft
+ * before publishing it. Resolves to null when the session has expired.
+ */
+export async function fetchPostAsAdmin(slug: string, accessToken: string): Promise<Post | null> {
+  try {
+    const res = await fetch(
+      `${SUPABASE_URL}/rest/v1/posts?slug=eq.${encodeURIComponent(slug)}&limit=1`,
+      { headers: { ...REST_HEADERS, Authorization: `Bearer ${accessToken}` } },
+    );
+    if (!res.ok) return null;
+    const data = await res.json();
+    return Array.isArray(data) && data.length > 0 ? recordToPost(data[0]) : null;
   } catch {
     return null;
   }
