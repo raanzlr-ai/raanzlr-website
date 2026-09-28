@@ -1,0 +1,102 @@
+{
+  "slug": "keyword-first-slug-no-date",
+  "title_en": "Answer-shaped title in sentence case",
+  "title_ar": "عنوان عربي مكتوب أصلاً بالعربية",
+  "excerpt_en": "One or two sentences that state the takeaway and who it is for.",
+  "excerpt_ar": "جملة أو جملتان تذكران الخلاصة ولمن تفيد.",
+  "tag_en": "AI Models",
+  "tag_ar": "نماذج الذكاء الاصطناعي",
+  "image": "cover.png",
+  "seo_title_en": "≤ 60 chars, no ' — Raanzlr' suffix (the site adds it)",
+  "seo_title_ar": "≤ 60 حرفاً",
+  "seo_description_en": "140–160 chars. States the answer and the main entities.",
+  "seo_description_ar": "١٤٠ إلى ١٦٠ حرفاً تقريباً، بلا شرطات.",
+  "seo_keywords_en": "primary keyword, secondary keyword, entity",
+  "seo_keywords_ar": "الكلمة الرئيسية, كلمة ثانوية",
+
+  "answer_block_en": { "q": "The question a buyer actually searches?", "a": "40–80 words, answer first, sourced numbers only." },
+  "answer_block_ar": { "q": "السؤال كما يبحث عنه القارئ؟", "a": "٤٠ إلى ٨٠ كلمة، الإجابة أولاً." },
+  "faq_en": [
+    { "q": "Question 1?", "a": "40–80 words." },
+    { "q": "Question 2?", "a": "40–80 words." },
+    { "q": "Question 3?", "a": "40–80 words." }
+  ],
+  "faq_ar": [
+    { "q": "السؤال ١؟", "a": "٤٠ إلى ٨٠ كلمة." },
+    { "q": "السؤال ٢؟", "a": "٤٠ إلى ٨٠ كلمة." },
+    { "q": "السؤال ٣؟", "a": "٤٠ إلى ٨٠ كلمة." }
+  ],
+
+  "sections": [
+    {
+      "heading": { "en": "The short answer: <takeaway>", "ar": "الإجابة المختصرة: <الخلاصة>" },
+      "body": {
+        "en": "First paragraph answers the question.\nSecond paragraph gives context. **Bold** a key term sparingly.",
+        "ar": "الفقرة الأولى تجيب عن السؤال.\nالفقرة الثانية تعطي السياق."
+      }
+    },
+    {
+      "heading": { "en": "A substance section with a list", "ar": "قسم بمحتوى وقائمة" },
+      "body": {
+        "en": "Intro sentence.\n- **Point:** detail, with a [linked source](https://example.com/source).\n- **Point:** detail.\n### A sub-heading\nMore text.",
+        "ar": "جملة تمهيدية.\n- **نقطة:** تفصيل.\n- **نقطة:** تفصيل.\n### عنوان فرعي\nنص إضافي."
+      }
+    },
+    {
+      "heading": { "en": "Comparison section", "ar": "قسم المقارنة" },
+      "body": { "en": "Explain what the table shows and which column you'd pick and why.", "ar": "اشرح ما يعرضه الجدول وأي خيار تنصح به ولماذا." },
+      "table": {
+        "title": { "en": "Table title", "ar": "عنوان الجدول" },
+        "columns": { "en": ["", "Option A", "Option B"], "ar": ["", "Option A", "Option B"] },
+        "rows": {
+          "en": [["Price", "$4", "$10"], ["Best for", "…", "…"]],
+          "ar": [["السعر", "٤ دولارات", "١٠ دولارات"], ["الأنسب لـ", "…", "…"]]
+        },
+        "highlightColumn": 1,
+        "source": { "en": "Publisher, Month YYYY", "ar": "الجهة، الشهر السنة" }
+      }
+    },
+    {
+      "heading": { "en": "Benchmarks section", "ar": "قسم الاختبارات" },
+      "body": { "en": "Say whether numbers are vendor-reported or independent.", "ar": "وضّح هل الأرقام من الشركة أم من جهة مستقلة." },
+      "chart": {
+        "type": "bar",
+        "title": { "en": "Chart title (%)", "ar": "عنوان الرسم (٪)" },
+        "series": ["Option A", "Option B"],
+        "data": [
+          { "label": "Benchmark 1", "values": { "Option A": 66.4, "Option B": 57.9 } },
+          { "label": "Benchmark 2", "values": { "Option A": 40.0, "Option B": 41.4 } }
+        ],
+        "unit": "%",
+        "source": { "en": "[Publisher, Title](https://example.com), DD Month YYYY. Vendor-reported.", "ar": "[Publisher, Title](https://example.com)، التاريخ." }
+      }
+    },
+    {
+      "heading": { "en": "Single-series chart example", "ar": "مثال رسم بسلسلة واحدة" },
+      "body": { "en": "Text.", "ar": "نص." },
+      "image": "section-diagram.png",
+      "imageCaption": { "en": "What the image shows.", "ar": "ما تعرضه الصورة." },
+      "chart": {
+        "type": "line",
+        "title": { "en": "Title", "ar": "العنوان" },
+        "data": [{ "label": "Q1", "value": 10 }, { "label": "Q2", "value": 14 }],
+        "unit": "%",
+        "source": { "en": "Publisher, Month YYYY", "ar": "الجهة، التاريخ" }
+      }
+    },
+    {
+      "heading": { "en": "What this means for business automation", "ar": "ماذا يعني هذا لأتمتة الأعمال؟" },
+      "body": {
+        "en": "80–140 words. Capability, not track record. Link 2+ services and 1+ market: [AI agents](/en/services/ai-chatbots), [workflow automation](/en/services/workflow-automation), [Saudi Arabia](/en/markets/saudi-arabia).",
+        "ar": "٨٠ إلى ١٤٠ كلمة. روابط: [وكلاء الذكاء الاصطناعي](/ar/services/ai-chatbots) و[أتمتة سير العمل](/ar/services/workflow-automation) و[السعودية](/ar/markets/saudi-arabia)."
+      }
+    },
+    {
+      "heading": { "en": "References", "ar": "المراجع" },
+      "body": {
+        "en": "- [Publisher: Title (Month YYYY)](https://example.com/1)\n- [Publisher: Title (Month YYYY)](https://example.com/2)\n- [Publisher: Title (Month YYYY)](https://example.com/3)",
+        "ar": "- [Publisher: Title، الشهر السنة](https://example.com/1)\n- [Publisher: Title، الشهر السنة](https://example.com/2)\n- [Publisher: Title، الشهر السنة](https://example.com/3)"
+      }
+    }
+  ]
+}

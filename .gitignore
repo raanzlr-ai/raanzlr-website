@@ -112,7 +112,13 @@ image-generator-package.json
 artifacts/raanzlr/src/data/markets_additions.txt
 
 # Local agent/tool directories (never commit)
-.claude/
+# ...except the project skills the insight-post automation runs on, which are
+# part of how this site is operated and must be versioned with it.
+.claude/*
+!.claude/skills/
+.claude/skills/*
+!.claude/skills/raanzlr-insight-post/
+!.claude/skills/arabic-content-writter/
 .kiro/
 .qodo/
 .local/
